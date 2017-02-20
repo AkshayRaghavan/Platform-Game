@@ -23,8 +23,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    sources/state.cpp \
+    src/movingleft.cpp \
+    src/movingright.cpp \
+    src/jumping.cpp
 
-HEADERS  +=
+HEADERS  += \
+    headers/state.h \
+    include/state.h \
+    include/movingleft.h \
+    include/movingright.h \
+    include/jumping.h
 
 FORMS    +=
+
+INCLUDEPATH += ../include
