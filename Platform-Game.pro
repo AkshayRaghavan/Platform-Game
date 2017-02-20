@@ -36,7 +36,8 @@ HEADERS  += \
     include/movingleft.h \
     include/movingright.h \
     include/jumping.h \
-    include/keys.h
+    include/keys.h \
+    include/inputcomponent.h
 
 FORMS    +=
 
