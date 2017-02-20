@@ -27,14 +27,16 @@ SOURCES += main.cpp \
     sources/state.cpp \
     src/movingleft.cpp \
     src/movingright.cpp \
-    src/jumping.cpp
+    src/jumping.cpp \
+    src/keys.cpp
 
 HEADERS  += \
     headers/state.h \
     include/state.h \
     include/movingleft.h \
     include/movingright.h \
-    include/jumping.h
+    include/jumping.h \
+    include/keys.h
 
 FORMS    +=
 
