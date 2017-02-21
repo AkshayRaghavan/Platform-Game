@@ -1,6 +1,6 @@
 #include "include/jumpingstate.h"
 
-JumpingState::JumpingState(const int &max_jump_count) : maxJumpCount(max_jump_count)
+JumpingState::JumpingState()
 {
     jumpCount = 0;
 }

@@ -5,7 +5,10 @@
 #include <set>
 #include <algorithm>
 
-IsJumping::IsJumping(const int& max_jump_count) : JumpingState(max_jump_count) {}
+IsJumping::IsJumping(GameObject &gameObject)
+{
+    jumpCount = gameObject.maxJumpCount;
+}
 
 JumpingState* IsJumping::update(GameObject &gameObject, std::set<Qt::Key> key)
 {

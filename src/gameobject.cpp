@@ -5,7 +5,7 @@
 
 #include "include/gameobject.h"
 
-GameObject::GameObject(InputComponent *input_component, Keys input_keys) : keys(input_keys)
+GameObject::GameObject(InputComponent *input_component, Keys input_keys, const int &max_jump_count) : keys(input_keys), maxJumpCount(max_jump_count)
 {
     inputComponent = input_component;
 }

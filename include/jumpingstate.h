@@ -7,11 +7,9 @@ class GameObject;
 
 class JumpingState
 {
-protected:
-    const int maxJumpCount;
 public:
     int jumpCount;
-    JumpingState(const int&);
+    JumpingState();
     virtual ~JumpingState() {}
     virtual JumpingState* update(GameObject &,std::set<Qt::Key>) = 0;
     int getJumpCount();

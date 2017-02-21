@@ -13,7 +13,7 @@ JumpingState* IsNotJumping::update(GameObject &gameObject, std::set<Qt::Key> key
     JumpingState *new_state = NULL;
     if(key.find(gameObject.keys.jump) != key.end())
     {
-        new_state = new IsJumping(maxJumpCount);
+        new_state = new IsJumping(gameObject);
     }
     return new_state;
 }

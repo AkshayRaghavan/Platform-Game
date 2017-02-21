@@ -7,7 +7,7 @@ class GameObject;
 class IsJumping : public JumpingState
 {
 public:
-    IsJumping(const int&);
+    IsJumping(GameObject &);
     virtual ~IsJumping() {}
     virtual JumpingState* update(GameObject &, std::set<Qt::Key>);
 };

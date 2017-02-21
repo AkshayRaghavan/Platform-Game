@@ -1,12 +1,13 @@
-
+#include "include/humaninputcomponent.h"
 #include "include/gameobject.h"
 #include "include/state.h"
+#include "include/jumpingstate.h"
 #include <QEvent>
 #include <QKeyEvent>
 #include <Qt>
 #include <set>
 
-#include "include/humaninputcomponent.h"
+
 
 HumanInputComponent::HumanInputComponent()
 {
@@ -16,10 +17,16 @@ HumanInputComponent::HumanInputComponent()
 void HumanInputComponent::update(GameObject &gameObject)
 {
     State *new_state = gameObject.state->update(gameObject,keysPressed);
+    JumpingState *new_jumping_state = gameObject.jumpingState->update(gameObject,keysPressed);
     if(new_state != NULL)
     {
         delete gameObject.state;
         gameObject.state = new_state;
+    }
+    if(new_jumping_state != NULL)
+    {
+        delete gameObject.jumpingState;
+        gameObject.jumpingState = new_jumping_state;
     }
 
 }

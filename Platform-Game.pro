@@ -33,7 +33,10 @@ SOURCES += main.cpp \
     src/stopright.cpp \
     src/isjumping.cpp \
     src/jumpingstate.cpp \
-    src/isnotjumping.cpp
+    src/isnotjumping.cpp \
+    src/deadleft.cpp \
+    src/deadright.cpp \
+    src/inputcomponent.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -47,7 +50,9 @@ HEADERS  += \
     include/stopright.h \
     include/jumpingstate.h \
     include/isjumping.h \
-    include/isnotjumping.h
+    include/isnotjumping.h \
+    include/deadleft.h \
+    include/deadright.h
 
 FORMS    +=
 
