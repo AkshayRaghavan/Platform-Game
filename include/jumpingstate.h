@@ -14,6 +14,9 @@ public:
     JumpingState(const int&);
     virtual ~JumpingState() {}
     virtual JumpingState* update(GameObject &,std::set<Qt::Key>) = 0;
+    int getJumpCount();
+    void setJumpCount(int);
+    void jumpUpdate();
 };
 
 #endif // JUMPINGSTATE_H
