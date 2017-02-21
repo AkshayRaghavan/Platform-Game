@@ -1,16 +1,16 @@
-#ifndef STOP_H
-#define STOP_H
+#ifndef STOPLEFT_H
+#define STOPLEFT_H
 
 #include "state.h"
 class GameObject;
 #include <Qt>
 #include <set>
 
-class Stop : public State
+class StopLeft : public State
 {
 public:
-    virtual ~Stop() {}
+    virtual ~StopLeft() {}
     virtual State* update(GameObject &,std::set<Qt::Key>);
 };
 
-#endif // STOP_H
+#endif // STOPLEFT_H

@@ -9,7 +9,7 @@
 #include "include/jumpingleft.h"
 #include "include/jumpingright.h"
 #include "include/jumping.h"
-#include "include/stop.h"
+#include "include/stopright.h"
 
 State* MovingRight::update(GameObject &gameObject, std::set<Qt::Key> key)
 {
@@ -42,7 +42,7 @@ State* MovingRight::update(GameObject &gameObject, std::set<Qt::Key> key)
     }
     else if(key.size() == 0)
     {
-        new_state = new Stop;
+        new_state = new StopRight;
     }
     return new_state;
 }

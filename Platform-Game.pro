@@ -30,9 +30,10 @@ SOURCES += main.cpp \
     src/keys.cpp \
     src/jumpingright.cpp \
     src/jumpingleft.cpp \
-    src/stop.cpp \
     src/humaninputcomponent.cpp \
     src/gameobject.cpp \
+    src/stopleft.cpp \
+    src/stopright.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -42,10 +43,11 @@ HEADERS  += \
     include/inputcomponent.h \
     include/jumpingright.h \
     include/jumpingleft.h \
-    include/stop.h \
     include/humaninputcomponent.h \
     include/state.h \
-    include/gameobject.h
+    include/gameobject.h \
+    include/stopleft.h \
+    include/stopright.h
 
 FORMS    +=
 
