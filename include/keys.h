@@ -2,13 +2,13 @@
 #define KEYS_H
 
 #include <Qt>
-#include <set>
 
 class Keys
 {
 public:
     Qt::Key jump,right,left;
-    Keys(std::set<Qt::Key>);
+    Keys(Qt::Key,Qt::Key,Qt::Key);
+    bool find(Qt::Key);
 };
 
 #endif // KEYS_H

@@ -27,13 +27,13 @@ void HumanInputComponent::update(GameObject &gameObject)
 void HumanInputComponent::event(QEvent *event, GameObject &gameObject)
 {
     QKeyEvent *key_event = dynamic_cast<QKeyEvent *>(event);
-    if(key_event && key_event->type() == QKeyEvent::KeyPress && gameObject.keys.find(key_event->key()) != gameObject.keys.end())
+    if(key_event && key_event->type() == QKeyEvent::KeyPress && gameObject.keys.find(static_cast<Qt::Key>(key_event->key())))
     {
-        keysPressed.insert(key_event->key());
+        keysPressed.insert(static_cast<Qt::Key>(key_event->key()));
     }
-    else if(key_event && key_event->type() == QKeyEvent::KeyRelease && gameObject.keys.find(key_event->key()) != gameObject.keys.end())
+    else if(key_event && key_event->type() == QKeyEvent::KeyRelease && gameObject.keys.find(static_cast<Qt::Key>(key_event->key())))
     {
-        keysPressed.erase(key_event()->key());
+        keysPressed.erase(static_cast<Qt::Key>(key_event->key()));
     }
     update(gameObject);
 }
