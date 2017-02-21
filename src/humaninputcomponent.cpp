@@ -1,13 +1,11 @@
-#include "include/humaninputcomponent.h"
-#include "include/gameobject.h"
-#include "include/state.h"
-#include "include/jumpingstate.h"
+#include "humaninputcomponent.h"
+#include "gameobject.h"
+#include "state.h"
+#include "jumpingstate.h"
 #include <QEvent>
 #include <QKeyEvent>
 #include <Qt>
 #include <set>
-
-
 
 HumanInputComponent::HumanInputComponent()
 {

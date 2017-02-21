@@ -1,4 +1,4 @@
-#include "include/keys.h"
+#include "keys.h"
 #include <Qt>
 
 Keys::Keys(Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)

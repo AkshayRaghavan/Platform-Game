@@ -1,4 +1,4 @@
-#include "include/inputcomponent.h"
+#include "inputcomponent.h"
 #include <QEvent>
 
 InputComponent::InputComponent()

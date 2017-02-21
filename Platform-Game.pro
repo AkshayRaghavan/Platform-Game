@@ -56,4 +56,4 @@ HEADERS  += \
 
 FORMS    +=
 
-INCLUDEPATH += ../include
+INCLUDEPATH += $$PWD/include

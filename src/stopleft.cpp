@@ -1,12 +1,11 @@
-#include "include/state.h"
-#include "include/gameobject.h"
+#include "stopleft.h"
+#include "movingleft.h"
+#include "movingright.h"
+#include "state.h"
+#include "gameobject.h"
 #include <Qt>
 #include <set>
 #include <algorithm>
-
-#include "include/movingleft.h"
-#include "include/movingright.h"
-#include "include/stopleft.h"
 
 State* StopLeft::update(GameObject &gameObject, std::set<Qt::Key> key)
 {
