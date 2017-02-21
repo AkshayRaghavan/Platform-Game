@@ -18,6 +18,7 @@ public:
     State *state;
     JumpingState *jumpingState;
     Keys keys;
+    bool event(QEvent *);
 };
 
 #endif // GAMEOBJECT_H
