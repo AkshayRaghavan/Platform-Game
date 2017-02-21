@@ -2,7 +2,6 @@
 #define HUMANINPUTCOMPONENT_H
 
 #include "inputcomponent.h"
-#include "include/gameobject.h"
 #include <QEvent>
 #include <Qt>
 #include <set>

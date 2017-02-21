@@ -2,10 +2,7 @@
 #include "gameobject.h"
 #include "state.h"
 #include "jumpingstate.h"
-#include <QEvent>
 #include <QKeyEvent>
-#include <Qt>
-#include <set>
 
 HumanInputComponent::HumanInputComponent()
 {

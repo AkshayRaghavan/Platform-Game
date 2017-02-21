@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-class InputComponent;
+#include "inputcomponent.h"
 #include "keys.h"
 #include "state.h"
 #include "jumpingstate.h"

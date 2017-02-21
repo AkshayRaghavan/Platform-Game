@@ -3,14 +3,13 @@
 
 #include "state.h"
 class GameObject;
-#include <Qt>
-#include <set>
 
 class DeadLeft : public State
 {
 public:
     virtual ~DeadLeft() {}
     virtual State* update(GameObject &,std::set<Qt::Key>);
+    virtual enumerator::State type();
 };
 
 #endif // DEADLEFT_H

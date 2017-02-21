@@ -1,9 +1,6 @@
 #include "isnotjumping.h"
 #include "isjumping.h"
-#include "jumpingstate.h"
 #include "gameobject.h"
-#include <Qt>
-#include <set>
 #include <algorithm>
 
 //IsNotJumping::IsNotJumping(const int& max_jump_count) : JumpingState(max_jump_count) {}
@@ -16,4 +13,9 @@ JumpingState* IsNotJumping::update(GameObject &gameObject, std::set<Qt::Key> key
         new_state = new IsJumping(gameObject);
     }
     return new_state;
+}
+
+enumerator::JumpingState IsNotJumping::type()
+{
+    return enumerator::JumpingState::IS_NOT_JUMPING;
 }

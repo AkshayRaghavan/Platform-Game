@@ -1,7 +1,6 @@
 #include "stopleft.h"
 #include "movingleft.h"
 #include "movingright.h"
-#include "state.h"
 #include "gameobject.h"
 #include <Qt>
 #include <set>
@@ -23,6 +22,11 @@ State* StopLeft::update(GameObject &gameObject, std::set<Qt::Key> key)
         new_state = new StopLeft;
     }
     return new_state;
+}
+
+enumerator::State StopLeft::type()
+{
+    return enumerator::State::STOP_LEFT;
 }
 
 

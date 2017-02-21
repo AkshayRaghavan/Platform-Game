@@ -1,8 +1,5 @@
 #include "isjumping.h"
-#include "jumpingstate.h"
 #include "gameobject.h"
-#include <Qt>
-#include <set>
 #include <algorithm>
 
 IsJumping::IsJumping(GameObject &gameObject)
@@ -13,4 +10,9 @@ IsJumping::IsJumping(GameObject &gameObject)
 JumpingState* IsJumping::update(GameObject &gameObject, std::set<Qt::Key> key)
 {
     return NULL;
+}
+
+enumerator::JumpingState IsJumping::type()
+{
+    return enumerator::JumpingState::IS_JUMPING;
 }

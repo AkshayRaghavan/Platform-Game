@@ -52,7 +52,8 @@ HEADERS  += \
     include/isjumping.h \
     include/isnotjumping.h \
     include/deadleft.h \
-    include/deadright.h
+    include/deadright.h \
+    include/enumerator.h
 
 FORMS    +=
 
