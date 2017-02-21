@@ -1,5 +1,6 @@
 #include "include/jumping.h"
 #include "include/state.h"
+#include "include/gameobject.h"
 #include <Qt>
 #include <set>
 #include <algorithm>

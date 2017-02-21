@@ -1,6 +1,6 @@
 #include "include/jumpingleft.h"
 #include "include/state.h"
-#include "gameobject.h"
+#include "include/gameobject.h"
 #include <Qt>
 #include <set>
 #include <algorithm>

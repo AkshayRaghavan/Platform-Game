@@ -1,5 +1,5 @@
 #include "include/humaninputcomponent.h"
-#include "gameobject.h
+#include "include/gameobject.h"
 #include <QEvent>
 #include <QKeyEvent>
 #include <Qt>
@@ -12,7 +12,7 @@ HumanInputComponent::HumanInputComponent()
 
 virtual void HumanInputComponent::update(GameObject &gameObject)
 {
-    gameObject.state.update();
+    gameObject.state.update(GameObject,keysPressed);
 }
 
 void HumanInputComponent::event(QEvent *event, GameObject &gameObject)
