@@ -9,6 +9,7 @@
 class MovingRight : public State
 {
 public:
+    virtual ~MovingRight() {}
     virtual void update(GameObject &,std::set<Qt::key>);
 };
 

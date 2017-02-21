@@ -5,9 +5,10 @@
 
 class State
 {
-    public:
-        virtual State() {}
-        virtual void update(const GameObject &) = 0;
+public:
+    virtual State() {}
+    virtual ~State() {}
+    virtual void update(const GameObject &) = 0;
 };
 
 #endif // STATE_H

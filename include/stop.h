@@ -9,6 +9,7 @@
 class Stop : public State
 {
 public:
+    virtual ~Stop() {}
     virtual void update(GameObject &,std::set<Qt::key>);
 };
 

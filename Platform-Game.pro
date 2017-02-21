@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     src/keys.cpp \
     src/jumpingright.cpp \
     src/jumpingleft.cpp \
-    src/stop.cpp
+    src/stop.cpp \
+    src/humaninputcomponent.cpp
 
 HEADERS  += \
     headers/state.h \
@@ -43,7 +44,8 @@ HEADERS  += \
     include/inputcomponent.h \
     include/jumpingright.h \
     include/jumpingleft.h \
-    include/stop.h
+    include/stop.h \
+    include/humaninputcomponent.h
 
 FORMS    +=
 
