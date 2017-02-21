@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include "include/graphicscomponent.h"
 #define NO_Of_GRAPHICS_STATES 8
+
 #define GRAPHICS_DEAD_LEFT 0
 #define GRAPHICS_DEAD_RIGHT 1
 

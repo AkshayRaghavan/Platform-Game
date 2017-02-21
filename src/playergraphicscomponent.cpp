@@ -77,10 +77,10 @@ int PlayerGraphicsComponent::updateGraphicsCounter(int index)
 
 void update(GameObject &obj)
 {
-    switch((obj.jumpingState)->getState())
+    switch((obj.jumpingState)->type())
     {
         case IS_NOT_JUMPING:
-            switch ((obj.state)->getState())
+            switch ((obj.state)->type())
             {
                 case DEAD_LEFT:
                     this->setPixmap(this->pixMapMatrix[GRAPHICS_DEAD_LEFT][updateGraphicsCounter(GRAPHICS_DEAD_LEFT)]);
