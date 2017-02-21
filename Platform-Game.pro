@@ -26,28 +26,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     src/movingleft.cpp \
     src/movingright.cpp \
-    src/jumping.cpp \
     src/keys.cpp \
-    src/jumpingright.cpp \
-    src/jumpingleft.cpp \
     src/humaninputcomponent.cpp \
     src/gameobject.cpp \
     src/stopleft.cpp \
-    src/stopright.cpp
+    src/stopright.cpp \
+    src/isjumping.cpp \
+    src/jumpingstate.cpp \
+    src/isnotjumping.cpp
 
 HEADERS  += \
     include/movingleft.h \
     include/movingright.h \
-    include/jumping.h \
     include/keys.h \
     include/inputcomponent.h \
-    include/jumpingright.h \
-    include/jumpingleft.h \
     include/humaninputcomponent.h \
     include/state.h \
     include/gameobject.h \
     include/stopleft.h \
-    include/stopright.h
+    include/stopright.h \
+    include/jumpingstate.h \
+    include/isjumping.h \
+    include/isnotjumping.h
 
 FORMS    +=
 
