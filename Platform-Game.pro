@@ -25,10 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     src/graphicscomponent.cpp \
-    src/playergraphicscomponent.cpp
+    src/playergraphicscomponent.cpp \
+    src/gameobject.cpp \
+    src/jumpingstate.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
-    include/playergraphicscomponent.h
+    include/playergraphicscomponent.h \
+    include/gameobject.h \
+    include/keys.h \
+    include/state.h \
+    include/jumpingstate.h
 
 FORMS    +=
+
+INCLUDEPATH += $$PWD/include

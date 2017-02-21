@@ -1,48 +1,47 @@
-#include "include/playergraphicscomponent.h"
+#include "playergraphicscomponent.h"
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(int images_max_count[] , std::string images_location[])
+PlayerGraphicsComponent::PlayerGraphicsComponent(int images_max_count[] , std::string images_location)
 {
-    this->pixMapMatrix[GRAPHICS_DEAD_LEFT] = new QPixmap[images_max_count[GRAPHICS_DEAD_LEFT]];
-    this->imagesMaxCount[GRAPHICS_DEAD_LEFT] = images_max_count[GRAPHICS_DEAD_LEFT];
-    this->graphicsCounter[GRAPHICS_DEAD_LEFT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_DEAD_LEFT] , ":resources/images/dead left/Dead (" , this->pixMapMatrix[GRAPHICS_DEAD_LEFT] ,  200);
+    for (int i = enumerator::State::MOVING_RIGHT; i != enumerator::State::DEAD_LEFT; i++ )
+    {
+        this->pixMapMatrix[i] = new QPixmap[images_max_count[i]];
+        this->imagesMaxCount[i] = images_max_count[i];
+        this->graphicsCounter[i] = 0;
+    }
+    for ( int i = 6; i <= 7; i++ )
+    {
+        this->pixMapMatrix[i] = new QPixmap[images_max_count[i]];
+        this->imagesMaxCount[i] = images_max_count[i];
+        this->graphicsCounter[i] = 0;
+    }
 
-    this->pixMapMatrix[GRAPHICS_DEAD_RIGHT] = new QPixmap[images_max_count[GRAPHICS_DEAD_RIGHT]];
-    this->imagesMaxCount[GRAPHICS_DEAD_RIGHT] = images_max_count[GRAPHICS_DEAD_RIGHT];
-    this->graphicsCounter[GRAPHICS_DEAD_RIGHT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_DEAD_RIGHT] , ":resources/images/dead right/Dead (" , this->pixMapMatrix[GRAPHICS_DEAD_RIGHT] ,  200);
+    int index;
+    /*
+        When It Constructer IS Called images_location = ":resources/images/player1"
 
-    this->pixMapMatrix[GRAPHICS_IDLE_LEFT] = new QPixmap[images_max_count[GRAPHICS_IDLE_LEFT]];
-    this->imagesMaxCount[GRAPHICS_IDLE_LEFT] = images_max_count[GRAPHICS_IDLE_LEFT];
-    this->graphicsCounter[GRAPHICS_IDLE_LEFT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_IDLE_LEFT] , ":resources/images/idle left/Idle (" , this->pixMapMatrix[GRAPHICS_IDLE_LEFT] ,  200);
+        order
 
-    this->pixMapMatrix[GRAPHICS_IDLE_RIGHT] = new QPixmap[images_max_count[GRAPHICS_IDLE_RIGHT]];
-    this->imagesMaxCount[GRAPHICS_IDLE_RIGHT] = images_max_count[GRAPHICS_IDLE_RIGHT];
-    this->graphicsCounter[GRAPHICS_IDLE_RIGHT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_IDLE_RIGHT] , ":resources/images/idle right/Idle (" , this->pixMapMatrix[GRAPHICS_IDLE_RIGHT] ,  200);
+        walk right , walk left , idle right , idle left , dead right , dead left , jump right , jump left
+    */
+    index = static_cast<int> (enumerator::State::MOVING_RIGHT);
+    initializePixMaps(images_max_count[index] , images_location + "/walk right/Walk (" , this->pixMapMatrix[index] ,  200);
+    index = static_cast<int> (enumerator::State::MOVING_LEFT);
+    initializePixMaps(images_max_count[index] , images_location + "/walk left/Walk (" , this->pixMapMatrix[index] ,  200);
 
-    this->pixMapMatrix[GRAPHICS_JUMP_LEFT] = new QPixmap[images_max_count[GRAPHICS_JUMP_LEFT]];
-    this->imagesMaxCount[GRAPHICS_JUMP_LEFT] = images_max_count[GRAPHICS_JUMP_LEFT];
-    this->graphicsCounter[GRAPHICS_JUMP_LEFT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_JUMP_LEFT] , ":resources/images/jump left/Jump (" , this->pixMapMatrix[GRAPHICS_JUMP_LEFT] ,  200);
+    index = static_cast<int> (enumerator::State::STOP_RIGHT);
+    initializePixMaps(images_max_count[index] , images_location + "/idle right/Idle (" , this->pixMapMatrix[index] ,  200);
+    index = static_cast<int> (enumerator::State::STOP_LEFT);
+    initializePixMaps(images_max_count[index] , images_location + "/idle left/Idle (" , this->pixMapMatrix[index] ,  200);
 
-    this->pixMapMatrix[GRAPHICS_JUMP_RIGHT] = new QPixmap[images_max_count[GRAPHICS_JUMP_RIGHT]];
-    this->imagesMaxCount[GRAPHICS_JUMP_RIGHT] = images_max_count[GRAPHICS_JUMP_RIGHT];
-    this->graphicsCounter[GRAPHICS_JUMP_RIGHT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_JUMP_RIGHT] , ":resources/images/jump right/Jump (" , this->pixMapMatrix[GRAPHICS_JUMP_RIGHT] ,  200);
+    index = static_cast<int> (enumerator::State::DEAD_RIGHT);
+    initializePixMaps(images_max_count[index] , images_location + "/dead right/Dead (" , this->pixMapMatrix[index] ,  200);
+    index = static_cast<int> (enumerator::State::DEAD_LEFT);
+    initializePixMaps(images_max_count[index] , images_location + "/dead left/Dead (" , this->pixMapMatrix[index] ,  200);
 
-    this->pixMapMatrix[GRAPHICS_WALK_LEFT] = new QPixmap[images_max_count[GRAPHICS_WALK_LEFT]];
-    this->imagesMaxCount[GRAPHICS_WALK_LEFT] = images_max_count[GRAPHICS_WALK_LEFT];
-    this->graphicsCounter[GRAPHICS_WALK_LEFT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_WALK_LEFT] , ":resources/images/walk left/Walk (" , this->pixMapMatrix[GRAPHICS_WALK_LEFT] ,  200);
+    initializePixMaps(images_max_count[6] , images_location + "/jump right/Jump (" , this->pixMapMatrix[6] ,  200);
+    initializePixMaps(images_max_count[7] , images_location + "/jump left/Jump (" , this->pixMapMatrix[6] ,  200);
 
-    this->pixMapMatrix[GRAPHICS_WALK_RIGHT] = new QPixmap[images_max_count[GRAPHICS_WALK_RIGHT]];
-    this->imagesMaxCount[GRAPHICS_WALK_RIGHT] = images_max_count[GRAPHICS_WALK_RIGHT];
-    this->graphicsCounter[GRAPHICS_WALK_RIGHT] = 0;
-    initializePixMaps(images_max_count[GRAPHICS_WALK_RIGHT] , ":resources/images/walk right/Walk (" , this->pixMapMatrix[GRAPHICS_WALK_RIGHT] ,  200);
-
-    this->setPixmap(this->pixMapMatrix[GRAPHICS_IDLE_RIGHT][0]);
+    this->setPixmap(this->pixMapMatrix[2][0]);
 }
 
 void PlayerGraphicsComponent::initializePixMaps(int upper_limit , std::string image_location , QPixmap* array_of_pixmaps , int scaling_factor)
@@ -51,14 +50,14 @@ void PlayerGraphicsComponent::initializePixMaps(int upper_limit , std::string im
     {
         if(!array_of_pixmaps[i].load((image_location+ std::to_string(i+1) +").png").c_str()))
         {
-            qDebug() << "Failed To Load Image" << image_location << std::to_string(i+1) +").png"<<endl;
+            qDebug() << "Failed To Load Image" << image_location.c_str() << i << ").png" <<endl;
             std::exit(EXIT_FAILURE);
         }
         array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(scaling_factor,scaling_factor),  Qt::KeepAspectRatio);
     }
 }
 
-int PlayerGraphicsComponent::updateGraphicsCounter(int index)
+int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj = NULL)
 {
     for(int i = 0; i < NO_Of_GRAPHICS_STATES ; i++)
     {
@@ -67,9 +66,13 @@ int PlayerGraphicsComponent::updateGraphicsCounter(int index)
             this->graphicsCounter[i]++;
             this->graphicsCounter[i] %= this->imagesMaxCount[i];
         }
-        else
+        else if(i <= 3)
         {
            this->graphicsCounter[i] = 0;
+        }
+        if( (index == 4 || index == 5 ) && (this->graphicsCounter[i] == (this->imagesMaxCount[i]-1)))
+        {
+          obj->setIsDead(true);
         }
     }
     return this->graphicsCounter[index];
@@ -77,63 +80,55 @@ int PlayerGraphicsComponent::updateGraphicsCounter(int index)
 
 void update(GameObject &obj)
 {
-    switch((obj.jumpingState)->type())
+    int state_index = static_cast<int> ((obj.state)->type());
+    int jumping_state_index = static_cast<int> ((obj.jumpingState)->type());
+
+    if(jumping_state_enum == 0)
     {
-        case IS_NOT_JUMPING:
-            switch ((obj.state)->type())
+        if(state_index >= 0 && state_index <= 3)
+        {
+            this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
+        }
+        else if(state_index == 4 || state_index == 5)
+        {
+            if(!obj.getIsDead())
             {
-                case DEAD_LEFT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_DEAD_LEFT][updateGraphicsCounter(GRAPHICS_DEAD_LEFT)]);
-                    break;
-
-                case DEAD_RIGHT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_DEAD_RIGHT][updateGraphicsCounter(GRAPHICS_DEAD_RIGHT)]);
-                    break;
-
-                case MOVING_LEFT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_WALK_LEFT][updateGraphicsCounter(GRAPHICS_WALK_LEFT)]);
-                    break;
-
-                case MOVING_RIGHT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_WALK_RIGHT][updateGraphicsCounter(GRAPHICS_WALK_RIGHT)]);
-                    break;
-
-                case STOP_LEFT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_IDLE_LEFT][updateGraphicsCounter(GRAPHICS_IDLE_LEFT)]);
-                    break;
-
-                case STOP_RIGHT:
-                    this->setPixmap(this->pixMapMatrix[GRAPHICS_IDLE_RIGHT][updateGraphicsCounter(GRAPHICS_IDLE_RIGHT)]);
-                    break;
-
-                default:
-                    qDebug() << "Invalid State In IS_NOT_JUMPING State" << obj.state->getState() <<endl;
-                    std::exit(EXIT_FAILURE);
-                    break;
+                this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
             }
-            break;
-
-        case IS_JUMPING:
-            switch (obj.state->getState())
-            {
-            case MOVING_LEFT:
-                this->setPixmap(this->pixMapMatrix[GRAPHICS_JUMP_LEFT][updateGraphicsCounter(GRAPHICS_JUMP_LEFT)]);
-                break;
-
-            case MOVING_RIGHT:
-                this->setPixmap(this->pixMapMatrix[GRAPHICS_JUMP_RIGHT][updateGraphicsCounter(GRAPHICS_JUMP_RIGHT)]);
-                break;
-
-            default:
-                qDebug() << "Invalid State In IS_JUMPING State" << obj.state->getState() <<endl;
-                std::exit(EXIT_FAILURE);
-                break;
-            }
-            break;
-
-        default:
-            qDebug() << "Invalid Jumping State" << obj.jumpingState->getState()<<endl;
+        }
+        else
+        {
+            qDebug() << "Invalid State in is_not_jumping case: " <<  state_index <<endl;
             std::exit(EXIT_FAILURE);
+        }
+    }
+    else if(jumping_state_enum == 1)
+    {
+        if(state_index == 0 || state_index == 2)
+        {
+            this->setPixmap(this->pixMapMatrix[6][updateGraphicsCounter(6)]);
+        }
+        else if(state_index == 1 || state_index == 3)
+        {
+            this->setPixmap(this->pixMapMatrix[7][updateGraphicsCounter(6)]);
+        }
+        else if(state_index == 4 || state_index == 5)
+        {
+            if(!obj.getIsDead())
+            {
+                this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+            }
+        }
+        else
+        {
+            qDebug() << "Invalid State in is_jumping case: " <<  state_index <<endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+    else
+    {
+        qDebug() << "Invalid JumpingState" <<  jumping_state_index <<endl;
+        std::exit(EXIT_FAILURE);
     }
 }
 
