@@ -4,27 +4,34 @@
 #include <set>
 #include <algorithm>
 
+#include "include/movingleft.h"
+#include "include/movingright.h"
 #include "include/jumpingleft.h"
+#include "include/jumpingright.h"
+#include "include/jumping.h"
+#include "include/stop.h"
 
-virtual void JumpingLeft::update(GameObject &gameObject, std::set<Qt::Key> key)
+State* JumpingLeft::update(GameObject &gameObject, std::set<Qt::Key> key)
 {
     int old_jump_count;
+    State *new_state = NULL;
     if(key.find(gameObject.keys.right) != key.end() && key.find(gameObject.keys.jump) == key.end())
     {
-        gameObject.state = State::movingRight;
+        new_state = new MovingRight;
     }
     else if(key.find(gameObject.keys.left) != key.end() && key.find(gameObject.keys.jump) == key.end())
     {
-        gameObject.state = State::movingLeft;
+        new_state = new MovingLeft;
     }
-    else if(keys.find(gameObject.keys.jump) != key.end())
+    else if(key.find(gameObject.keys.jump) != key.end())
     {
-        old_jump_count = gameObject.state.jumpCount;
-        gameObject.state = State::jumping;
-        gameObject.state.jumpCount = old_jump_count;
+        old_jump_count = gameObject.state->jumpCount;
+        new_state = new Jumping;
+        new_state->jumpCount = old_jump_count;
     }
     else if(key.size() == 0)
     {
-        gameObject.state = State::stop;
+        new_state = new Stop;
     }
+    return new_state;
 }

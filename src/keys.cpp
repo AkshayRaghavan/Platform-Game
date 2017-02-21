@@ -1,8 +1,9 @@
 #include <Qt>
+#include <set>
 
 #include "include/keys.h"
 
-Keys::Keys(Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)
+Keys::Keys(std::set<Qt)
 {
     jump = jump_input;
     right = right_input;

@@ -9,10 +9,9 @@ class GameObject;
 class Jumping : public State
 {
 public:
-    int jumpCount;
     Jumping();
     virtual ~Jumping() {}
-    virtual void update(GameObject &,std::set<Qt::Key>);
+    virtual State* update(GameObject &,std::set<Qt::Key>);
 };
 
 

@@ -13,13 +13,13 @@ HumanInputComponent::HumanInputComponent()
     keysPressed.clear();
 }
 
-virtual void HumanInputComponent::update(GameObject &gameObject)
+void HumanInputComponent::update(GameObject &gameObject)
 {
-    State *new_state = gameObject->state.update(GameObject,keysPressed);
+    State *new_state = gameObject.state->update(gameObject,keysPressed);
     if(new_state != NULL)
     {
-        delete gameObject->state;
-        gameObject->state = new_state;
+        delete gameObject.state;
+        gameObject.state = new_state;
     }
 
 }

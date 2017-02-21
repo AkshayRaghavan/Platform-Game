@@ -10,7 +10,7 @@ class MovingRight : public State
 {
 public:
     virtual ~MovingRight() {}
-    virtual void update(GameObject &,std::set<Qt::Key>);
+    virtual State* update(GameObject &,std::set<Qt::Key>);
 };
 
 #endif // MOVINGRIGHT_H

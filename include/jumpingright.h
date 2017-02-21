@@ -10,7 +10,7 @@ class JumpingRight : public Jumping
 {
 public:
     virtual ~JumpingRight() {}
-    virtual void update(GameObject &, std::set<Qt::Key>);
+    virtual State* update(GameObject &,std::set<Qt::Key>);
 };
 
 #endif // JUMPINGRIGHT_H

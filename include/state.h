@@ -14,15 +14,10 @@ class Stop;
 class State
 {
 public:
-    static MovingRight movingRight;
-    static MovingLeft movingLeft;
-    static Jumping jumping;
-    static JumpingRight jumpingRight;
-    static JumpingLeft jumpingLeft;
-    static Stop stop;
-    State() {}
+    int jumpCount;
+    State() { jumpCount = 0; }
     virtual ~State() {}
-    virtual void update(GameObject &,std::set<Qt::Key>) {}
+    virtual State* update(GameObject &,std::set<Qt::Key>) = 0;
 };
 
 #endif // STATE_H
