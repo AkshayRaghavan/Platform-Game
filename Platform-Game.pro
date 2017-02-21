@@ -27,7 +27,10 @@ SOURCES += main.cpp \
     src/graphicscomponent.cpp \
     src/playergraphicscomponent.cpp \
     src/gameobject.cpp \
-    src/jumpingstate.cpp
+    src/jumpingstate.cpp \
+    src/inputcomponent.cpp \
+    src/keys.cpp \
+    src/state.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -35,7 +38,9 @@ HEADERS  += \
     include/gameobject.h \
     include/keys.h \
     include/state.h \
-    include/jumpingstate.h
+    include/jumpingstate.h \
+    include/enumerator.h \
+    include/inputcomponent.h
 
 FORMS    +=
 
