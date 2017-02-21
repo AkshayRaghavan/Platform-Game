@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    sources/state.cpp \
     src/movingleft.cpp \
     src/movingright.cpp \
     src/jumping.cpp \
@@ -33,11 +32,9 @@ SOURCES += main.cpp \
     src/jumpingleft.cpp \
     src/stop.cpp \
     src/humaninputcomponent.cpp \
-    src/gameobject.cpp
+    src/gameobject.cpp \
 
 HEADERS  += \
-    headers/state.h \
-    include/state.h \
     include/movingleft.h \
     include/movingright.h \
     include/jumping.h \
@@ -47,6 +44,7 @@ HEADERS  += \
     include/jumpingleft.h \
     include/stop.h \
     include/humaninputcomponent.h \
+    include/state.h \
     include/gameobject.h
 
 FORMS    +=

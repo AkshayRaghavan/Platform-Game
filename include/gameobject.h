@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "inputcomponent.h"
+class InputComponent;
 #include "keys.h"
 #include "state.h"
 #include <QObject>
@@ -13,7 +13,7 @@ public:
     GameObject(InputComponent *, Keys);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
-    State state;
+    State *state;
     Keys keys;
 };
 

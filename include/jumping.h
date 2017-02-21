@@ -2,7 +2,7 @@
 #define JUMPING_H
 
 #include "state.h"
-#include "gameobject.h"
+class GameObject;
 #include <Qt>
 #include <set>
 
@@ -12,7 +12,7 @@ public:
     int jumpCount;
     Jumping();
     virtual ~Jumping() {}
-    virtual void update(GameObject &,std::set<Qt::key>);
+    virtual void update(GameObject &,std::set<Qt::Key>);
 };
 
 

@@ -2,8 +2,7 @@
 #define HUMANINPUTCOMPONENT_H
 
 #include "inputcomponent.h"
-#include "state.h"
-#include "gameobject.h"
+class GameObject;
 #include <QEvent>
 #include <Qt>
 #include <set>
@@ -15,7 +14,7 @@ public:
     HumanInputComponent();
     virtual ~HumanInputComponent() {}
     virtual void update(GameObject &);
-    void event(QEvent *);
+    void event(QEvent *, GameObject &);
 };
 
 #endif // HUMANINPUTCOMPONENT_H

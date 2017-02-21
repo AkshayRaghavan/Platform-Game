@@ -1,9 +1,12 @@
-#include "include/humaninputcomponent.h"
+
 #include "include/gameobject.h"
+#include "include/state.h"
 #include <QEvent>
 #include <QKeyEvent>
 #include <Qt>
 #include <set>
+
+#include "include/humaninputcomponent.h"
 
 HumanInputComponent::HumanInputComponent()
 {
@@ -12,7 +15,13 @@ HumanInputComponent::HumanInputComponent()
 
 virtual void HumanInputComponent::update(GameObject &gameObject)
 {
-    gameObject.state.update(GameObject,keysPressed);
+    State *new_state = gameObject->state.update(GameObject,keysPressed);
+    if(new_state != NULL)
+    {
+        delete gameObject->state;
+        gameObject->state = new_state;
+    }
+
 }
 
 void HumanInputComponent::event(QEvent *event, GameObject &gameObject)

@@ -2,7 +2,7 @@
 #define MOVINGLEFT_H
 
 #include "state.h"
-#include "gameobject.h"
+class GameObject;
 #include <Qt>
 #include <set>
 
@@ -10,7 +10,7 @@ class MovingLeft : public State
 {
 public:
     virtual ~MovingLeft() {}
-    virtual void update(GameObject &,std::set<Qt::key>);
+    virtual void update(GameObject &,std::set<Qt::Key>);
 };
 
 

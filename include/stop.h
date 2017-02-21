@@ -2,7 +2,7 @@
 #define STOP_H
 
 #include "state.h"
-#include "gameobject.h"
+class GameObject;
 #include <Qt>
 #include <set>
 
@@ -10,7 +10,7 @@ class Stop : public State
 {
 public:
     virtual ~Stop() {}
-    virtual void update(GameObject &,std::set<Qt::key>);
+    virtual void update(GameObject &,std::set<Qt::Key>);
 };
 
 #endif // STOP_H
