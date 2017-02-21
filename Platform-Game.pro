@@ -28,7 +28,10 @@ SOURCES += main.cpp \
     src/movingleft.cpp \
     src/movingright.cpp \
     src/jumping.cpp \
-    src/keys.cpp
+    src/keys.cpp \
+    src/jumpingright.cpp \
+    src/jumpingleft.cpp \
+    src/stop.cpp
 
 HEADERS  += \
     headers/state.h \
@@ -37,7 +40,10 @@ HEADERS  += \
     include/movingright.h \
     include/jumping.h \
     include/keys.h \
-    include/inputcomponent.h
+    include/inputcomponent.h \
+    include/jumpingright.h \
+    include/jumpingleft.h \
+    include/stop.h
 
 FORMS    +=
 

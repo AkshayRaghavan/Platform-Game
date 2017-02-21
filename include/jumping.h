@@ -3,11 +3,15 @@
 
 #include "state.h"
 #include "gameobject.h"
+#include <Qt>
+#include <set>
 
 class Jumping : public State
 {
 public:
-    virtual void update(const GameObject &);
+    int jumpCount;
+    Jumping();
+    virtual void update(GameObject &,std::set<Qt::key>);
 };
 
 

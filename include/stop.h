@@ -1,16 +1,15 @@
-#ifndef MOVINGLEFT_H
-#define MOVINGLEFT_H
+#ifndef STOP_H
+#define STOP_H
 
 #include "state.h"
 #include "gameobject.h"
 #include <Qt>
 #include <set>
 
-class MovingLeft : public State
+class Stop : public State
 {
 public:
     virtual void update(GameObject &,std::set<Qt::key>);
 };
 
-
-#endif // MOVINGLEFT_H
+#endif // STOP_H
