@@ -34,7 +34,8 @@ SOURCES += main.cpp \
     src/keys.cpp \
     src/state.cpp \
     src/gem.cpp \
-    src/gemtype1.cpp
+    src/gemtype1.cpp \
+    src/tile.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     include/enumerator.h \
     include/inputcomponent.h \
     include/gem.h \
-    include/gemtype1.h
+    include/gemtype1.h \
+    include/tile.h
 
 FORMS    +=
 
