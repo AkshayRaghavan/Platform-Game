@@ -37,7 +37,7 @@ SOURCES += main.cpp \
     src/deadleft.cpp \
     src/deadright.cpp \
     src/inputcomponent.cpp \
-    src/computerinputcomponent.cpp
+    src/computerinputcomponent.cpp \
     src/state.cpp
 
 HEADERS  += \
