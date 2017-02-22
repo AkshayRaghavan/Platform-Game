@@ -11,7 +11,7 @@
 class GameObject : public QObject
 {
 private:
-        bool isDead;
+    bool isDead;
 public:
     const int maxJumpCount;
     inline void setIsDead(bool a){
