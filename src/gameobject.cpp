@@ -17,3 +17,13 @@ void GameObject::setState(State *input_state)
     delete this->state;
     this->state = input_state;
 }
+
+void GameObject::setIsDead(bool a)
+{
+    this->isDead = a;
+}
+
+bool GameObject::getIsDead()
+{
+    return this->isDead;
+}
