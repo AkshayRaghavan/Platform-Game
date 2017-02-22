@@ -25,6 +25,7 @@ private:
     //Array for telling which image of each state to be displayed next
     int graphicsCounter[NO_Of_GRAPHICS_STATES];
 
+
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
     //used in the constructor
     void initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , int scaling_factor);

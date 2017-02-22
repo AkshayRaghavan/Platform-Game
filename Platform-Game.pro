@@ -40,7 +40,8 @@ SOURCES += main.cpp \
     src/graphicscomponent.cpp \
     src/playergraphicscomponent.cpp \
     src/computerinputcomponent.cpp \
-    src/state.cpp
+    src/state.cpp \
+    src/gamestate.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -60,7 +61,8 @@ HEADERS  += \
     include/enumerator.h \
     include/graphicscomponent.h \
     include/playergraphicscomponent.h \
-    include/computerinputcomponent.h
+    include/computerinputcomponent.h \
+    include/gamestate.h
 
 FORMS    +=
 
