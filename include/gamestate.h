@@ -11,15 +11,15 @@
 class GameState : public QObject
 {
 public:
-    std::vector<GameObject> gameObjects;
-    std::vector< std::vector<Tile> > tileMap;
-    std::vector<Gem> gems;
+    std::vector<GameObject*> gameObjects;
+    std::vector< std::vector<Tile*> > tileMap;
+    std::vector<Gem*> gems;
     QGraphicsScene *scene;
-    GameState(std::vector<GameObject>&, std::vector< std::vector<Tile> >&, std::vector<Gem>&);
+    GameState(std::vector<GameObject*>&, std::vector< std::vector<Tile*> >&, std::vector<Gem*>&);
     QGraphicsScene *getScene();
-    std::vector<GameObject> getGameObjects();
-    std::vector< std::vector<Tile> > getTileMap();
-    std::vector<Gem> getGems();
+    std::vector<GameObject*> getGameObjects();
+    std::vector< std::vector<Tile*> > getTileMap();
+    std::vector<Gem*> getGems();
     void update();
 };
 

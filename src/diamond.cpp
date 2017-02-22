@@ -1,6 +1,6 @@
-#include "gemtype1.h"
+#include "diamond.h"
 
-GemType1::GemType1(std::string image_location , int scaling_factor)
+Diamond::Diamond(std::string image_location , int scaling_factor)
 {
     if(!this->pixMapImage.load((image_location).c_str()))
     {
@@ -9,7 +9,7 @@ GemType1::GemType1(std::string image_location , int scaling_factor)
     }
     this->pixMapImage = this->pixMapImage.scaled(QSize(scaling_factor,scaling_factor));
 }
-void GemType1::draw()
+void Diamond::draw()
 {
     this->setPixmap(this->pixMapImage);
     (getQGraphicsScene())->addItem(this);

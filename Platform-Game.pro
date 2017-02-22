@@ -44,9 +44,9 @@ SOURCES += main.cpp \
     src/computerinputcomponent.cpp \
     src/state.cpp \
     src/gem.cpp \
-    src/gemtype1.cpp \
-    src/tile.cpp
-    src/gamestate.cpp
+    src/tile.cpp \
+    src/gamestate.cpp \
+    src/diamond.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -68,9 +68,9 @@ HEADERS  += \
     include/playergraphicscomponent.h \
     include/computerinputcomponent.h \
     include/gem.h \
-    include/gemtype1.h \
-    include/tile.h
-    include/gamestate.h
+    include/tile.h \
+    include/gamestate.h \
+    include/diamond.h
 
 FORMS    +=
 
