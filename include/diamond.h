@@ -15,7 +15,7 @@ class Diamond : public Gem
 private:
     QPixmap pixMapImage;
 public:
-    Diamond(std::string images_location , int scaling_factor);
+    Diamond(std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate);
     void draw();
 };
 

@@ -29,7 +29,35 @@ void ReadInput::functionToCreateTileMap(std::string file_path , int size_of_tile
             infile >> is_obstacle;
             (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , left_position , top_position , size_of_tile , size_of_tile , is_obstacle);
             (this->scene)->addItem(((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR());
-            matrix_column_iterator++;
         }
     }
+}
+
+
+void ReadInput::functionToCreateGem(std::string file_path , int no_of_diamonds)
+{
+    std::ifstream infile;
+    infile.open(file_path , std::ios_base::in);
+
+    if(!infile.is_open())
+    {
+        qDebug() <<"ERROR(readinput.cpp) Failed to Open "<<file_path.c_str()<<endl;
+        std::exit(EXIT_FAILURE);
+    }
+
+    std::string image_file_path = "";
+    int width = 0 , height = 0;
+    qreal x_coordinate = 0 , y_coordinate = 0;
+
+    for(int i = 0 ; i < no_of_diamonds ; i++)
+    {
+        infile >> image_file_path;
+        infile >> width;
+        infile >> height;
+        infile >> x_coordinate;
+        infile >> y_coordinate;
+
+        (this->gems).push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate));
+        (this->scene)->addItem((this->gems)[i]);
+        }
 }
