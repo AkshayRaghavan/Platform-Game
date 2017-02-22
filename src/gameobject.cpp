@@ -11,3 +11,11 @@ bool GameObject::event(QEvent *input_event)
 {
     return QCoreApplication::sendEvent(inputComponent,input_event);
 }
+
+void GameObject::setIsDead(bool a){
+    this->isDead = a;
+}
+
+bool GameObject::getIsDead(){
+    return this->isDead;
+}

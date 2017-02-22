@@ -11,15 +11,11 @@
 class GameObject : public QObject
 {
 private:
-        bool isDead;
+     bool isDead;
 public:
     const int maxJumpCount;
-    inline void setIsDead(bool a){
-        this->isDead = a;
-    }
-    inline bool getIsDead(){
-        return this->isDead;
-    }
+    void setIsDead(bool a);
+    bool getIsDead();
     GameObject(InputComponent *, Keys, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;

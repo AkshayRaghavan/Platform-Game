@@ -8,7 +8,6 @@
 #include "gameobject.h"
 #include<QGraphicsScene>
 #include<QDebug>
-
 #define NO_Of_GRAPHICS_STATES 8
 
 // A class for the graphics of the game objects
@@ -24,11 +23,11 @@ private:
 public:
     virtual void draw(GameObject &) {}
 
-    inline int getPointValue();
-    inline void setPointValue(int pointValue);
+    int getPointValue();
+    void setPointValue(int pointValue);
 
-    inline QGraphicsScene* getQGraphicsScene();
-    inline void setQGraphicsScene(QGraphicsScene* scene);
+    QGraphicsScene* getQGraphicsScene();
+    void setQGraphicsScene(QGraphicsScene* scene);
 
     void remove(QGraphicsScene* scene);
 };
