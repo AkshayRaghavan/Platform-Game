@@ -51,8 +51,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
     if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
     {
         ob.graphicscomponent->offset(newx,newy);
-        if((screenTilesObject[newy/height_of_tile][newx/width_of_tile])->ispoint) {
-            (screenTilesObject[newy/height_of_tile][newx/width_of_tile])->change_point_type();
+        if((Tilesmap[newy/height_of_tile][newx/width_of_tile])->ispoint) {
+            (Tilesmap[newy/height_of_tile][newx/width_of_tile])->change_point_type();
             score++;
         }
     }
