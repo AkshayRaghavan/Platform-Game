@@ -1,4 +1,4 @@
-#include "include/jumpingstate.h"
+#include "jumpingstate.h"
 
 JumpingState::JumpingState()
 {
@@ -22,5 +22,4 @@ void JumpingState::jumpUpdate()
         jumpCount --;
     }
 }
-
 

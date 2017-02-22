@@ -24,36 +24,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    src/movingleft.cpp \
-    src/movingright.cpp \
-    src/keys.cpp \
-    src/humaninputcomponent.cpp \
+    src/graphicscomponent.cpp \
+    src/playergraphicscomponent.cpp \
     src/gameobject.cpp \
-    src/stopleft.cpp \
-    src/stopright.cpp \
-    src/isjumping.cpp \
     src/jumpingstate.cpp \
-    src/isnotjumping.cpp \
-    src/deadleft.cpp \
-    src/deadright.cpp \
-    src/inputcomponent.cpp
+    src/inputcomponent.cpp \
+    src/keys.cpp \
+    src/state.cpp \
+    src/physicscomponent.cpp \
+    src/playerphysicscomponent.cpp \
+    src/tile.cpp
 
 HEADERS  += \
-    include/movingleft.h \
-    include/movingright.h \
-    include/keys.h \
-    include/inputcomponent.h \
-    include/humaninputcomponent.h \
-    include/state.h \
+    include/graphicscomponent.h \
+    include/playergraphicscomponent.h \
     include/gameobject.h \
-    include/stopleft.h \
-    include/stopright.h \
+    include/keys.h \
+    include/state.h \
     include/jumpingstate.h \
-    include/isjumping.h \
-    include/isnotjumping.h \
-    include/deadleft.h \
-    include/deadright.h
+    include/enumerator.h \
+    include/inputcomponent.h \
+    include/physicscomponent.h \
+    include/playerphysicscomponent.h \
+    include/tile.h
 
 FORMS    +=
 
-INCLUDEPATH += ../include
+INCLUDEPATH += $$PWD/include
