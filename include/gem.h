@@ -1,27 +1,22 @@
 #ifndef GEM_H
 #define GEM_H
 
-#include "graphicscomponent.h"
-#include "enumerator.h"
-#include "state.h"
-#include "jumpingstate.h"
-#include "gameobject.h"
 #include<QGraphicsScene>
+#include<QGraphicsPixmapItem>
 #include<QDebug>
-#define NO_Of_GRAPHICS_STATES 8
 
 // A class for the graphics of the game objects
 // Used as virtual functions
 // And deriving QGraphicsPixmapItem for image of object
 
-class Gem : public GraphicsComponent
+class Gem : public QGraphicsPixmapItem
 {
 private:
     int pointValue;
     QGraphicsScene* scene;
 
 public:
-    virtual void draw(GameObject &) {}
+    virtual void draw() {}
 
     int getPointValue();
     void setPointValue(int pointValue);
@@ -29,7 +24,7 @@ public:
     QGraphicsScene* getQGraphicsScene();
     void setQGraphicsScene(QGraphicsScene* scene);
 
-    void remove(QGraphicsScene* scene);
+    void remove();
 };
 
 #endif // GEM_H

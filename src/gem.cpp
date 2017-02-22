@@ -18,7 +18,7 @@ void Gem::setQGraphicsScene(QGraphicsScene* scene)
     this->scene = scene;
 }
 
-void Gem::remove(QGraphicsScene *scene)
+void Gem::remove()
 {
-    scene->removeItem(this);
+    (this->scene)->removeItem(this);
 }
