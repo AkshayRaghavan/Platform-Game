@@ -46,6 +46,7 @@ SOURCES += main.cpp \
     src/gem.cpp \
     src/gemtype1.cpp \
     src/tile.cpp
+    src/gamestate.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -69,6 +70,7 @@ HEADERS  += \
     include/gem.h \
     include/gemtype1.h \
     include/tile.h
+    include/gamestate.h
 
 FORMS    +=
 
