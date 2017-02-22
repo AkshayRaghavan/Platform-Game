@@ -6,8 +6,8 @@
 class IsNotJumping : public JumpingState
 {
 public:
-    IsNotJumping(GameObject &);
-    virtual ~IsNotJumping();
+    IsNotJumping() {}
+    virtual ~IsNotJumping() {}
     virtual JumpingState* update(GameObject &, std::set<Qt::Key>);
     virtual enumerator::JumpingState type();
 };

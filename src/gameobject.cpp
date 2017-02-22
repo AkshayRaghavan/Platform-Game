@@ -18,6 +18,12 @@ void GameObject::setState(State *input_state)
     this->state = input_state;
 }
 
+void GameObject::setJumpingState(JumpingState *input_jumping_state)
+{
+    delete this->jumpingState;
+    this->jumpingState = input_jumping_state;
+}
+
 void GameObject::setIsDead(bool a)
 {
     this->isDead = a;

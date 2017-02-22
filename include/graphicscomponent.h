@@ -11,9 +11,9 @@ class GameObject;
 
 class GraphicsComponent : public QObject , public QGraphicsPixmapItem
 {
-     Q_OBJECT
+    Q_OBJECT
 public:
-    GraphicsComponent(){};
+    GraphicsComponent(){}
     ~GraphicsComponent() {}
     virtual void update(GameObject &) {}
 };

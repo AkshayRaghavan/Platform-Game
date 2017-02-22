@@ -3,8 +3,6 @@
 #include "gameobject.h"
 #include <algorithm>
 
-//IsNotJumping::IsNotJumping(const int& max_jump_count) : JumpingState(max_jump_count) {}
-
 JumpingState* IsNotJumping::update(GameObject &gameObject, std::set<Qt::Key> key)
 {
     JumpingState *new_state = NULL;
