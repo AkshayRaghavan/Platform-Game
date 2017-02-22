@@ -11,4 +11,3 @@ bool GameObject::event(QEvent *input_event)
 {
     return QCoreApplication::sendEvent(inputComponent,input_event);
 }
-

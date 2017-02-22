@@ -10,5 +10,3 @@ bool InputComponent::event(QEvent *event)
 {
     return false;
 }
-
-

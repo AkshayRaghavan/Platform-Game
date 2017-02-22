@@ -36,7 +36,10 @@ SOURCES += main.cpp \
     src/isnotjumping.cpp \
     src/deadleft.cpp \
     src/deadright.cpp \
-    src/inputcomponent.cpp
+    src/inputcomponent.cpp \
+    src/graphicscomponent.cpp \
+    src/playergraphicscomponent.cpp \
+    src/state.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -53,7 +56,9 @@ HEADERS  += \
     include/isnotjumping.h \
     include/deadleft.h \
     include/deadright.h \
-    include/enumerator.h
+    include/enumerator.h \
+    include/graphicscomponent.h \
+    include/playergraphicscomponent.h \
 
 FORMS    +=
 

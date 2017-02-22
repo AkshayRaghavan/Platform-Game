@@ -22,5 +22,3 @@ void JumpingState::jumpUpdate()
         jumpCount --;
     }
 }
-
-
