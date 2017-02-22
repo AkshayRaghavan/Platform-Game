@@ -22,6 +22,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+CONFIG += c++14
+
 
 SOURCES += main.cpp \
     src/graphicscomponent.cpp \
@@ -30,7 +32,9 @@ SOURCES += main.cpp \
     src/jumpingstate.cpp \
     src/inputcomponent.cpp \
     src/keys.cpp \
-    src/state.cpp
+    src/state.cpp \
+    src/gem.cpp \
+    src/gemtype1.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -40,8 +44,13 @@ HEADERS  += \
     include/state.h \
     include/jumpingstate.h \
     include/enumerator.h \
-    include/inputcomponent.h
+    include/inputcomponent.h \
+    include/gem.h \
+    include/gemtype1.h
 
 FORMS    +=
 
 INCLUDEPATH += $$PWD/include
+
+#RESOURCES += \
+#    res.qrc

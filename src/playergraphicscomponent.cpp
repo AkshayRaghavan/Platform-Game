@@ -8,7 +8,7 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std::string images_location)
+PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std::string images_location , int scaling_factor)
 {
     for (int i = 0; i <= 7; i++ )
     {
@@ -16,8 +16,6 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std:
         this->imagesTotalCount[i] = images_total_count[i];
         this->graphicsCounter[i] = 0;
     }
-
-    const int scaling_factor = 200;
 
     initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk (" , this->pixMapMatrix[0] ,  scaling_factor);
     initializePixMaps(images_total_count[1] , images_location + "/walk left/Walk (" , this->pixMapMatrix[1] ,  scaling_factor);
@@ -43,7 +41,7 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
             qDebug() << "ERROR(playergraphicscomponent.cpp) : Failed To Load Image" << image_location.c_str() << (i+1) << ").png" <<endl;
             std::exit(EXIT_FAILURE);
         }
-        array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(scaling_factor,scaling_factor),  Qt::KeepAspectRatio);
+        array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(scaling_factor,scaling_factor));  //? ,  Qt::KeepAspectRatio
     }
 }
 
@@ -72,6 +70,16 @@ int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
     return this->graphicsCounter[index];
 }
 
+std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
+{
+    QRectF obj = this->boundingRect();
+    std::vector<qreal> ans(4);
+    ans[0] = (this->x());
+    ans[1] = (this->y());
+    ans[2] = (obj.width());
+    ans[3] = (obj.height());
+    return ans;
+}
 void PlayerGraphicsComponent::update(GameObject &obj)
 {
     int state_index = static_cast<int> ((obj.state)->type());
