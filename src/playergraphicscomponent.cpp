@@ -30,6 +30,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std:
     initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump (" , this->pixMapMatrix[7] ,  scaling_factor);
 
     this->setPixmap(this->pixMapMatrix[2][0]);
+    //TODO add set pos
 }
 
 void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int scaling_factor)
