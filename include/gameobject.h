@@ -27,6 +27,7 @@ public:
     JumpingState *jumpingState;
     Keys keys;
     bool event(QEvent *);
+    void setState(State*);
 };
 
 #endif // GAMEOBJECT_H

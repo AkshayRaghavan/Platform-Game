@@ -11,3 +11,9 @@ bool GameObject::event(QEvent *input_event)
 {
     return QCoreApplication::sendEvent(inputComponent,input_event);
 }
+
+void GameObject::setState(State *input_state)
+{
+    delete this->state;
+    this->state = input_state;
+}

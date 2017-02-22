@@ -39,6 +39,7 @@ SOURCES += main.cpp \
     src/inputcomponent.cpp \
     src/graphicscomponent.cpp \
     src/playergraphicscomponent.cpp \
+    src/computerinputcomponent.cpp \
     src/state.cpp
 
 HEADERS  += \
@@ -59,6 +60,7 @@ HEADERS  += \
     include/enumerator.h \
     include/graphicscomponent.h \
     include/playergraphicscomponent.h \
+    include/computerinputcomponent.h
 
 FORMS    +=
 
