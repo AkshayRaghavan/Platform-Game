@@ -45,3 +45,6 @@ HEADERS  += \
 FORMS    +=
 
 INCLUDEPATH += $$PWD/include
+
+RESOURCES += \
+    res.qrc
