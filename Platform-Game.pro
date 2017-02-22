@@ -32,7 +32,9 @@ SOURCES += main.cpp \
     src/jumpingstate.cpp \
     src/inputcomponent.cpp \
     src/keys.cpp \
-    src/state.cpp
+    src/state.cpp \
+    src/gem.cpp \
+    src/gemtype1.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -42,7 +44,9 @@ HEADERS  += \
     include/state.h \
     include/jumpingstate.h \
     include/enumerator.h \
-    include/inputcomponent.h
+    include/inputcomponent.h \
+    include/gem.h \
+    include/gemtype1.h
 
 FORMS    +=
 
