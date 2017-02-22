@@ -46,7 +46,8 @@ SOURCES += main.cpp \
     src/gem.cpp \
     src/tile.cpp \
     src/gamestate.cpp \
-    src/diamond.cpp
+    src/diamond.cpp \
+    src/readinput.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -70,7 +71,8 @@ HEADERS  += \
     include/gem.h \
     include/tile.h \
     include/gamestate.h \
-    include/diamond.h
+    include/diamond.h \
+    include/readinput.h
 
 FORMS    +=
 

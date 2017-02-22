@@ -3,10 +3,16 @@
 #include "state.h"
 #include "jumpingstate.h"
 #include <QKeyEvent>
+#include "movingleft.h"
+#include "movingright.h"
+#include "isjumping.h"
+#include "isnotjumping.h"
 
-HumanInputComponent::HumanInputComponent()
+HumanInputComponent::HumanInputComponent(GameObject &gameObject)
 {
     keysPressed.clear();
+    gameObject.setState(new MovingRight);
+    gameObject.setJumpingState(new IsNotJumping);
 }
 
 void HumanInputComponent::update(GameObject &gameObject)
