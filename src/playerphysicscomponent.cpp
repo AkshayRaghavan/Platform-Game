@@ -1,5 +1,5 @@
 #include "playerphysicscomponent.h"
-extern tile Tilesmap;
+extern tile *** Tilesmap;
 extern int score;
 PlayerPhysicsComponent::PlayerPhysicsComponent()
 {
@@ -50,7 +50,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
 
     if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
     {
-        ob.graphicscomponent->offset(newx,newy);
+        ob.graphicscomponent->setOffset(newx,newy);
         if((Tilesmap[newy/height_of_tile][newx/width_of_tile])->ispoint) {
             (Tilesmap[newy/height_of_tile][newx/width_of_tile])->change_point_type();
             score++;
