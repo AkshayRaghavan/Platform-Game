@@ -2,9 +2,11 @@
 #include <QTimer>
 #include <QObject>
 #include <QGraphicsView>
+#include <QEvent>
 #include "readinput.h"
 #include "gamestate.h"
 #include "gameobject.h"
+#include "inputhandler.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +16,8 @@ int main(int argc, char *argv[])
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
     GameState *gameState = readInput.createGameStateObject();
+    InputHandler *inputHandler = new InputHandler(gameState);
+    gameState->installEventFilter(inputHandler); //set focus?
     QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
     view->show();

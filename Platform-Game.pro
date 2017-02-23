@@ -50,7 +50,8 @@ SOURCES += main.cpp \
     src/state.cpp \
     src/stopleft.cpp \
     src/stopright.cpp \
-    src/tile.cpp
+    src/tile.cpp \
+    src/inputhandler.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -79,7 +80,8 @@ HEADERS  += \
     include/state.h \
     include/stopleft.h \
     include/stopright.h \
-    include/tile.h
+    include/tile.h \
+    include/inputhandler.h
 
 FORMS    +=
 
