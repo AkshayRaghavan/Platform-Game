@@ -1,6 +1,7 @@
 #include "gameobject.h"
 #include "movingleft.h"
 #include "movingright.h"
+#include "stopright.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
 #include <QCoreApplication>
@@ -23,7 +24,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     inputComponent->setParent(this);
     graphicsComponent->setParent(this);
     physicsComponent->setParent(this);
-    state = new MovingRight;
+    state = new StopRight;
     jumpingState = new IsNotJumping;
     score = 0;
     acceptsInput = inputComponent->acceptsInput();

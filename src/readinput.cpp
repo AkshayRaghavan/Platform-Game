@@ -139,6 +139,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         infile >> max_jump_count;
 
         (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , max_jump_count));
+        (this->scene)->addItem(((this->gameObject).back())->graphicsComponent);
 }
 
 
@@ -183,6 +184,9 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
 
             (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , 0));
+            (this->scene)->addItem(((this->gameObject).back())->graphicsComponent);
+
+
         }
 
 }
