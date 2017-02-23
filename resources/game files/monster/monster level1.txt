@@ -1,4 +1,4 @@
-:resources/images/monster
+resources/images/monster
 10 10 15 15 12 12 0 0
 160 140
 400 0 100

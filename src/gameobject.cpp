@@ -23,8 +23,8 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     inputComponent->setParent(this);
     graphicsComponent->setParent(this);
     physicsComponent->setParent(this);
-    setState(new MovingRight);
-    setJumpingState(new IsNotJumping);
+    state = new MovingRight;
+    jumpingState = new IsNotJumping;
     score = 0;
     acceptsInput = inputComponent->acceptsInput();
 }
@@ -36,14 +36,26 @@ bool GameObject::event(QEvent *input_event)
 
 void GameObject::setState(State *input_state)
 {
-    delete this->state;
-    this->state = input_state;
+    if(input_state)
+    {
+        if(state)
+        {
+            delete this->state;
+        }
+        this->state = input_state;
+    }
 }
 
 void GameObject::setJumpingState(JumpingState *input_jumping_state)
 {
-    delete this->jumpingState;
-    this->jumpingState = input_jumping_state;
+    if(input_jumping_state)
+    {
+        if(jumpingState)
+        {
+            delete this->jumpingState;
+        }
+        this->jumpingState = input_jumping_state;
+    }
 }
 
 void GameObject::setScore(int x)

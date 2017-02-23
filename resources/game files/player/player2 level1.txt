@@ -1,4 +1,4 @@
-:resources/images/player1
+resources/images/player1
 13 13 16 16 17 17 16 16
 160 140
 320 0
