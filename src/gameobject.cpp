@@ -66,5 +66,5 @@ bool GameObject::getIsDead()
 
 bool GameObject::isAcceptingInput()
 {
-    return acceptsInput;
+    return this->acceptsInput;
 }
