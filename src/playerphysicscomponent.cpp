@@ -52,7 +52,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             newy = newy - 2*(height_of_tile);
             curJumpCount++;
         }
-        if((Tilesmap[(newy+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) {
+        if(((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle())) {
             ob.setJumpingState(new IsNotJumping);
         }
     }
@@ -61,21 +61,21 @@ void PlayerPhysicsComponent::update(GameObject & ob)
     {
         newx=0;
     }
-    else if (newx > screenWidth-width_of_tile)
+    else if ( newx + width > screenWidth-width_of_tile )
     {
-        newx= screenWidth - width_of_tile;
+        newx= screenWidth - width_of_tile - width;
     }
 
     if (newy <= 0)
     {
         newy=0;
     }
-    else if ( newy > screenHeight-height_of_tile)
+    else if ( newy + height > screenHeight-height_of_tile)
     {
-       newy= screenHeight-height_of_tile;
+       newy= screenHeight-height_of_tile - height;
     }
 
-    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle())
+    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
     {
         ob.graphicsComponent->setOffset(newx,newy);
         QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
