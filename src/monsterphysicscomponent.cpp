@@ -1,7 +1,8 @@
 #include "monsterphysicscomponent.h"
 #include <QGraphicsItem>
 
-MonsterPhysicsComponent::MonsterPhysicsComponent(Tile *** Tilesmap,int theight, int twidth, int sheight, int swidth) {
+MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth)
+{
     velocity = 1;
     this->Tilesmap = Tilesmap;
     width_of_tile = twidth;

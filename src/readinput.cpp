@@ -20,6 +20,9 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     int width_of_tile;
     int height_of_tile;
 
+    infile >> this->screenWidth;
+    infile >> this->screenHeight;
+
     infile >> width_of_tile;
     infile >> height_of_tile;
 
@@ -51,7 +54,7 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
     this->functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
     this->functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
     this->functionToCreateMonsterGameObject(monster_file_path);
-    return new GameState(this->gameObject , this->tileMap , this->gems);
+    return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
 }
 
 
@@ -118,11 +121,11 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
-
+        PhysicsComponent * physics_component = new PlayerPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth , this->scene);
         int max_jump_count;
         infile >> max_jump_count;
 
-        (this->gameObject).push_back(new GameObject(input_component , graphics_component , max_jump_count));
+        (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , max_jump_count));
 }
 
 
@@ -160,8 +163,9 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             infile >> walk_frames_count;
             GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true);
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
+            PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
 
-            (this->gameObject).push_back(new GameObject(input_component , graphics_component , 0));
+            (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , 0));
         }
 
 }

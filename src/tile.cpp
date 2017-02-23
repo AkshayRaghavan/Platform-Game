@@ -20,5 +20,17 @@ QGraphicsRectItem* Tile::getR()
 
 bool Tile::getIsObstacle()
 {
-    return isObstacle;
+    return this->isObstacle;
 }
+
+int Tile::getWidthOfTile()
+{
+    return this->widthOfTile;
+}
+
+int Tile::getHeightOfTile()
+{
+    return this->heightOfTile;
+}
+
+

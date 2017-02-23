@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     timer->setInterval(1000/33);
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
-    GameState * gameState = readInput.createGameStateObject(":resources/game files/tile/tile map level1.txt" , ":resources/game files/gems/diamond map level1.txt" , ":resources/game files/player/player1 level1.txt" , ":resources/game files/player/player2 level1.txt" , ":resources/game files/monster/monster level1.txt");
+    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
 
     InputHandler *inputHandler = new InputHandler(gameState);
     gameState->installEventFilter(inputHandler); //set focus?
