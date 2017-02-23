@@ -10,11 +10,10 @@
 
 class GameState : public QObject
 {
-  // Q_OBJECT
+  Q_OBJECT
 
 public:
     GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
-
     virtual ~GameState(){}
     std::vector<GameObject*> gameObjects;
     std::vector< std::vector<Tile*> > tileMap;

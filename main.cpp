@@ -12,8 +12,6 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QTimer *timer = new QTimer;
-    timer->setInterval(1000/33);
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
     qDebug() << "start\n";
@@ -22,6 +20,7 @@ int main(int argc, char *argv[])
 
     InputHandler *inputHandler = new InputHandler(gameState);
     gameState->installEventFilter(inputHandler); //set focus?
+   // gameState->setFocus();
     QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
     view->setBackgroundBrush(QImage("resources/images/bg2.png"));
@@ -36,7 +35,10 @@ int main(int argc, char *argv[])
     view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
     view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
     view->show();
-    QObject::connect(timer,SIGNAL(timeout()),gameState,SLOT(gameState.update()));
+    QTimer * timer = new QTimer();
+
+    QObject::connect(timer , SIGNAL(timeout()) , gameState , SLOT(gameState->update()));
+    timer->start(50);
 
     return a.exec();
 }
