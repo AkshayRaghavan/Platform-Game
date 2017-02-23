@@ -12,7 +12,7 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 
-PlayerPhysicsComponent::PlayerPhysicsComponent(Tile *** Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
+PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector< std::vector<Tile *> > Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
     this->Tilesmap = Tilesmap;
     width_of_tile = twidth;
@@ -54,6 +54,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
         }
         if(((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle())) {
             ob.setJumpingState(new IsNotJumping);
+            curJumpCount = 0;
         }
     }
 
