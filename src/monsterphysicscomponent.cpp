@@ -1,10 +1,13 @@
 #include "monsterphysicscomponent.h"
 #include <QGraphicsItem>
 
-extern tile ***Tilesmap;
-
-MonsterPhysicsComponent::MonsterPhysicsComponent() {
+MonsterPhysicsComponent::MonsterPhysicsComponent(Tile *** Tilesmap,int theight, int twidth, int sheight, int swidth) {
     velocity = 1;
+    this->Tilesmap = Tilesmap;
+    width_of_tile = twidth;
+    height_of_tile = theight;
+    screenHeight = sheight;
+    screenWidth = swidth;
 }
 
 void MonsterPhysicsComponent::update(GameObject & ob)
@@ -42,7 +45,7 @@ void MonsterPhysicsComponent::update(GameObject & ob)
     {
        newy= screenHeight-height_of_tile;
     }
-    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
+    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle())
     {
         ob.graphicsComponent->setOffset(newx,newy);
     }

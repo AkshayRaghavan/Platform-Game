@@ -18,6 +18,7 @@ private:
     Tile *** Tilesmap;
     QGraphicsScene * scene;
     int width_of_tile,height_of_tile,screenWidth,screenHeight;
+    int curJumpCount,maxJumpCount;
 public:
     //The constructor will initialize the parameters
     PlayerPhysicsComponent(Tile ***,int,int,int,int,QGraphicsScene*);

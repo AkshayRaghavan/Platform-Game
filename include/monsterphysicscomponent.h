@@ -8,8 +8,11 @@
 class MonsterPhysicsComponent : public PhysicsComponent
 {private:
     int velocity;
+    int newx,newy;
+    Tile *** Tilesmap;
+    int width_of_tile,height_of_tile,screenWidth,screenHeight;
 public:
-    MonsterPhysicsComponent();
+    MonsterPhysicsComponent(Tile ***Tilesmap, int theight, int twidth, int sheight, int swidth);
     void update(GameObject &ob);
 };
 

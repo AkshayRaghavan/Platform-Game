@@ -17,6 +17,7 @@ public:
     ~GraphicsComponent() {}
     virtual void update(GameObject &) {}
     virtual bool getIsMonster();
+    virtual std::vector<qreal> getSizePositionOfObject();
 };
 
 
