@@ -6,14 +6,14 @@
 #include <set>
 #include <algorithm>
 
-State* MovingRight::update(GameObject &gameObject, std::set<Qt::Key> key)
+State* MovingRight::update(InputComponent *inputComponent, std::set<Qt::Key> key)
 {
     State *new_state = NULL;
-    if(key.find(gameObject.keys.right) != key.end())
+    if(key.find(inputComponent->keys->right) != key.end())
     {
         new_state = new MovingRight;
     }
-    else if(key.find(gameObject.keys.left) != key.end())
+    else if(key.find(inputComponent->keys->left) != key.end())
     {
         new_state = new MovingLeft;
     }

@@ -3,10 +3,12 @@
 
 class GameObject;
 #include <QObject>
+#include "keys.h"
 
 class InputComponent : public QObject
 {
 public:
+    Keys *keys;
     InputComponent();
     virtual ~InputComponent() {}
     virtual void update(GameObject &) {}
