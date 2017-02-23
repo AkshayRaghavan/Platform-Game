@@ -4,13 +4,20 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 #include "gem.h"
+#include "deadleft.h"
+#include "deadright.h"
+#include <stdlib.h>
+#include "graphicscomponent.h"
+#include "gameobject.h"
 
-extern tile *** Tilesmap;
-extern int score;
-
-PlayerPhysicsComponent::PlayerPhysicsComponent()
+PlayerPhysicsComponent::PlayerPhysicsComponent(Tile *** Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
-
+    this->Tilesmap = Tilesmap;
+    width_of_tile = twidth;
+    height_of_tile = theight;
+    screenHeight = sheight;
+    screenWidth = swidth;
+    this->scene = scene;
 }
 
 void PlayerPhysicsComponent::update(GameObject & ob)
@@ -21,7 +28,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
     newx = details[0];
     newy = details[1];
     width = details[2];
-    height = detials[3];
+    height = details[3];
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
     newy-=width_of_tile;
@@ -58,18 +65,20 @@ void PlayerPhysicsComponent::update(GameObject & ob)
        newy= screenHeight-height_of_tile;
     }
 
-    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
+    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle())
     {
         ob.graphicsComponent->setOffset(newx,newy);
         QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
         for(int i = 0, n = colliding_items.size();i<n;i++) {
-            if(typeid(*(colliding_items[i])) == typeid(gem)){
-                score++;
-                ob.scene->removeItem(colliding_items[i]);
+            if(typeid(*(colliding_items[i])) == typeid(Gem)){
+                ob.setScore(ob.getScore()+1);
+                scene->removeItem(colliding_items[i]);
                 delete colliding_items[i];
             }
             if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent)){
-                if(((*colliding_items[i]).getIsMonster()) == TRUE ){
+                GraphicsComponent * temp;
+                temp = (GraphicsComponent *)colliding_items[i];
+                if(((*temp).getIsMonster()) == true ){
                     // getismonster() is a member of graphics component to check moster
                     if(state_index == enumerator::State::MOVING_RIGHT)
                     {

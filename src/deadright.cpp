@@ -1,7 +1,7 @@
 #include "deadright.h"
 #include "gameobject.h"
 
-State* DeadRight::update(GameObject &gameObject, std::set<Qt::Key> key)
+State* DeadRight::update(InputComponent *gameObject, std::set<Qt::Key> key)
 {
     return NULL;
 }

@@ -16,6 +16,7 @@ public:
     GraphicsComponent(){}
     ~GraphicsComponent() {}
     virtual void update(GameObject &) {}
+    virtual bool getIsMonster();
 };
 
 

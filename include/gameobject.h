@@ -17,6 +17,7 @@ class GameObject : public QObject
 protected:
     bool isDead;
     enumerator::ObjectType objecttype;
+    int score;
 public:
     const int maxJumpCount;
     void setIsDead(bool a);
@@ -33,6 +34,8 @@ public:
     bool event(QEvent *);
     void setState(State*);
     void setJumpingState(JumpingState *);
+    void setScore(int);
+    int getScore();
 };
 
 #endif // GAMEOBJECT_H

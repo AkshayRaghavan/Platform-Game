@@ -23,6 +23,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     graphicsComponent->setParent(this);
     setState(new MovingRight);
     setJumpingState(new IsNotJumping);
+    score = 0;
 }
 
 bool GameObject::event(QEvent *input_event)
@@ -40,6 +41,16 @@ void GameObject::setJumpingState(JumpingState *input_jumping_state)
 {
     delete this->jumpingState;
     this->jumpingState = input_jumping_state;
+}
+
+void GameObject::setScore(int x)
+{
+    score = x;
+}
+
+int GameObject::getScore()
+{
+    return score;
 }
 
 void GameObject::setIsDead(bool a)

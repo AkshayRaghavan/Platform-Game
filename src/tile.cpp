@@ -17,3 +17,8 @@ QGraphicsRectItem* Tile::getR()
 {
     return this->r;
 }
+
+bool Tile::getIsObstacle()
+{
+    return isObstacle;
+}

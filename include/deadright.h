@@ -7,9 +7,10 @@ class GameObject;
 class DeadRight : public State
 {
 public:
-    virtual ~DeadRight() {}
-    virtual State* update(GameObject &,std::set<Qt::Key>);
-    virtual enumerator::State type();
+    DeadRight() {}
+    ~DeadRight() {}
+    State* update(InputComponent *,std::set<Qt::Key>);
+    enumerator::State type();
 };
 
 #endif // DEADRIGHT_H

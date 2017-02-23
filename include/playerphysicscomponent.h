@@ -8,15 +8,19 @@
 #include "jumpingstate.h"
 #include "gameobject.h"
 #include "tile.h"
+#include <QGraphicsScene>
 
 class PlayerPhysicsComponent : public PhysicsComponent
 {
 private:
     int velocity,acceleration;
     int newx,newy;
+    Tile *** Tilesmap;
+    QGraphicsScene * scene;
+    int width_of_tile,height_of_tile,screenWidth,screenHeight;
 public:
     //The constructor will initialize the parameters
-    PlayerPhysicsComponent();
+    PlayerPhysicsComponent(Tile ***,int,int,int,int,QGraphicsScene*);
     void update(GameObject &ob);
 };
 
