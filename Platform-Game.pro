@@ -26,60 +26,60 @@ CONFIG += c++14
 
 
 SOURCES += main.cpp \
-    src/movingleft.cpp \
-    src/movingright.cpp \
-    src/stopleft.cpp \
-    src/stopright.cpp \
-    src/graphicscomponent.cpp \
-    src/playergraphicscomponent.cpp \
-    src/gameobject.cpp \
-    src/jumpingstate.cpp \
-    src/isnotjumping.cpp \
+    src/computerinputcomponent.cpp \
     src/deadleft.cpp \
     src/deadright.cpp \
-    src/inputcomponent.cpp \
-    src/graphicscomponent.cpp \
-    src/playergraphicscomponent.cpp \
-    src/computerinputcomponent.cpp \
-    src/state.cpp \
-    src/gem.cpp \
-    src/gamestate.cpp \
-    src/keys.cpp \
-    src/physicscomponent.cpp \
-    src/playerphysicscomponent.cpp \
-    src/tile.cpp \
-    src/monsterphysicscomponent.cpp \
     src/diamond.cpp \
-    src/readinput.cpp
+    src/gameobject.cpp \
+    src/gamestate.cpp \
+    src/gem.cpp \
+    src/graphicscomponent.cpp \
+    src/humaninputcomponent.cpp \
+    src/inputcomponent.cpp \
+    src/isjumping.cpp \
+    src/isnotjumping.cpp \
+    src/jumpingstate.cpp \
+    src/keys.cpp \
+    src/monsterphysicscomponent.cpp \
+    src/movingleft.cpp \
+    src/movingright.cpp \
+    src/physicscomponent.cpp \
+    src/playergraphicscomponent.cpp \
+    src/playerphysicscomponent.cpp \
+    src/readinput.cpp \
+    src/state.cpp \
+    src/stopleft.cpp \
+    src/stopright.cpp \
+    src/tile.cpp
 
 HEADERS  += \
-    include/movingleft.h \
-    include/movingright.h \
-    include/stopleft.h \
-    include/stopright.h \
-    include/graphicscomponent.h \
-    include/playergraphicscomponent.h \
-    include/gameobject.h \
-    include/keys.h \
-    include/state.h \
-    include/jumpingstate.h \
-    include/isjumping.h \
-    include/isnotjumping.h \
+    include/computerinputcomponent.h \
     include/deadleft.h \
     include/deadright.h \
-    include/enumerator.h \
-    include/graphicscomponent.h \
-    include/playergraphicscomponent.h \
-    include/computerinputcomponent.h \
-    include/gem.h \
-    include/gamestate.h \
-    include/inputcomponent.h \
-    include/physicscomponent.h \
-    include/playerphysicscomponent.h \
-    include/tile.h \
-    include/monsterphysicscomponent.h \
     include/diamond.h \
-    include/readinput.h
+    include/enumerator.h \
+    include/gameobject.h \
+    include/gamestate.h \
+    include/gem.h \
+    include/graphicscomponent.h \
+    include/humaninputcomponent.h \
+    include/inputcomponent.h \
+    include/isjumping.h \
+    include/isnotjumping.h \
+    include/jumpingleft.h \
+    include/jumpingstate.h \
+    include/keys.h \
+    include/monsterphysicscomponent.h \
+    include/movingleft.h \
+    include/movingright.h \
+    include/physicscomponent.h \
+    include/playergraphicscomponent.h \
+    include/playerphysicscomponent.h \
+    include/readinput.h \
+    include/state.h \
+    include/stopleft.h \
+    include/stopright.h \
+    include/tile.h
 
 FORMS    +=
 
