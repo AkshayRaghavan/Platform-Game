@@ -25,10 +25,12 @@ private:
     int imagesTotalCount[NO_Of_GRAPHICS_STATES];
     //Array for telling which image of each state to be displayed next
     int graphicsCounter[NO_Of_GRAPHICS_STATES];
+
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
     //used in the constructor
     void initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , int scaling_factor);
 public:
+
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
     PlayerGraphicsComponent(int images_total_count[] , std::string images_location , int scaling_factor);

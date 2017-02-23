@@ -80,6 +80,7 @@ std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
     ans[3] = (obj.height());
     return ans;
 }
+
 void PlayerGraphicsComponent::update(GameObject &obj)
 {
     int state_index = static_cast<int> ((obj.state)->type());
@@ -133,19 +134,3 @@ void PlayerGraphicsComponent::update(GameObject &obj)
         std::exit(EXIT_FAILURE);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

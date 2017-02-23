@@ -28,12 +28,11 @@ CONFIG += c++14
 SOURCES += main.cpp \
     src/movingleft.cpp \
     src/movingright.cpp \
-    src/keys.cpp \
-    src/humaninputcomponent.cpp \
-    src/gameobject.cpp \
     src/stopleft.cpp \
     src/stopright.cpp \
-    src/isjumping.cpp \
+    src/graphicscomponent.cpp \
+    src/playergraphicscomponent.cpp \
+    src/gameobject.cpp \
     src/jumpingstate.cpp \
     src/isnotjumping.cpp \
     src/deadleft.cpp \
@@ -45,19 +44,23 @@ SOURCES += main.cpp \
     src/state.cpp \
     src/gem.cpp \
     src/gemtype1.cpp \
-    src/tile.cpp
-    src/gamestate.cpp
+    src/gamestate.cpp \
+    src/keys.cpp \
+    src/physicscomponent.cpp \
+    src/playerphysicscomponent.cpp \
+    src/tile.cpp \
+    src/monsterphysicscomponent.cpp
 
 HEADERS  += \
     include/movingleft.h \
     include/movingright.h \
-    include/keys.h \
-    include/inputcomponent.h \
-    include/humaninputcomponent.h \
-    include/state.h \
-    include/gameobject.h \
     include/stopleft.h \
     include/stopright.h \
+    include/graphicscomponent.h \
+    include/playergraphicscomponent.h \
+    include/gameobject.h \
+    include/keys.h \
+    include/state.h \
     include/jumpingstate.h \
     include/isjumping.h \
     include/isnotjumping.h \
@@ -69,8 +72,12 @@ HEADERS  += \
     include/computerinputcomponent.h \
     include/gem.h \
     include/gemtype1.h \
-    include/tile.h
-    include/gamestate.h
+    include/gamestate.h \
+    include/inputcomponent.h \
+    include/physicscomponent.h \
+    include/playerphysicscomponent.h \
+    include/tile.h \
+    include/monsterphysicscomponent.h
 
 FORMS    +=
 
