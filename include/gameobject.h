@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "inputcomponent.h"
+#include "graphicscomponent.h"
 #include "keys.h"
 #include "state.h"
 #include "jumpingstate.h"
@@ -16,9 +17,10 @@ public:
     const int maxJumpCount;
     void setIsDead(bool a);
     bool getIsDead();
-    GameObject(InputComponent *, Keys, const int&);
+    GameObject(InputComponent *, GraphicsComponent *, Keys, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
+    GraphicsComponent *graphicsComponent;
     State *state;
     JumpingState *jumpingState;
     Keys keys;
