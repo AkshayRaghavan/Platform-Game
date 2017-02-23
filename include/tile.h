@@ -21,6 +21,9 @@ public:
     Tile(QGraphicsScene* scene , int left , int top , int width , int height , bool isObstacle);
     QGraphicsRectItem* getR();
     bool getIsObstacle();
+    int getWidthOfTile();
+    int getHeightOfTile();
+    
 };
 
 #endif // TILE_H

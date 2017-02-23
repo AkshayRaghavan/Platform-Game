@@ -18,11 +18,15 @@ public:
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
     QGraphicsScene *scene;
-    GameState(std::vector<GameObject*>&, std::vector< std::vector<Tile*> >&, std::vector<Gem*>&);
-    QGraphicsScene *getScene();
+    const int screenWidth;
+    const int screenHeight;
+    GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
+    QGraphicsScene* getScene();
+
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
+
 public slots:
     void update();
 };

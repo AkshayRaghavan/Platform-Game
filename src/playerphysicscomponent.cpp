@@ -12,7 +12,7 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 
-PlayerPhysicsComponent::PlayerPhysicsComponent(Tile *** Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
+PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
     this->Tilesmap = Tilesmap;
     width_of_tile = twidth;

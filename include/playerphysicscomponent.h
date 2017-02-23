@@ -15,13 +15,13 @@ class PlayerPhysicsComponent : public PhysicsComponent
 private:
     int velocity,acceleration;
     int newx,newy;
-    Tile *** Tilesmap;
+    std::vector<std::vector<Tile*>> Tilesmap;
     QGraphicsScene * scene;
     int width_of_tile,height_of_tile,screenWidth,screenHeight;
     int curJumpCount,maxJumpCount;
 public:
     //The constructor will initialize the parameters
-    PlayerPhysicsComponent(Tile ***,int,int,int,int,QGraphicsScene*);
+    PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &,int,int,int,int,QGraphicsScene*);
     void update(GameObject &ob);
 };
 
