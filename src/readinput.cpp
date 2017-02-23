@@ -93,7 +93,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         infile >> scaling_factor;
         infile >> x_coordinate;
         infile >> y_coordinate;
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate);
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate , false);
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
 

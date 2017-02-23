@@ -8,7 +8,7 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int scaling_factor , qreal x_coordinate , qreal y_coordinate)
+PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int scaling_factor , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
 {
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
@@ -138,7 +138,10 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     }
 }
 
-
+bool PlayerGraphicsComponent::getIsMonster()
+{
+    return this->isMonster;
+}
 
 
 

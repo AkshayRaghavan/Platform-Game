@@ -19,6 +19,7 @@
 class PlayerGraphicsComponent : public GraphicsComponent
 {
 private:
+    const bool isMonster;
     //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
     std::vector<QPixmap*> pixMapMatrix;
     //Array for saving total images in a graphic state
@@ -31,10 +32,11 @@ private:
 public:
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
-    PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count , int scaling_factor , qreal x_coordinate , qreal y_coordinate);
+    PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count , int scaling_factor , qreal x_coordinate , qreal y_coordinate , bool is_monster);
     ~PlayerGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);
+    bool getIsMonster();
 };
 
 #endif // PLAYERGRAPHICSCOMPONENT_H
