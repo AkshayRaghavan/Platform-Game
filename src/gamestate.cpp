@@ -1,4 +1,5 @@
 #include "gamestate.h"
+#include <QObject>
 
 GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene) :
     gameObjects(game_objects), tileMap(tile_map), gems(input_gems) ,
@@ -6,7 +7,7 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
     scene(scene)
 
 {
-
+//    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
 }
 
 QGraphicsScene * GameState::getScene()
@@ -28,6 +29,11 @@ std::vector<Gem*> GameState::getGems()
 {
     return gems;
 }
+
+/*void GameState::setTimerAndConnect(QTimer *timer)
+{
+    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(update()));
+}*/
 
 void GameState::update()
 {

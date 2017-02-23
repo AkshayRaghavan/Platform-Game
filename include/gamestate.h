@@ -10,8 +10,8 @@
 
 class GameState : public QObject
 {
-  Q_OBJECT
 
+    Q_OBJECT
 public:
     GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
     virtual ~GameState(){}
@@ -26,6 +26,7 @@ public:
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
+//    void setTimerAndConnect(QTimer *);
 
 public slots:
     void update();

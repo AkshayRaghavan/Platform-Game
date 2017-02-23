@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     view->show();
     QTimer * timer = new QTimer();
 
-    QObject::connect(timer , SIGNAL(timeout()) , gameState , SLOT(gameState->update()));
+    gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
     timer->start(50);
 
     return a.exec();
