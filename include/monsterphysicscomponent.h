@@ -13,6 +13,7 @@ class MonsterPhysicsComponent : public PhysicsComponent
     int width_of_tile,height_of_tile,screenWidth,screenHeight;
 public:
     MonsterPhysicsComponent(Tile ***Tilesmap, int theight, int twidth, int sheight, int swidth);
+    virtual ~MonsterPhysicsComponent() {}
     void update(GameObject &ob);
 };
 

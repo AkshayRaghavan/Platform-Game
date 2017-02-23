@@ -8,6 +8,7 @@ class PhysicsComponent : public QObject
 {
 public:
     PhysicsComponent() {}
+    virtual ~PhysicsComponent() {}
     virtual void update (GameObject &);
 };
 
