@@ -15,7 +15,7 @@ GameObject::GameObject(InputComponent *input_component, Keys input_keys, const i
 {
     inputComponent = input_component;
     inputComponent->setParent(this);
-    graphicscomponent->setParent(this);
+    graphicsComponent->setParent(this);
 }
 
 bool GameObject::event(QEvent *input_event)

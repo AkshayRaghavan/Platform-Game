@@ -29,8 +29,8 @@ public:
     GameObject(InputComponent *, Keys, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
-    GraphicsComponent *graphicscomponent;
-    PhysicsComponent *physicscomponent;
+    GraphicsComponent *graphicsComponent;
+    PhysicsComponent *physicsComponent;
     State *state;
     JumpingState *jumpingState;
     QGraphicsScene * scene;

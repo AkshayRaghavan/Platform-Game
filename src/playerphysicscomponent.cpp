@@ -10,15 +10,18 @@ extern int score;
 
 PlayerPhysicsComponent::PlayerPhysicsComponent()
 {
-    velocity = 0;
-    acceleration = 1;
+
 }
 
 void PlayerPhysicsComponent::update(GameObject & ob)
 {
-    int newx,newy;
-    newx=ob.graphicscomponent->x();
-    newy=ob.graphicscomponent->y();
+    int newx,newy,height,width;
+    std::vector<qreal> details(4);
+    details = ob.getSizePositionOfObject();
+    newx = details[0];
+    newy = details[1];
+    width = details[2];
+    height = detials[3];
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
     newy-=width_of_tile;
@@ -34,7 +37,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
 
     if(jumping_state_index == enumerator::JumpingState::IS_JUMPING)
     {
-        newy=ob.graphicscomponent->y()-((0<velocity)-(velocity<0))*height_of_tile;
+        newy=ob.graphicsComponent->y()-((0<velocity)-(velocity<0))*height_of_tile;
     }
 
     if(newx<=0)
@@ -57,8 +60,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
 
     if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
     {
-        ob.graphicscomponent->setOffset(newx,newy);
-        QList<QGraphicsItem *> colliding_items = ob.graphicscomponent->collidingItems();
+        ob.graphicsComponent->setOffset(newx,newy);
+        QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
         for(int i = 0, n = colliding_items.size();i<n;i++) {
             if(typeid(*(colliding_items[i])) == typeid(gem)){
                 score++;

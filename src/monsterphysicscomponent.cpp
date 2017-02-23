@@ -10,8 +10,8 @@ MonsterPhysicsComponent::MonsterPhysicsComponent() {
 void MonsterPhysicsComponent::update(GameObject & ob)
 {
     int newx,newy;
-    newx=ob.graphicscomponent->x();
-    newy=ob.graphicscomponent->y();
+    newx=ob.graphicsComponent->x();
+    newy=ob.graphicsComponent->y();
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
     newy-=width_of_tile;
@@ -44,7 +44,7 @@ void MonsterPhysicsComponent::update(GameObject & ob)
     }
     if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->isObstacle)
     {
-        ob.graphicscomponent->setOffset(newx,newy);
+        ob.graphicsComponent->setOffset(newx,newy);
     }
 
 }
