@@ -1,5 +1,5 @@
-#ifndef GEMTYPE1_H
-#define GEMTYPE1_H
+#ifndef DIAMOND_H
+#define DIAMOND_H
 
 #include "gem.h"
 #include <QPixmap>
@@ -10,13 +10,13 @@
 // Used as virtual functions
 // And deriving QGraphicsPixmapItem for image of object
 
-class GemType1 : public Gem
+class Diamond : public Gem
 {
 private:
     QPixmap pixMapImage;
 public:
-    GemType1(std::string images_location , int scaling_factor);
+    Diamond(std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate);
     void draw();
 };
 
-#endif // GEMTYPE1_H
+#endif // DIAMOND_H

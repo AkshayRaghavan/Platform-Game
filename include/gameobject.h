@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "inputcomponent.h"
+#include "graphicscomponent.h"
 #include "keys.h"
 #include "state.h"
 #include "jumpingstate.h"
@@ -22,17 +23,16 @@ public:
     bool getIsDead();
     enumerator::ObjectType getObjectType();
     void setObjectType(enumerator::ObjectType a);
-    GameObject(InputComponent *, Keys, const int&);
+    GameObject(InputComponent *, GraphicsComponent *, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
     PhysicsComponent *physicsComponent;
     State *state;
     JumpingState *jumpingState;
-    QGraphicsScene * scene;
-    Keys keys;
     bool event(QEvent *);
     void setState(State*);
+    void setJumpingState(JumpingState *);
 };
 
 #endif // GAMEOBJECT_H

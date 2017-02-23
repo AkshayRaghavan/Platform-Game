@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     while(matrixRow < 31){
         matrixColumn = 0;
     while(matrixColumn < 51){
-        infile << left <<' ' << top << ' ' << isobs << ' ' << isp <<endl;
+        infile << ":resources/images/player1 " << left <<' ' << top << ' ' << isobs << ' ' << isp <<endl;
         left += 20;
         matrixColumn++;
         isobs = (rand()%10)? false : true;

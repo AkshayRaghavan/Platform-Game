@@ -7,7 +7,7 @@ IsJumping::IsJumping(GameObject &gameObject)
     jumpCount = gameObject.maxJumpCount;
 }
 
-JumpingState* IsJumping::update(GameObject &gameObject, std::set<Qt::Key> key)
+JumpingState* IsJumping::update(InputComponent *inputComponent, GameObject &gameObject, std::set<Qt::Key> key)
 {
     return NULL;
 }

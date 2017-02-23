@@ -12,3 +12,8 @@ Tile::Tile(QGraphicsScene* scene , int left , int top , int width , int height ,
     this->r = scene->addRect(left , top , width , height , outlinePen);
     this->isObstacle = is_obstacle;
 }
+
+QGraphicsRectItem* Tile::getR()
+{
+    return this->r;
+}

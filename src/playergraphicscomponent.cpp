@@ -8,13 +8,13 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std::string images_location , int scaling_factor)
+PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int scaling_factor , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
 {
-    for (int i = 0; i <= 7; i++ )
+    for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
-        this->pixMapMatrix[i] = new QPixmap[images_total_count[i]];
-        this->imagesTotalCount[i] = images_total_count[i];
-        this->graphicsCounter[i] = 0;
+        this->pixMapMatrix.push_back(new QPixmap[images_total_count[i]]);
+        this->imagesTotalCount.push_back(images_total_count[i]);
+        this->graphicsCounter.push_back(0);
     }
 
     initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk (" , this->pixMapMatrix[0] ,  scaling_factor);
@@ -30,6 +30,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std:
     initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump (" , this->pixMapMatrix[7] ,  scaling_factor);
 
     this->setPixmap(this->pixMapMatrix[2][0]);
+    this->setPos(x_coordinate,y_coordinate);
 }
 
 void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int scaling_factor)
@@ -83,16 +84,19 @@ std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
 
 void PlayerGraphicsComponent::update(GameObject &obj)
 {
-    int state_index = static_cast<int> ((obj.state)->type());
-    int jumping_state_index = static_cast<int> ((obj.jumpingState)->type());
+    enumerator::JumpingState jumpingEnum = (obj.jumpingState)->type();
+    enumerator::State stateEnum = (obj.state)->type();
 
-    if(jumping_state_index == 0)
+    int state_index = static_cast<int> (stateEnum);
+    int jumping_state_index = static_cast<int> (jumpingEnum);
+
+    if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
     {
-        if(state_index >= 0 && state_index <= 3)  //for moving , idle position <right , left>
+        if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_RIGHT || stateEnum == enumerator::State::STOP_LEFT)  //for moving , idle position <right , left>
         {
             this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
         }
-        else if(state_index == 4 || state_index == 5)  //if is dead state
+        else if(stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if is dead state
         {
             if(!obj.getIsDead())  //if isDead == false , dead player image slideshow not fully shown , hence show next image
             {
@@ -105,17 +109,17 @@ void PlayerGraphicsComponent::update(GameObject &obj)
             std::exit(EXIT_FAILURE);
         }
     }
-    else if(jumping_state_index == 1)
+    else if(jumpingEnum == enumerator::JumpingState::IS_JUMPING)
     {
-        if(state_index == 0 || state_index == 2)  //jump right
+        if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::STOP_RIGHT )  //jump right
         {
             this->setPixmap(this->pixMapMatrix[6][updateGraphicsCounter(6)]);
         }
-        else if(state_index == 1 || state_index == 3)  //jump left
+        else if(stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_LEFT )  //jump left
         {
             this->setPixmap(this->pixMapMatrix[7][updateGraphicsCounter(6)]);
         }
-        else if(state_index == 4 || state_index == 5)  //if dead , so stop jumping and show dead image
+        else if( stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if dead , so stop jumping and show dead image
         {
             if(!obj.getIsDead())
             {
@@ -133,4 +137,9 @@ void PlayerGraphicsComponent::update(GameObject &obj)
         qDebug() << "ERROR(playergraphicscomponent.cpp) : Invalid JumpingState" <<  jumping_state_index <<endl;
         std::exit(EXIT_FAILURE);
     }
+}
+
+bool PlayerGraphicsComponent::getIsMonster()
+{
+    return this->isMonster;
 }

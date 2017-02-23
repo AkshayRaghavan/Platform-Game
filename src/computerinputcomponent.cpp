@@ -2,12 +2,13 @@
 #include "gameobject.h"
 #include "movingleft.h"
 #include "movingright.h"
+#include "isjumping.h"
+#include "isnotjumping.h"
 
-ComputerInputComponent::ComputerInputComponent(int walk_frames_count, GameObject &gameObject)
+ComputerInputComponent::ComputerInputComponent(int walk_frames_count)
 {
     numberOfFramesPerDirection = walk_frames_count;
     currentNumberOfFrames = walk_frames_count;
-    gameObject.setState(new MovingRight);
 }
 
 void ComputerInputComponent::update(GameObject &gameObject)

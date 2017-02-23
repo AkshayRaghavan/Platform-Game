@@ -2,6 +2,7 @@
 #define JUMPINGSTATE_H
 
 class GameObject;
+class InputComponent;
 #include "enumerator.h"
 #include <Qt>
 #include <set>
@@ -12,7 +13,7 @@ public:
     int jumpCount;
     JumpingState();
     virtual ~JumpingState() {}
-    virtual JumpingState* update(GameObject &,std::set<Qt::Key>) = 0;
+    virtual JumpingState* update(InputComponent *,GameObject &,std::set<Qt::Key>) = 0;
     virtual enumerator::JumpingState type() = 0;
     int getJumpCount();
     void setJumpCount(int);

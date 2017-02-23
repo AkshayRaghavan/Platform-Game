@@ -43,13 +43,14 @@ SOURCES += main.cpp \
     src/computerinputcomponent.cpp \
     src/state.cpp \
     src/gem.cpp \
-    src/gemtype1.cpp \
     src/gamestate.cpp \
     src/keys.cpp \
     src/physicscomponent.cpp \
     src/playerphysicscomponent.cpp \
     src/tile.cpp \
-    src/monsterphysicscomponent.cpp
+    src/monsterphysicscomponent.cpp \
+    src/diamond.cpp \
+    src/readinput.cpp
 
 HEADERS  += \
     include/movingleft.h \
@@ -71,13 +72,14 @@ HEADERS  += \
     include/playergraphicscomponent.h \
     include/computerinputcomponent.h \
     include/gem.h \
-    include/gemtype1.h \
     include/gamestate.h \
     include/inputcomponent.h \
     include/physicscomponent.h \
     include/playerphysicscomponent.h \
     include/tile.h \
-    include/monsterphysicscomponent.h
+    include/monsterphysicscomponent.h \
+    include/diamond.h \
+    include/readinput.h
 
 FORMS    +=
 
