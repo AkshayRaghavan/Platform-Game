@@ -66,7 +66,7 @@ void ReadInput::functionToCreateGem(std::string file_path)
 }
 
 
-void ReadInput::functionToCreateGameObject(std::string file_path , int no_of_objects)
+void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)
 {
     std::string images_location;
     std::vector<int> images_total_count;
@@ -84,7 +84,6 @@ void ReadInput::functionToCreateGameObject(std::string file_path , int no_of_obj
         std::exit(EXIT_FAILURE);
     }
 
-
         infile >> images_location;
         for(int i = 0; i < 8 ; i++)
         {
@@ -95,9 +94,11 @@ void ReadInput::functionToCreateGameObject(std::string file_path , int no_of_obj
         infile >> x_coordinate;
         infile >> y_coordinate;
         GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate);
-        InputComponent *input_component = new HumanInputComponent();
+        Keys* key_pointer = new Keys( jump_input, right_input , left_input);
+        InputComponent *input_component = new HumanInputComponent(key_pointer);
 
-        (this->gameObject).push_back(new );
+        int max_jump_count;
+        infile >> max_jump_count;
 
-
+        (this->gameObject).push_back(new GameObject(input_component , graphics_component , max_jump_count));
 }
