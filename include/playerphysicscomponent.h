@@ -13,7 +13,7 @@ class PlayerPhysicsComponent : public PhysicsComponent
 {
 private:
     int velocity,acceleration;
-    int newx(),newy();
+    int newx,newy;
 public:
     //The constructor will initialize the parameters
     PlayerPhysicsComponent();

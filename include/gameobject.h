@@ -8,6 +8,7 @@
 #include "graphicscomponent.h"
 #include "physicscomponent.h"
 #include <QObject>
+#include <QGraphicsScene>
 
 
 class GameObject : public QObject
@@ -29,6 +30,7 @@ public:
     PhysicsComponent *physicscomponent;
     State *state;
     JumpingState *jumpingState;
+    QGraphicsScene * scene;
     Keys keys;
     bool event(QEvent *);
 };

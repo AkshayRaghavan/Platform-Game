@@ -33,7 +33,8 @@ SOURCES += main.cpp \
     src/state.cpp \
     src/physicscomponent.cpp \
     src/playerphysicscomponent.cpp \
-    src/tile.cpp
+    src/tile.cpp \
+    src/gem.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     include/inputcomponent.h \
     include/physicscomponent.h \
     include/playerphysicscomponent.h \
-    include/tile.h
+    include/tile.h \
+    include/gem.h
 
 FORMS    +=
 
