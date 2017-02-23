@@ -92,7 +92,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
     std::string images_location;
     std::vector<int> images_total_count;
     int images_count_temp;
-    int scaling_factor;
+    int image_width , image_height;
     qreal x_coordinate;
     qreal y_coordinate;
 
@@ -111,10 +111,11 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
             infile >> images_count_temp;
             images_total_count.push_back(images_count_temp);
         }
-        infile >> scaling_factor;
+        infile >> image_width;
+        infile >> image_height;
         infile >> x_coordinate;
         infile >> y_coordinate;
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate , false);
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
 
@@ -130,7 +131,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
     std::string images_location;
     std::vector<int> images_total_count;
     int images_count_temp;
-    int scaling_factor;
+    int image_width , image_height;
     qreal x_coordinate;
     qreal y_coordinate;
     int walk_frames_count;
@@ -150,14 +151,14 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
         infile >> images_count_temp;
         images_total_count.push_back(images_count_temp);
     }
-    infile >> scaling_factor;
-
+    infile >> image_width;
+    infile >> image_height;
         while(true)
         {
             infile >> x_coordinate;
             infile >> y_coordinate;
-            infile>>walk_frames_count;
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate , true);
+            infile >> walk_frames_count;
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true);
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
 
             (this->gameObject).push_back(new GameObject(input_component , graphics_component , 0));

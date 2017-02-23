@@ -32,14 +32,14 @@ void GameState::update()
     {
         if(gameObjects[i]->isAcceptingInput())
         {
-            gameObjects[i]->physicsComponent->update();
-            gameObjects[i]->graphicsComponent->update();
+            gameObjects[i]->physicsComponent->update(*gameObjects[i]);
+            gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
         }
         else
         {
-            gameObject[i]->inputComponent->update();
-            gameObjects[i]->physicsComponent->update();
-            gameObjects[i]->graphicsComponent->update();
+            gameObjects[i]->inputComponent->update(*gameObjects[i]);
+            gameObjects[i]->physicsComponent->update(*gameObjects[i]);
+            gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
         }
     }
 }

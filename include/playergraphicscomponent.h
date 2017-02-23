@@ -30,12 +30,12 @@ private:
 
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
     //used in the constructor
-    void initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , int scaling_factor);
+    void initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int image_width , const int image_height);
 public:
 
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
-    PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count , int scaling_factor , qreal x_coordinate , qreal y_coordinate , bool is_monster);
+    PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster);
     ~PlayerGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);

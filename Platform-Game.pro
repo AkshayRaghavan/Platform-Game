@@ -85,5 +85,5 @@ FORMS    +=
 
 INCLUDEPATH += $$PWD/include
 
-#RESOURCES += \
-#    res.qrc
+RESOURCES += \
+    res.qrc

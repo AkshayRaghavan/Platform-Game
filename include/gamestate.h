@@ -10,7 +10,10 @@
 
 class GameState : public QObject
 {
+  //  Q_OBJECT
+
 public:
+    virtual ~GameState(){}
     std::vector<GameObject*> gameObjects;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
@@ -20,6 +23,7 @@ public:
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
+public slots:
     void update();
 };
 
