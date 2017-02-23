@@ -218,6 +218,7 @@
         <file>resources/game files/player/player1 level1.txt</file>
         <file>resources/game files/player/player2 level1.txt</file>
         <file>resources/game files/tile map level1/tile map level1.txt</file>
+        <file>resources/images/bg2.png</file>
         
     </qresource>
 </RCC>

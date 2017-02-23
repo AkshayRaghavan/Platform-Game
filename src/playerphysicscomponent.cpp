@@ -54,6 +54,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
         }
         if(((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle())) {
             ob.setJumpingState(new IsNotJumping);
+            curJumpCount = 0;
         }
     }
 

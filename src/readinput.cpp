@@ -41,19 +41,32 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             infile >> top_position;
             infile >> is_obstacle;
 
-            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , left_position , top_position , width_of_tile , height_of_tile , is_obstacle);
+            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , top_position ,  left_position  ,width_of_tile , height_of_tile , is_obstacle);
             (this->scene)->addItem(((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR());
+            qDebug()<<matrix_row_iterator<<" , "<<matrix_column_iterator<<left_position<<" , "<<top_position<<" , "<<is_obstacle<<" , "<<((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR();
         }
     }
 }
 
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path)
 {
+    qDebug() << "TILE";
     this->functionToCreateTileMap(tile_map_path);
+    qDebug() << "GEM";
+
     this->functionToCreateGem(gem_path);
+    qDebug() << "PLAYER";
+
     this->functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
+    qDebug() << "PLAYER";
+
     this->functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
+    qDebug() << "MONSTER";
+
     this->functionToCreateMonsterGameObject(monster_file_path);
+
+    qDebug() << "MONSTER RETuen";
+
     return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
 }
 
@@ -161,6 +174,10 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             infile >> x_coordinate;
             infile >> y_coordinate;
             infile >> walk_frames_count;
+            if(infile.eof())
+            {
+                break;
+            }
             GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true);
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
