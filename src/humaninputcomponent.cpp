@@ -53,3 +53,8 @@ bool HumanInputComponent::event(QEvent *event)
     }
     return false;
 }
+
+bool HumanInputComponent::acceptsInput()
+{
+    return true;
+}

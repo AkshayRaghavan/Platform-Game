@@ -13,6 +13,7 @@ public:
     virtual ~InputComponent() {}
     virtual void update(GameObject &) {}
     virtual bool event(QEvent *);
+    virtual bool acceptsInput() = 0;
 };
 
 #endif // INPUTCOMPONENT_H

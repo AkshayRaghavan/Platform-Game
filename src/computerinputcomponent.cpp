@@ -29,3 +29,8 @@ void ComputerInputComponent::update(GameObject &gameObject)
         currentNumberOfFrames --;
     }
 }
+
+bool ComputerInputComponent::acceptsInput()
+{
+    return false;
+}
