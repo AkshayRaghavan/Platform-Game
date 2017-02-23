@@ -2,13 +2,14 @@
 #define STOPLEFT_H
 
 #include "state.h"
+class InputComponent;
 class GameObject;
 
 class StopLeft : public State
 {
 public:
     virtual ~StopLeft() {}
-    virtual State* update(GameObject &,std::set<Qt::Key>);
+    virtual State* update(InputComponent *, std::set<Qt::Key>);
     virtual enumerator::State type();
 };
 

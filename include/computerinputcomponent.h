@@ -9,7 +9,7 @@ protected:
     int numberOfFramesPerDirection;
     int currentNumberOfFrames;
 public:
-    ComputerInputComponent(int,GameObject &);
+    ComputerInputComponent(int);
     virtual ~ComputerInputComponent() {}
     virtual void update(GameObject &);
 };

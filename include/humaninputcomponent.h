@@ -10,7 +10,7 @@ class HumanInputComponent : public InputComponent
 {
     std::set<Qt::Key> keysPressed;
 public:
-    HumanInputComponent(GameObject&);
+    HumanInputComponent(Keys *keys);
     virtual ~HumanInputComponent() {}
     virtual void update(GameObject &);
     bool event(QEvent *);

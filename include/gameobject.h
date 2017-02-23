@@ -17,13 +17,12 @@ public:
     const int maxJumpCount;
     void setIsDead(bool a);
     bool getIsDead();
-    GameObject(InputComponent *, GraphicsComponent *, Keys, const int&);
+    GameObject(InputComponent *, GraphicsComponent *, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
     State *state;
     JumpingState *jumpingState;
-    Keys keys;
     bool event(QEvent *);
     void setState(State*);
     void setJumpingState(JumpingState *);
