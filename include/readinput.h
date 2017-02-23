@@ -6,6 +6,10 @@
 #include "gem.h"
 #include "diamond.h"
 #include "gamestate.h"
+#include "inputcomponent.h"
+#include "humaninputcomponent.h"
+#include "graphicscomponent.h"
+#include "playergraphicscomponent.h"
 #include<QDebug>
 #include<QGraphicsScene>
 #include<fstream>
@@ -19,7 +23,7 @@ class ReadInput
     QGraphicsScene * scene;
 
     void functionToCreateTileMap(std::string file_path , int size_of_tile , int row_tile_matrix_size , int column_tile_matrix_size);
-    void functionToCreateGem(std::string file_path , int no_of_diamonds);
+    void functionToCreateGem(std::string file_path);
 
 
 public:

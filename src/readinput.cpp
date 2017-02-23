@@ -34,7 +34,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path , int size_of_tile
 }
 
 
-void ReadInput::functionToCreateGem(std::string file_path , int no_of_diamonds)
+void ReadInput::functionToCreateGem(std::string file_path)
 {
     std::ifstream infile;
     infile.open(file_path , std::ios_base::in);
@@ -49,15 +49,55 @@ void ReadInput::functionToCreateGem(std::string file_path , int no_of_diamonds)
     int width = 0 , height = 0;
     qreal x_coordinate = 0 , y_coordinate = 0;
 
-    for(int i = 0 ; i < no_of_diamonds ; i++)
+    while(true)
     {
         infile >> image_file_path;
         infile >> width;
         infile >> height;
         infile >> x_coordinate;
         infile >> y_coordinate;
-
-        (this->gems).push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate));
-        (this->scene)->addItem((this->gems)[i]);
+        if(infile.eof())
+        {
+            break;
         }
+        (this->gems).push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate));
+        (this->scene)->addItem((this->gems).back());
+    }
+}
+
+
+void ReadInput::functionToCreateGameObject(std::string file_path , int no_of_objects)
+{
+    std::string images_location;
+    std::vector<int> images_total_count;
+    int images_count_temp;
+    int scaling_factor;
+    qreal x_coordinate;
+    qreal y_coordinate;
+
+    std::ifstream infile;
+    infile.open(file_path , std::ios_base::in);
+
+    if(!infile.is_open())
+    {
+        qDebug() <<"ERROR(readinput.cpp) Failed to Open "<<file_path.c_str()<<endl;
+        std::exit(EXIT_FAILURE);
+    }
+
+
+        infile >> images_location;
+        for(int i = 0; i < 8 ; i++)
+        {
+            infile >> images_count_temp;
+            images_total_count.push_back(images_count_temp);
+        }
+        infile >> scaling_factor;
+        infile >> x_coordinate;
+        infile >> y_coordinate;
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , scaling_factor , x_coordinate , y_coordinate);
+        InputComponent *input_component = new HumanInputComponent();
+
+        (this->gameObject).push_back(new );
+
+
 }

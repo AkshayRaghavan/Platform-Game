@@ -8,13 +8,13 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std::string images_location , int scaling_factor)
+PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int scaling_factor , qreal x_coordinate , qreal y_coordinate)
 {
-    for (int i = 0; i <= 7; i++ )
+    for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
-        this->pixMapMatrix[i] = new QPixmap[images_total_count[i]];
-        this->imagesTotalCount[i] = images_total_count[i];
-        this->graphicsCounter[i] = 0;
+        this->pixMapMatrix.push_back(new QPixmap[images_total_count[i]]);
+        this->imagesTotalCount.push_back(images_total_count[i]);
+        this->graphicsCounter.push_back(0);
     }
 
     initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk (" , this->pixMapMatrix[0] ,  scaling_factor);
@@ -30,7 +30,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(int images_total_count[] , std:
     initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump (" , this->pixMapMatrix[7] ,  scaling_factor);
 
     this->setPixmap(this->pixMapMatrix[2][0]);
-    //TODO add set pos
+    this->setPos(x_coordinate,y_coordinate);
 }
 
 void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int scaling_factor)
