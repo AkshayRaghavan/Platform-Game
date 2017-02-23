@@ -44,6 +44,16 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
 }
 
+GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path)
+{
+    this->functionToCreateTileMap(tile_map_path);
+    this->functionToCreateGem(gem_path);
+    this->functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
+    this->functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
+    this->functionToCreateMonsterGameObject(monster_file_path);
+    return new GameState(this->gameObject , this->tileMap , this->gems);
+}
+
 
 void ReadInput::functionToCreateGem(std::string file_path)
 {
@@ -76,7 +86,7 @@ void ReadInput::functionToCreateGem(std::string file_path)
     }
 }
 
-
+//file path ex : ":resources/images/player1"
 void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)
 {
     std::string images_location;

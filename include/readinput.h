@@ -24,7 +24,6 @@ class ReadInput
     std::vector<GameObject*> gameObject;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
-    GameState *gameState;
     QGraphicsScene * scene;
 
     void functionToCreateTileMap(std::string file_path);
@@ -33,6 +32,7 @@ class ReadInput
     void functionToCreateMonsterGameObject(std::string file_path);
 
 public:
+    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path);
     ReadInput (QGraphicsScene * scene);
 };
 
