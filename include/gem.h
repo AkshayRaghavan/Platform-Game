@@ -23,7 +23,6 @@ public:
 
     QGraphicsScene* getQGraphicsScene();
     void setQGraphicsScene(QGraphicsScene* scene);
-
     void remove();
 };
 

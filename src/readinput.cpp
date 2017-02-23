@@ -5,7 +5,7 @@ ReadInput::ReadInput(QGraphicsScene * scene)
     this->scene = scene;
 }
 
-void ReadInput::functionToCreateTileMap(std::string file_path , int size_of_tile , int row_tile_matrix_size , int column_tile_matrix_size)
+void ReadInput::functionToCreateTileMap(std::string file_path)
 {
     std::ifstream infile;
     infile.open(file_path , std::ios_base::in);
@@ -15,6 +15,16 @@ void ReadInput::functionToCreateTileMap(std::string file_path , int size_of_tile
         qDebug() <<"ERROR(readinput.cpp) Failed to Open "<<file_path.c_str()<<endl;
         std::exit(EXIT_FAILURE);
     }
+    int row_tile_matrix_size;
+    int column_tile_matrix_size;
+    int width_of_tile;
+    int height_of_tile;
+
+    infile >> width_of_tile;
+    infile >> height_of_tile;
+
+    infile >> row_tile_matrix_size;
+    infile >> column_tile_matrix_size;
 
     int left_position = 0 , top_position = 0;
     bool is_obstacle = false;
@@ -27,7 +37,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path , int size_of_tile
             infile >> left_position;
             infile >> top_position;
             infile >> is_obstacle;
-            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , left_position , top_position , size_of_tile , size_of_tile , is_obstacle);
+
+            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , left_position , top_position , width_of_tile , height_of_tile , is_obstacle);
             (this->scene)->addItem(((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR());
         }
     }
