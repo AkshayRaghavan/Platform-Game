@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
     view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
     view->show();
-    QObject::connect(timer,SIGNAL(timeout()),gameState,SLOT(gameState.update()));
-
+ //   gameState->setTimerAndConnect(timer);
+    gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
     return a.exec();
 }
 
