@@ -14,6 +14,7 @@ public:
     virtual ~HumanInputComponent() {}
     virtual void update(GameObject &);
     bool event(QEvent *);
+    virtual bool acceptsInput();
 
 };
 

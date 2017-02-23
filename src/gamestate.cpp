@@ -26,6 +26,24 @@ std::vector<Gem*> GameState::getGems()
     return gems;
 }
 
+void GameState::update()
+{
+    for(int i=0; i<gameObjects.size(); i++)
+    {
+        if(gameObjects[i]->isAcceptingInput())
+        {
+            gameObjects[i]->physicsComponent->update();
+            gameObjects[i]->graphicsComponent->update();
+        }
+        else
+        {
+            gameObject[i]->inputComponent->update();
+            gameObjects[i]->physicsComponent->update();
+            gameObjects[i]->graphicsComponent->update();
+        }
+    }
+}
+
 
 
 

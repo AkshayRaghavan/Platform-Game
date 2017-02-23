@@ -15,6 +15,7 @@
 class GameObject : public QObject
 {
 protected:
+    bool acceptsInput;
     bool isDead;
     enumerator::ObjectType objecttype;
     int score;
@@ -36,6 +37,7 @@ public:
     void setJumpingState(JumpingState *);
     void setScore(int);
     int getScore();
+    bool isAcceptingInput();
 };
 
 #endif // GAMEOBJECT_H

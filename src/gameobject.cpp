@@ -24,6 +24,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     setState(new MovingRight);
     setJumpingState(new IsNotJumping);
     score = 0;
+    acceptsInput = inputComponent->acceptsInput();
 }
 
 bool GameObject::event(QEvent *input_event)
@@ -61,4 +62,9 @@ void GameObject::setIsDead(bool a)
 bool GameObject::getIsDead()
 {
     return this->isDead;
+}
+
+bool GameObject::isAcceptingInput()
+{
+    return acceptsInput;
 }
