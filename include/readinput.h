@@ -27,7 +27,7 @@ class ReadInput
     GameState *gameState;
     QGraphicsScene * scene;
 
-    void functionToCreateTileMap(std::string file_path , int size_of_tile , int row_tile_matrix_size , int column_tile_matrix_size);
+    void functionToCreateTileMap(std::string file_path);
     void functionToCreateGem(std::string file_path);
     void functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input);
     void functionToCreateMonsterGameObject(std::string file_path);

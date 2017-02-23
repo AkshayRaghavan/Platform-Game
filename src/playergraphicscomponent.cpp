@@ -12,22 +12,29 @@ PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , 
 {
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
+        if(images_total_count[i] == 0)
+        {
+            continue;
+        }
         this->pixMapMatrix.push_back(new QPixmap[images_total_count[i]]);
         this->imagesTotalCount.push_back(images_total_count[i]);
         this->graphicsCounter.push_back(0);
     }
 
-    initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk (" , this->pixMapMatrix[0] ,  scaling_factor);
-    initializePixMaps(images_total_count[1] , images_location + "/walk left/Walk (" , this->pixMapMatrix[1] ,  scaling_factor);
+    initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk(" , this->pixMapMatrix[0] ,  scaling_factor);
+    initializePixMaps(images_total_count[1] , images_location + "/walk left/Walk(" , this->pixMapMatrix[1] ,  scaling_factor);
 
-    initializePixMaps(images_total_count[2] , images_location + "/idle right/Idle (" , this->pixMapMatrix[2] ,  scaling_factor);
-    initializePixMaps(images_total_count[3] , images_location + "/idle left/Idle (" , this->pixMapMatrix[3] ,  scaling_factor);
+    initializePixMaps(images_total_count[2] , images_location + "/idle right/Idle(" , this->pixMapMatrix[2] ,  scaling_factor);
+    initializePixMaps(images_total_count[3] , images_location + "/idle left/Idle(" , this->pixMapMatrix[3] ,  scaling_factor);
 
-    initializePixMaps(images_total_count[4] , images_location + "/dead right/Dead (" , this->pixMapMatrix[4] ,  scaling_factor);
-    initializePixMaps(images_total_count[5] , images_location + "/dead left/Dead (" , this->pixMapMatrix[5] ,  scaling_factor);
+    initializePixMaps(images_total_count[4] , images_location + "/dead right/Dead(" , this->pixMapMatrix[4] ,  scaling_factor);
+    initializePixMaps(images_total_count[5] , images_location + "/dead left/Dead(" , this->pixMapMatrix[5] ,  scaling_factor);
 
-    initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump (" , this->pixMapMatrix[6] ,  scaling_factor);
-    initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump (" , this->pixMapMatrix[7] ,  scaling_factor);
+    if(this->isMonster == false)
+    {
+        initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" , this->pixMapMatrix[6] ,  scaling_factor);
+        initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" , this->pixMapMatrix[7] ,  scaling_factor);
+    }
 
     this->setPixmap(this->pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
@@ -142,11 +149,6 @@ bool PlayerGraphicsComponent::getIsMonster()
 {
     return this->isMonster;
 }
-
-
-
-
-
 
 
 
