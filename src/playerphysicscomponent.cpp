@@ -66,8 +66,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
                 delete colliding_items[i];
             }
             if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent)){
-                if(((*colliding_items[i]).parent()).getObjectType() == enumerator::ObjectType::ENEMY){
-
+                if(((*colliding_items[i]).getismonster()) == TRUE ){
+                    // getismonster() is a member of graphics component to check moster
                     if(state_index == enumerator::State::MOVING_RIGHT)
                     {
                         ob.setState(new DeadRight);
