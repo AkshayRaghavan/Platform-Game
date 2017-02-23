@@ -65,6 +65,19 @@ void PlayerPhysicsComponent::update(GameObject & ob)
                 ob.scene->removeItem(colliding_items[i]);
                 delete colliding_items[i];
             }
+            if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent)){
+                if(((*colliding_items[i]).parent()).getObjectType() == enumerator::ObjectType::ENEMY){
+
+                    if(state_index == enumerator::State::MOVING_RIGHT)
+                    {
+                        ob.setState(new DeadRight);
+                    }
+                    else
+                    {
+                        ob.setState(new DeadLeft);
+                    }
+                }
+            }
         }
     }
 

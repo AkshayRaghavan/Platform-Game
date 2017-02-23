@@ -9,12 +9,13 @@
 #include "physicscomponent.h"
 #include <QObject>
 #include <QGraphicsScene>
-
+#include "enumerator.h"
 
 class GameObject : public QObject
 {
 private:
         bool isDead;
+        enumerator::ObjectType objecttype;
 public:
     const int maxJumpCount;
     inline void setIsDead(bool a){
@@ -23,6 +24,8 @@ public:
     inline bool getIsDead(){
         return this->isDead;
     }
+    enumerator::ObjectType getObjectType();
+    void setObjectType(enumerator::ObjectType a);
     GameObject(InputComponent *, Keys, const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;

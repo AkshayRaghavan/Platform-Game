@@ -34,7 +34,8 @@ SOURCES += main.cpp \
     src/physicscomponent.cpp \
     src/playerphysicscomponent.cpp \
     src/tile.cpp \
-    src/gem.cpp
+    src/gem.cpp \
+    src/monsterphysicscomponent.cpp
 
 HEADERS  += \
     include/graphicscomponent.h \
@@ -48,7 +49,8 @@ HEADERS  += \
     include/physicscomponent.h \
     include/playerphysicscomponent.h \
     include/tile.h \
-    include/gem.h
+    include/gem.h \
+    include/monsterphysicscomponent.h
 
 FORMS    +=
 
