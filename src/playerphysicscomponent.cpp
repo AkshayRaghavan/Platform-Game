@@ -24,8 +24,6 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     this->scene = scene;
     curJumpCount = 0;
     maxJumpCount = 20;
-    qDebug() <<"physics "<<twidth << " , " << theight;
-
 }
 
 void PlayerPhysicsComponent::update(GameObject & ob)

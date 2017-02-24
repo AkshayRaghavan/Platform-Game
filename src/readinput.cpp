@@ -49,22 +49,16 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path)
 {
-    qDebug() << "TILE";
     this->functionToCreateTileMap(tile_map_path);
-    qDebug() << "GEM";
 
     this->functionToCreateGem(gem_path);
-    qDebug() << "PLAYER";
 
     this->functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
-    qDebug() << "PLAYER";
 
     this->functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
-    qDebug() << "MONSTER";
 
     this->functionToCreateMonsterGameObject(monster_file_path);
 
-    qDebug() << "MONSTER RETuen";
 
     return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
 }
