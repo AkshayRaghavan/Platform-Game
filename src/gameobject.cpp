@@ -4,6 +4,7 @@
 #include "stopright.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
+#include "deadright.h"
 #include <QCoreApplication>
 #include <QDebug>
 

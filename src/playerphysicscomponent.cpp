@@ -57,7 +57,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             newy = newy - 2*(height_of_tile);
             curJumpCount++;
         }
-        if((newy + height + height_of_tile < screenHeight) && (newx + width < screenWidth) && (((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle()))) {
+        if((newy + height_of_tile < screenHeight) && (newx < screenWidth) && (((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle()))) {
             ob.setJumpingState(new IsNotJumping);
             curJumpCount = 0;
         }
@@ -104,8 +104,9 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             }
         }
     }
-   if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
-    // if(canMove)
+
+    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    //if(canMove)
     {
       //  qDebug() <<"harsh "<<newy;
         ob.graphicsComponent->setPos(newx,newy);
