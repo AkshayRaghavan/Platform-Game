@@ -5,6 +5,7 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 #include <QCoreApplication>
+#include <QDebug>
 
 enumerator::ObjectType GameObject::getObjectType()
 {
@@ -32,6 +33,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
 
 bool GameObject::event(QEvent *input_event)
 {
+    qDebug() << "received by game object";
     return QCoreApplication::sendEvent(inputComponent,input_event);
 }
 

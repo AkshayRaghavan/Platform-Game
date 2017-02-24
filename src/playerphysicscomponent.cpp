@@ -12,7 +12,7 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 
-PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
+PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
 
     this->Tilesmap = Tilesmap;
@@ -22,7 +22,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &
     screenWidth = swidth;
     this->scene = scene;
     curJumpCount = 0;
-    maxJumpCount = 5;
+    maxJumpCount = 20;
     qDebug() <<"physics "<<twidth << " , " << theight;
 
 }
@@ -57,7 +57,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             newy = newy - 2*(height_of_tile);
             curJumpCount++;
         }
-        if(((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle())) {
+        if((newy + height + height_of_tile < screenHeight) && (newx + width < screenWidth) && (((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle()))) {
             ob.setJumpingState(new IsNotJumping);
             curJumpCount = 0;
         }
@@ -87,8 +87,25 @@ void PlayerPhysicsComponent::update(GameObject & ob)
 
    // qDebug() << newy/height_of_tile << newx/width_of_tile;
    // qDebug() << Tilesmap[newy/height_of_tile][newx/width_of_tile]->getIsObstacle();
-
-    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    bool canMove = true;
+    for(int i = newy; i < newy + height; i++)
+    {
+        for(int j = newx; j < newx + width; j++)
+        {
+            if((i + height_of_tile  < screenHeight) && (j + width_of_tile  < screenWidth) && (Tilesmap[i/height_of_tile][j/width_of_tile])->getIsObstacle())
+            {
+//                qDebug() << "made false, tried to go to "<<newx<<" "<<newy;
+                canMove = false;
+            }
+            else
+            {
+//                qDebug() << "made false, tried to go to "<<newx<<" "<<newy;
+                canMove = false;
+            }
+        }
+    }
+  //  if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    if(canMove)
     {
       //  qDebug() <<"harsh "<<newy;
         ob.graphicsComponent->setPos(newx,newy);

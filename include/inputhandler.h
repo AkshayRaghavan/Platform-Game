@@ -2,6 +2,8 @@
 #define INPUTHANDLER_H
 
 #include <QObject>
+#include <QGraphicsItem>
+#include <QGraphicsView>
 #include <QCoreApplication>
 #include <QEvent>
 #include <QKeyEvent>
@@ -10,13 +12,14 @@
 #include "gamestate.h"
 #include "keys.h"
 
-class InputHandler : public QObject
+class InputHandler : public QGraphicsView
 {
 private:
     GameState *gameState;
 public:
     InputHandler(GameState *);
-    bool eventFilter(QObject *watched, QEvent *event);
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
 };
 
 #endif // INPUTHANDLER_H

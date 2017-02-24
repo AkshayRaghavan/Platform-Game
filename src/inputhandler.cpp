@@ -1,25 +1,45 @@
 #include "inputhandler.h"
 #include "gameobject.h"
 #include <QEvent>
+#include <QDebug>
 
 
-bool InputHandler::eventFilter(QObject *watched, QEvent *event)
+void InputHandler::keyPressEvent(QKeyEvent *event)
 {
+    qDebug() << "received event in event filter";
     std::vector<GameObject*> gameObjects = (this->gameState)->getGameObjects();
     QKeyEvent *key_event = dynamic_cast<QKeyEvent*>(event);
     if(!key_event)
     {
-        return false;
+        return;
     }
     for(int i = 0; i < gameObjects.size(); i++)
     {
         if( (gameObjects[i]->GameObject::isAcceptingInput()) && (gameObjects[i]->inputComponent->keys)->find(static_cast<Qt::Key> (key_event->key())))
         {
-            QCoreApplication::postEvent(gameObjects[i],event);
-            return true;
+            qDebug() << "posting event";
+            QCoreApplication::sendEvent(gameObjects[i],event);
         }
     }
-    return false;
+}
+
+void InputHandler::keyReleaseEvent(QKeyEvent *event)
+{
+    qDebug() << "received event in event filter";
+    std::vector<GameObject*> gameObjects = (this->gameState)->getGameObjects();
+    QKeyEvent *key_event = dynamic_cast<QKeyEvent*>(event);
+    if(!key_event)
+    {
+        return;
+    }
+    for(int i = 0; i < gameObjects.size(); i++)
+    {
+        if( (gameObjects[i]->GameObject::isAcceptingInput()) && (gameObjects[i]->inputComponent->keys)->find(static_cast<Qt::Key> (key_event->key())))
+        {
+            qDebug() << "posting event";
+            QCoreApplication::sendEvent(gameObjects[i],event);
+        }
+    }
 }
 
 InputHandler::InputHandler(GameState *input_game_state)
