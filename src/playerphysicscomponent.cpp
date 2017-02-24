@@ -148,10 +148,10 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             }
         }*/
     }
-
+newy+=height_of_tile;
     if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
     {
-        newy+=height_of_tile;
+
         ob.graphicsComponent->setPos(newx,newy);
     }
 
