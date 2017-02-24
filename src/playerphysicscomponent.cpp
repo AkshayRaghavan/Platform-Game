@@ -22,7 +22,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &
     screenWidth = swidth;
     this->scene = scene;
     curJumpCount = 0;
-    maxJumpCount = 5;
+    maxJumpCount = 20;
     qDebug() <<"physics "<<twidth << " , " << theight;
 
 }
