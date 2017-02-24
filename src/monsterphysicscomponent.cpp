@@ -13,12 +13,29 @@ MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>>
 
 void MonsterPhysicsComponent::update(GameObject & ob)
 {
-    int newx,newy;
-    newx=ob.graphicsComponent->x();
-    newy=ob.graphicsComponent->y();
+    int newx,newy,height,width;
+    std::vector<qreal> details(4);
+    details = ob.graphicsComponent->getSizePositionOfObject();
+    newx = details[0];
+    newy = details[1];
+    width = details[2];
+    height = details[3];
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
-    newy-=width_of_tile;
+
+    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    {
+        if(newx<=0)
+        {
+            newx=0;
+        }
+        else if ( newx + width > screenWidth-width_of_tile )
+        {
+            newx= screenWidth - width_of_tile - width;
+        }
+        ob.graphicsComponent->setPos(newx,newy);
+    }
+
 
     if(state_index == enumerator::State::MOVING_RIGHT)
     {
@@ -38,14 +55,6 @@ void MonsterPhysicsComponent::update(GameObject & ob)
         newx= screenWidth - width_of_tile;
     }
 
-    if (newy <= 0)
-    {
-        newy=0;
-    }
-    else if ( newy > screenHeight-height_of_tile)
-    {
-       newy= screenHeight-height_of_tile;
-    }
     if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle())
     {
         ob.graphicsComponent->setOffset(newx,newy);

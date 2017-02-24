@@ -86,13 +86,13 @@ int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
 std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
 {
     QRectF obj = this->boundingRect();
+ qDebug() << obj;
+
     std::vector<qreal> ans(4);
     ans[0] = (this->x());
     ans[1] = (this->y());
     ans[2] = (obj.width());
     ans[3] = (obj.height());
-
-  //  scene->addRect(r);
     return ans;
 }
 

@@ -15,7 +15,7 @@ class PlayerPhysicsComponent : public PhysicsComponent
 private:
     int velocity,acceleration;
     int newx,newy;
-    std::vector<std::vector<Tile*>> tilesMap;
+    std::vector<std::vector<Tile*> > tilesMap;
     QGraphicsScene * scene;
     int width_of_tile,height_of_tile,screenWidth,screenHeight;
     int curJumpCount,maxJumpCount;

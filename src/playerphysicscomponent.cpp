@@ -11,6 +11,7 @@
 #include "gameobject.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
+#include <QPainter>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
@@ -35,14 +36,24 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     newx = details[0];
     newy = details[1];
     width = details[2];
-    height = details[3];
+    height = details[3];*/
 
     //qDebug() <<"tata "<<newx << " , "<<newy<<" , "<<width<<" , "<<height;
-    enumerator::State state_index =  ((ob.state)->type());
-    enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
-    newy += height_of_tile;
+/*    enumerator::State state_index =  ((ob.state)->type());
+    enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());*/
+
+    /*if(Tilesmap[newy/height_of_tile + 1][newx/width_of_tile]->getIsObstacle())
+    {
+        ob.setState(new IsJumping);
+    }*/
+
+    /*if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    {
+        newy+=height_of_tile;
+        ob.graphicsComponent->setPos(newx,newy);
+    }*/
     //qDebug() <<"physics "<<newy;
-    if(state_index == enumerator::State::MOVING_RIGHT)
+ /*   if(state_index == enumerator::State::MOVING_RIGHT)
     {
         newx+=width_of_tile;
     }
@@ -51,25 +62,29 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
         newx-=width_of_tile;
     }
 
+    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    {
+        if(newx<=0)
+        {
+            newx=0;
+        }
+        else if ( newx + width > screenWidth-width_of_tile )
+        {
+            newx= screenWidth - width_of_tile - width;
+        }
+        ob.graphicsComponent->setPos(newx,newy);
+    }
+
     if(jumping_state_index == enumerator::JumpingState::IS_JUMPING)
     {
         if(curJumpCount <= maxJumpCount){
             newy = newy - 2*(height_of_tile);
             curJumpCount++;
         }
-        if((newy + height + height_of_tile < screenHeight) && (newx + width < screenWidth) && (((tilesMap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((tilesMap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle()))) {
+        if((newy + height_of_tile < screenHeight) && (newx < screenWidth) && (((Tilesmap[(newy+height+height_of_tile)/height_of_tile][newx/width_of_tile])->getIsObstacle()) || ((Tilesmap[(newy+height+height_of_tile)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle()))) {
             ob.setJumpingState(new IsNotJumping);
             curJumpCount = 0;
         }
-    }
-
-    if(newx<=0)
-    {
-        newx=0;
-    }
-    else if ( newx + width > screenWidth-width_of_tile )
-    {
-        newx= screenWidth - width_of_tile - width;
     }
 
     if (newy <= 0)
@@ -79,7 +94,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     else if ( newy + height > screenHeight-height_of_tile)
     {
        newy= screenHeight-height_of_tile - height;
-    }
+    }*/
 
 
     //qDebug() << Tilesmap[newy/height_of_tile][newx/width_of_tile];
@@ -87,7 +102,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
 
    // qDebug() << newy/height_of_tile << newx/width_of_tile;
    // qDebug() << Tilesmap[newy/height_of_tile][newx/width_of_tile]->getIsObstacle();
-    bool canMove = true;
+  /*  bool canMove = true;
     for(int i = newy; i < newy + height; i++)
     {
         for(int j = newx; j < newx + width; j++)
@@ -103,13 +118,14 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
                 canMove = false;
             }
         }
-    }
-    if(!((tilesMap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (tilesMap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
-  //  if(canMove)
-    {
+    }*/
+
+ //   if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    //if(canMove)
+//    {
       //  qDebug() <<"harsh "<<newy;
-        ob.graphicsComponent->setPos(newx,newy);
-        QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
+ //       ob.graphicsComponent->setPos(newx,newy);
+        /*QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
         for(int i = 0, n = colliding_items.size();i<n;i++) {
             if(typeid(*(colliding_items[i])) == typeid(Gem)){
                 ob.setScore(ob.getScore()+1);
@@ -119,7 +135,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
             if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent)){
                 GraphicsComponent * temp;
                 temp = (GraphicsComponent *)colliding_items[i];
-                if(((*temp).getIsMonster()) == true ){
+                if(((*temp).getIsMonster()) == true) {
                     // getismonster() is a member of graphics component to check moster
                     if(state_index == enumerator::State::MOVING_RIGHT)
                     {
@@ -131,7 +147,13 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
                     }
                 }
             }
-        }
+        }*/
+/*    }
+newy+=height_of_tile;
+    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[(newy + height)/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    {
+
+        ob.graphicsComponent->setPos(newx,newy);
     }
 
 
@@ -270,6 +292,14 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             qDebug() << "set to not jumping";
             gameObject.setJumpingState(new IsNotJumping);
             curJumpCount = 0;
+        }
+    }
+    else if(current_player_jumping_state == enumerator::JumpingState::IS_NOT_JUMPING)
+    {
+        if(testPositionForPlayer(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile),player_width,player_height))
+        {
+            gameObject.setJumpingState(new IsJumping(gameObject));
+            curJumpCount = maxJumpCount;
         }
     }
     int going_to_tile_row = going_to_point.y()/height_of_tile;
