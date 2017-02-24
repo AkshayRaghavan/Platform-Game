@@ -1,4 +1,6 @@
 #include "playergraphicscomponent.h"
+#include <QPainter>
+#include <QPen>
 
 /*
   How to call constructor : (0 ... 7)
@@ -39,6 +41,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::s
     this->setPixmap(this->pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
     scene->addItem(this);
+    this->scene = scene;
 
 }
 
@@ -88,6 +91,8 @@ std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
     ans[1] = (this->y());
     ans[2] = (obj.width());
     ans[3] = (obj.height());
+
+  //  scene->addRect(r);
     return ans;
 }
 
@@ -152,4 +157,5 @@ bool PlayerGraphicsComponent::getIsMonster()
 {
     return this->isMonster;
 }
+
 

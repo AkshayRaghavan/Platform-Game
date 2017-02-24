@@ -26,7 +26,7 @@ private:
     //Array for saving total images in a graphic state
     std::vector<int> imagesTotalCount;
     //Array for telling which image of each state to be displayed next
-
+    QGraphicsScene *scene; //remove later - Sukrut
     std::vector<int> graphicsCounter;
 
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
