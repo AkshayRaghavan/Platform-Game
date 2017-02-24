@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++14
 
+QMAKE_CXXFLAGS += --std=c++0x
 
 SOURCES += main.cpp \
     src/computerinputcomponent.cpp \

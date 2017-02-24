@@ -9,7 +9,7 @@
 class MonsterPhysicsComponent : public PhysicsComponent
 {
 public:
-    MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth);
+    MonsterPhysicsComponent(std::vector< std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth);
     virtual ~MonsterPhysicsComponent() {}
     void update(GameObject &ob);
 };
