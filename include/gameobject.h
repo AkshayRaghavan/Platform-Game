@@ -8,7 +8,6 @@
 #include "jumpingstate.h"
 #include "graphicscomponent.h"
 #include "physicscomponent.h"
-#include "physicscomponent.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include "enumerator.h"

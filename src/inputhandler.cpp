@@ -6,7 +6,6 @@
 
 void InputHandler::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "received event in event filter";
     std::vector<GameObject*> gameObjects = (this->gameState)->getGameObjects();
     QKeyEvent *key_event = dynamic_cast<QKeyEvent*>(event);
     if(!key_event)

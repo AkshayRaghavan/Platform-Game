@@ -158,89 +158,6 @@ newy+=height_of_tile;
 
 }*/
 
-bool PlayerPhysicsComponent::inRange(QPointF input_point)
-{
-    qreal x = input_point.x();
-    qreal y = input_point.y();
-    int number_of_rows_in_map = tilesMap.size();
-    int number_of_columns_in_map;
-    if(number_of_rows_in_map > 0)
-    {
-        number_of_columns_in_map = tilesMap[0].size();
-    }
-    else
-    {
-        number_of_columns_in_map = 0;
-    }
-    int tile_row_coordinate = y/height_of_tile;
-    int tile_column_coordinate = x/width_of_tile;
-    if(x < 0 || y < 0 || tile_row_coordinate >= number_of_rows_in_map || tile_column_coordinate >= number_of_columns_in_map)
-    {
-        return false;
-    }
-    if((tilesMap[tile_row_coordinate][tile_column_coordinate])->getIsObstacle())
-    {
-        return false;
-    }
-    return true;
-}
-
-bool PlayerPhysicsComponent::testPoint(QPointF input_point)
-{
-    qreal x = input_point.x();
-    qreal y = input_point.y();
-    int number_of_rows_in_map = tilesMap.size();
-    int number_of_columns_in_map;
-    if(number_of_rows_in_map > 0)
-    {
-        number_of_columns_in_map = tilesMap[0].size();
-    }
-    else
-    {
-        number_of_columns_in_map = 0;
-    }
-    int tile_row_coordinate = y/height_of_tile;
-    int tile_column_coordinate = x/width_of_tile;
-    if(x < 0 || y < 0 || tile_row_coordinate >= number_of_rows_in_map || tile_column_coordinate >= number_of_columns_in_map)
-    {
-        return false;
-    }
-    if((tilesMap[tile_row_coordinate][tile_column_coordinate])->getIsObstacle())
-    {
-        return false;
-    }
-    return true;
-}
-
-bool PlayerPhysicsComponent::testPositionForPlayer(QPointF input_point, qreal player_width, qreal player_height)
-{
-    qreal x = input_point.x();
-    qreal y = input_point.y();
-    int number_of_rows_in_map = tilesMap.size();
-    int number_of_columns_in_map;
-    if(number_of_rows_in_map > 0)
-    {
-        number_of_columns_in_map = tilesMap[0].size();
-    }
-    else
-    {
-        number_of_columns_in_map = 0;
-    }
-    for(int i = x; i < x + player_width; i+= width_of_tile)
-    {
-        for(int j = y; j < y + player_height; j += height_of_tile)
-        {
-            if(!testPoint(QPointF(i,j)))
-            {
- //               qDebug() << "failing because of point " << i << ", " << j;
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-
 void PlayerPhysicsComponent::update(GameObject &gameObject)
 {
     std::vector<qreal> positionAndSize = gameObject.graphicsComponent->getSizePositionOfObject();
@@ -272,6 +189,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
         gameObject.graphicsComponent->setPos(going_to_point);
+        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20);
+
         current_point.setX(going_to_point.x());
     }
     going_to_point = current_point;
@@ -311,6 +230,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
         gameObject.graphicsComponent->setPos(going_to_point);
+        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20);
     }
     else
     {
@@ -321,18 +241,17 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         return;
     }
     QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
-  //  qDebug() << "colliding with " << colliding_items.size() << " items";
     for(int i = 0; i < colliding_items.size(); i++)
     {
   //      qDebug() << "in for";
         if(typeid(*(colliding_items[i])) == typeid(Diamond))
         {
-            qDebug() << "found a gem";
+     //       qDebug() << "found a gem";
             gameObject.setScore(gameObject.getScore()+1);
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
-        else if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent))
+        else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent))
         {
             GraphicsComponent * temp;
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);
@@ -351,5 +270,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         }
     }
 }
+
 
 

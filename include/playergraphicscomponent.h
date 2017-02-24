@@ -8,8 +8,7 @@
 #include "gameobject.h"
 #include <QGraphicsScene>
 #include<QPixmap>
-#include <QPainter>
-#include <QImage>
+#include <QGraphicsTextItem>
 #include<QDebug>
 #include<vector>
 #include <string>
@@ -32,20 +31,21 @@ private:
     QGraphicsScene *scene; //remove later - Sukrut
     std::vector<int> graphicsCounter;
     int fontSize;
+    QGraphicsTextItem * scorePointer;
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
     //used in the constructor
     void initializePixMaps(int images_total_count , std::string image_location ,  QPixmap* array_of_pixmaps , const int image_width , const int image_height);
-    void changeQImage(QPixmap pixmap , int score);
 
 public:
-
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
-    PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , bool is_monster);
+    PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster);
     ~PlayerGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);
     bool getIsMonster();
+    QGraphicsTextItem* getScorePointer();
+
 };
 
 #endif // PLAYERGRAPHICSCOMPONENT_H

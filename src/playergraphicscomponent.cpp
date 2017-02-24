@@ -10,9 +10,8 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , bool is_monster):isMonster(is_monster)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
 {
-    this->fontSize = font_size;
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
         if(images_total_count[i] == 0)
@@ -41,7 +40,18 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::s
 
     this->setPixmap(this->pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
+    if(!is_monster)
+    {
+        this->scorePointer = new QGraphicsTextItem();
+        (this->scorePointer)->setPlainText("0");
+        (this->scorePointer)->setFont(QFont("Helvetica" ));
+        (this->scorePointer)->setDefaultTextColor(QColor(51, 51, 255));
+        (this->scorePointer)->setPos(x_coordinate+10,y_coordinate-20);
+        scene->addItem(this->scorePointer);
+    }
+
     scene->addItem(this);
+
     this->scene = scene;
 
 }
@@ -56,13 +66,6 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
             std::exit(EXIT_FAILURE);
         }
         array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
-        if(! (this->isMonster))
-        {
-            QPainter p(&array_of_pixmaps[i]);
-            p.setPen(QPen(Qt::red));
-            p.setFont(QFont("Times", this->fontSize, QFont::Bold));
-            p.drawText(array_of_pixmaps[i].rect(), Qt::AlignJustify, "0");
-        }
     }
 }
 
@@ -102,14 +105,6 @@ std::vector<qreal> PlayerGraphicsComponent::getSizePositionOfObject()
     return ans;
 }
 
-void PlayerGraphicsComponent::changeQImage(QPixmap pixmap , int score)
-{
-    QPainter p(&pixmap);
-    p.setPen(QPen(Qt::red));
-    p.setFont(QFont("Times", this->fontSize , QFont::Bold));
-    p.drawText(pixmap.rect(), Qt::AlignJustify, std::to_string(score).c_str());
-}
-
 void PlayerGraphicsComponent::update(GameObject &obj)
 {
     enumerator::JumpingState jumpingEnum = (obj.jumpingState)->type();
@@ -118,29 +113,22 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     int state_index = static_cast<int> (stateEnum);
     int jumping_state_index = static_cast<int> (jumpingEnum);
 
-    int matrix_index = 0;
+    if(!this->isMonster)
+    {
+        (this->scorePointer)->setPlainText(std::to_string(obj.getScore()).c_str());
+    }
 
     if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
-    {
+    {        
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_RIGHT || stateEnum == enumerator::State::STOP_LEFT)  //for moving , idle position <right , left>
         {
-            matrix_index = updateGraphicsCounter(state_index);
-           if(! (this->isMonster))
-            {
-                changeQImage(this->pixMapMatrix[state_index][matrix_index] , obj.getScore());
-            }
-            this->setPixmap(this->pixMapMatrix[state_index][matrix_index]);
+            this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
         }
         else if(stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if is dead state
         {
             if(!obj.getIsDead())  //if isDead == false , dead player image slideshow not fully shown , hence show next image
             {
-                matrix_index = updateGraphicsCounter(state_index , &obj);
-               if(! (this->isMonster))
-                {
-                    changeQImage(this->pixMapMatrix[state_index][matrix_index] , obj.getScore());
-                }
-                this->setPixmap(this->pixMapMatrix[state_index][matrix_index]);
+                this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
             }
         }
         else
@@ -153,32 +141,18 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     {
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::STOP_RIGHT )  //jump right
         {
-            matrix_index = updateGraphicsCounter(6);
-           if(! (this->isMonster))
-            {
-                changeQImage(this->pixMapMatrix[6][matrix_index] , obj.getScore());
-            }
-            this->setPixmap(this->pixMapMatrix[6][matrix_index]);
+            this->setPixmap(this->pixMapMatrix[6][updateGraphicsCounter(6)]);
         }
         else if(stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_LEFT )  //jump left
         {
-            matrix_index = updateGraphicsCounter(7);
-           if(! (this->isMonster))
-            {
-                changeQImage(this->pixMapMatrix[7][matrix_index] , obj.getScore());
-            }
-            this->setPixmap(this->pixMapMatrix[7][matrix_index]);
+            this->setPixmap(this->pixMapMatrix[7][updateGraphicsCounter(7)]);
         }
         else if( stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if dead , so stop jumping and show dead image
         {
             if(!obj.getIsDead())
             {
-                matrix_index = updateGraphicsCounter(state_index , &obj);
-               if(! (this->isMonster))
-                {
-                    changeQImage(this->pixMapMatrix[state_index][matrix_index] , obj.getScore());
-                }
-                this->setPixmap(this->pixMapMatrix[state_index][matrix_index]);            }
+                this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+            }
         }
         else
         {
@@ -198,4 +172,7 @@ bool PlayerGraphicsComponent::getIsMonster()
     return this->isMonster;
 }
 
-
+QGraphicsTextItem* PlayerGraphicsComponent::getScorePointer()
+{
+    return this->scorePointer;
+}

@@ -125,9 +125,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         infile >> image_height;
         infile >> x_coordinate;
         infile >> y_coordinate;
-        infile >> font_size;
-        qDebug() << font_size;
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , font_size ,false );
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate ,false );
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
         PhysicsComponent * physics_component = new PlayerPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth , this->scene);
@@ -174,7 +172,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , 0 ,true );
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
 
