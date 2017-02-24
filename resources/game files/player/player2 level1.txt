@@ -2,4 +2,5 @@ resources/images/player1
 10 10 10 10 10 10 10 10
 80 80
 320 0
+20
 28

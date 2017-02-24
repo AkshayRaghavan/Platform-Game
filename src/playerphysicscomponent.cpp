@@ -321,7 +321,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         return;
     }
     QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
-    qDebug() << "colliding with " << colliding_items.size() << " items";
+  //  qDebug() << "colliding with " << colliding_items.size() << " items";
     for(int i = 0; i < colliding_items.size(); i++)
     {
   //      qDebug() << "in for";
