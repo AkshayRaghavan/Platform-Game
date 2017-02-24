@@ -8,7 +8,7 @@
 #include "gamestate.h"
 #include "gameobject.h"
 #include "inputhandler.h"
-
+#include <QDesktopWidget>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
     gameState->installEventFilter(inputHandler); //set focus?
     QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
-    view->setBackgroundBrush(QImage("resources/images/bg2.png"));
-    view->setCacheMode(QGraphicsView::CacheBackground);
+  //  view->setBackgroundBrush(QImage("resources/images/bg2.png"));
+    //view->setCacheMode(QGraphicsView::CacheBackground);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -31,10 +31,17 @@ int main(int argc, char *argv[])
     qDebug() << gameState->screenHeight;
 
 
-    view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
-    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
-    view->show();
+   view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
+   view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
+   view->show();
+
+    QRect rec = QApplication::desktop()->availableGeometry();
+
+    qDebug() <<  rec.width()<< rec.height();
+
+
     QTimer * timer = new QTimer();
+
 
     gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
     timer->start(50);

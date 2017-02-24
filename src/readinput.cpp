@@ -43,7 +43,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 
             (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , top_position ,  left_position  ,width_of_tile , height_of_tile , is_obstacle);
             (this->scene)->addItem(((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR());
-           // qDebug()<<matrix_row_iterator<<" , "<<matrix_column_iterator<<left_position<<" , "<<top_position<<" , "<<is_obstacle<<" , "<<((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR();
+        //     qDebug()<<matrix_row_iterator<<" , "<<matrix_column_iterator<<left_position<<" , "<<top_position<<" , "<<is_obstacle<<" , "<<((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR();
         }
     }
 }
@@ -98,6 +98,8 @@ void ReadInput::functionToCreateGem(std::string file_path)
             break;
         }
         (this->gems).push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate));
+        (this->gems).back()->setQGraphicsScene(this->scene);
+        (this->gems).back()->draw();
         (this->scene)->addItem((this->gems).back());
     }
 }

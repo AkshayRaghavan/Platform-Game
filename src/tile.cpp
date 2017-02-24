@@ -8,7 +8,7 @@ Tile::Tile(QGraphicsScene* scene , int left , int top , int width , int height ,
     this->heightOfTile = height;
     this->top_position = top;
 
-    outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::transparent);
+    outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
     outlinePen.setWidth(1);
     this->r = scene->addRect(left , top , width , height , outlinePen);
     this->isObstacle = is_obstacle;

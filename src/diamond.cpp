@@ -13,7 +13,7 @@ Diamond::Diamond(std::string image_location , int width , int height , qreal x_c
 void Diamond::draw()
 {
     this->setPixmap(this->pixMapImage);
-    (getQGraphicsScene())->addItem(this);
+    (Gem::getQGraphicsScene())->addItem(this);
 }
 
 

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     srand(time(NULL));
     std::ofstream infile;
-    infile.open("level1.txt" , std::ios_base::out);
+    infile.open("tile map level1.txt" , std::ios_base::out);
     if(infile.is_open()) cout<<"SUCCESS";
     else cout<<"FAIL";
     int left = 0 , top = 0;
@@ -18,16 +18,16 @@ int main(int argc, char *argv[])
     bool isobs;
 
     isobs = false;
-    while(matrixRow < 31){
+    while(matrixRow < 161){
         matrixColumn = 0;
-    while(matrixColumn < 51){
+    while(matrixColumn < 241){
         infile << left <<' ' << top << ' ' << isobs << endl;
-        left += 20;
+        left += 5;
         matrixColumn++;
         isobs = (rand()%10)? false : true;
     }
         left = 0;
-        top += 20;
+        top += 5;
         matrixRow++;
     }
 

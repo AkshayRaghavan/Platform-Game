@@ -14,6 +14,7 @@
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
+
     this->Tilesmap = Tilesmap;
     width_of_tile = twidth;
     height_of_tile = theight;
@@ -35,6 +36,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
     newy = details[1];
     width = details[2];
     height = details[3];
+
+    //qDebug() <<"tata "<<newx << " , "<<newy<<" , "<<width<<" , "<<height;
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
     newy += height_of_tile;
@@ -78,9 +81,17 @@ void PlayerPhysicsComponent::update(GameObject & ob)
        newy= screenHeight-height_of_tile - height;
     }
 
+
+    //qDebug() << Tilesmap[newy/height_of_tile][newx/width_of_tile];
+   // qDebug() << newy << newx;
+
+   // qDebug() << newy/height_of_tile << newx/width_of_tile;
+   // qDebug() << Tilesmap[newy/height_of_tile][newx/width_of_tile]->getIsObstacle();
+
     if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
     {
-        ob.graphicsComponent->setOffset(newx,newy);
+      //  qDebug() <<"harsh "<<newy;
+        ob.graphicsComponent->setPos(newx,newy);
         QList<QGraphicsItem *> colliding_items = ob.graphicsComponent->collidingItems();
         for(int i = 0, n = colliding_items.size();i<n;i++) {
             if(typeid(*(colliding_items[i])) == typeid(Gem)){
