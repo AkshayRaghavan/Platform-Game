@@ -1,63 +1,62 @@
 #include "monsterphysicscomponent.h"
 #include <QGraphicsItem>
+#include <QDebug>
 
 MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth)
 {
     velocity = 1;
-    this->Tilesmap = Tilesmap;
+    this->tilesMap = Tilesmap;
     width_of_tile = twidth;
     height_of_tile = theight;
     screenHeight = sheight;
     screenWidth = swidth;
 }
 
-void MonsterPhysicsComponent::update(GameObject & ob)
+void MonsterPhysicsComponent::update(GameObject &gameObject)
 {
-    int newx,newy,height,width;
-    std::vector<qreal> details(4);
-    details = ob.graphicsComponent->getSizePositionOfObject();
-    newx = details[0];
-    newy = details[1];
-    width = details[2];
-    height = details[3];
-    enumerator::State state_index =  ((ob.state)->type());
-    enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
-
-    if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    std::vector<qreal> positionAndSize = gameObject.graphicsComponent->getSizePositionOfObject();
+    int number_of_rows_in_map = tilesMap.size();
+    int number_of_columns_in_map;
+    if(number_of_rows_in_map > 0)
     {
-        if(newx<=0)
-        {
-            newx=0;
-        }
-        else if ( newx + width > screenWidth-width_of_tile )
-        {
-            newx= screenWidth - width_of_tile - width;
-        }
-        ob.graphicsComponent->setPos(newx,newy);
+        number_of_columns_in_map = tilesMap[0].size();
     }
-
-
-    if(state_index == enumerator::State::MOVING_RIGHT)
+    else
     {
-        newx+=width_of_tile;
+        number_of_columns_in_map = 0;
     }
-    else if(state_index == enumerator::State::MOVING_LEFT)
+    QPointF current_point(positionAndSize[0],positionAndSize[1]);
+    QPointF going_to_point = current_point;
+    qreal player_width = positionAndSize[2];
+    qreal player_height = positionAndSize[3];
+    enumerator::State current_player_state = gameObject.state->type();
+    if(current_player_state == enumerator::State::MOVING_RIGHT)
     {
-        newx-=width_of_tile;
+        going_to_point.setX(going_to_point.x() + width_of_tile);
     }
-
-    if(newx<=0)
+    else if(current_player_state == enumerator::State::MOVING_LEFT)
     {
-        newx=0;
+        going_to_point.setX(going_to_point.x() - width_of_tile);
     }
-    else if (newx > screenWidth-width_of_tile)
+    if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        newx= screenWidth - width_of_tile;
+        gameObject.graphicsComponent->setPos(going_to_point);
+        current_point.setX(going_to_point.x());
     }
-
-    if(!(Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle())
+    going_to_point = current_point;
+    int going_to_tile_row = going_to_point.y()/height_of_tile;
+    int going_to_tile_column = going_to_point.x()/width_of_tile;
+    if(inRange(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile)) && !(tilesMap[going_to_tile_row+1][going_to_tile_column])->getIsObstacle())
     {
-        ob.graphicsComponent->setOffset(newx,newy);
+ //       qDebug() << "inrange is true";
+        going_to_point.setY(going_to_point.y()+height_of_tile);
     }
-
+    if(testPositionForPlayer(going_to_point,player_width,player_height))
+    {
+        qDebug() << "monster can now move";
+        gameObject.graphicsComponent->setPos(going_to_point);
+    }
 }
+
+
+
