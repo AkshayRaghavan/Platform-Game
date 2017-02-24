@@ -11,6 +11,7 @@
 #include "gameobject.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
+#include <Qpainter>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
 {
