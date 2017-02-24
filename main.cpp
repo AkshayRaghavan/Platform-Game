@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 
     InputHandler *inputHandler = new InputHandler(gameState);
     gameState->installEventFilter(inputHandler); //set focus?
-   // gameState->setFocus();
     QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
     view->setBackgroundBrush(QImage("resources/images/bg2.png"));

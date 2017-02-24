@@ -22,6 +22,8 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*>> &
     this->scene = scene;
     curJumpCount = 0;
     maxJumpCount = 5;
+    qDebug() <<"physics "<<twidth << " , " << theight;
+
 }
 
 void PlayerPhysicsComponent::update(GameObject & ob)
@@ -35,8 +37,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
     height = details[3];
     enumerator::State state_index =  ((ob.state)->type());
     enumerator::JumpingState jumping_state_index =  ((ob.jumpingState)->type());
-    newy+=height_of_tile;
-
+    newy += height_of_tile;
+    //qDebug() <<"physics "<<newy;
     if(state_index == enumerator::State::MOVING_RIGHT)
     {
         newx+=width_of_tile;
