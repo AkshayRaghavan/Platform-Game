@@ -29,7 +29,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    int left_position = 0 , top_position = 0;
+    int column_position = 0 , row_position = 0;
     bool is_obstacle = false;
 
     for(int matrix_row_iterator = 0; matrix_row_iterator < row_tile_matrix_size; matrix_row_iterator++)
@@ -37,12 +37,11 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
         (this->tileMap).push_back(std::vector<Tile*> (column_tile_matrix_size));
         for(int matrix_column_iterator = 0 ; matrix_column_iterator < column_tile_matrix_size ; matrix_column_iterator++)
         {
-            infile >> left_position;
-            infile >> top_position;
+            infile >> column_position;
+            infile >> row_position;
             infile >> is_obstacle;
 
-            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , top_position ,  left_position  ,width_of_tile , height_of_tile , is_obstacle);
-            (this->scene)->addItem(((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR());
+            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         //     qDebug()<<matrix_row_iterator<<" , "<<matrix_column_iterator<<left_position<<" , "<<top_position<<" , "<<is_obstacle<<" , "<<((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR();
         }
     }
@@ -100,7 +99,6 @@ void ReadInput::functionToCreateGem(std::string file_path)
         (this->gems).push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate));
         (this->gems).back()->setQGraphicsScene(this->scene);
         (this->gems).back()->draw();
-        (this->scene)->addItem((this->gems).back());
     }
 }
 
@@ -133,7 +131,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         infile >> image_height;
         infile >> x_coordinate;
         infile >> y_coordinate;
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
         PhysicsComponent * physics_component = new PlayerPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth , this->scene);
@@ -141,7 +139,6 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         infile >> max_jump_count;
 
         (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , max_jump_count));
-        (this->scene)->addItem(((this->gameObject).back())->graphicsComponent);
 }
 
 
@@ -181,14 +178,11 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true);
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true);
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
 
             (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , 0));
-            (this->scene)->addItem(((this->gameObject).back())->graphicsComponent);
-
-
         }
 
 }

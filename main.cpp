@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
     gameState->installEventFilter(inputHandler); //set focus?
     QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
-  //  view->setBackgroundBrush(QImage("resources/images/bg2.png"));
-    //view->setCacheMode(QGraphicsView::CacheBackground);
+    view->setBackgroundBrush(QImage("resources/images/bg2.png"));
+    view->setCacheMode(QGraphicsView::CacheBackground);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 

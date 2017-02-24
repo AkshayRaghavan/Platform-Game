@@ -8,7 +8,7 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
 {
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
@@ -38,6 +38,8 @@ PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , 
 
     this->setPixmap(this->pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
+    scene->addItem(this);
+
 }
 
 void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int image_width , const int image_height)

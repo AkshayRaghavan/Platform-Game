@@ -12,8 +12,8 @@ class Tile : public QGraphicsRectItem
 {
 private:
     bool isObstacle;
-    int left_position;
-    int top_position;
+    int columnPosition;
+    int rowPosition;
     int widthOfTile;
     int heightOfTile;
     QGraphicsRectItem* r;

@@ -6,6 +6,7 @@
 #include "state.h"
 #include "jumpingstate.h"
 #include "gameobject.h"
+#include <QGraphicsScene>
 #include<QPixmap>
 #include<QDebug>
 #include<vector>
@@ -35,7 +36,7 @@ public:
 
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
-    PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster);
+    PlayerGraphicsComponent(QGraphicsScene * scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster);
     ~PlayerGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);
