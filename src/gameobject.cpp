@@ -33,7 +33,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
 
 bool GameObject::event(QEvent *input_event)
 {
-    qDebug() << "received by game object";
+   // qDebug() << "received by game object";
     return QCoreApplication::sendEvent(inputComponent,input_event);
 }
 

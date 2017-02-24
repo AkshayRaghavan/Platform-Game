@@ -104,8 +104,8 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             }
         }
     }
-  //  if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
-    if(canMove)
+   if(!((Tilesmap[newy/height_of_tile][newx/width_of_tile])->getIsObstacle() || (Tilesmap[newy/height_of_tile][(newx+width)/width_of_tile])->getIsObstacle() ))
+    // if(canMove)
     {
       //  qDebug() <<"harsh "<<newy;
         ob.graphicsComponent->setPos(newx,newy);
@@ -119,7 +119,7 @@ void PlayerPhysicsComponent::update(GameObject & ob)
             if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent)){
                 GraphicsComponent * temp;
                 temp = (GraphicsComponent *)colliding_items[i];
-                if(((*temp).getIsMonster()) == true ){
+                if(((*temp).getIsMonster()) == true) {
                     // getismonster() is a member of graphics component to check moster
                     if(state_index == enumerator::State::MOVING_RIGHT)
                     {
