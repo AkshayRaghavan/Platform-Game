@@ -11,6 +11,7 @@
 #include "gameobject.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
+#include "diamond.h"
 #include <QPainter>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
@@ -317,4 +318,40 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     {
    //     qDebug() << "cannot allow going to " << going_to_tile_row << ", " << going_to_tile_column;
     }
+    if(current_player_state == enumerator::State::DEAD_LEFT || current_player_state == enumerator::State::DEAD_RIGHT)
+    {
+        return;
+    }
+    QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
+    qDebug() << "colliding with " << colliding_items.size() << " items";
+    for(int i = 0; i < colliding_items.size(); i++)
+    {
+  //      qDebug() << "in for";
+        if(typeid(*(colliding_items[i])) == typeid(Diamond))
+        {
+            qDebug() << "found a gem";
+            gameObject.setScore(gameObject.getScore()+1);
+            scene->removeItem(colliding_items[i]);
+            delete colliding_items[i];
+        }
+        else if(typeid(*(colliding_items[i])) == typeid(GraphicsComponent))
+        {
+            GraphicsComponent * temp;
+            temp = static_cast<GraphicsComponent*>(colliding_items[i]);
+            if(((*temp).getIsMonster()) == true)
+            {
+                // getismonster() is a member of graphics component to check monster
+                if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)
+                {
+                    gameObject.setState(new DeadRight);
+                }
+                else
+                {
+                    gameObject.setState(new DeadLeft);
+                }
+            }
+        }
+    }
 }
+
+
