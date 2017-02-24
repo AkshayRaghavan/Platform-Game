@@ -8,6 +8,7 @@
 #include "gameobject.h"
 #include <QGraphicsScene>
 #include<QPixmap>
+#include <QPainter>
 #include<QDebug>
 #include<vector>
 
@@ -21,12 +22,14 @@ class PlayerGraphicsComponent : public GraphicsComponent
 {
 private:
     const bool isMonster;
-    //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
-    std::vector<QPixmap*> pixMapMatrix;
+    //A 2D array to contain QImages of all the images of a player (walk , jump , dead , idle) <right , left for each>
+    std::vector<QImage*> qImageMatrix;
+    //A 2D array to contain QPainter of all the images of a player (walk , jump , dead , idle) <right , left for each>
+    std::vector<QPainter*> painterMatrix;
     //Array for saving total images in a graphic state
     std::vector<int> imagesTotalCount;
     //Array for telling which image of each state to be displayed next
-
+    QGraphicsScene *scene; //remove later - Sukrut
     std::vector<int> graphicsCounter;
 
     int updateGraphicsCounter(int index  , GameObject * obj = NULL);
