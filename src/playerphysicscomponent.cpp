@@ -252,7 +252,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         {
             GraphicsComponent * temp;
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);
-            if(((*temp).getIsMonster()) == true)
+            if(((*temp).getIsDangerous()) == true)
             {
                 // getismonster() is a member of graphics component to check monster
                 if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)

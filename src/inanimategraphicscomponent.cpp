@@ -6,7 +6,7 @@ void InanimateGraphicsComponent::update(GameObject &)
 
 }
 
-bool InanimateGraphicsComponent::getIsMonster()
+bool InanimateGraphicsComponent::isDangerous()
 {
     return true; //or have a parameter?
 }

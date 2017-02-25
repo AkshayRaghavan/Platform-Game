@@ -13,15 +13,18 @@ class GameObject;
 class GraphicsComponent : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
+protected:
+    bool isDangerous;
+    QGraphicsScene *scene;
 public:
     GraphicsComponent(){}
     ~GraphicsComponent() {}
     virtual void update(GameObject &) {}
-    virtual bool getIsMonster() = 0;
+    bool getIsDangerous();
+    QGraphicsScene * getQGraphicsScene();
     virtual std::vector<qreal> getSizePositionOfObject() {}
     virtual void setPosScorePointer( int going_to_x , int going_to_y ){}
 };
 
 
 #endif // GRAPHICSCOMPONENT_H
-

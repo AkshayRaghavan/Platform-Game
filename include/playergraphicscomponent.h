@@ -22,13 +22,11 @@
 class PlayerGraphicsComponent : public GraphicsComponent
 {
 private:
-    const bool isMonster;
     //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
     std::vector<QPixmap*> pixMapMatrix;
     //Array for saving total images in a graphic state
     std::vector<int> imagesTotalCount;
     //Array for telling which image of each state to be displayed next
-    QGraphicsScene *scene; //remove later - Sukrut
     std::vector<int> graphicsCounter;
     const int scoreDisplayDiffX;
     const int scoreDisplayDiffY;
@@ -44,9 +42,7 @@ public:
     ~PlayerGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);
-    bool getIsMonster();
     void setPosScorePointer( int going_to_x , int going_to_y );
-
 };
 
 #endif // PLAYERGRAPHICSCOMPONENT_H
