@@ -31,6 +31,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 
     int column_position = 0 , row_position = 0;
     bool is_obstacle = false;
+    bool is_dangerous = false;
 
     for(int matrix_row_iterator = 0; matrix_row_iterator < row_tile_matrix_size; matrix_row_iterator++)
     {
@@ -40,8 +41,9 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             infile >> column_position;
             infile >> row_position;
             infile >> is_obstacle;
+            infile >> is_dangerous;
 
-            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
+            (this->tileMap)[matrix_row_iterator][matrix_column_iterator] = new Tile(this->scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle, is_dangerous);
         //     qDebug()<<matrix_row_iterator<<" , "<<matrix_column_iterator<<left_position<<" , "<<top_position<<" , "<<is_obstacle<<" , "<<((this->tileMap)[matrix_row_iterator][matrix_column_iterator])->getR();
         }
     }

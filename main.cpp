@@ -15,14 +15,14 @@ int main(int argc, char *argv[])
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
     qDebug() << "start\n";
-    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
+    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/mapfinal.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
     qDebug() << "end";
 
     InputHandler *view = new InputHandler(gameState);
 //    gameState->installEventFilter(view); //set focus?
  //   QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
-    view->setBackgroundBrush(QImage("resources/images/bg2.png"));
+    view->setBackgroundBrush(QImage("resources/images/mapfinal.jpg"));
     view->setCacheMode(QGraphicsView::CacheBackground);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
 
     gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
-    timer->start(50);
+    timer->start(40);
 
     return a.exec();
 }
