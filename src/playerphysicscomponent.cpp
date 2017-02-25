@@ -230,7 +230,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
         gameObject.graphicsComponent->setPos(going_to_point);
-        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20);
+        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20); //don't hardcode //update at end of func instead?
     }
     else
     {
