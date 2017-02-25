@@ -51,7 +51,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path)
 {
-    this->functionToCreateTileMap(tile_map_path);
+  /*  this->functionToCreateTileMap(tile_map_path);
 
     this->functionToCreateGem(gem_path);
 
@@ -59,9 +59,27 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
 
     this->functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
 
-    this->functionToCreateMonsterGameObject(monster_file_path);
+    this->functionToCreateMonsterGameObject(monster_file_path);*/
+
+    std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);}    );
+    std::thread t2( [this , gem_path] (){functionToCreateGem(gem_path);}    );
+    std::thread t3( [this , player1_file_path] (){functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);}    );
+    std::thread t4( [this , player2_file_path] (){functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);}    );
+    std::thread t5( [this , monster_file_path] (){functionToCreateMonsterGameObject(monster_file_path);}    );
 
 
+/*
+    std::thread t2(&ReadInput::functionToCreateGem , gem_path);
+    std::thread t3(&ReadInput::functionToCreatePlayerGameObject , player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
+    std::thread t4(&ReadInput::functionToCreatePlayerGameObject , player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
+    std::thread t5(&ReadInput::functionToCreateMonsterGameObject , monster_file_path);
+*/
+
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
     return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
 }
 

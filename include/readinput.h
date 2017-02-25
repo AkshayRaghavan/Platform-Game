@@ -21,6 +21,7 @@
 #include <vector>
 #include <QString>
 #include<fstream>
+#include <thread>
 
 class ReadInput
 {
