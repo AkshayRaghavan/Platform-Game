@@ -2,7 +2,6 @@
 #define GAMEOBJECT_H
 
 #include "inputcomponent.h"
-#include "graphicscomponent.h"
 #include "keys.h"
 #include "state.h"
 #include "jumpingstate.h"

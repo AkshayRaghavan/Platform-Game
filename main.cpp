@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
-    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/mapfinal.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
+    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/mapfinal.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt" , "resources/game files/fire/fire level1.txt");
 
     InputHandler *view = new InputHandler(gameState);
 //    gameState->installEventFilter(view); //set focus?

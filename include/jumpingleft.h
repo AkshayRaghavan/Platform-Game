@@ -1,7 +1,7 @@
 #ifndef JUMPINGLEFT_H
 #define JUMPINGLEFT_H
 
-#include "jumping.h"
+#include "isjumping.h"
 class GameObject;
 #include <Qt>
 #include <set>

@@ -3,6 +3,7 @@
 
 #include "physicscomponent.h"
 #include "playergraphicscomponent.h"
+#include "firegraphicscomponent.h"
 #include "enumerator.h"
 #include "state.h"
 #include "jumpingstate.h"

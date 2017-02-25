@@ -119,7 +119,7 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     int state_index = static_cast<int> (stateEnum);
     int jumping_state_index = static_cast<int> (jumpingEnum);
 
-    if(isDangerous)
+    if(!isDangerous)
     {
         scorePointer->setPlainText(std::to_string(obj.getScore()).c_str());
     }

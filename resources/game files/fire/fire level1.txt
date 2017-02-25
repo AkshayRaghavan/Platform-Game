@@ -1,0 +1,8 @@
+resources/images/flame/flame
+imageMaxCount 6
+imageSizeWidth,Height 60 60
+playerPositionX,Y
+300 200
+500 50
+900 570
+730 230

@@ -11,10 +11,13 @@
 #include "computerinputcomponent.h"
 #include "graphicscomponent.h"
 #include "playergraphicscomponent.h"
+#include "firegraphicscomponent.h"
 #include "keys.h"
 #include "physicscomponent.h"
 #include "playerphysicscomponent.h"
 #include "monsterphysicscomponent.h"
+#include "emptyinputcomponent.h"
+#include "emptyphysicscomponent.h"
 #include<QDebug>
 #include<QGraphicsScene>
 #include<QKeySequence>
@@ -35,9 +38,10 @@ class ReadInput
     void functionToCreateGem(std::string file_path);
     void functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input);
     void functionToCreateMonsterGameObject(std::string file_path);
+    void functionToCreateFireObject(std::string fire_file_path);
 
 public:
-    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path);
+    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path);
     ReadInput (QGraphicsScene * scene);
 };
 
