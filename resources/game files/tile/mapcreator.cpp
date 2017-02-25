@@ -1,7 +1,7 @@
-#include <iostream.h>
-#include <fstream.h>
-
-void main()
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main()
 {
 int x,y,k=0,fire=0;
 ofstream f;
@@ -109,7 +109,7 @@ fire=1;
 if(y>=265 && y<=285 && x>=815 && x<=845 )
 fire=1;
 
-f << x << " " <<y<< " " <<k << " " << fire <<"\n";
+f << x << " " <<y<< " " <<k << " " <<"\n";
 }
 f.close();
 }
