@@ -52,7 +52,10 @@ SOURCES += main.cpp \
     src/stopleft.cpp \
     src/stopright.cpp \
     src/tile.cpp \
-    src/inputhandler.cpp
+    src/inputhandler.cpp \
+    src/emptyinputcomponent.cpp \
+    src/emptyphysicscomponent.cpp \
+    src/inanimategraphicscomponent.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -82,7 +85,10 @@ HEADERS  += \
     include/stopleft.h \
     include/stopright.h \
     include/tile.h \
-    include/inputhandler.h
+    include/inputhandler.h \
+    include/emptyinputcomponent.h \
+    include/emptyphysicscomponent.h \
+    include/inanimategraphicscomponent.h
 
 FORMS    +=
 
