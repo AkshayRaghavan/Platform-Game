@@ -19,7 +19,7 @@ public:
     virtual void update(GameObject &) {}
     virtual bool getIsMonster() = 0;
     virtual std::vector<qreal> getSizePositionOfObject() {}
-    virtual QGraphicsTextItem* getScorePointer(){}
+    virtual void setPosScorePointer( int going_to_x , int going_to_y ){}
 };
 
 

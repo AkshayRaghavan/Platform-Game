@@ -78,6 +78,9 @@ void ReadInput::functionToCreateGem(std::string file_path)
     std::string image_file_path = "";
     int width = 0 , height = 0;
     qreal x_coordinate = 0 , y_coordinate = 0;
+    std::string temp_string;
+
+    infile >> temp_string >> temp_string >> temp_string;
 
     while(true)
     {
@@ -103,8 +106,12 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
     std::vector<int> images_total_count;
     int images_count_temp;
     int image_width , image_height , font_size;
+    int score_display_diff_x , score_display_diff_y;
+    int max_jump_count;
     qreal x_coordinate;
     qreal y_coordinate;
+
+    std::string tempString;
 
     std::ifstream infile;
     infile.open(file_path , std::ios_base::in);
@@ -116,21 +123,36 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
     }
 
         infile >> images_location;
+        infile >> tempString;
+
         for(int i = 0; i < 8 ; i++)
         {
             infile >> images_count_temp;
             images_total_count.push_back(images_count_temp);
         }
+        infile >> tempString;
         infile >> image_width;
         infile >> image_height;
+
+        infile >> tempString;
         infile >> x_coordinate;
         infile >> y_coordinate;
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate ,false );
+
+        infile >> tempString;
+        infile >> font_size;
+
+        infile >> tempString;
+        infile >> score_display_diff_x;
+        infile >> score_display_diff_y;
+
+        infile >> tempString;
+        infile >> max_jump_count;
+
+        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , font_size , score_display_diff_x , score_display_diff_y , false );
         Keys* key_pointer = new Keys( jump_input, right_input , left_input);
         InputComponent *input_component = new HumanInputComponent(key_pointer);
         PhysicsComponent * physics_component = new PlayerPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth , this->scene);
-        int max_jump_count;
-        infile >> max_jump_count;
+
 
         (this->gameObject).push_back(new GameObject(input_component , graphics_component , physics_component , max_jump_count));
 }
@@ -145,6 +167,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
     qreal x_coordinate;
     qreal y_coordinate;
     int walk_frames_count;
+    std::string temp_string;
 
     std::ifstream infile;
     infile.open(file_path , std::ios_base::in);
@@ -156,13 +179,22 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
     }
 
     infile >> images_location;
+
+    infile >> temp_string;
+
     for(int i = 0; i < 8 ; i++)
     {
         infile >> images_count_temp;
         images_total_count.push_back(images_count_temp);
     }
+
+    infile >> temp_string;
+
     infile >> image_width;
     infile >> image_height;
+
+    infile >> temp_string;
+
         while(true)
         {
             infile >> x_coordinate;
@@ -172,7 +204,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(this->scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , 0 , 0 , 0 , true );
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(this->tileMap , ((this->tileMap)[0][0])->getHeightOfTile() ,  ((this->tileMap)[0][0])->getWidthOfTile() , this->screenHeight , this->screenWidth);
 

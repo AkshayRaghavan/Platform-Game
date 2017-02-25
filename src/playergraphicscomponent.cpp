@@ -10,7 +10,8 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , int score_display_diff_x , int score_display_diff_y , bool is_monster):
+        isMonster(is_monster) , scoreDisplayDiffX(score_display_diff_x) , scoreDisplayDiffY(score_display_diff_y)
 {
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
@@ -44,9 +45,9 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::s
     {
         this->scorePointer = new QGraphicsTextItem();
         (this->scorePointer)->setPlainText("0");
-        (this->scorePointer)->setFont(QFont("Helvetica" ));
+        (this->scorePointer)->setFont(QFont("Helvetica" , font_size));
         (this->scorePointer)->setDefaultTextColor(QColor(51, 51, 255));
-        (this->scorePointer)->setPos(x_coordinate+10,y_coordinate-20);
+        (this->scorePointer)->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
         scene->addItem(this->scorePointer);
     }
 
@@ -68,6 +69,12 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
         array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
     }
 }
+
+void PlayerGraphicsComponent::setPosScorePointer( int going_to_x , int going_to_y )
+{
+    (this->scorePointer)->setPos(going_to_x + this->scoreDisplayDiffX , going_to_y + this->scoreDisplayDiffY);
+}
+
 
 int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
 {
@@ -172,7 +179,3 @@ bool PlayerGraphicsComponent::getIsMonster()
     return this->isMonster;
 }
 
-QGraphicsTextItem* PlayerGraphicsComponent::getScorePointer()
-{
-    return this->scorePointer;
-}

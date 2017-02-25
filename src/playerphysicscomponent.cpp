@@ -189,8 +189,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
         gameObject.graphicsComponent->setPos(going_to_point);
-        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20);
-
         current_point.setX(going_to_point.x());
     }
     going_to_point = current_point;
@@ -230,7 +228,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
         gameObject.graphicsComponent->setPos(going_to_point);
-        ((gameObject.graphicsComponent)->getScorePointer())->setPos(going_to_point.x()+10 , going_to_point.y()-20);
     }
     else
     {
@@ -269,6 +266,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
+    
+    (gameObject.graphicsComponent)->setPosScorePointer( going_to_point.x(), going_to_point.y() );
 }
 
 
