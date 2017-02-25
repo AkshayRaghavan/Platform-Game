@@ -8,11 +8,17 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
 
 {
 //    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
+    isGameRunning = true;
 }
 
 QGraphicsScene * GameState::getScene()
 {
     return scene;
+}
+
+bool GameState::isGameActive()
+{
+    return isGameRunning;
 }
 
 std::vector<GameObject*> GameState::getGameObjects()
@@ -37,10 +43,16 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
+    bool someone_accepting_input = false;
+    if(!isGameRunning)
+    {
+        return;
+    }
     for(int i=0; i<gameObjects.size(); i++)
     {
-        if(gameObjects[i]->isAcceptingInput())
+        if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
         {
+            someone_accepting_input = true;
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
         }
@@ -50,6 +62,10 @@ void GameState::update()
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
         }
+    }
+    if(!someone_accepting_input)
+    {
+        isGameRunning = false;
     }
 }
 

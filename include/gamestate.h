@@ -12,6 +12,7 @@ class GameState : public QObject
 {
     Q_OBJECT
 public:
+    bool isGameRunning;
     GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
     virtual ~GameState(){}
     std::vector<GameObject*> gameObjects;
@@ -21,7 +22,7 @@ public:
     const int screenWidth;
     const int screenHeight;
     QGraphicsScene* getScene();
-
+    bool isGameActive();
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
