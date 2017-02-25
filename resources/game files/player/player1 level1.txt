@@ -1,7 +1,7 @@
 resources/images/player1
 imagesMaxCount 10 10 10 10 10 10 10 10
 imageSizeWidth,Height 60 60
-playerPositionX,Y 0 0
+playerPositionX,Y 25 300
 fontSize 25
 scoreDisplayDiffX,Y 10 -50
 maxJumpCount 28
