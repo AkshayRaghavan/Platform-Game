@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
     qDebug() << "start\n";
-    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/mapfinal.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
+    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt");
     qDebug() << "end";
 
     InputHandler *view = new InputHandler(gameState);
