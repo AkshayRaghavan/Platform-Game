@@ -13,13 +13,13 @@ ComputerInputComponent::ComputerInputComponent(int walk_frames_count)
 
 void ComputerInputComponent::update(GameObject &gameObject)
 {
-    if(currentNumberOfFrames == 0 && gameObject.state->type() == enumerator::State::MOVING_LEFT)
+    if(currentNumberOfFrames == 0 && (gameObject.state->type() == enumerator::State::MOVING_LEFT || gameObject.state->type() == enumerator::State::STOP_LEFT))
     {
         gameObject.setState(new MovingRight);
         currentNumberOfFrames = numberOfFramesPerDirection;
 
     }
-    else if(currentNumberOfFrames == 0 && gameObject.state->type() == enumerator::State::MOVING_RIGHT)
+    else if(currentNumberOfFrames == 0 && (gameObject.state->type() == enumerator::State::MOVING_RIGHT || gameObject.state->type() == enumerator::State::STOP_RIGHT))
     {
         gameObject.setState(new MovingLeft);
         currentNumberOfFrames = numberOfFramesPerDirection;
@@ -28,4 +28,9 @@ void ComputerInputComponent::update(GameObject &gameObject)
     {
         currentNumberOfFrames --;
     }
+}
+
+bool ComputerInputComponent::acceptsInput()
+{
+    return false;
 }

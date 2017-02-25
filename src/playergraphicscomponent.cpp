@@ -1,4 +1,6 @@
 #include "playergraphicscomponent.h"
+#include <QPainter>
+#include <QPen>
 
 /*
   How to call constructor : (0 ... 7)
@@ -8,7 +10,8 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int scaling_factor , qreal x_coordinate , qreal y_coordinate , bool is_monster):isMonster(is_monster)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , int score_display_diff_x , int score_display_diff_y , bool is_monster):
+        isMonster(is_monster) , scoreDisplayDiffX(score_display_diff_x) , scoreDisplayDiffY(score_display_diff_y)
 {
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
@@ -21,26 +24,40 @@ PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , 
         this->graphicsCounter.push_back(0);
     }
 
-    initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk(" , this->pixMapMatrix[0] ,  scaling_factor);
-    initializePixMaps(images_total_count[1] , images_location + "/walk left/Walk(" , this->pixMapMatrix[1] ,  scaling_factor);
+    initializePixMaps(images_total_count[0] , images_location + "/walk right/Walk(" ,  this->pixMapMatrix[0] ,  image_width , image_height);
+    initializePixMaps(images_total_count[1] , images_location + "/walk left/Walk(" ,  this->pixMapMatrix[1] , image_width , image_height);
 
-    initializePixMaps(images_total_count[2] , images_location + "/idle right/Idle(" , this->pixMapMatrix[2] ,  scaling_factor);
-    initializePixMaps(images_total_count[3] , images_location + "/idle left/Idle(" , this->pixMapMatrix[3] ,  scaling_factor);
+    initializePixMaps(images_total_count[2] , images_location + "/idle right/Idle(" ,  this->pixMapMatrix[2] ,  image_width , image_height);
+    initializePixMaps(images_total_count[3] , images_location + "/idle left/Idle(" ,  this->pixMapMatrix[3] , image_width , image_height);
 
-    initializePixMaps(images_total_count[4] , images_location + "/dead right/Dead(" , this->pixMapMatrix[4] ,  scaling_factor);
-    initializePixMaps(images_total_count[5] , images_location + "/dead left/Dead(" , this->pixMapMatrix[5] ,  scaling_factor);
+    initializePixMaps(images_total_count[4] , images_location + "/dead right/Dead(" ,  this->pixMapMatrix[4] , image_width , image_height);
+    initializePixMaps(images_total_count[5] , images_location + "/dead left/Dead(" ,  this->pixMapMatrix[5] , image_width , image_height);
 
     if(this->isMonster == false)
     {
-        initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" , this->pixMapMatrix[6] ,  scaling_factor);
-        initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" , this->pixMapMatrix[7] ,  scaling_factor);
+        initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" ,  this->pixMapMatrix[6] ,  image_width , image_height);
+        initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" ,   this->pixMapMatrix[7],  image_width , image_height);
     }
 
     this->setPixmap(this->pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
+    if(!is_monster)
+    {
+        this->scorePointer = new QGraphicsTextItem();
+        (this->scorePointer)->setPlainText("0");
+        (this->scorePointer)->setFont(QFont("Helvetica" , font_size));
+        (this->scorePointer)->setDefaultTextColor(QColor(51, 51, 255));
+        (this->scorePointer)->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
+        scene->addItem(this->scorePointer);
+    }
+
+    scene->addItem(this);
+
+    this->scene = scene;
+
 }
 
-void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location , QPixmap* array_of_pixmaps , const int scaling_factor)
+void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location ,  QPixmap* array_of_pixmaps , const int image_width , const int image_height)
 {
     for(int i = 0; i < images_total_count; i++)
     {
@@ -49,9 +66,15 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
             qDebug() << "ERROR(playergraphicscomponent.cpp) : Failed To Load Image" << image_location.c_str() << (i+1) << ").png" <<endl;
             std::exit(EXIT_FAILURE);
         }
-        array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(scaling_factor,scaling_factor));  //? ,  Qt::KeepAspectRatio
+        array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
     }
 }
+
+void PlayerGraphicsComponent::setPosScorePointer( int going_to_x , int going_to_y )
+{
+    (this->scorePointer)->setPos(going_to_x + this->scoreDisplayDiffX , going_to_y + this->scoreDisplayDiffY);
+}
+
 
 int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
 {
@@ -97,8 +120,13 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     int state_index = static_cast<int> (stateEnum);
     int jumping_state_index = static_cast<int> (jumpingEnum);
 
-    if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
+    if(!this->isMonster)
     {
+        (this->scorePointer)->setPlainText(std::to_string(obj.getScore()).c_str());
+    }
+
+    if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
+    {        
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_RIGHT || stateEnum == enumerator::State::STOP_LEFT)  //for moving , idle position <right , left>
         {
             this->setPixmap(this->pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
@@ -124,7 +152,7 @@ void PlayerGraphicsComponent::update(GameObject &obj)
         }
         else if(stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_LEFT )  //jump left
         {
-            this->setPixmap(this->pixMapMatrix[7][updateGraphicsCounter(6)]);
+            this->setPixmap(this->pixMapMatrix[7][updateGraphicsCounter(7)]);
         }
         else if( stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if dead , so stop jumping and show dead image
         {

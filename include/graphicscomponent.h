@@ -3,6 +3,7 @@
 
 class GameObject;
 #include<QGraphicsPixmapItem>
+#include<QGraphicsTextItem>
 #include<QObject>
 
 // A class for the graphics of the game objects
@@ -16,8 +17,9 @@ public:
     GraphicsComponent(){}
     ~GraphicsComponent() {}
     virtual void update(GameObject &) {}
-    virtual bool getIsMonster() {}
+    virtual bool getIsMonster() = 0;
     virtual std::vector<qreal> getSizePositionOfObject() {}
+    virtual void setPosScorePointer( int going_to_x , int going_to_y ){}
 };
 
 

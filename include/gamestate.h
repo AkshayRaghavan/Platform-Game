@@ -10,16 +10,24 @@
 
 class GameState : public QObject
 {
+    Q_OBJECT
 public:
+    GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
+    virtual ~GameState(){}
     std::vector<GameObject*> gameObjects;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
     QGraphicsScene *scene;
-    GameState(std::vector<GameObject*>&, std::vector< std::vector<Tile*> >&, std::vector<Gem*>&);
-    QGraphicsScene *getScene();
+    const int screenWidth;
+    const int screenHeight;
+    QGraphicsScene* getScene();
+
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
+//    void setTimerAndConnect(QTimer *);
+
+public slots:
     void update();
 };
 

@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/" >
 
-                
+               
         <file>resources/images/player1/dead left/Dead(1).png</file>
         <file>resources/images/player1/dead left/Dead(2).png</file>
         <file>resources/images/player1/dead left/Dead(3).png</file>
@@ -133,144 +133,7 @@
         <file>resources/images/player1/walk right/Walk(11).png</file>
         <file>resources/images/player1/walk right/Walk(12).png</file>
         <file>resources/images/player1/walk right/Walk(13).png</file>
-        
-        
-        
-        
-        
-        <file>resources/images/player2/dead left/Dead(1).png</file>
-        <file>resources/images/player2/dead left/Dead(2).png</file>
-        <file>resources/images/player2/dead left/Dead(3).png</file>
-        <file>resources/images/player2/dead left/Dead(4).png</file>
-        <file>resources/images/player2/dead left/Dead(5).png</file>
-        <file>resources/images/player2/dead left/Dead(6).png</file>
-        <file>resources/images/player2/dead left/Dead(7).png</file>
-        <file>resources/images/player2/dead left/Dead(8).png</file>
-        <file>resources/images/player2/dead left/Dead(9).png</file>
-        <file>resources/images/player2/dead left/Dead(10).png</file>
-        <file>resources/images/player2/dead left/Dead(11).png</file>
-        <file>resources/images/player2/dead left/Dead(12).png</file>
-        <file>resources/images/player2/dead left/Dead(13).png</file>
-        <file>resources/images/player2/dead left/Dead(14).png</file>
-        <file>resources/images/player2/dead left/Dead(15).png</file>
-        <file>resources/images/player2/dead left/Dead(16).png</file>
-        <file>resources/images/player2/dead left/Dead(17).png</file>
-        
-        <file>resources/images/player2/dead right/Dead(1).png</file>
-        <file>resources/images/player2/dead right/Dead(2).png</file>
-        <file>resources/images/player2/dead right/Dead(3).png</file>
-        <file>resources/images/player2/dead right/Dead(4).png</file>
-        <file>resources/images/player2/dead right/Dead(5).png</file>
-        <file>resources/images/player2/dead right/Dead(6).png</file>
-        <file>resources/images/player2/dead right/Dead(7).png</file>
-        <file>resources/images/player2/dead right/Dead(8).png</file>
-        <file>resources/images/player2/dead right/Dead(9).png</file>
-        <file>resources/images/player2/dead right/Dead(10).png</file>
-        <file>resources/images/player2/dead right/Dead(11).png</file>
-        <file>resources/images/player2/dead right/Dead(12).png</file>
-        <file>resources/images/player2/dead right/Dead(13).png</file>
-        <file>resources/images/player2/dead right/Dead(14).png</file>
-        <file>resources/images/player2/dead right/Dead(15).png</file>
-        <file>resources/images/player2/dead right/Dead(16).png</file>
-        <file>resources/images/player2/dead right/Dead(17).png</file>
-
-        <file>resources/images/player2/idle left/Idle(1).png</file>
-        <file>resources/images/player2/idle left/Idle(2).png</file>
-        <file>resources/images/player2/idle left/Idle(3).png</file>
-        <file>resources/images/player2/idle left/Idle(4).png</file>
-        <file>resources/images/player2/idle left/Idle(5).png</file>
-        <file>resources/images/player2/idle left/Idle(6).png</file>
-        <file>resources/images/player2/idle left/Idle(7).png</file>
-        <file>resources/images/player2/idle left/Idle(8).png</file>
-        <file>resources/images/player2/idle left/Idle(9).png</file>
-        <file>resources/images/player2/idle left/Idle(10).png</file>
-        <file>resources/images/player2/idle left/Idle(11).png</file>
-        <file>resources/images/player2/idle left/Idle(12).png</file>
-        <file>resources/images/player2/idle left/Idle(13).png</file>
-        <file>resources/images/player2/idle left/Idle(14).png</file>
-        <file>resources/images/player2/idle left/Idle(15).png</file>
-        <file>resources/images/player2/idle left/Idle(16).png</file>
-                
-        <file>resources/images/player2/idle right/Idle(1).png</file>
-        <file>resources/images/player2/idle right/Idle(2).png</file>
-        <file>resources/images/player2/idle right/Idle(3).png</file>
-        <file>resources/images/player2/idle right/Idle(4).png</file>
-        <file>resources/images/player2/idle right/Idle(5).png</file>
-        <file>resources/images/player2/idle right/Idle(6).png</file>
-        <file>resources/images/player2/idle right/Idle(7).png</file>
-        <file>resources/images/player2/idle right/Idle(8).png</file>
-        <file>resources/images/player2/idle right/Idle(9).png</file>
-        <file>resources/images/player2/idle right/Idle(10).png</file>
-        <file>resources/images/player2/idle right/Idle(11).png</file>
-        <file>resources/images/player2/idle right/Idle(12).png</file>
-        <file>resources/images/player2/idle right/Idle(13).png</file>
-        <file>resources/images/player2/idle right/Idle(14).png</file>
-        <file>resources/images/player2/idle right/Idle(15).png</file>
-        <file>resources/images/player2/idle right/Idle(16).png</file>
-        
-        <file>resources/images/player2/jump left/Jump(1).png</file>
-        <file>resources/images/player2/jump left/Jump(2).png</file>
-        <file>resources/images/player2/jump left/Jump(3).png</file>
-        <file>resources/images/player2/jump left/Jump(4).png</file>
-        <file>resources/images/player2/jump left/Jump(5).png</file>
-        <file>resources/images/player2/jump left/Jump(6).png</file>
-        <file>resources/images/player2/jump left/Jump(7).png</file>
-        <file>resources/images/player2/jump left/Jump(8).png</file>
-        <file>resources/images/player2/jump left/Jump(9).png</file>
-        <file>resources/images/player2/jump left/Jump(10).png</file>
-        <file>resources/images/player2/jump left/Jump(11).png</file>
-        <file>resources/images/player2/jump left/Jump(12).png</file>
-        <file>resources/images/player2/jump left/Jump(13).png</file>
-        <file>resources/images/player2/jump left/Jump(14).png</file>
-        <file>resources/images/player2/jump left/Jump(15).png</file>
-        <file>resources/images/player2/jump left/Jump(16).png</file>
-        
-        <file>resources/images/player2/jump right/Jump(1).png</file>
-        <file>resources/images/player2/jump right/Jump(2).png</file>
-        <file>resources/images/player2/jump right/Jump(3).png</file>
-        <file>resources/images/player2/jump right/Jump(4).png</file>
-        <file>resources/images/player2/jump right/Jump(5).png</file>
-        <file>resources/images/player2/jump right/Jump(6).png</file>
-        <file>resources/images/player2/jump right/Jump(7).png</file>
-        <file>resources/images/player2/jump right/Jump(8).png</file>
-        <file>resources/images/player2/jump right/Jump(9).png</file>
-        <file>resources/images/player2/jump right/Jump(10).png</file>
-        <file>resources/images/player2/jump right/Jump(11).png</file>
-        <file>resources/images/player2/jump right/Jump(12).png</file>
-        <file>resources/images/player2/jump right/Jump(13).png</file>
-        <file>resources/images/player2/jump right/Jump(14).png</file>
-        <file>resources/images/player2/jump right/Jump(15).png</file>
-        <file>resources/images/player2/jump right/Jump(16).png</file>
-        
-        <file>resources/images/player2/walk left/Walk(1).png</file>
-        <file>resources/images/player2/walk left/Walk(2).png</file>
-        <file>resources/images/player2/walk left/Walk(3).png</file>
-        <file>resources/images/player2/walk left/Walk(4).png</file>
-        <file>resources/images/player2/walk left/Walk(5).png</file>
-        <file>resources/images/player2/walk left/Walk(6).png</file>
-        <file>resources/images/player2/walk left/Walk(7).png</file>
-        <file>resources/images/player2/walk left/Walk(8).png</file>
-        <file>resources/images/player2/walk left/Walk(9).png</file>
-        <file>resources/images/player2/walk left/Walk(10).png</file>
-        <file>resources/images/player2/walk left/Walk(11).png</file>
-        <file>resources/images/player2/walk left/Walk(12).png</file>
-        <file>resources/images/player2/walk left/Walk(13).png</file>
-        
-        <file>resources/images/player2/walk right/Walk(1).png</file>
-        <file>resources/images/player2/walk right/Walk(2).png</file>
-        <file>resources/images/player2/walk right/Walk(3).png</file>
-        <file>resources/images/player2/walk right/Walk(4).png</file>
-        <file>resources/images/player2/walk right/Walk(5).png</file>
-        <file>resources/images/player2/walk right/Walk(6).png</file>
-        <file>resources/images/player2/walk right/Walk(7).png</file>
-        <file>resources/images/player2/walk right/Walk(8).png</file>
-        <file>resources/images/player2/walk right/Walk(9).png</file>
-        <file>resources/images/player2/walk right/Walk(10).png</file>
-        <file>resources/images/player2/walk right/Walk(11).png</file>
-        <file>resources/images/player2/walk right/Walk(12).png</file>
-        <file>resources/images/player2/walk right/Walk(13).png</file>
-        
-
+            
         <file>resources/images/monster/dead left/Dead(1).png</file>
         <file>resources/images/monster/dead left/Dead(2).png</file>
         <file>resources/images/monster/dead left/Dead(3).png</file>
@@ -352,7 +215,12 @@
         <file>resources/images/monster/walk right/Walk(9).png</file>
         
         
-
-        <file>resources/game files/tile/level1.txt</file>
+        <file>resources/game files/gems/diamond map level1.txt</file>
+        <file>resources/game files/monster/monster level1.txt</file>
+        <file>resources/game files/player/player1 level1.txt</file>
+        <file>resources/game files/player/player2 level1.txt</file>
+        <file>resources/game files/tile map level1/mapfinal.txt</file>
+        <file>resources/images/mapfinal.jpg</file>
+        
     </qresource>
 </RCC>

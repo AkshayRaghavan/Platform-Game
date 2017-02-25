@@ -15,6 +15,7 @@
 class GameObject : public QObject
 {
 protected:
+    bool acceptsInput;
     bool isDead;
     enumerator::ObjectType objecttype;
     int score;
@@ -24,7 +25,7 @@ public:
     bool getIsDead();
     enumerator::ObjectType getObjectType();
     void setObjectType(enumerator::ObjectType a);
-    GameObject(InputComponent *, GraphicsComponent *, const int&);
+    GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * ,  const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
@@ -36,6 +37,7 @@ public:
     void setJumpingState(JumpingState *);
     void setScore(int);
     int getScore();
+    bool isAcceptingInput();
 };
 
 #endif // GAMEOBJECT_H

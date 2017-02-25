@@ -12,6 +12,7 @@ public:
     ComputerInputComponent(int);
     virtual ~ComputerInputComponent() {}
     virtual void update(GameObject &);
+    virtual bool acceptsInput();
 };
 
 #endif // COMPUTERINPUTCOMPONENT_H
