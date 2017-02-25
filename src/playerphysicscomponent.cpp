@@ -268,6 +268,21 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
                 }
             }
         }
+        else if(typeid(*(colliding_items[i])) == typeid(Tile))
+        {
+            Tile *check_if_dangerous = static_cast<Tile*>(colliding_items[i]);
+            if(check_if_dangerous->getIsDangerous())
+            {
+                if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)
+                {
+                    gameObject.setState(new DeadRight);
+                }
+                else
+                {
+                    gameObject.setState(new DeadLeft);
+                }
+            }
+        }
     }
 }
 

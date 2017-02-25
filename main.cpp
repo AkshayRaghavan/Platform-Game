@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
 
     gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
-    timer->start(50);
+    timer->start(40);
 
     return a.exec();
 }
