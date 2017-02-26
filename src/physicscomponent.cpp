@@ -103,11 +103,16 @@ bool PhysicsComponent::hasNoPlatformUnder(GameObject &gameObject)
     QPointF current_point(positionAndSize[0],positionAndSize[1]);
     qreal player_width = positionAndSize[2];
     qreal player_height = positionAndSize[3];
-    if(testPoint(QPointF(current_point.x(),current_point.y() + player_height + height_of_tile)))
+    bool result = true;
+    if(gameObject.state->type() == enumerator::State::MOVING_LEFT || gameObject.state->type() == enumerator::State::STOP_LEFT)
     {
-        return true;
+        result = testPoint(QPointF(current_point.x(),current_point.y() + player_height + height_of_tile));
     }
-    return false;
+    if(gameObject.state->type() == enumerator::State::MOVING_RIGHT || gameObject.state->type() == enumerator::State::STOP_RIGHT)
+    {
+        result = testPoint(QPointF(current_point.x()+player_width,current_point.y() + player_height + height_of_tile));
+    }
+    return result;
 }
 
 bool PhysicsComponent::hasObstacleInFront(GameObject &gameObject)
@@ -116,7 +121,7 @@ bool PhysicsComponent::hasObstacleInFront(GameObject &gameObject)
     QPointF current_point(positionAndSize[0],positionAndSize[1]);
     qreal player_width = positionAndSize[2];
     qreal player_height = positionAndSize[3];
-    bool result = true;
+    bool result = false;
     if(gameObject.state->type() == enumerator::State::MOVING_LEFT || gameObject.state->type() == enumerator::State::STOP_LEFT)
     {
         result = !testPositionForPlayer(QPointF(current_point.x()-width_of_tile, current_point.y()),player_width,player_height);

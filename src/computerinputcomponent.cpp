@@ -36,6 +36,14 @@ void ComputerInputComponent::update(GameObject &gameObject)
     {
         gameObject.setState(new MovingLeft);
     }
+    else if(gameObject.state->type() == enumerator::State::STOP_LEFT)
+    {
+        gameObject.setState(new MovingLeft);
+    }
+    else if(gameObject.state->type() == enumerator::State::STOP_RIGHT)
+    {
+        gameObject.setState(new MovingRight);
+    }
 }
 
 bool ComputerInputComponent::acceptsInput()
