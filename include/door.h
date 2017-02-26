@@ -10,6 +10,7 @@ class Door : public QGraphicsRectItem
     qreal y;
     qreal w;
     qreal h;
+    QGraphicsRectItem *r;
 public:
     Door(qreal x, qreal y, qreal w, qreal h, QGraphicsScene *scene);
 };

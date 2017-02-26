@@ -248,7 +248,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
-        else if(typeid(*(colliding_items[i])) == typeid(Door))
+        else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))
         {
             gameObject.setState(new StopRight);
             gameObject.setAcceptingInput(false);
