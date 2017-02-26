@@ -88,7 +88,8 @@ HEADERS  += \
     include/inputhandler.h \
     include/emptyinputcomponent.h \
     include/emptyphysicscomponent.h \
-    include/firegraphicscomponent.h
+    include/firegraphicscomponent.h \
+    include/door.h
 
 FORMS    +=
 
