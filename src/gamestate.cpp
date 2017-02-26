@@ -54,7 +54,6 @@ void GameState::update()
         {
             someone_accepting_input = true;
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
-
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
         }
         else
