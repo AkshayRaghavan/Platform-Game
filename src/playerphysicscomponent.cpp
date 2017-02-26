@@ -248,7 +248,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
-        else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent))
+        else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {
             GraphicsComponent * temp;
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);

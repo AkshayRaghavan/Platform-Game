@@ -57,7 +57,7 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
 
     functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
 
-    //functionToCreateMonsterGameObject(monster_file_path);
+    functionToCreateMonsterGameObject(monster_file_path);
 
     functionToCreateFireObject(fire_file_path);
 
