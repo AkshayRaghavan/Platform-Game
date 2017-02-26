@@ -26,10 +26,10 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> width_of_tile;
     infile >> height_of_tile;
 
-    /*infile >> row_tile_matrix_size;
+    infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    QRect rec = QApplication::desktop()->availableGeometry();
+    /*QRect rec = QApplication::desktop()->availableGeometry();
     screenHeight = rec.height();
     screenWidth = screenHeight * 1.5;
 
