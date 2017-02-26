@@ -21,6 +21,8 @@ public:
     bool inRange(QPointF);
     bool testPoint(QPointF);
     bool testPositionForPlayer(QPointF, qreal, qreal);
+    bool hasNoPlatformUnder(GameObject &);
+    bool hasObstacleInFront(GameObject &);
 };
 
 #endif // PHYSICSCOMPONENT_H
