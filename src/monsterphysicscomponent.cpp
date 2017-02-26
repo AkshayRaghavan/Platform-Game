@@ -2,7 +2,7 @@
 #include <QGraphicsItem>
 #include <QDebug>
 
-MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, int theight, int twidth, int sheight, int swidth)
+MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth)
 {
     velocity = 1;
     this->tilesMap = Tilesmap;

@@ -14,7 +14,7 @@
 #include "diamond.h"
 #include <QPainter>
 
-PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth, QGraphicsScene * scene)
+PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene)
 {
 
     this->tilesMap = Tilesmap;
