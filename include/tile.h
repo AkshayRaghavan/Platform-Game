@@ -16,10 +16,10 @@ private:
     int rowPosition;
     int widthOfTile;
     int heightOfTile;
-    QGraphicsRectItem* r;
+  //  QGraphicsRectItem* r;
 public:
-    Tile(QGraphicsScene* scene , int left , int top , int width , int height , bool isObstacle);
-    QGraphicsRectItem* getR();
+    Tile(/*QGraphicsScene* scene , */int left , int top , int width , int height , bool isObstacle);
+   // QGraphicsRectItem* getR();
     bool getIsObstacle();
     int getWidthOfTile();
     int getHeightOfTile();

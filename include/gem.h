@@ -15,7 +15,6 @@ private:
     int pointValue;
 public:
 
-    QGraphicsScene* scene;
     virtual void draw() {}
     
     int getPointValue();

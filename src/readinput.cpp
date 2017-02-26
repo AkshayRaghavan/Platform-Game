@@ -40,7 +40,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             infile >> row_position;
             infile >> is_obstacle;
 
-            tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
+            tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(/*scene , */column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         }
     }
 }
@@ -48,14 +48,17 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path)
 {
 
-    /* std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
-     t1.join();*/
-    functionToCreateTileMap(tile_map_path);
+     std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
+     std::thread t2( [this , gem_path] (){functionToCreateGem(gem_path);}    );
 
-    /* std::thread t2( [this , gem_path] (){functionToCreateGem(gem_path);}    );
+     t1.join();
      t2.join();
-*/
-   functionToCreateGem(gem_path);
+
+     for(auto it = gems.begin(); it != gems.end() ; it++)
+         (*it)->draw(scene);
+
+
+  // functionToCreateGem(gem_path);
 
     functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
 
@@ -118,7 +121,7 @@ void ReadInput::functionToCreateGem(std::string file_path)
             break;
         }
         gems.push_back(new Diamond(scene , image_file_path , width , height , x_coordinate , y_coordinate));
-       gems.back()->draw();
+       //
     }
 }
 
