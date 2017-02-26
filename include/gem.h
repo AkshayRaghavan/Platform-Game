@@ -11,16 +11,12 @@
 
 class Gem : public QGraphicsPixmapItem
 {
-private:
+protected:
     int pointValue;
 public:
-
-    virtual void draw() {}
-    
+    virtual void drawGem(QGraphicsScene* scene) {}
     int getPointValue();
-    void setPointValue(int pointValue);
-
-    void remove();
+   // void remove(QGraphicsScene* scene);
 };
 
 #endif // GEM_H

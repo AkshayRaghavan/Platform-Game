@@ -55,7 +55,8 @@ SOURCES += main.cpp \
     src/inputhandler.cpp \
     src/emptyinputcomponent.cpp \
     src/emptyphysicscomponent.cpp \
-    src/firegraphicscomponent.cpp
+    src/firegraphicscomponent.cpp \
+    src/scorecomponent.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -88,7 +89,8 @@ HEADERS  += \
     include/inputhandler.h \
     include/emptyinputcomponent.h \
     include/emptyphysicscomponent.h \
-    include/firegraphicscomponent.h
+    include/firegraphicscomponent.h \
+    include/scorecomponent.h
 
 FORMS    +=
 

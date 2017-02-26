@@ -1,8 +1,9 @@
 #include "diamond.h"
 
 
-Diamond::Diamond(std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate)
+Diamond::Diamond(std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate , int point_value)
 {
+    pointValue = point_value;
     QImage diamond_picture(image_location.c_str());
     if(diamond_picture.isNull())
     {
@@ -14,8 +15,7 @@ Diamond::Diamond(std::string image_location , int width , int height , qreal x_c
     this->setPos(x_coordinate , y_coordinate);
     this->setPixmap(pixMapImage);
 }
-
-void Diamond::draw(QGraphicsScene* scene)
+void Diamond::drawGem(QGraphicsScene* scene)
 {
     scene->addItem(this);
 }

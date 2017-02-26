@@ -2,14 +2,10 @@
 
 int Gem::getPointValue()
 {
-    return this->pointValue;
+    return pointValue;
 }
-void Gem::setPointValue(int pointValue)
+/*void Gem::remove(QGraphicsScene* scene)
 {
-    this->pointValue = pointValue;
+    scene->removeItem(this);
 }
-
-void Gem::remove()
-{
-    (this->scene)->removeItem(this);
-}
+*/

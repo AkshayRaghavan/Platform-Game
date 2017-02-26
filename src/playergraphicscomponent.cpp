@@ -10,8 +10,7 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_arg ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , int score_display_diff_x , int score_display_diff_y , bool is_dangerous):
-    scoreDisplayDiffX(score_display_diff_x) , scoreDisplayDiffY(score_display_diff_y)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_arg , std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous)
 {
     isDangerous = is_dangerous;
     scene = scene_formal_arg;
@@ -41,18 +40,18 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_ar
         initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" ,   pixMapMatrix[7],  image_width , image_height);
     }
 
-    setPixmap(pixMapMatrix[2][0]);
-    setPos(x_coordinate,y_coordinate);
-    if(!isDangerous)
+    this->setPixmap(pixMapMatrix[2][0]);
+    this->setPos(x_coordinate,y_coordinate);
+    /* if(isDangerous == false)
     {
-        scorePointer = new QGraphicsTextItem();
-        scorePointer->setPlainText("0");
+        qDebug() << "HELLO";
+      //  scorePointer = new QGraphicsTextItem("0");
         scorePointer->setFont(QFont("Helvetica" , font_size));
         scorePointer->setDefaultTextColor(QColor(51, 51, 255));
         scorePointer->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
-        scene->addItem(scorePointer);
-    }
-    scene->addItem(this);
+       // scene->addItem(scorePointer);
+    }*/
+   // scene->addItem(this);
 }
 
 
@@ -60,20 +59,16 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
 {
     for(int i = 0; i < images_total_count; i++)
     {
-        if(!array_of_pixmaps[i].load((image_location + std::to_string(i+1) +").png").c_str()))
-        {
-            qDebug() << "ERROR(playergraphicscomponent.cpp) : Failed To Load Image" << image_location.c_str() << (i+1) << ").png" <<endl;
-            std::exit(EXIT_FAILURE);
-        }
-        array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
+            QImage player_picture((image_location + std::to_string(i+1) +").png").c_str());
+           if(player_picture.isNull())
+           {
+               qDebug() << "ERROR(playergraphicscomponent.cpp) : Failed To Load Image" << image_location.c_str() << (i+1) << ").png" <<endl;
+               std::exit(EXIT_FAILURE);
+           }
+           array_of_pixmaps[i] = QPixmap::fromImage(player_picture);
+           array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
     }
 }
-
-void PlayerGraphicsComponent::setPosScorePointer( int going_to_x , int going_to_y )
-{
-    scorePointer->setPos(going_to_x + scoreDisplayDiffX , going_to_y + scoreDisplayDiffY);
-}
-
 
 int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
 {
@@ -119,10 +114,11 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     int state_index = static_cast<int> (stateEnum);
     int jumping_state_index = static_cast<int> (jumpingEnum);
 
-    if(!isDangerous)
+  /*  if(!isDangerous)
     {
-        scorePointer->setPlainText(std::to_string(obj.getScore()).c_str());
-    }
+     //  qDebug()<<"obj"<<scorePointer;
+         (this->scorePointer)->setPlainText(std::to_string(obj.getScore()).c_str());
+    }*/
 
     if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
     {        

@@ -54,14 +54,17 @@ void GameState::update()
         {
             someone_accepting_input = true;
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
-
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
+            if(gameObjects[i]->scoreComponent)
+                gameObjects[i]->scoreComponent->update(gameObjects[i]->getScore());
         }
         else
         {
             gameObjects[i]->inputComponent->update(*gameObjects[i]);
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
+            if(gameObjects[i]->scoreComponent)
+                gameObjects[i]->scoreComponent->update(gameObjects[i]->getScore());
         }
     }
     if(!someone_accepting_input)

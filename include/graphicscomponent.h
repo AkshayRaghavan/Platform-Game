@@ -23,7 +23,6 @@ public:
     bool getIsDangerous();
     QGraphicsScene * getQGraphicsScene();
     virtual std::vector<qreal> getSizePositionOfObject() {}
-    virtual void setPosScorePointer( int going_to_x , int going_to_y ){}
 };
 
 
