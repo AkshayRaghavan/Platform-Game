@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     QImage *background = new QImage(back->scaled(gameState->screenWidth,gameState->screenHeight,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);
     view->setBackgroundBrush(*brush);
+    //view->setBackgroundBrush(QImage("resources/images/bg2.png"));
     view->setCacheMode(QGraphicsView::CacheBackground);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

@@ -1,4 +1,6 @@
 #include "readinput.h"
+#include <QApplication>
+#include <QDesktopWidget>
 
 ReadInput::ReadInput(QGraphicsScene * scene_local)
 {
@@ -20,21 +22,21 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     qreal width_of_tile;
     qreal height_of_tile;
 
-    infile >> screenWidth;
+    /*infile >> screenWidth;
     infile >> screenHeight;
 
     infile >> width_of_tile;
-    infile >> height_of_tile;
+    infile >> height_of_tile;*/
 
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    /*QRect rec = QApplication::desktop()->availableGeometry();
+    QRect rec = QApplication::desktop()->availableGeometry();
     screenHeight = rec.height();
     screenWidth = screenHeight * 1.5;
 
     width_of_tile = screenWidth / column_tile_matrix_size;
-    height_of_tile = screenHeight / row_tile_matrix_size; */
+    height_of_tile = screenHeight / row_tile_matrix_size;
 
     int column_position = 0 , row_position = 0;
     bool is_obstacle = false;
