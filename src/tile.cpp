@@ -8,9 +8,9 @@ Tile::Tile(QGraphicsScene* scene , qreal column , qreal row , qreal width , qrea
     this->heightOfTile = height;
     this->rowPosition = row;
 
-    /*outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
+    outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
     outlinePen.setWidth(1);
-    this->r = scene->addRect(column , row , width , height , outlinePen); */
+    this->r = scene->addRect(column , row , width , height , outlinePen);
     this->isObstacle = is_obstacle;
 }
 
