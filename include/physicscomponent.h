@@ -7,6 +7,7 @@ class GameObject;
 
 class PhysicsComponent : public QObject
 {
+    Q_OBJECT
 protected:
     int velocity,acceleration;
     int newx,newy;
@@ -14,6 +15,9 @@ protected:
     QGraphicsScene * scene;
     int width_of_tile,height_of_tile,screenWidth,screenHeight;
     int curJumpCount,maxJumpCount;
+signals:
+    void setPosition(GameObject &, QPointF &);
+    void removeObject(QGraphicsItem &);
 public:
     PhysicsComponent() {};
     virtual ~PhysicsComponent() {};

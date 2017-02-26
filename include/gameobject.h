@@ -10,6 +10,7 @@
 #include "scorecomponent.h"
 #include <QObject>
 #include <QGraphicsScene>
+#include <QMetaType>
 #include "enumerator.h"
 
 class GameObject : public QObject

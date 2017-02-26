@@ -20,6 +20,7 @@
 
 class PlayerGraphicsComponent : public GraphicsComponent
 {
+    Q_OBJECT
 private:
     //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
     std::vector<QPixmap*> pixMapMatrix;

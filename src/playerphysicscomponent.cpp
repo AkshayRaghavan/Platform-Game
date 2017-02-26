@@ -188,7 +188,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
 
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        gameObject.graphicsComponent->setPos(going_to_point);
+  //      gameObject.graphicsComponent->setPos(going_to_point);
+        emit setPosition(gameObject,going_to_point);
         current_point.setX(going_to_point.x());
     }
     going_to_point = current_point;
@@ -227,7 +228,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     }
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        gameObject.graphicsComponent->setPos(going_to_point);
+  //      gameObject.graphicsComponent->setPos(going_to_point);
+        emit setPosition(gameObject,going_to_point);
     }
     else
     {
@@ -246,7 +248,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
      //     qDebug() << "found a gem";
             gameObject.setScore(gameObject.getScore() + static_cast<Gem*>(colliding_items[i])->getPointValue());
            // scene->removeItem(colliding_items[i]);
-            delete colliding_items[i];
+          //  delete colliding_items[i];
+            emit removeObject(*(colliding_items[i]));
         }
         else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {

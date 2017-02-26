@@ -124,13 +124,15 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     {        
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_RIGHT || stateEnum == enumerator::State::STOP_LEFT)  //for moving , idle position <right , left>
         {
-            this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
+      //      this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
+            emit setPixMapValue(this,pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
         }
         else if(stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if is dead state
         {
             if(!obj.getIsDead())  //if isDead == false , dead player image slideshow not fully shown , hence show next image
             {
-                this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+       //         this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+                 emit setPixMapValue(this,pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
             }
         }
         else
@@ -143,17 +145,20 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     {
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::STOP_RIGHT )  //jump right
         {
-            this->setPixmap(pixMapMatrix[6][updateGraphicsCounter(6)]);
+     //       this->setPixmap(pixMapMatrix[6][updateGraphicsCounter(6)]);
+             emit setPixMapValue(this,pixMapMatrix[6][updateGraphicsCounter(6)]);
         }
         else if(stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_LEFT )  //jump left
         {
-            this->setPixmap(pixMapMatrix[7][updateGraphicsCounter(7)]);
+        //    this->setPixmap(pixMapMatrix[7][updateGraphicsCounter(7)]);
+             emit setPixMapValue(this,pixMapMatrix[7][updateGraphicsCounter(7)]);
         }
         else if( stateEnum == enumerator::State::DEAD_RIGHT || stateEnum == enumerator::State::DEAD_LEFT )  //if dead , so stop jumping and show dead image
         {
             if(!obj.getIsDead())
             {
-                this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+        //        this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
+                 emit setPixMapValue(this,pixMapMatrix[state_index][updateGraphicsCounter(state_index , &obj)]);
             }
         }
         else

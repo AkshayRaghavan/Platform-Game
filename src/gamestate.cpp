@@ -1,5 +1,6 @@
 #include "gamestate.h"
 #include <QObject>
+#include <QMetaType>
 
 GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene) :
     gameObjects(game_objects), tileMap(tile_map), gems(input_gems) ,
@@ -9,6 +10,12 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
 {
 //    connect(timer,SIGNAL(timeout()),this,SLOT(update()));
     isGameRunning = true;
+    for(int i = 0;i < game_objects.size();i++)
+    {
+        connect((game_objects[i])->physicsComponent,SIGNAL(setPosition(GameObject &,QPointF &)),this,SLOT(setPosition(GameObject &,QPointF &)));
+        connect((game_objects[i])->physicsComponent,SIGNAL(removeObject(QGraphicsItem &)),this,SLOT(removeObject(QGraphicsItem &)));
+        connect((game_objects[i])->graphicsComponent,SIGNAL(setPixMapValue(GraphicsComponent *, QPixmap)),this,SLOT(setPixMapValue(GraphicsComponent *, QPixmap )));
+    }
 }
 
 QGraphicsScene * GameState::getScene()
@@ -41,7 +48,7 @@ std::vector<Gem*> GameState::getGems()
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(update()));
 }*/
 
-void GameState::update()
+/*void GameState::update()
 {
     bool someone_accepting_input = false;
     if(!isGameRunning)
@@ -68,9 +75,9 @@ void GameState::update()
     {
         isGameRunning = false;
     }
-}
+}*/
 
-/*
+
 void GameState::update()
 {
     bool * someone_accepting_input = new bool;
@@ -117,5 +124,23 @@ void GameState::parallel(bool isAcceptingInput , GameObject * player_ptr , bool 
         (player_ptr->graphicsComponent)->update(*player_ptr);
     }
 }
-*/
+
+void GameState::setPosition(GameObject &gameObject, QPointF &point)
+{
+    qDebug() << "setPos slot called";
+    gameObject.graphicsComponent->setPos(point);
+}
+
+void GameState::setPixMapValue(GraphicsComponent *graphics_component, QPixmap pixMap)
+{
+    graphics_component->setPixmap(pixMap);
+}
+
+void GameState::removeObject(QGraphicsItem &gameObject)
+{
+    scene->removeItem(&gameObject);
+}
+
+
+
 

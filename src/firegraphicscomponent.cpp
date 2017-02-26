@@ -29,5 +29,6 @@ void FireGraphicsComponent::update(GameObject &obj)
 {
     graphicsCounter++;
     graphicsCounter %= imagesTotalCount;
-    this->setPixmap(pixMapArray[graphicsCounter]);
+  //  this->setPixmap(pixMapArray[graphicsCounter]);
+    emit setPixmap(pixMapArray[graphicsCounter]);
 }

@@ -5,6 +5,7 @@ class GameObject;
 #include<QGraphicsPixmapItem>
 #include<QGraphicsTextItem>
 #include<QObject>
+#include<QPixmap>
 
 // A class for the graphics of the game objects
 // Used as virtual functions
@@ -16,6 +17,8 @@ class GraphicsComponent : public QObject , public QGraphicsPixmapItem
 protected:
     bool isDangerous;
     QGraphicsScene *scene;
+signals:
+    void setPixMapValue(GraphicsComponent *,QPixmap );
 public:
     GraphicsComponent(){}
     ~GraphicsComponent() {}

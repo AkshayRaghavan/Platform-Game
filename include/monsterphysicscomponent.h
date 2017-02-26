@@ -8,6 +8,7 @@
 
 class MonsterPhysicsComponent : public PhysicsComponent
 {
+    Q_OBJECT
 public:
     MonsterPhysicsComponent(std::vector< std::vector<Tile*> > &Tilesmap, int theight, int twidth, int sheight, int swidth);
     virtual ~MonsterPhysicsComponent() {}

@@ -14,6 +14,7 @@ class GameState : public QObject
     Q_OBJECT
 private:
     void parallel(bool isAcceptingInput , GameObject * player_ptr , bool *someone_accepting_input);
+
 public:
     bool isGameRunning;
     GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
@@ -33,6 +34,9 @@ public:
 
 public slots:
     void update();
+    void setPosition(GameObject &, QPointF &);
+    void setPixMapValue(GraphicsComponent *, QPixmap );
+    void removeObject(QGraphicsItem &);
 };
 
 #endif // GAMESTATE_H

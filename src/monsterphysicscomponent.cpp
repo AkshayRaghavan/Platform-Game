@@ -40,7 +40,8 @@ void MonsterPhysicsComponent::update(GameObject &gameObject)
     }
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        gameObject.graphicsComponent->setPos(going_to_point);
+//        gameObject.graphicsComponent->setPos(going_to_point);
+        emit setPosition(gameObject,going_to_point);
         current_point.setX(going_to_point.x());
     }
     going_to_point = current_point;
@@ -54,7 +55,8 @@ void MonsterPhysicsComponent::update(GameObject &gameObject)
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
      //   qDebug() << "monster can now move";
-        gameObject.graphicsComponent->setPos(going_to_point);
+ //       gameObject.graphicsComponent->setPos(going_to_point);
+          emit setPosition(gameObject,going_to_point);
     }
 }
 

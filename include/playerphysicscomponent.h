@@ -13,9 +13,11 @@
 
 class PlayerPhysicsComponent : public PhysicsComponent
 {
+    Q_OBJECT
 public:
     //The constructor will initialize the parameters
     PlayerPhysicsComponent(std::vector< std::vector<Tile*> > &,int,int,int,int,QGraphicsScene*);
+    virtual ~PlayerPhysicsComponent() {}
     void update(GameObject &);
 };
 
