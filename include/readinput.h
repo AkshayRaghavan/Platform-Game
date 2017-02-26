@@ -18,6 +18,9 @@
 #include "monsterphysicscomponent.h"
 #include "emptyinputcomponent.h"
 #include "emptyphysicscomponent.h"
+#include "door.h"
+#include "stopleft.h"
+#include "stopright.h"
 #include<QDebug>
 #include<QGraphicsScene>
 #include<QKeySequence>
@@ -41,9 +44,10 @@ class ReadInput
     void functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input);
     void functionToCreateMonsterGameObject(std::string file_path);
     void functionToCreateFireObject(std::string fire_file_path);
+    void functionToCreateDoor(std::string fire_file_path);
 
 public:
-    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path);
+    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::__cxx11::string door_file_path);
     ReadInput (QGraphicsScene * scene);
 };
 

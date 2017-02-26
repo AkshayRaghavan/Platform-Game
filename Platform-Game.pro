@@ -55,7 +55,8 @@ SOURCES += main.cpp \
     src/inputhandler.cpp \
     src/emptyinputcomponent.cpp \
     src/emptyphysicscomponent.cpp \
-    src/firegraphicscomponent.cpp
+    src/firegraphicscomponent.cpp \
+    src/door.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \

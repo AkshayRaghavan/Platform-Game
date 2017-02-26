@@ -86,3 +86,8 @@ bool GameObject::isAcceptingInput()
 {
     return this->acceptsInput;
 }
+
+void GameObject::setAcceptingInput(bool value)
+{
+    this->acceptsInput = value;
+}

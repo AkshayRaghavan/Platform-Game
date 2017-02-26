@@ -9,6 +9,9 @@
 #include "jumpingstate.h"
 #include "gameobject.h"
 #include "tile.h"
+#include "door.h"
+#include "stopleft.h"
+#include "stopright.h"
 #include <QGraphicsScene>
 
 class PlayerPhysicsComponent : public PhysicsComponent

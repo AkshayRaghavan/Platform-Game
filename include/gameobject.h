@@ -37,6 +37,7 @@ public:
     void setScore(int);
     int getScore();
     bool isAcceptingInput();
+    void setAcceptingInput(bool value);
 };
 
 #endif // GAMEOBJECT_H

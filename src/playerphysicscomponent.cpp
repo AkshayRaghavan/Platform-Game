@@ -248,6 +248,11 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
+        else if(typeid(*(colliding_items[i])) == typeid(Door))
+        {
+            gameObject.setState(new StopRight);
+            gameObject.setAcceptingInput(false);
+        }
         else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {
             GraphicsComponent * temp;

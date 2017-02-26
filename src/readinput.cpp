@@ -59,7 +59,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
 }
 
-GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path)
+GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path)
 {
 
     /* std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
@@ -78,6 +78,8 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
     functionToCreateMonsterGameObject(monster_file_path);
 
     functionToCreateFireObject(fire_file_path);
+
+    functionToCreateDoor(door_file_path);
 
   /*  std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);}    );
     std::thread t2( [this , gem_path] (){functionToCreateGem(gem_path);}    );
@@ -325,5 +327,40 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , 0));
         }
 
+}
+
+void ReadInput::functionToCreateDoor(std::__cxx11::string fire_file_path)
+{
+    std::string images_location;
+    qreal x_coordinate;
+    qreal y_coordinate;
+    qreal width;
+    qreal height;
+    std::string temp_string;
+
+    std::ifstream infile;
+    infile.open(fire_file_path , std::ios_base::in);
+
+    if(!infile.is_open())
+    {
+        qDebug() <<"ERROR(readinput.cpp) Failed to Open "<<fire_file_path.c_str()<<endl;
+        std::exit(EXIT_FAILURE);
+    }
+
+    infile >> x_coordinate;
+    x_coordinate *= width_of_tile;
+
+    infile >> y_coordinate;
+    y_coordinate *= height_of_tile;
+
+    infile >> width;
+    width *= width_of_tile;
+
+    infile >> height;
+    height *= height_of_tile;
+
+    Door * door = new Door(x_coordinate,y_coordinate,width,height,scene);
+
+    infile.close();
 }
 
