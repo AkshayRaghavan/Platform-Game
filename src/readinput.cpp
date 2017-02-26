@@ -100,7 +100,7 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
     t3.join();
     t4.join();
     t5.join();*/
-    return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
+    return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene , milliseconds_per_frame, 30000); //hard coded for now
 }
 
 
