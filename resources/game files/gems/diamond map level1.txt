@@ -3,47 +3,47 @@ imageSizeWidth,Height
 gemPositionX,Y
 
 resources/images/gems/Gems_01_256x256_022.png
-50 35
-210 230
+10 7
+42 46
 resources/images/gems/Gems_01_256x256_023.png
-50 35
-270 230
+10 7
+54 46
 resources/images/gems/Gems_01_256x256_024.png
-50 35
-335 230
+10 7
+7 115
 resources/images/gems/Gems_01_256x256_025.png
-50 35
-20 550
+10 7
+30 102
 resources/images/gems/Gems_01_256x256_026.png
-50 35
-440 415
+10 7
+88 83
 resources/images/gems/Gems_01_256x256_027.png
-50 35
-500 415
+10 7
+100 83
 resources/images/gems/Gems_01_256x256_022.png
-50 35
-457 852
+10 7
+120 60
 resources/images/gems/Gems_01_256x256_027.png
-50 35
-450 70
+10 7
+90 14
 resources/images/gems/Gems_01_256x256_026.png
-50 35
-500 70
+10 7
+104 15
 resources/images/gems/Gems_01_256x256_027.png
-50 35
-550 70
+10 7
+110 14
 resources/images/gems/Gems_01_256x256_025.png
-50 35
-600 300
+10 7
+120 60
 resources/images/gems/Gems_01_256x256_026.png
-50 35
-650 300
+10 7
+122 60
 resources/images/gems/Gems_01_256x256_023.png
-50 35
-700 300
+10 7
+140 60
 resources/images/gems/Gems_01_256x256_025.png
-50 35
-750 300
+10 7
+142 60
 resources/images/gems/Gems_01_256x256_026.png
-50 35
-800 300
+10 7
+160 60

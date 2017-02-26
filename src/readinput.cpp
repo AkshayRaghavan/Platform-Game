@@ -19,8 +19,6 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
     int row_tile_matrix_size;
     int column_tile_matrix_size;
-    qreal width_of_tile;
-    qreal height_of_tile;
 
     /*infile >> screenWidth;
     infile >> screenHeight;
@@ -116,7 +114,7 @@ void ReadInput::functionToCreateGem(std::string file_path)
     }
 
     std::string image_file_path = "";
-    int width = 0 , height = 0;
+    qreal width = 0 , height = 0;
     qreal x_coordinate = 0 , y_coordinate = 0;
     std::string temp_string;
 
@@ -125,10 +123,19 @@ void ReadInput::functionToCreateGem(std::string file_path)
     while(true)
     {
         infile >> image_file_path;
+
         infile >> width;
+        width *= width_of_tile;
+
         infile >> height;
+        height *= height_of_tile;
+
         infile >> x_coordinate;
+        x_coordinate *= width_of_tile;
+
         infile >> y_coordinate;
+        y_coordinate *= height_of_tile;
+
         if(infile.eof())
         {
             break;
@@ -144,7 +151,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
     std::string images_location;
     std::vector<int> images_total_count;
     int images_count_temp;
-    int image_width , image_height , font_size;
+    qreal image_width , image_height , font_size;
     int score_display_diff_x , score_display_diff_y;
     int max_jump_count;
     qreal x_coordinate;
@@ -170,12 +177,20 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
             images_total_count.push_back(images_count_temp);
         }
         infile >> tempString;
+
         infile >> image_width;
+        image_width *= width_of_tile;
+
         infile >> image_height;
+        image_height *= height_of_tile;
 
         infile >> tempString;
+
         infile >> x_coordinate;
+        x_coordinate *= width_of_tile;
+
         infile >> y_coordinate;
+        y_coordinate *= height_of_tile;
 
         infile >> tempString;
         infile >> font_size;
@@ -201,7 +216,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
     std::string images_location;
     std::vector<int> images_total_count;
     int images_count_temp;
-    int image_width , image_height;
+    qreal image_width , image_height;
     qreal x_coordinate;
     qreal y_coordinate;
     int walk_frames_count;
@@ -229,14 +244,21 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
     infile >> temp_string;
 
     infile >> image_width;
+    image_width *= width_of_tile;
+
     infile >> image_height;
+    image_height *= height_of_tile;
 
     infile >> temp_string;
 
         while(true)
         {
             infile >> x_coordinate;
+            x_coordinate *= width_of_tile;
+
             infile >> y_coordinate;
+            y_coordinate *= height_of_tile;
+
             infile >> walk_frames_count;
             if(infile.eof())
             {
@@ -256,7 +278,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
 {
     std::string images_location;
     int images_total_count;
-    int image_width , image_height;
+    qreal image_width , image_height;
     qreal x_coordinate;
     qreal y_coordinate;
     std::string temp_string;
@@ -276,15 +298,23 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
     infile >> images_total_count;
 
     infile >> temp_string;
+
     infile >> image_width;
+    image_width *= width_of_tile;
+
     infile >> image_height;
+    image_height *= height_of_tile;
 
     infile >> temp_string;
 
         while(true)
         {
             infile >> x_coordinate;
+            x_coordinate *= width_of_tile;
+
             infile >> y_coordinate;
+            y_coordinate *= height_of_tile;
+
             if(infile.eof())
             {
                 break;

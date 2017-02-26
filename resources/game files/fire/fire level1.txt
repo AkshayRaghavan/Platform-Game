@@ -1,8 +1,8 @@
 resources/images/flame/flame
 imageMaxCount 6
-imageSizeWidth,Height 60 60
+imageSizeWidth,Height 12 12
 playerPositionX,Y
-300 200
-500 50
-900 570
-730 230
+60 40
+100 10
+180 114
+146 46

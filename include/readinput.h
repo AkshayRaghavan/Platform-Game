@@ -32,6 +32,8 @@ class ReadInput
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
     QGraphicsScene * scene;
+    qreal width_of_tile;
+    qreal height_of_tile;
     int screenWidth;
     int screenHeight;
     void functionToCreateTileMap(std::string file_path);
