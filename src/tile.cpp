@@ -1,6 +1,6 @@
 #include "tile.h"
 
-Tile::Tile(QGraphicsScene* scene , int column , int row , int width , int height , bool is_obstacle)
+Tile::Tile(QGraphicsScene* scene , qreal column , qreal row , qreal width , qreal height , bool is_obstacle)
 {
     QPen outlinePen;
     this->columnPosition = column;
@@ -8,9 +8,9 @@ Tile::Tile(QGraphicsScene* scene , int column , int row , int width , int height
     this->heightOfTile = height;
     this->rowPosition = row;
 
-    outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
+    /*outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
     outlinePen.setWidth(1);
-    this->r = scene->addRect(column , row , width , height , outlinePen);
+    this->r = scene->addRect(column , row , width , height , outlinePen); */
     this->isObstacle = is_obstacle;
 }
 
@@ -24,12 +24,12 @@ bool Tile::getIsObstacle()
     return this->isObstacle;
 }
 
-int Tile::getWidthOfTile()
+qreal Tile::getWidthOfTile()
 {
     return this->widthOfTile;
 }
 
-int Tile::getHeightOfTile()
+qreal Tile::getHeightOfTile()
 {
     return this->heightOfTile;
 }

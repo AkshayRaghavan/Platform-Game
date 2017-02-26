@@ -12,17 +12,17 @@ class Tile : public QGraphicsRectItem
 {
 private:
     bool isObstacle;
-    int columnPosition;
-    int rowPosition;
-    int widthOfTile;
-    int heightOfTile;
+    qreal columnPosition;
+    qreal rowPosition;
+    qreal widthOfTile;
+    qreal heightOfTile;
     QGraphicsRectItem* r;
 public:
-    Tile(QGraphicsScene* scene , int left , int top , int width , int height , bool isObstacle);
+    Tile(QGraphicsScene* scene , qreal left , qreal top , qreal width , qreal height , bool isObstacle);
     QGraphicsRectItem* getR();
     bool getIsObstacle();
-    int getWidthOfTile();
-    int getHeightOfTile();
+    qreal getWidthOfTile();
+    qreal getHeightOfTile();
 
 };
 

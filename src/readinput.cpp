@@ -17,8 +17,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
     int row_tile_matrix_size;
     int column_tile_matrix_size;
-    int width_of_tile;
-    int height_of_tile;
+    qreal width_of_tile;
+    qreal height_of_tile;
 
     infile >> screenWidth;
     infile >> screenHeight;
@@ -26,8 +26,15 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> width_of_tile;
     infile >> height_of_tile;
 
-    infile >> row_tile_matrix_size;
+    /*infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
+
+    QRect rec = QApplication::desktop()->availableGeometry();
+    screenHeight = rec.height();
+    screenWidth = screenHeight * 1.5;
+
+    width_of_tile = screenWidth / column_tile_matrix_size;
+    height_of_tile = screenHeight / row_tile_matrix_size; */
 
     int column_position = 0 , row_position = 0;
     bool is_obstacle = false;
@@ -39,6 +46,9 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             infile >> column_position;
             infile >> row_position;
             infile >> is_obstacle;
+
+            column_position *= width_of_tile;
+            row_position *= height_of_tile;
 
             tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         }
