@@ -329,7 +329,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
 
 }
 
-void ReadInput::functionToCreateDoor(std::__cxx11::string fire_file_path)
+void ReadInput::functionToCreateDoor(std::string fire_file_path)
 {
     std::string images_location;
     qreal x_coordinate;

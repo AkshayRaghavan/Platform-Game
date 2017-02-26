@@ -47,7 +47,7 @@ class ReadInput
     void functionToCreateDoor(std::string fire_file_path);
 
 public:
-    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::__cxx11::string door_file_path);
+    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::string door_file_path);
     ReadInput (QGraphicsScene * scene);
 };
 
