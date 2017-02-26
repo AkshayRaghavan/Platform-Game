@@ -245,7 +245,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         {
      //     qDebug() << "found a gem";
             gameObject.setScore(gameObject.getScore() + static_cast<Gem*>(colliding_items[i])->getPointValue());
-            scene->removeItem(colliding_items[i]);
+           // scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
         else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
@@ -266,7 +266,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
-   (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
+ //  (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
 }
 
 

@@ -54,17 +54,14 @@ void GameState::update()
         {
             someone_accepting_input = true;
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
+
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
-            if(gameObjects[i]->scoreComponent)
-                gameObjects[i]->scoreComponent->update(gameObjects[i]->getScore());
         }
         else
         {
             gameObjects[i]->inputComponent->update(*gameObjects[i]);
             gameObjects[i]->physicsComponent->update(*gameObjects[i]);
             gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
-            if(gameObjects[i]->scoreComponent)
-                gameObjects[i]->scoreComponent->update(gameObjects[i]->getScore());
         }
     }
     if(!someone_accepting_input)
@@ -73,6 +70,52 @@ void GameState::update()
     }
 }
 
+/*
+void GameState::update()
+{
+    bool * someone_accepting_input = new bool;
+    *someone_accepting_input = false;
+    if(!isGameRunning)
+    {
+        return;
+    }
+    int size = gameObjects.size();
+    std::vector<std::thread> th_array;
+    GameObject* temp_ptr;
+    for(int i=0; i<size; i++)
+    {
+        temp_ptr = gameObjects[i];
+        th_array.push_back(        std::thread ( [&] (){ parallel( temp_ptr->isAcceptingInput() ,  temp_ptr , someone_accepting_input); }));
+    }
+    for(int i=0; i<size; i++)
+    {
+        th_array[i].join();
+        if(gameObjects[i]->scoreComponent)
+            (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
+
+    }
+    if(!(*someone_accepting_input))
+    {
+        isGameRunning = false;
+    }
+}
 
 
+
+void GameState::parallel(bool isAcceptingInput , GameObject * player_ptr , bool *someone_accepting_input)
+{
+    if(isAcceptingInput && !(player_ptr->getIsDead()))
+    {
+        *someone_accepting_input = true;
+        (player_ptr->physicsComponent)->update(*player_ptr);
+        (player_ptr->graphicsComponent)->update(*player_ptr);
+    }
+    else
+    {
+        (player_ptr->inputComponent)->update(*player_ptr);
+        (player_ptr->physicsComponent)->update(*player_ptr);
+        (player_ptr->graphicsComponent)->update(*player_ptr);
+    }
+}
+*/
 

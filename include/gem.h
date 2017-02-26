@@ -4,6 +4,8 @@
 #include<QGraphicsScene>
 #include<QGraphicsPixmapItem>
 #include<QDebug>
+#include <thread>
+
 
 // A class for the graphics of the game objects
 // Used as virtual functions
