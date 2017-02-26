@@ -59,7 +59,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
 }
 
-GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path)
+GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path, int milliseconds_per_frame)
 {
 
     /* std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
@@ -268,7 +268,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             }
             GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , 0 , 0 , 0 , true );
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
-            PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth);
+            PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
 
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , 0));
         }
@@ -329,7 +329,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
 
 }
 
-void ReadInput::functionToCreateDoor(std::__cxx11::string fire_file_path)
+void ReadInput::functionToCreateDoor(std::string fire_file_path)
 {
     std::string images_location;
     qreal x_coordinate;

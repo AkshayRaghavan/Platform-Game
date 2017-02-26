@@ -16,6 +16,10 @@ HumanInputComponent::HumanInputComponent(Keys *input_keys)
 
 void HumanInputComponent::update(GameObject &gameObject)
 {
+    if(!gameObject.isAcceptingInput())
+    {
+        return;
+    }
     State *new_state = gameObject.state->update(gameObject.inputComponent,keysPressed);
     JumpingState *new_jumping_state = gameObject.jumpingState->update(gameObject.inputComponent,gameObject,keysPressed);
     if(new_state != NULL)

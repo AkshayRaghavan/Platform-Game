@@ -8,8 +8,11 @@
 
 class MonsterPhysicsComponent : public PhysicsComponent
 {
+private:
+    int curSpeedFraction;
+    int maxSpeedFraction;
 public:
-    MonsterPhysicsComponent(std::vector< std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth);
+    MonsterPhysicsComponent(std::vector< std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, int fraction_of_speed);
     virtual ~MonsterPhysicsComponent() {}
     void update(GameObject &ob);
 };

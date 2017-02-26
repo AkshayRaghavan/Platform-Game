@@ -2,7 +2,7 @@
 #include <QGraphicsItem>
 #include <QDebug>
 
-MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth)
+MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, int fraction_of_speed)
 {
     velocity = 1;
     this->tilesMap = Tilesmap;
@@ -10,10 +10,17 @@ MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>>
     height_of_tile = theight;
     screenHeight = sheight;
     screenWidth = swidth;
+    maxSpeedFraction = fraction_of_speed;
+    curSpeedFraction = fraction_of_speed;
 }
 
 void MonsterPhysicsComponent::update(GameObject &gameObject)
 {
+    curSpeedFraction--;
+    if(curSpeedFraction < 0)
+    {
+        curSpeedFraction = maxSpeedFraction;
+    }
     std::vector<qreal> positionAndSize = gameObject.graphicsComponent->getSizePositionOfObject();
     int number_of_rows_in_map = tilesMap.size();
     int number_of_columns_in_map;
@@ -38,7 +45,7 @@ void MonsterPhysicsComponent::update(GameObject &gameObject)
     {
         going_to_point.setX(going_to_point.x() - width_of_tile);
     }
-    if(testPositionForPlayer(going_to_point,player_width,player_height))
+    if(testPositionForPlayer(going_to_point,player_width,player_height) && !curSpeedFraction)
     {
         gameObject.graphicsComponent->setPos(going_to_point);
         current_point.setX(going_to_point.x());

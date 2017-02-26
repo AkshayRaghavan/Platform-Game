@@ -250,7 +250,9 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         }
         else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))
         {
+            qDebug() << "collided with door";
             gameObject.setState(new StopRight);
+            gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
         }
         else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
