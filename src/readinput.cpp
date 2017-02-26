@@ -35,10 +35,14 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     screenHeight = rec.height();
     screenWidth = screenHeight * 1.5;
 
-    width_of_tile = screenWidth / column_tile_matrix_size;
-    height_of_tile = screenHeight / row_tile_matrix_size;
+    qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
 
-    int column_position = 0 , row_position = 0;
+    width_of_tile = static_cast<qreal>(screenWidth) / (column_tile_matrix_size-1);
+    height_of_tile = static_cast<qreal>(screenHeight) / (row_tile_matrix_size-1);
+
+    qDebug() << "w,h : " << width_of_tile << " " << height_of_tile;
+
+    qreal column_position = 0 , row_position = 0;
     bool is_obstacle = false;
     for(int matrix_row_iterator = 0; matrix_row_iterator < row_tile_matrix_size; matrix_row_iterator++)
     {
