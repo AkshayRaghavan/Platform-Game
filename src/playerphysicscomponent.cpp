@@ -14,6 +14,7 @@
 #include "diamond.h"
 #include <QPainter>
 #include <QMediaPlayer>
+#include <QFileInfo>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene)
 {
@@ -26,21 +27,26 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     this->scene = scene;
     curJumpCount = 0;
     maxJumpCount = 20;
-
+    QFileInfo file;
     jump = new QMediaPlayer;
-    jump->setMedia(QUrl("resources/game files/jump.mp3"));
+    file.setFile("resources/game files/jump.mp3");
+    jump->setMedia(QUrl("file://"+file.absoluteFilePath()));
 
     slip = new QMediaPlayer;
-    slip->setMedia(QUrl("resources/game files/slip.mp3"));
+    file.setFile("resources/game files/slip.mp3");
+    slip->setMedia(QUrl("file://"+file.absoluteFilePath()));
 
     coin = new QMediaPlayer;
-    coin->setMedia(QUrl("resources/game files/coin.wav"));
+    file.setFile("resources/game files/coin.wav");
+    coin->setMedia(QUrl("file://"+file.absoluteFilePath()));
 
     die = new QMediaPlayer;
-    die->setMedia(QUrl("resources/game files/die.wav"));
+    file.setFile("resources/game files/die.wav");
+    die->setMedia(QUrl("file://"+file.absoluteFilePath()));
 
     ending = new QMediaPlayer;
-    ending->setMedia(QUrl("resources/game files/end.mp3"));
+    file.setFile("resources/game files/end.mp3");
+    ending->setMedia(QUrl("file://"+file.absoluteFilePath()));
 }
 
 /*void PlayerPhysicsComponent::update(GameObject & ob)
