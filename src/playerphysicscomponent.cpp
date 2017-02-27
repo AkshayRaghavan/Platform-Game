@@ -13,6 +13,7 @@
 #include "isnotjumping.h"
 #include "diamond.h"
 #include <QPainter>
+#include <QMediaPlayer>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene)
 {
@@ -25,6 +26,21 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     this->scene = scene;
     curJumpCount = 0;
     maxJumpCount = 20;
+
+    jump = new QMediaPlayer;
+    jump->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/jump.mp3"));
+
+    slip = new QMediaPlayer;
+    slip->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/slip.mp3"));
+
+    coin = new QMediaPlayer;
+    coin->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/coin.wav"));
+
+    die = new QMediaPlayer;
+    die->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/die.wav"));
+
+    ending = new QMediaPlayer;
+    ending->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/end.mp3"));
 }
 
 /*void PlayerPhysicsComponent::update(GameObject & ob)
@@ -194,6 +210,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     going_to_point = current_point;
     if(current_player_jumping_state == enumerator::JumpingState::IS_JUMPING)
     {
+        if(curJumpCount == 1)
+            jump->play();
         if(current_player_state == enumerator::State::DEAD_LEFT || current_player_state == enumerator::State::DEAD_RIGHT)
         {
             curJumpCount = maxJumpCount;
@@ -215,6 +233,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         if(testPositionForPlayer(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile),player_width,player_height))
         {
             gameObject.setJumpingState(new IsJumping(gameObject));
+            slip->play();
             curJumpCount = maxJumpCount;
         }
     }
@@ -245,12 +264,14 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         {
      //       qDebug() << "found a gem";
             gameObject.setScore(gameObject.getScore()+1);
+            coin->play();
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
         }
         else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))
         {
             qDebug() << "collided with door";
+            ending->play();
             gameObject.setState(new StopRight);
             gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
@@ -261,6 +282,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);
             if(((*temp).getIsDangerous()) == true)
             {
+                die->play();
                 // getismonster() is a member of graphics component to check monster
                 if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)
                 {

@@ -13,9 +13,11 @@
 #include "stopleft.h"
 #include "stopright.h"
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 
 class PlayerPhysicsComponent : public PhysicsComponent
 {
+    QMediaPlayer * jump, * slip, * coin, * die, * ending;
 public:
     //The constructor will initialize the parameters
     PlayerPhysicsComponent(std::vector< std::vector<Tile*> > &,qreal,qreal,qreal,qreal,QGraphicsScene*);
