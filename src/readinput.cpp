@@ -1,6 +1,7 @@
 #include "readinput.h"
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QStyle>
 
 ReadInput::ReadInput(QGraphicsScene * scene_local)
 {
@@ -30,7 +31,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> column_tile_matrix_size;
 
     QRect rec = QApplication::desktop()->availableGeometry();
-    screenHeight = rec.height() - 50;
+    screenHeight = rec.height() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     screenWidth = screenHeight * 1.5;
 
     qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;

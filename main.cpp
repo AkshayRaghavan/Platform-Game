@@ -9,6 +9,7 @@
 #include "gameobject.h"
 #include "inputhandler.h"
 #include <QDesktopWidget>
+#include <QStyle>
 
 int main(int argc, char *argv[])
 {
@@ -35,8 +36,8 @@ int main(int argc, char *argv[])
     qDebug() << gameState->screenHeight;
 
    // inputHandler->setFocus();
-    view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
-    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
+    view->setFixedSize(gameState->screenWidth,gameState->screenHeight+QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));     //1000 : width (X Axis) , 800 : height (Y Axis)
+    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight+QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));
     view->show();
 
     QRect rec = QApplication::desktop()->availableGeometry();
