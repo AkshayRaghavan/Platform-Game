@@ -125,20 +125,22 @@ void GameState::parallel(bool isAcceptingInput , GameObject * player_ptr , bool 
     }
 }
 
-void GameState::setPosition(GameObject &gameObject, QPointF &point)
+void GameState::setPosition(int i, qreal x, qreal y)
 {
     qDebug() << "setPos slot called";
-    gameObject.graphicsComponent->setPos(point);
+    gameObjects[i]->graphicsComponent->setPos(x,y);
 }
 
-void GameState::setPixMapValue(GraphicsComponent *graphics_component, QPixmap pixMap)
+void GameState::setPixMapValue(int i, int j)
 {
-    graphics_component->setPixmap(pixMap);
+    (gameObjects[i]->graphicsComponent)->setPixmap(gameObjects[i].graphicsComponent->pixMapMatrix[i][j]);
 }
 
-void GameState::removeObject(QGraphicsItem &gameObject)
+void GameState::removeObject(int i)
 {
-    scene->removeItem(&gameObject);
+    QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems(); //order is always the same according to Qt docs
+    scene->removeItem(*(colliding_items[i]));
+    delete colliding_items[i];
 }
 
 

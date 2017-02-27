@@ -30,13 +30,14 @@ public:
     std::vector<GameObject*> getGameObjects();
     std::vector< std::vector<Tile*> > getTileMap();
     std::vector<Gem*> getGems();
+    void setPosition(int,qreal,qreal);
+    void setPixMapValue(int,int);
+    void removeObject(int);
 //    void setTimerAndConnect(QTimer *);
 
 public slots:
     void update();
-    void setPosition(GameObject &, QPointF &);
-    void setPixMapValue(GraphicsComponent *, QPixmap );
-    void removeObject(QGraphicsItem &);
+
 };
 
 #endif // GAMESTATE_H
