@@ -56,7 +56,8 @@ SOURCES += main.cpp \
     src/emptyinputcomponent.cpp \
     src/emptyphysicscomponent.cpp \
     src/firegraphicscomponent.cpp \
-    src/door.cpp
+    src/door.cpp \
+    src/startbutton.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -90,7 +91,8 @@ HEADERS  += \
     include/emptyinputcomponent.h \
     include/emptyphysicscomponent.h \
     include/firegraphicscomponent.h \
-    include/door.h
+    include/door.h \
+    include/startbutton.h
 
 FORMS    +=
 

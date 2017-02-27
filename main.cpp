@@ -9,58 +9,25 @@
 #include "gameobject.h"
 #include "inputhandler.h"
 #include <QDesktopWidget>
+#include <startbutton.h>
+#include<QGraphicsScene>
+#include<QGraphicsProxyWidget>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-
-    QGraphicsScene *start_scene = new QGraphicsScene;
-
-    QGraphicsScene *game_scene = new QGraphicsScene;
-    ReadInput readInput(game_scene);
-    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt" , "resources/game files/fire/fire level1.txt" , "resources/game files/door/door.txt");
-
-    InputHandler *view = new InputHandler(gameState);
-//    gameState->installEventFilter(view); //set focus?
- //   QGraphicsView *view = new QGraphicsView;
-    view->setScene(gameState->getScene());
-    QImage *back = new QImage("resources/images/bg2.png");
-    QImage *background = new QImage(back->scaled(gameState->screenWidth,gameState->screenHeight,Qt::IgnoreAspectRatio,Qt::FastTransformation));
-    QBrush *brush = new QBrush(*background);
-    view->setBackgroundBrush(*brush);
-    //view->setBackgroundBrush(QImage("resources/images/bg2.png"));
-    view->setCacheMode(QGraphicsView::CacheBackground);
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    qDebug() << gameState->screenWidth;
-    qDebug() << gameState->screenHeight;
-
-   // inputHandler->setFocus();
-    view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
-    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
-    view->show();
-
     QRect rec = QApplication::desktop()->availableGeometry();
+    int screen_initial_height = rec.height() - 50;
+    int screen_initial_width = screen_initial_height * 1.5;
 
-    qDebug() <<  rec.width()<< rec.height();
+    QGraphicsScene *start_scene = new QGraphicsScene();
+    QGraphicsView * initial_view = new QGraphicsView();
 
-    QTimer * timer = new QTimer();
+    StartButton* start_button = new StartButton(start_scene , initial_view , "PLAY GAME");
+    QGraphicsProxyWidget *proxy = start_scene->addWidget(start_button);
 
-    gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
-    timer->start(40);
-
-    a.exec();
-
-    return 0;
+    initial_view->setScene(start_scene);
+    initial_view->setFixedSize(screen_initial_width,screen_initial_height);
+    initial_view->show();
+    return a.exec();
 }
-
-
-/*
-
-files in readinput.cpp
-
-
-
-player 1 :
-*/
