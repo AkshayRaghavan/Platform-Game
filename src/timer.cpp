@@ -14,7 +14,7 @@ Timer::Timer(int total_time_available, int milliseconds_per_frame)
 
 void Timer::update()
 {
-    qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
+    //qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
     if(millisecondsLeft >= millisecondsPerFrame)
     {
         millisecondsLeft -= millisecondsPerFrame;
@@ -27,7 +27,7 @@ void Timer::update()
     }
     else
     {
-        qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
+        //qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
         millisecondsLeft = 0;
         isLeft = false;
     }
