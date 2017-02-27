@@ -7,18 +7,20 @@
 #include "gameobject.h"
 #include "tile.h"
 #include "gem.h"
+#include "timer.h"
 
 class GameState : public QObject
 {
     Q_OBJECT
 public:
     bool isGameRunning;
-    GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene);
+    GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene, int,int);
     virtual ~GameState(){}
     std::vector<GameObject*> gameObjects;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
     QGraphicsScene *scene;
+    Timer *timer;
     const int screenWidth;
     const int screenHeight;
     QGraphicsScene* getScene();

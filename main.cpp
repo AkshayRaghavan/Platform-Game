@@ -9,12 +9,15 @@
 #include "gameobject.h"
 #include "inputhandler.h"
 #include <QDesktopWidget>
+#include <QStyle>
+
 int main(int argc, char *argv[])
 {
+    int milliseconds_per_frame = 50;
     QApplication a(argc, argv);
     QGraphicsScene *scene = new QGraphicsScene;
     ReadInput readInput(scene);
-    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt" , "resources/game files/fire/fire level1.txt" , "resources/game files/door/door.txt");
+    GameState * gameState = readInput.createGameStateObject("resources/game files/tile map level1/tile map level1.txt" , "resources/game files/gems/diamond map level1.txt" , "resources/game files/player/player1 level1.txt" , "resources/game files/player/player2 level1.txt" , "resources/game files/monster/monster level1.txt" , "resources/game files/fire/fire level1.txt" , "resources/game files/door/door.txt", milliseconds_per_frame);
 
     InputHandler *view = new InputHandler(gameState);
 //    gameState->installEventFilter(view); //set focus?
@@ -33,8 +36,8 @@ int main(int argc, char *argv[])
     qDebug() << gameState->screenHeight;
 
    // inputHandler->setFocus();
-    view->setFixedSize(gameState->screenWidth,gameState->screenHeight);     //1000 : width (X Axis) , 800 : height (Y Axis)
-    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight);
+    view->setFixedSize(gameState->screenWidth,gameState->screenHeight+QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));     //1000 : width (X Axis) , 800 : height (Y Axis)
+    view->setSceneRect(0,0,gameState->screenWidth,gameState->screenHeight+QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight));
     view->show();
 
     QRect rec = QApplication::desktop()->availableGeometry();
@@ -44,7 +47,7 @@ int main(int argc, char *argv[])
     QTimer * timer = new QTimer();
 
     gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
-    timer->start(40);
+    timer->start(50);
 
     return a.exec();
 }
