@@ -25,8 +25,9 @@ int main(int argc, char *argv[])
  //   QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
     QMediaPlayer * bg = new QMediaPlayer();
-    bg->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/bg.mp3"));
+    bg->setMedia(QUrl("resources/game files/bg.mp3"));
     bg->play();
+
     QImage *back = new QImage("resources/images/bg2.png");
     QImage *background = new QImage(back->scaled(gameState->screenWidth,gameState->screenHeight,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);

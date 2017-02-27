@@ -28,19 +28,19 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > 
     maxJumpCount = 20;
 
     jump = new QMediaPlayer;
-    jump->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/jump.mp3"));
+    jump->setMedia(QUrl("resources/game files/jump.mp3"));
 
     slip = new QMediaPlayer;
-    slip->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/slip.mp3"));
+    slip->setMedia(QUrl("resources/game files/slip.mp3"));
 
     coin = new QMediaPlayer;
-    coin->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/coin.wav"));
+    coin->setMedia(QUrl("resources/game files/coin.wav"));
 
     die = new QMediaPlayer;
-    die->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/die.wav"));
+    die->setMedia(QUrl("resources/game files/die.wav"));
 
     ending = new QMediaPlayer;
-    ending->setMedia(QUrl("C:/Users/DELL/Documents/popl/Platform-Game/resources/game files/end.mp3"));
+    ending->setMedia(QUrl("resources/game files/end.mp3"));
 }
 
 /*void PlayerPhysicsComponent::update(GameObject & ob)
