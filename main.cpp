@@ -11,6 +11,7 @@
 #include <QDesktopWidget>
 #include <QStyle>
 #include <QMediaPlayer>
+#include <QFileInfo>
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +26,9 @@ int main(int argc, char *argv[])
  //   QGraphicsView *view = new QGraphicsView;
     view->setScene(gameState->getScene());
     QMediaPlayer * bg = new QMediaPlayer();
-    bg->setMedia(QUrl("resources/game files/bg.mp3"));
+    QFileInfo file("resources/game files/bg.mp3");
+    //bg->setMedia(QUrl("file://resources/game files/bg.mp3"));
+    bg->setMedia(QUrl("file://"+file.absoluteFilePath()));
     bg->play();
 
     QImage *back = new QImage("resources/images/bg2.png");
