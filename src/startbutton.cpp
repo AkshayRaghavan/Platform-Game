@@ -35,6 +35,11 @@ void StartButton::changeEvent()
     view_global->setGameState(gameState);
     scene->update();
     view_global->update();
+    
+    Server obj;
+    obj.convertGameStateToJsonObject(*gameState);
+    
+    
     QTimer * timer = new QTimer();
     gameState->connect(timer,SIGNAL(timeout()),gameState,SLOT(update()));
     timer->start(40);

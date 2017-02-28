@@ -12,10 +12,13 @@
 class Gem : public QGraphicsPixmapItem
 {
 private:
+    bool isOnScreen;
     int pointValue;
 public:
     virtual void drawGem(QGraphicsScene*) {}    
     int getPointValue();
+    bool getIsOnScreen();
+    void setIsOnScreen(bool);
     void setPointValue(int);
     void remove(QGraphicsScene*);
 };

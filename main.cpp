@@ -19,6 +19,8 @@
 
 int main(int argc, char *argv[])
 {
+
+
     int milliseconds_per_frame = 50;
     QApplication a(argc, argv);
 

@@ -358,7 +358,6 @@ void ReadInput::functionToCreateDoor(std::string door_file_path)
     height *= height_of_tile;
 
     Door * door = new Door(x_coordinate,y_coordinate,width,height,scene);
-
     infile.close();
 }
 

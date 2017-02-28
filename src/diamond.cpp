@@ -4,6 +4,7 @@
 Diamond::Diamond(std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate , int score_of_gem)
 {
     setPointValue(score_of_gem);
+    this->Gem::setIsOnScreen(true);
     QImage gem_picture(image_location.c_str());
 
     if(gem_picture.isNull())

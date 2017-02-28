@@ -41,6 +41,13 @@ std::string Timer::getTimeLeft()
      return time_string;
 }
 
+int Timer::getTimeLeftInMilliSeconds()
+{
+
+     return (secondsLeft*1000 + millisecondsLeft);
+}
+
+
 bool Timer::isTimeLeft()
 {
     return isLeft;

@@ -16,6 +16,7 @@ public:
     virtual ~Timer() {}
     bool isTimeLeft();
     std::string getTimeLeft();
+    int getTimeLeftInMilliSeconds();
     void update();
 
 };

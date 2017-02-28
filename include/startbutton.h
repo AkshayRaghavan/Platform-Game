@@ -9,6 +9,7 @@
 #include "readinput.h"
 #include "gamestate.h"
 #include "gameobject.h"
+#include "server.h"
 #include "inputhandler.h"
 #include <QDesktopWidget>
 #include <startbutton.h>

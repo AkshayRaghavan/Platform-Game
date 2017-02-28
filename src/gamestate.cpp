@@ -53,7 +53,7 @@ void GameState::update()
     {
         return;
     }
-    for(int i=0; i<gameObjects.size(); i++)
+    for(unsigned int i=0; i<gameObjects.size(); i++)
     {
         if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
         {
