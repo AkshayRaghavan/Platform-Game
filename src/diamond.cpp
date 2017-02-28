@@ -5,39 +5,19 @@ Diamond::Diamond(QGraphicsScene* scene_local , std::string image_location , int 
 {
 
     scene = scene_local;
-  //  QImage(image_location.c_str());
-
-   // pixMapImage = QPixmap::fromImage(QImage();
+    QImage gem_picture(image_location.c_str());
 
 
-    if(!this->pixMapImage.load((image_location).c_str()))
+    if(gem_picture.isNull())
     {
-        qDebug() << "ERROR(gemtype1.cpp) : Failed To Load Gem Image" << image_location.c_str() <<endl;
+        qDebug() << "ERROR(diamond.cpp) : Failed To Load Image" << image_location.c_str() << endl;
         std::exit(EXIT_FAILURE);
     }
-    this->pixMapImage = this->pixMapImage.scaled(QSize(width,height));
-     this->setPos(x_coordinate , y_coordinate);
+    pixMapImage = QPixmap::fromImage(gem_picture);
+    pixMapImage = pixMapImage.scaled(QSize(width,height), Qt::KeepAspectRatio);
+    this->setPos(x_coordinate , y_coordinate);
 }
 
-
-/*
-Diamond::Diamond(QGraphicsScene* scene_local , std::string image_location , int width , int height , qreal x_coordinate , qreal y_coordinate)
-{
-
-    scene = scene_local;
-    QImage(image_location.c_str());
-
-    pixMapImage = QPixmap::fromImage(QImage();
-
-    /*
-    if(!this->pixMapImage.load((image_location).c_str()))
-    {
-        qDebug() << "ERROR(gemtype1.cpp) : Failed To Load Gem Image" << image_location.c_str() <<endl;
-        std::exit(EXIT_FAILURE);
-    }
-    this->pixMapImage = this->pixMapImage.scaled(QSize(width,height));
-   // this->setPos(x_coordinate , y_coordinate);
-}*/
 void Diamond::draw()
 {
     this->setPixmap(this->pixMapImage);

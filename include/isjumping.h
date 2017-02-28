@@ -2,6 +2,7 @@
 #define ISJUMPING_H
 
 #include "jumpingstate.h"
+#include <QMediaPlayer>
 class InputComponent;
 
 class IsJumping : public JumpingState

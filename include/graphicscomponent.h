@@ -22,8 +22,8 @@ public:
     virtual void update(GameObject &) {}
     bool getIsDangerous();
     QGraphicsScene * getQGraphicsScene();
-    virtual std::vector<qreal> getSizePositionOfObject() {}
-    virtual void setPosScorePointer( int going_to_x , int going_to_y ){}
+    virtual std::vector<qreal> getSizePositionOfObject() {return std::vector<qreal>(1);}
+    virtual void setPosScorePointer( int , int ){}
 };
 
 

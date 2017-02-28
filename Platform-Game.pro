@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui \
+         multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -58,7 +60,8 @@ SOURCES += main.cpp \
     src/firegraphicscomponent.cpp \
     src/door.cpp \
     src/startbutton.cpp \
-    src/exitbutton.cpp
+    src/exitbutton.cpp \
+    src/timer.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -94,7 +97,8 @@ HEADERS  += \
     include/firegraphicscomponent.h \
     include/door.h \
     include/startbutton.h \
-    include/exitbutton.h
+    include/exitbutton.h \
+    include/timer.h
 
 FORMS    +=
 
@@ -102,3 +106,5 @@ INCLUDEPATH += $$PWD/include
 
 #RESOURCES += \
 #    res.qrc
+
+RESOURCES +=

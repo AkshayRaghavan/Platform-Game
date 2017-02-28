@@ -1,4 +1,4 @@
-resources/images/player1
+resources/images/player2
 imagesMaxCount 10 10 10 10 10 10 10 10
 imageSizeWidth,Height 12 12
 playerPositionX,Y 15 60

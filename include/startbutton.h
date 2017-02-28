@@ -22,12 +22,15 @@
 class StartButton: public QPushButton
 {
     Q_OBJECT
+    int millisecondsPerFrame;
     QGraphicsScene* scene;
     InputHandler* view_global;
     QApplication* core;
     std::vector<QGraphicsProxyWidget*> proxyVector;
+    int screenWidth;
+    int screenHeight;
  public:
-    StartButton(QApplication* a ,QGraphicsScene* scene_local,InputHandler* view_local,const char* button_text);
+    StartButton(QApplication* , QGraphicsScene* , InputHandler* , const char* , int, int screen_width, int screen_height);
     void setProxy(QGraphicsProxyWidget*);
 public slots:
     void changeEvent();

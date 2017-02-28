@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>resources/game files/Jump-SoundBible.com-1007297584.mp3</file>
+    </qresource>
+</RCC>

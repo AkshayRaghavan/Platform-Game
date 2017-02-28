@@ -1,10 +1,13 @@
 #include "readinput.h"
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QStyle>
 
-ReadInput::ReadInput(QGraphicsScene * scene_local)
+ReadInput::ReadInput(QGraphicsScene * scene_local, int screen_width, int screen_height)
 {
     scene = scene_local;
+    screenWidth = screen_width;
+    screenHeight = screen_height;
 }
 
 void ReadInput::functionToCreateTileMap(std::string file_path)
@@ -29,9 +32,9 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    QRect rec = QApplication::desktop()->availableGeometry();
-    screenHeight = rec.height() - 50;
-    screenWidth = screenHeight * 1.5;
+ /*   QRect rec = QApplication::desktop()->availableGeometry();
+    screenHeight = rec.height() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
+    screenWidth = screenHeight * 1.5;*/
 
     qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
 
@@ -59,7 +62,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     }
 }
 
-GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path)
+GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path, int milliseconds_per_frame)
 {
 
     /* std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
@@ -100,7 +103,7 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
     t3.join();
     t4.join();
     t5.join();*/
-    return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene );
+    return new GameState(this->gameObject , this->tileMap , this->gems , this->screenWidth , this->screenHeight , this->scene , milliseconds_per_frame, 30000); //hard coded for now
 }
 
 
@@ -268,7 +271,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             }
             GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , 0 , 0 , 0 , true );
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
-            PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth);
+            PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
 
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , 0));
         }
