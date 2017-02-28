@@ -33,6 +33,8 @@ std::string Server::getStringFromGameState(GameState &obj)
 
     return result;
 }
+
+//TODO
 /*
 
 std::string Server::setGameStateFromJsonObject(QJsonObject & json_obj , GameState &obj)
