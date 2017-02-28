@@ -16,11 +16,6 @@ void StartButton::setProxy(QGraphicsProxyWidget* x)
 
 void StartButton::changeEvent()
 {
-    QLabel *lbl = new QLabel(this);
-    QMovie *movie = new QMovie("resources/images/loading/ajax-loader.gif");
-    lbl->setMovie(movie);
-    movie->start();
-
     for(auto it = proxyVector.begin() ; it < proxyVector.end() ; it++)
     {
         scene->removeItem(*it);
