@@ -18,11 +18,12 @@ void GameObject::setObjectType(enumerator::ObjectType a)
     objecttype = a;
 }
 
-GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graphics_component, PhysicsComponent * physics_component , const int &max_jump_count) : maxJumpCount(max_jump_count)
+GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graphics_component, PhysicsComponent * physics_component , ScoreComponent* score_component , const int &max_jump_count) : maxJumpCount(max_jump_count)
 {
     inputComponent = input_component;
     graphicsComponent = graphics_component;
     physicsComponent = physics_component;
+    scoreComponent = score_component;
     inputComponent->setParent(this);
     graphicsComponent->setParent(this);
     physicsComponent->setParent(this);

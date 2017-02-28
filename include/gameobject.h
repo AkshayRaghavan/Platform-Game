@@ -7,6 +7,7 @@
 #include "jumpingstate.h"
 #include "graphicscomponent.h"
 #include "physicscomponent.h"
+#include "scorecomponent.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include "enumerator.h"
@@ -24,11 +25,12 @@ public:
     bool getIsDead();
     enumerator::ObjectType getObjectType();
     void setObjectType(enumerator::ObjectType a);
-    GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * ,  const int&);
+    GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * , ScoreComponent * , const int&);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
     PhysicsComponent *physicsComponent;
+    ScoreComponent *scoreComponent;
     State *state;
     JumpingState *jumpingState;
     bool event(QEvent *);

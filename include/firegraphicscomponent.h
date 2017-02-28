@@ -24,7 +24,7 @@ private:
     int graphicsCounter;
 
 public:
-    FireGraphicsComponent(QGraphicsScene* scene ,  std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate);
+    FireGraphicsComponent(std::string , int , int  , int  , qreal  , qreal);
     ~FireGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &obj);

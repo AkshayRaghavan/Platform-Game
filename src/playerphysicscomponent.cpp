@@ -133,11 +133,10 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
     for(int i = 0; i < colliding_items.size(); i++)
     {
-  //      qDebug() << "in for";
         if(typeid(*(colliding_items[i])) == typeid(Diamond))
         {
-     //       qDebug() << "found a gem";
-            gameObject.setScore(gameObject.getScore()+1);
+            qDebug() << gameObject.getScore();
+            gameObject.setScore(gameObject.getScore() + (static_cast<Gem*>(colliding_items[i]))->getPointValue());
             coin->play();
             scene->removeItem(colliding_items[i]);
             delete colliding_items[i];
@@ -169,7 +168,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
-    (gameObject.graphicsComponent)->setPosScorePointer( going_to_point.x(), going_to_point.y() );
+    (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
 }
 
 

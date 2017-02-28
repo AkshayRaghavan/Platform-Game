@@ -48,7 +48,6 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
-    qDebug() <<"UPDATE";
     bool someone_accepting_input = false;
     if(!isGameRunning)
     {
@@ -59,14 +58,18 @@ void GameState::update()
         if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
         {
             someone_accepting_input = true;
-            gameObjects[i]->physicsComponent->update(*gameObjects[i]);
-            gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
+            (gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
+            (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
+            if(gameObjects[i]->scoreComponent)
+                (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
         }
         else
         {
-            gameObjects[i]->inputComponent->update(*gameObjects[i]);
-            gameObjects[i]->physicsComponent->update(*gameObjects[i]);
-            gameObjects[i]->graphicsComponent->update(*gameObjects[i]);
+            (gameObjects[i]->inputComponent)->update(*gameObjects[i]);
+            (gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
+            (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
+            if(gameObjects[i]->scoreComponent)
+                (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
         }
     }
     timer->update();

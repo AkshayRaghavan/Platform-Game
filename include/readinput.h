@@ -10,6 +10,7 @@
 #include "humaninputcomponent.h"
 #include "computerinputcomponent.h"
 #include "graphicscomponent.h"
+#include "scorecomponent.h"
 #include "playergraphicscomponent.h"
 #include "firegraphicscomponent.h"
 #include "keys.h"

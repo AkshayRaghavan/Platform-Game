@@ -61,7 +61,8 @@ SOURCES += main.cpp \
     src/door.cpp \
     src/startbutton.cpp \
     src/exitbutton.cpp \
-    src/timer.cpp
+    src/timer.cpp \
+    src/scorecomponent.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -98,7 +99,8 @@ HEADERS  += \
     include/door.h \
     include/startbutton.h \
     include/exitbutton.h \
-    include/timer.h
+    include/timer.h \
+    include/scorecomponent.h
 
 FORMS    +=
 

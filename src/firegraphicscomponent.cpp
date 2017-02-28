@@ -1,9 +1,8 @@
 #include "firegraphicscomponent.h"
 
-FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene_formal_arg ,  std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate)
+FireGraphicsComponent::FireGraphicsComponent(std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate)
 {
     isDangerous = true;
-    scene = scene_formal_arg;
     pixMapArray = new QPixmap[images_total_count];
     for(int i = 0; i < images_total_count; i++)
     {
@@ -20,7 +19,6 @@ FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene_formal_arg , 
     graphicsCounter = 0;
     this->setPixmap(this->pixMapArray[0]);
     this->setPos(x_coordinate,y_coordinate);
-    scene->addItem(this);
 }
 
 void FireGraphicsComponent::update(GameObject &obj)

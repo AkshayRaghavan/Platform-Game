@@ -12,11 +12,10 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_arg ,  std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , int font_size , int score_display_diff_x , int score_display_diff_y , bool is_dangerous):
-    scoreDisplayDiffX(score_display_diff_x) , scoreDisplayDiffY(score_display_diff_y)
+PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous)
 {
+    qDebug() << images_location.c_str();
     isDangerous = is_dangerous;
-    scene = scene_formal_arg;
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
         if(images_total_count[i] == 0)
@@ -32,7 +31,6 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_ar
 
     std::thread t3( [&]() { initializePixMaps (images_total_count[2] , images_location + "/idle right/Idle(" ,  pixMapMatrix[2] ,  image_width , image_height); });
     std::thread t4( [&]() { initializePixMaps (images_total_count[3] , images_location + "/idle left/Idle(" ,  pixMapMatrix[3] , image_width , image_height); });
-
 
     std::thread t5( [&]() { initializePixMaps (images_total_count[4] , images_location + "/dead right/Dead(" ,  pixMapMatrix[4] , image_width , image_height); });
     std::thread t6( [&]() { initializePixMaps (images_total_count[5] , images_location + "/dead left/Dead(" ,  pixMapMatrix[5] , image_width , image_height); });
@@ -58,7 +56,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_ar
     }
     setPixmap(pixMapMatrix[2][0]);
     setPos(x_coordinate,y_coordinate);
-    if(!isDangerous)
+    /*if(!isDangerous)
     {
         scorePointer = new QGraphicsTextItem();
         scorePointer->setPlainText("0");
@@ -67,7 +65,7 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene_formal_ar
         scorePointer->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
         scene->addItem(scorePointer);
     }
-    scene->addItem(this);
+    scene->addItem(this);*/
 }
 
 
@@ -85,12 +83,6 @@ void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::st
            array_of_pixmaps[i] = array_of_pixmaps[i].scaled(QSize(image_width,image_height),  Qt::KeepAspectRatio);
     }
 }
-
-void PlayerGraphicsComponent::setPosScorePointer( int going_to_x , int going_to_y )
-{
-    scorePointer->setPos(going_to_x + scoreDisplayDiffX , going_to_y + scoreDisplayDiffY);
-}
-
 
 int PlayerGraphicsComponent::updateGraphicsCounter(int index , GameObject * obj)
 {
@@ -136,13 +128,8 @@ void PlayerGraphicsComponent::update(GameObject &obj)
     int state_index = static_cast<int> (stateEnum);
     int jumping_state_index = static_cast<int> (jumpingEnum);
 
-    if(!isDangerous)
-    {
-        scorePointer->setPlainText(std::to_string(obj.getScore()).c_str());
-    }
-
     if( jumpingEnum == enumerator::JumpingState::IS_NOT_JUMPING)
-    {        
+    {
         if(stateEnum == enumerator::State::MOVING_RIGHT || stateEnum == enumerator::State::MOVING_LEFT || stateEnum == enumerator::State::STOP_RIGHT || stateEnum == enumerator::State::STOP_LEFT)  //for moving , idle position <right , left>
         {
             this->setPixmap(pixMapMatrix[state_index][updateGraphicsCounter(state_index)]);
