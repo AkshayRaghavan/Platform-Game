@@ -31,7 +31,7 @@ void InputHandler::keyReleaseEvent(QKeyEvent *event)
     {
         return;
     }
-    for(int i = 0; i < gameObjects.size(); i++)
+    for(unsigned int i = 0; i < gameObjects.size(); i++)
     {
         if( (gameObjects[i]->GameObject::isAcceptingInput()) && (gameObjects[i]->inputComponent->keys)->find(static_cast<Qt::Key> (key_event->key())))
         {
