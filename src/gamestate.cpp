@@ -43,6 +43,7 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
+    qDebug() <<"UPDATE";
     bool someone_accepting_input = false;
     if(!isGameRunning)
     {

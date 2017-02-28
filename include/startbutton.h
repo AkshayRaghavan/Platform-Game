@@ -17,13 +17,18 @@
 #include <QPushButton>
 #include <QDebug>
 #include <QGraphicsScene>
+#include <QLabel>
+#include<QMovie>
 class StartButton: public QPushButton
 {
     Q_OBJECT
     QGraphicsScene* scene;
-    QGraphicsView* view_global;
+    InputHandler* view_global;
+    QApplication* core;
+    std::vector<QGraphicsProxyWidget*> proxyVector;
  public:
-    StartButton(QGraphicsScene* scene_local,QGraphicsView* view_local,const char* button_text);
+    StartButton(QApplication* a ,QGraphicsScene* scene_local,InputHandler* view_local,const char* button_text);
+    void setProxy(QGraphicsProxyWidget*);
 public slots:
     void changeEvent();
 };

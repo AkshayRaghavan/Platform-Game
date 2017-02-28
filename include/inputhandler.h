@@ -18,6 +18,7 @@ private:
     GameState *gameState;
 public:
     InputHandler(GameState *);
+    void setGameState(GameState *x);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
 };
