@@ -65,21 +65,19 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path, int milliseconds_per_frame)
 {
 
-     std::thread t1( [this , tile_map_path] (){functionToCreateTileMap(tile_map_path);});
-     t1.join();
+    functionToCreateTileMap(tile_map_path);
 
-     std::thread t2( [this , gem_path] (){functionToCreateGem(gem_path);});
+    std::thread t2( &ReadInput::functionToCreateMonsterGameObject , this , monster_file_path);
+    std::thread t3( &ReadInput::functionToCreateFireObject , this , fire_file_path);
+
      t2.join();
-
-     std::thread t3( [this , monster_file_path] (){functionToCreateMonsterGameObject(monster_file_path);});
      t3.join();
 
-     std::thread t4( [this , fire_file_path] (){functionToCreateFireObject(fire_file_path);});
-     t4.join();
-
+    functionToCreateGem(gem_path);
     functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
     functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
     functionToCreateDoor(door_file_path);
+
 
     for(auto it = gems.begin(); it != gems.end() ; it++)
         (*it)->drawGem(scene);
@@ -164,52 +162,38 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
         std::exit(EXIT_FAILURE);
     }
 
-        infile >> images_location;
-        infile >> tempString;
+    infile >> images_location;
+    infile >> tempString;
 
-        for(int i = 0; i < 8 ; i++)
-        {
-            infile >> images_count_temp;
-            images_total_count.push_back(images_count_temp);
-        }
-        infile >> tempString;
+    for(int i = 0; i < 8 ; i++)
+    {
+        infile >> images_count_temp;
+        images_total_count.push_back(images_count_temp);
+    }
+    infile >> tempString >> image_width >> image_height ;
+    image_width *= width_of_tile;
+    image_height *= height_of_tile;
 
-        infile >> image_width;
-        image_width *= width_of_tile;
+    infile >> tempString >> x_coordinate >> y_coordinate;
+    x_coordinate *= width_of_tile;
+    y_coordinate *= height_of_tile;
 
-        infile >> image_height;
-        image_height *= height_of_tile;
+    infile >> tempString >> font_size;
 
-        infile >> tempString;
+    infile >> tempString >> score_display_diff_x >> score_display_diff_y;
 
-        infile >> x_coordinate;
-        x_coordinate *= width_of_tile;
+    infile >> tempString >> max_jump_count;
 
-        infile >> y_coordinate;
-        y_coordinate *= height_of_tile;
+    infile >> tempString >> RGB1 >> RGB2 >>RGB3;
 
-        infile >> tempString;
-        infile >> font_size;
+    GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false );
+    Keys* key_pointer = new Keys( jump_input, right_input , left_input);
+    InputComponent *input_component = new HumanInputComponent(key_pointer);
+    PhysicsComponent * physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth , scene);
+    ScoreComponent * score_component = new ScoreComponent(x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
 
-        infile >> tempString;
-        infile >> score_display_diff_x;
-        infile >> score_display_diff_y;
-
-        infile >> tempString;
-        infile >> max_jump_count;
-
-        infile >> tempString;
-        infile >> RGB1;
-        infile >> RGB2;
-        infile >> RGB3;
-
-        GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false );
-        Keys* key_pointer = new Keys( jump_input, right_input , left_input);
-        InputComponent *input_component = new HumanInputComponent(key_pointer);
-        PhysicsComponent * physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth , scene);
-        ScoreComponent * score_component = new ScoreComponent(x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
-
-        gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count));
+    gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count));
+    infile.close();
 }
 
 
@@ -243,25 +227,19 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
         images_total_count.push_back(images_count_temp);
     }
 
-    infile >> temp_string;
-
-    infile >> image_width;
+    infile >> temp_string >> image_width >> image_height;
     image_width *= width_of_tile;
-
-    infile >> image_height;
     image_height *= height_of_tile;
 
     infile >> temp_string;
 
         while(true)
         {
-            infile >> x_coordinate;
-            x_coordinate *= width_of_tile;
+            infile >> x_coordinate >> y_coordinate >> walk_frames_count;
 
-            infile >> y_coordinate;
+            x_coordinate *= width_of_tile;
             y_coordinate *= height_of_tile;
 
-            infile >> walk_frames_count;
             if(infile.eof())
             {
                 break;
@@ -269,9 +247,10 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
+
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
         }
-
+    infile.close();
 }
 
 
@@ -295,25 +274,20 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
 
     infile >> images_location;
 
-    infile >> temp_string;
-    infile >> images_total_count;
+    infile >> temp_string >> images_total_count;
 
-    infile >> temp_string;
-
-    infile >> image_width;
+    infile >> temp_string >> image_width >> image_height;
     image_width *= width_of_tile;
-
-    infile >> image_height;
     image_height *= height_of_tile;
 
     infile >> temp_string;
 
         while(true)
         {
-            infile >> x_coordinate;
-            x_coordinate *= width_of_tile;
 
-            infile >> y_coordinate;
+            infile >> x_coordinate >> y_coordinate;
+
+            x_coordinate *= width_of_tile;
             y_coordinate *= height_of_tile;
 
             if(infile.eof())
@@ -325,6 +299,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             PhysicsComponent * physics_component = new EmptyPhysicsComponent();
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
         }
+    infile.close();
 }
 
 void ReadInput::functionToCreateDoor(std::string door_file_path)

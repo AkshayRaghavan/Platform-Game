@@ -46,6 +46,7 @@ class ReadInput
     void functionToCreateMonsterGameObject(std::string file_path);
     void functionToCreateFireObject(std::string fire_file_path);
     void functionToCreateDoor(std::string fire_file_path);
+
 public:
     GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::string door_file_path, int);
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
