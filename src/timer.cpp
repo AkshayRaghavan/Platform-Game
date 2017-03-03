@@ -32,7 +32,7 @@ void Timer::update()
         isLeft = false;
     }
     std::string time_string = getTimeLeft();
-    this->setPlainText(time_string.c_str());
+    //this->setPlainText(time_string.c_str());
 }
 
 std::string Timer::getTimeLeft()

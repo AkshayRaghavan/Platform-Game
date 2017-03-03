@@ -32,7 +32,6 @@ void HumanInputComponent::update(GameObject &gameObject)
         delete gameObject.jumpingState;
         gameObject.jumpingState = new_jumping_state;
     }
-
 }
 
 bool HumanInputComponent::event(QEvent *event)

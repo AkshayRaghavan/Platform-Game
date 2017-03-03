@@ -85,7 +85,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     if(current_player_jumping_state == enumerator::JumpingState::IS_JUMPING)
     {
         if(curJumpCount == 1)
-            jump->play();
+           // jump->play();
         if(current_player_state == enumerator::State::DEAD_LEFT || current_player_state == enumerator::State::DEAD_RIGHT)
         {
             curJumpCount = maxJumpCount;
@@ -107,7 +107,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         if(testPositionForPlayer(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile),player_width,player_height))
         {
             gameObject.setJumpingState(new IsJumping(gameObject));
-            slip->play();
+           // slip->play();
             curJumpCount = maxJumpCount;
         }
     }
@@ -138,14 +138,14 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             qDebug() << gameObject.getScore();
             gameObject.setScore(gameObject.getScore() + (static_cast<Gem*>(colliding_items[i]))->getPointValue());
             (static_cast<Gem*>(colliding_items[i]))->setIsOnScreen(false);
-            coin->play();
-            scene->removeItem(colliding_items[i]);
-            //delete colliding_items[i]; //Have deleted it to get true false in json of networking
+          //  coin->play();
+          //scene->removeItem(colliding_items[i]);
+          //delete colliding_items[i]; //Have deleted it to get true false in json of networking
         }
         else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))
         {
             qDebug() << "collided with door";
-            ending->play();
+            //ending->play();
             gameObject.setState(new StopRight);
             gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
@@ -156,7 +156,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);
             if(((*temp).getIsDangerous()) == true)
             {
-                die->play();
+                //die->play();
                 // getismonster() is a member of graphics component to check monster
                 if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)
                 {
@@ -169,7 +169,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
-    (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
+   // (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
 }
 
 

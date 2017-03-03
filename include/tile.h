@@ -18,7 +18,7 @@ private:
     qreal heightOfTile;
     QGraphicsRectItem* r;
 public:
-    Tile(QGraphicsScene* scene , qreal left , qreal top , qreal width , qreal height , bool isObstacle);
+    Tile(qreal left , qreal top , qreal width , qreal height , bool isObstacle);
     QGraphicsRectItem* getR();
     bool getIsObstacle();
     qreal getWidthOfTile();

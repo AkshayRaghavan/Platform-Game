@@ -32,6 +32,10 @@
 
 class ReadInput
 {
+
+
+    
+public:
     std::vector<GameObject*> gameObject;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
@@ -40,16 +44,28 @@ class ReadInput
     qreal height_of_tile;
     int screenWidth;
     int screenHeight;
-    void functionToCreateTileMap(std::string file_path);
-    void functionToCreateGem(std::string file_path);
-    void functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input);
-    void functionToCreateMonsterGameObject(std::string file_path);
-    void functionToCreateFireObject(std::string fire_file_path);
-    void functionToCreateDoor(std::string fire_file_path);
 
-public:
     GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::string door_file_path, int);
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
+    void functionToCreateTileMap(std::string file_path);
+    void functionToCreateGem(std::string file_path);
+    void functionToCreatePlayerGameObject(std::string , Qt::Key , Qt::Key , Qt::Key );
+    void functionToCreateMonsterGameObject(std::string );
+    void functionToCreateFireObject(std::string );
+    void functionToCreateDoor(std::string );
 };
 
 #endif // READINPUT_H
+
+
+
+
+
+
+
+
+
+
+
+
+

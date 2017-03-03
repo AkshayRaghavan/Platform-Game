@@ -1,8 +1,8 @@
 #include "tile.h"
 
-Tile::Tile(QGraphicsScene* scene , qreal column , qreal row , qreal width , qreal height , bool is_obstacle)
+Tile::Tile(qreal column , qreal row , qreal width , qreal height , bool is_obstacle)
 {
-    QPen outlinePen;
+   // QPen outlinePen;
     this->columnPosition = column;
     this->widthOfTile = width;
     this->heightOfTile = height;

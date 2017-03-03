@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui \
-         multimedia
-
+QT       += core gui
+QT       += multimedia
+QT       += websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Platform-Game
+TARGET = Platform-Game-server
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -59,7 +59,6 @@ SOURCES += main.cpp \
     src/emptyphysicscomponent.cpp \
     src/firegraphicscomponent.cpp \
     src/door.cpp \
-    src/startbutton.cpp \
     src/exitbutton.cpp \
     src/timer.cpp \
     src/scorecomponent.cpp \
@@ -98,7 +97,6 @@ HEADERS  += \
     include/emptyphysicscomponent.h \
     include/firegraphicscomponent.h \
     include/door.h \
-    include/startbutton.h \
     include/exitbutton.h \
     include/timer.h \
     include/scorecomponent.h \

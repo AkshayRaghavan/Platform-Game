@@ -23,18 +23,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     int row_tile_matrix_size;
     int column_tile_matrix_size;
 
-    /*infile >> screenWidth;
-    infile >> screenHeight;
-
-    infile >> width_of_tile;
-    infile >> height_of_tile;*/
-
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
-
- /*   QRect rec = QApplication::desktop()->availableGeometry();
-    screenHeight = rec.height() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
-    screenWidth = screenHeight * 1.5;*/
 
     qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
 
@@ -57,7 +47,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             column_position *= width_of_tile;
             row_position *= height_of_tile;
 
-            tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
+            tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         }
     }
 }
@@ -66,7 +56,6 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
 {
 
     functionToCreateTileMap(tile_map_path);
-
     std::thread t2( &ReadInput::functionToCreateMonsterGameObject , this , monster_file_path);
     std::thread t3( &ReadInput::functionToCreateFireObject , this , fire_file_path);
 
