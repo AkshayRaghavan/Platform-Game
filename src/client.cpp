@@ -46,6 +46,40 @@ QWebSocket* Client::getClientWebSocket()
 {
     return &clientWebSocket;
 }
+/*
+void Client::DisplayScore(QJsonArray score)
+{
+    QGraphicsTextItem * winner = new QGraphicsTextItem;
+    QGraphicsTextItem * ID = new QGraphicsTextItem[10];
+    QGraphicsTextItem * points = new QGraphicsTextItem[10];
+
+    QJsonObject obj;
+
+    for(int i=0;i<sizeof(createGamePointer->gameObject);i++)
+        scene->removeItem(createGamePointer->gameObject[i]->graphicsComponent);
+
+    obj = score["Score"].toObject();
+
+    if(obj["ID"].toInt() == arrayIndexInGameObject)
+        winner->setPlainText(QString("YOU WON !"));
+    else
+        winner->setPlainText(QString("YOU LOSE !"));
+    scene->addItem(winner);
+    winner->setPos(70*(createGamePointer->width_of_tile),25*(createGamePointer->height_of_tile));
+
+    i=0;
+    foreach (const QJsonValue & value, score)
+    {
+        obj = value.toObject();
+        ID = new QGraphicsTextItem(QString(std::to_string(obj["ID"].toInt()).c_str()));
+        points = new QGraphicsTextItem(QString(std::to_string(obj["points"].toInt()).c_str()));
+        scene->addItem(ID);
+        ID->setPos(70*(createGamePointer->width_of_tile),50*(createGamePointer->height_of_tile));
+        scene->addItem(points);
+        points->setPos(70*(createGamePointer->width_of_tile),75*(createGamePointer->height_of_tile));
+        i++;
+    }
+}*/
 
 void Client::onConnected()
 {
@@ -64,6 +98,8 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
 {
     QJsonDocument itemDoc = QJsonDocument::fromJson(bytes);
     QJsonObject itemObject = itemDoc.object();
+
+    QJsonArray final = itemObject["Final"].toArray();
 
     if (!receivedNoOfPlayerFlag)
     {
@@ -151,6 +187,12 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
             ((gamePointer->gems)[counter_game++])->setIsOnScreen((value.toDouble() == 1)? true:false);
          }
             (gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt());
+         gamePointer->update();
+         /*if(itemObject["Game Over"].toInt() == 1)
+         {
+             DisplayScore(final);
+             isAcceptingGameState = false;
+         }*/
           //  qDebug() << "timer : "<< itemObject["timer"].toInt();
          gamePointer->update();
     }

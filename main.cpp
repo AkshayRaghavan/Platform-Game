@@ -59,6 +59,7 @@ int main(int argc, char *argv[])
     f->setFocus();
     //f->show();
 
+
     Client game_client(QUrl(QStringLiteral("ws://localhost:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
     LoadingText* loading_text = new LoadingText(&game_client , scene , view , screen_initial_width/(3.0) , screen_initial_height/(3.0));
 

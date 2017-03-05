@@ -67,6 +67,7 @@ public:
     Client(QUrl, int , QGraphicsScene* , InputHandler* , int , int , QObject *parent = 0);
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
+    void DisplayScore(QJsonArray score);
 
 };
 #endif // SERVER_H
