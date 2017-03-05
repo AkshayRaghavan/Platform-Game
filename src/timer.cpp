@@ -32,14 +32,23 @@ void Timer::update()
         isLeft = false;
     }
     std::string time_string = getTimeLeft();
-    this->setPlainText(time_string.c_str());
+    //this->setPlainText(time_string.c_str());
 }
+
 
 std::string Timer::getTimeLeft()
 {
      std::string time_string = std::to_string(secondsLeft) + " : " + std::to_string(millisecondsLeft);
      return time_string;
 }
+
+void Timer::setTimeLeft(int timeLeft)
+{
+     secondsLeft = timeLeft/1000;
+     millisecondsLeft = timeLeft%1000;
+     this->setPlainText(getTimeLeft().c_str());
+}
+
 
 int Timer::getTimeLeftInMilliSeconds()
 {

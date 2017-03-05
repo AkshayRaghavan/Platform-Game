@@ -20,6 +20,7 @@ void GameObject::setObjectType(enumerator::ObjectType a)
 
 GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graphics_component, PhysicsComponent * physics_component , ScoreComponent* score_component , const int &max_jump_count) : maxJumpCount(max_jump_count)
 {
+    isDead = false;
     inputComponent = input_component;
     graphicsComponent = graphics_component;
     physicsComponent = physics_component;

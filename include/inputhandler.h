@@ -11,14 +11,19 @@
 #include "inputcomponent.h"
 #include "gamestate.h"
 #include "keys.h"
+#include "client.h"
+
+class Client;
 
 class InputHandler : public QGraphicsView
 {
 private:
     GameState *gameState;
+    Client * clientPtr;
 public:
     InputHandler(GameState *);
-    void setGameState(GameState *x);
+    void setGameClient(Client *);
+    void setGameState(GameState *);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
 };

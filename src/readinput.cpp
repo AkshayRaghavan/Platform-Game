@@ -23,18 +23,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     int row_tile_matrix_size;
     int column_tile_matrix_size;
 
-    /*infile >> screenWidth;
-    infile >> screenHeight;
-
-    infile >> width_of_tile;
-    infile >> height_of_tile;*/
-
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
-
- /*   QRect rec = QApplication::desktop()->availableGeometry();
-    screenHeight = rec.height() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
-    screenWidth = screenHeight * 1.5;*/
 
     qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
 
@@ -66,7 +56,6 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
 {
 
     functionToCreateTileMap(tile_map_path);
-
     std::thread t2( &ReadInput::functionToCreateMonsterGameObject , this , monster_file_path);
     std::thread t3( &ReadInput::functionToCreateFireObject , this , fire_file_path);
 
@@ -74,8 +63,8 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
      t3.join();
 
     functionToCreateGem(gem_path);
-    functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
-    functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
+    functionToCreatePlayerGameObject(player1_file_path);
+    functionToCreatePlayerGameObject(player2_file_path);
     functionToCreateDoor(door_file_path);
 
 
@@ -136,10 +125,11 @@ void ReadInput::functionToCreateGem(std::string file_path)
             break;
         }
         gems.push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate , score_of_gem));
+      //  scene->addItem(gems.back());
     }
 }
 
-void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)
+void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
 {
     std::string images_location;
     std::vector<int> images_total_count;
@@ -186,13 +176,22 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
 
     infile >> tempString >> RGB1 >> RGB2 >>RGB3;
 
-    GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false );
-    Keys* key_pointer = new Keys( jump_input, right_input , left_input);
+    GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
+    Keys* key_pointer = new Keys(Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
+    
+            InputComponent *input_component = new EmptyInputComponent();
+            PhysicsComponent * physics_component = new EmptyPhysicsComponent();
+            
+          /*
     InputComponent *input_component = new HumanInputComponent(key_pointer);
-    PhysicsComponent * physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth , scene);
-    ScoreComponent * score_component = new ScoreComponent(x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
+    
+    PhysicsComponent * physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() ,     screenHeight , screenWidth , scene);
+*/
+    
+    ScoreComponent * score_component = new ScoreComponent(scene , x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
 
-    gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count));
+    gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , 0));
+  //  scene->addItem((gameObject.back())->graphicsComponent);
     infile.close();
 }
 
@@ -244,11 +243,17 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );
+            
+            InputComponent *input_component = new EmptyInputComponent();
+            PhysicsComponent * physics_component = new EmptyPhysicsComponent();
+            
+            /*
             InputComponent *input_component = new ComputerInputComponent(walk_frames_count);
             PhysicsComponent * physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
-
+            */
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
+           // scene->addItem((gameObject.back())->graphicsComponent);
         }
     infile.close();
 }
@@ -294,10 +299,11 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new FireGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate);
+            GraphicsComponent* graphics_component = new FireGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate);
             InputComponent *input_component = new EmptyInputComponent();
             PhysicsComponent * physics_component = new EmptyPhysicsComponent();
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
+            // scene->addItem((gameObject.back())->graphicsComponent);
         }
     infile.close();
 }
@@ -333,6 +339,8 @@ void ReadInput::functionToCreateDoor(std::string door_file_path)
     height *= height_of_tile;
 
     Door * door = new Door(x_coordinate,y_coordinate,width,height,scene);
+   // scene->addItem(door);
+
     infile.close();
 }
 

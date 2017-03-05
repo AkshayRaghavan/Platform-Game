@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui \
-         multimedia
-
+QT       += core gui
+QT       += multimedia
+QT       += websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Platform-Game
+TARGET = Platform-Game-client
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++14
+CONFIG += c++14 -no-openssl
 
 QMAKE_CXXFLAGS += --std=c++0x
 
@@ -59,11 +59,11 @@ SOURCES += main.cpp \
     src/emptyphysicscomponent.cpp \
     src/firegraphicscomponent.cpp \
     src/door.cpp \
-    src/startbutton.cpp \
     src/exitbutton.cpp \
     src/timer.cpp \
     src/scorecomponent.cpp \
-    src/server.cpp
+    src/client.cpp \
+    src/inputbox.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -98,11 +98,11 @@ HEADERS  += \
     include/emptyphysicscomponent.h \
     include/firegraphicscomponent.h \
     include/door.h \
-    include/startbutton.h \
     include/exitbutton.h \
     include/timer.h \
     include/scorecomponent.h \
-    include/server.h
+    include/client.h \
+    include/inputbox.h
 
 FORMS    +=
 

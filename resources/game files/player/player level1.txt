@@ -1,0 +1,8 @@
+resources/images/player1
+imagesMaxCount 10 10 10 10 10 10 10 10
+imageSizeWidth,Height 12 12
+playerPositionX,Y 5 60
+fontSize 25
+scoreDisplayDiffX,Y 10 -50
+maxJumpCount 50
+RGB_color 51 51 255

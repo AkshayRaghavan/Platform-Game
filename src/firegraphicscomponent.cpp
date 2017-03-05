@@ -1,6 +1,6 @@
 #include "firegraphicscomponent.h"
 
-FireGraphicsComponent::FireGraphicsComponent(std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate)
+FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate)
 {
     isDangerous = true;
     pixMapArray = new QPixmap[images_total_count];
@@ -13,6 +13,11 @@ FireGraphicsComponent::FireGraphicsComponent(std::string images_location , int i
             std::exit(EXIT_FAILURE);
         }
         pixMapArray[i] = QPixmap::fromImage(fire_picture);
+        if(pixMapArray[i].isNull())
+        {
+            qDebug() << "Fire PixMap is NULL";
+            std::exit(0);
+        }
         pixMapArray[i] = (pixMapArray[i]).scaled(QSize(image_width,image_height) , Qt::KeepAspectRatio);
     }
     imagesTotalCount = images_total_count;

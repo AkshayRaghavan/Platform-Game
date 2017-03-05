@@ -1,6 +1,6 @@
 #include "scorecomponent.h"
 
-ScoreComponent::ScoreComponent(qreal x_coordinate, qreal y_coordinate,
+ScoreComponent::ScoreComponent(QGraphicsScene* scene , qreal x_coordinate, qreal y_coordinate,
                                int score_display_diff_x, int score_display_diff_y,
                                QColor text_color,
                                QFont text_font ):
@@ -10,6 +10,17 @@ ScoreComponent::ScoreComponent(qreal x_coordinate, qreal y_coordinate,
       this->setFont(text_font);                          //QFont("Helvetica" , font_size)
       this->setDefaultTextColor(text_color);    //QColor(51, 51, 255)
       this->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
+      scene->addItem(this);
+}
+
+int ScoreComponent::getscoreDisplayDiffX()
+{
+    return scoreDisplayDiffX;
+}
+
+int ScoreComponent::getscoreDisplayDiffY()
+{
+    return scoreDisplayDiffY;
 }
 
 void ScoreComponent::update(int new_score)

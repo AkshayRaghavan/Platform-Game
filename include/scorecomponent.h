@@ -11,7 +11,9 @@ class ScoreComponent : public QGraphicsTextItem
 public:
     const int scoreDisplayDiffX;
     const int scoreDisplayDiffY;
-    ScoreComponent(qreal , qreal ,int , int , QColor , QFont);
+    int getscoreDisplayDiffX();
+    int getscoreDisplayDiffY();
+    ScoreComponent(QGraphicsScene* , qreal , qreal ,int , int , QColor , QFont);
     void update(int new_score);
 };
 

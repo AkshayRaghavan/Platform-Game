@@ -12,7 +12,7 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous)
 {
     qDebug() << images_location.c_str();
     isDangerous = is_dangerous;
@@ -26,46 +26,22 @@ PlayerGraphicsComponent::PlayerGraphicsComponent( std::string images_location , 
         imagesTotalCount.push_back(images_total_count[i]);
         graphicsCounter.push_back(0);
     }
-    std::thread t1( [&]() { initializePixMaps (images_total_count[0] , images_location + "/walk right/Walk(" ,  pixMapMatrix[0] ,  image_width , image_height); });
-    std::thread t2( [&]() { initializePixMaps (images_total_count[1] , images_location + "/walk left/Walk(" ,  pixMapMatrix[1] ,  image_width , image_height); });
+    initializePixMaps (images_total_count[0] , images_location + "/walk right/Walk(" ,  pixMapMatrix[0] ,  image_width , image_height);
+    initializePixMaps (images_total_count[1] , images_location + "/walk left/Walk(" ,  pixMapMatrix[1] ,  image_width , image_height);
 
-    std::thread t3( [&]() { initializePixMaps (images_total_count[2] , images_location + "/idle right/Idle(" ,  pixMapMatrix[2] ,  image_width , image_height); });
-    std::thread t4( [&]() { initializePixMaps (images_total_count[3] , images_location + "/idle left/Idle(" ,  pixMapMatrix[3] , image_width , image_height); });
+    initializePixMaps (images_total_count[2] , images_location + "/idle right/Idle(" ,  pixMapMatrix[2] ,  image_width , image_height);
+    initializePixMaps (images_total_count[3] , images_location + "/idle left/Idle(" ,  pixMapMatrix[3] , image_width , image_height);
 
-    std::thread t5( [&]() { initializePixMaps (images_total_count[4] , images_location + "/dead right/Dead(" ,  pixMapMatrix[4] , image_width , image_height); });
-    std::thread t6( [&]() { initializePixMaps (images_total_count[5] , images_location + "/dead left/Dead(" ,  pixMapMatrix[5] , image_width , image_height); });
-
-    std::thread t7;
-    std::thread t8;
+    initializePixMaps (images_total_count[4] , images_location + "/dead right/Dead(" ,  pixMapMatrix[4] , image_width , image_height);
+    initializePixMaps (images_total_count[5] , images_location + "/dead left/Dead(" ,  pixMapMatrix[5] , image_width , image_height);
 
     if(isDangerous == false)
     {
-        t7 = std::thread( [&]() { initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height); });
-        t8 = std::thread( [&]() { initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" ,   pixMapMatrix[7],  image_width , image_height); });
+        initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height);
+        initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" ,   pixMapMatrix[7],  image_width , image_height);
     }
-    t1.join();
-    t2.join();
-    t3.join();
-    t4.join();
-    t5.join();
-    t6.join();
-   if(isDangerous == false)
-    {
-        t7.join();
-        t8.join();
-    }
-    setPixmap(pixMapMatrix[2][0]);
-    setPos(x_coordinate,y_coordinate);
-    /*if(!isDangerous)
-    {
-        scorePointer = new QGraphicsTextItem();
-        scorePointer->setPlainText("0");
-        scorePointer->setFont(QFont("Helvetica" , font_size));
-        scorePointer->setDefaultTextColor(QColor(51, 51, 255));
-        scorePointer->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
-        scene->addItem(scorePointer);
-    }
-    scene->addItem(this);*/
+    this->setPixmap(pixMapMatrix[2][0]);
+    this->setPos(x_coordinate,y_coordinate);
 }
 
 
