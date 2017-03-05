@@ -22,7 +22,7 @@ Server::Server(quint16 port, QGraphicsScene* scene_local , int screen_width ,
     webSocketServer->setProxy(QNetworkProxy::NoProxy);
     createGamePointer = new ReadInput(scene,screen_width,screen_height);
 
-    if (webSocketServer->listen(QHostAddress::Any, port)) {
+    if (webSocketServer->listen(QHostAddress("0.0.0.0"), port)) {
         qDebug() << "Server Started";
         qDebug() << "Server listening on port" << port;
         connect(webSocketServer, &QWebSocketServer::newConnection,
@@ -35,6 +35,8 @@ Server::Server(quint16 port, QGraphicsScene* scene_local , int screen_width ,
         qDebug() << "Error Message : " << webSocketServer->errorString();
         std::exit(EXIT_FAILURE);
     }
+    qDebug() << webSocketServer->serverUrl();
+
 }
 
 Server::~Server()
@@ -59,7 +61,7 @@ void Server::onNewConnection()
         webSocketClients << pSocket;
         pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        if(webSocketClients.size() == 2)
+        if(webSocketClients.size() == 1)
         {
             qDebug() << "Forming Game Screen";
             setGameStartedVal();
