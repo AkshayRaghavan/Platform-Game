@@ -9,11 +9,14 @@
 #include "gamestate.h"
 #include "gameobject.h"
 #include "inputhandler.h"
+
+#include "loadingtext.h"
+
 #include <QDesktopWidget>
 #include "inputbox.h"
 #include "exitbutton.h"
-#include<QGraphicsScene>
-#include<QGraphicsProxyWidget>
+#include <QGraphicsScene>
+#include <QGraphicsProxyWidget>
 #include <QStyle>
 #include <QMediaPlayer>
 #include <QFileInfo>
@@ -56,13 +59,9 @@ int main(int argc, char *argv[])
     f->setFocus();
     //f->show();
 
-   /* QGraphicsTextItem* messageToClient = new QGraphicsTextItem;
-    messageToClient->setPos(screen_initial_width/3 , screen_initial_height/3);
-    messageToClient->setPlainText("Contacting Server .....");
-    scene->addItem(messageToClient);
-*/
     Client game_client(QUrl(QStringLiteral("ws://localhost:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
-    view->setGameClient(&game_client);
+    LoadingText* loading_text = new LoadingText(&game_client , scene , view , screen_initial_width/(3.0) , screen_initial_height/(3.0));
+
 
     return a.exec();
 }
