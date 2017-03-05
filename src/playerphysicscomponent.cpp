@@ -84,7 +84,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     going_to_point = current_point;
     if(current_player_jumping_state == enumerator::JumpingState::IS_JUMPING)
     {
-        if(curJumpCount == 1)
+      //  if(curJumpCount == 1)
            // jump->play();
         if(current_player_state == enumerator::State::DEAD_LEFT || current_player_state == enumerator::State::DEAD_RIGHT)
         {

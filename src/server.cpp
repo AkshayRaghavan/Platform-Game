@@ -61,7 +61,7 @@ void Server::onNewConnection()
         webSocketClients << pSocket;
         pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        if(webSocketClients.size() == 1)
+        if(webSocketClients.size() == 2)
         {
             qDebug() << "Forming Game Screen";
             setGameStartedVal();
@@ -120,7 +120,7 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
 
     QTimer * timer = new QTimer();
     gamePointer->connect(timer,SIGNAL(timeout()), gamePointer ,SLOT(update()));
-    timer->start(40);
+    timer->start(50);
 
     sendIndexToCLient();
 }
@@ -166,8 +166,6 @@ void Server::iterateOverGameState()
     QJsonObject object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
     QByteArray bytes = doc.toJson();
-    qDebug() << "SENDING";
-
     for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
     {
         (*i)->sendBinaryMessage(bytes);
@@ -256,7 +254,6 @@ void Server::socketDisconnected()
 
 }
 
-
 QJsonObject Server::convertGameStateToJsonObject(GameState &obj)
 {
     std::string text = getStringFromGameState(obj);
@@ -273,8 +270,8 @@ std::string Server::getStringFromGameState(GameState &obj)
         std::vector<qreal> position = ((*it)->graphicsComponent)->getSizePositionOfObject();
         result += " { \"state\" : ";   result += std::to_string(static_cast<int> (((*it)->state)->type()));
         result += " , \"jumpState\" : ";   result += std::to_string(static_cast<int> (((*it)->jumpingState)->type()));
-        result += " , \"positionx\" : ";   result += std::to_string(position[0]);
-        result += " , \"positiony\" : ";   result += std::to_string(position[1]);
+        result += " , \"positionx\" : ";   result += std::to_string(position[0]/(createGamePointer->width_of_tile));
+        result += " , \"positiony\" : ";   result += std::to_string(position[1]/(createGamePointer->height_of_tile));
         result += " , \"score\" : ";   result += std::to_string((*it)->getScore());
         result += " } , ";
     }
