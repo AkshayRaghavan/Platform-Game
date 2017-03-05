@@ -26,20 +26,31 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
         imagesTotalCount.push_back(images_total_count[i]);
         graphicsCounter.push_back(0);
     }
-    initializePixMaps (images_total_count[0] , images_location + "/walk right/Walk(" ,  pixMapMatrix[0] ,  image_width , image_height);
-    initializePixMaps (images_total_count[1] , images_location + "/walk left/Walk(" ,  pixMapMatrix[1] ,  image_width , image_height);
+    std::thread t1([&] () {initializePixMaps (images_total_count[0] , images_location + "/walk right/Walk(" ,  pixMapMatrix[0] ,  image_width , image_height);});
+    std::thread t2([&] () {initializePixMaps ( images_total_count[1] , images_location + "/walk left/Walk(" ,  pixMapMatrix[1] ,  image_width , image_height);});
+    std::thread t3([&] () {initializePixMaps ( images_total_count[2] , images_location + "/idle right/Idle(" ,  pixMapMatrix[2] ,  image_width , image_height);});
+    std::thread t4([&] () {initializePixMaps ( images_total_count[3] , images_location + "/idle left/Idle(" ,  pixMapMatrix[3] ,  image_width , image_height);});
+    std::thread t5([&] () {initializePixMaps ( images_total_count[4] , images_location + "/dead right/Dead(" ,  pixMapMatrix[4] ,  image_width , image_height);});
+    std::thread t6([&] () {initializePixMaps ( images_total_count[5] , images_location + "/dead left/Dead(" ,  pixMapMatrix[5] ,  image_width , image_height);});
 
-    initializePixMaps (images_total_count[2] , images_location + "/idle right/Idle(" ,  pixMapMatrix[2] ,  image_width , image_height);
-    initializePixMaps (images_total_count[3] , images_location + "/idle left/Idle(" ,  pixMapMatrix[3] , image_width , image_height);
-
-    initializePixMaps (images_total_count[4] , images_location + "/dead right/Dead(" ,  pixMapMatrix[4] , image_width , image_height);
-    initializePixMaps (images_total_count[5] , images_location + "/dead left/Dead(" ,  pixMapMatrix[5] , image_width , image_height);
-
+    std::thread t7 , t8;
     if(isDangerous == false)
     {
-        initializePixMaps(images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height);
-        initializePixMaps(images_total_count[7] , images_location + "/jump left/Jump(" ,   pixMapMatrix[7],  image_width , image_height);
+       t7 = std::thread ([&] () {initializePixMaps ( images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height);});
+       t8 = std::thread ([&] () {initializePixMaps ( images_total_count[7] , images_location + "/jump left/Jump(" ,  pixMapMatrix[7] ,  image_width , image_height);});}
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+    t5.join();
+    t6.join();
+    if(isDangerous == false)
+    {
+        t7.join();
+        t8.join();
     }
+
+
     this->setPixmap(pixMapMatrix[2][0]);
     this->setPos(x_coordinate,y_coordinate);
 }

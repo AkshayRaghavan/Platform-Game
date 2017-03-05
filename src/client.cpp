@@ -218,19 +218,31 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
 {
 
     createGamePointer->functionToCreateTileMap(tile_map_path);
-    emit textChanged("Adding The Gems .....");
     createGamePointer->functionToCreateGem(gem_path);
 
-    emit textChanged("Adding The Players .....");
-    for (int i = 1; i <= noOfPlayers; i++)
+
+/*
+
+    createGamePointer->functionToCreateTileMap(tile_map_path);
+    emit textChanged("Adding The Gems .....");
+    createGamePointer->functionToCreateGem(gem_path);*/
+
+    /*
+
+    */
+    for (int i = 0; i < noOfPlayers; i++)
     {
         createGamePointer->functionToCreatePlayerGameObject(player_file_path);
     }
-    emit textChanged("Adding The Zombies .....");
+
     createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
     createGamePointer->functionToCreateFireObject(fire_file_path);
     createGamePointer->functionToCreateDoor(door_file_path);
 
+/*  createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
+    createGamePointer->functionToCreateFireObject(fire_file_path);
+    createGamePointer->functionToCreateDoor(door_file_path);
+*/
 
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
         (*it)->drawGem(scene);

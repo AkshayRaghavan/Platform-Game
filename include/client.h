@@ -15,6 +15,7 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QGraphicsTextItem>
+#include <thread>
 #include "QtWebSockets/qwebsocket.h"
 #include "inputhandler.h"
 #include "gamestate.h"
