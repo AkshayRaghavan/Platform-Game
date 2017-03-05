@@ -24,13 +24,13 @@ int main(int argc, char *argv[])
     int milliseconds_per_frame = 50;
     QApplication a(argc, argv);
 
-//   gameState->installEventFilter(view); //set focus?
-//   QGraphicsView *view = new QGraphicsView;
- //   QMediaPlayer * bg = new QMediaPlayer();
-  //  QFileInfo file("resources/game files/bg.mp3");
+    //   gameState->installEventFilter(view); //set focus?
+    //   QGraphicsView *view = new QGraphicsView;
+    //   QMediaPlayer * bg = new QMediaPlayer();
+    //  QFileInfo file("resources/game files/bg.mp3");
     //bg->setMedia(QUrl("file://resources/game files/bg.mp3"));
-   // bg->setMedia(QUrl("file://"+file.absoluteFilePath()));
-   // bg->play();
+    // bg->setMedia(QUrl("file://"+file.absoluteFilePath()));
+    // bg->play();
 
 
     QGraphicsScene *scene = new QGraphicsScene();
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     QRect rec = QApplication::desktop()->availableGeometry();
     int screen_initial_height = rec.height() - 2*view->frameWidth() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     int screen_initial_width = screen_initial_height * 1.5;
-    Server game_server(3000 , true , scene , screen_initial_width , screen_initial_height , milliseconds_per_frame);
+    Server game_server(3000 , scene , screen_initial_width , screen_initial_height , milliseconds_per_frame);
     a.exec();
     return 0;
 }

@@ -139,7 +139,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             gameObject.setScore(gameObject.getScore() + (static_cast<Gem*>(colliding_items[i]))->getPointValue());
             (static_cast<Gem*>(colliding_items[i]))->setIsOnScreen(false);
           //  coin->play();
-          //scene->removeItem(colliding_items[i]);
+            scene->removeItem(colliding_items[i]);
           //delete colliding_items[i]; //Have deleted it to get true false in json of networking
         }
         else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))

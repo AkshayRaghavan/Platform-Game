@@ -27,3 +27,14 @@ void FireGraphicsComponent::update(GameObject &obj)
     graphicsCounter %= imagesTotalCount;
     this->setPixmap(pixMapArray[graphicsCounter]);
 }
+
+std::vector<qreal> FireGraphicsComponent::getSizePositionOfObject()
+{
+    QRectF obj = this->boundingRect();
+    std::vector<qreal> ans(4);
+    ans[0] = (this->x());
+    ans[1] = (this->y());
+    ans[2] = (obj.width());
+    ans[3] = (obj.height());
+    return ans;
+}

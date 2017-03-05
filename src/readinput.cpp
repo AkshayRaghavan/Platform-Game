@@ -50,6 +50,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         }
     }
+    qDebug() << "Created Tile Map";
 }
 
 GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path , std::string door_file_path, int milliseconds_per_frame)
@@ -63,8 +64,8 @@ GameState* ReadInput::createGameStateObject(std::string tile_map_path , std::str
      t3.join();
 
     functionToCreateGem(gem_path);
-    functionToCreatePlayerGameObject(player1_file_path , Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left);
-    functionToCreatePlayerGameObject(player2_file_path , Qt::Key_W, Qt::Key_D ,  Qt::Key_A);
+    functionToCreatePlayerGameObject(player1_file_path);
+    functionToCreatePlayerGameObject(player2_file_path);
     functionToCreateDoor(door_file_path);
 
 
@@ -126,9 +127,11 @@ void ReadInput::functionToCreateGem(std::string file_path)
         }
         gems.push_back(new Diamond(image_file_path , width , height , x_coordinate , y_coordinate , score_of_gem));
     }
+    infile.close();
+    qDebug() << "Created Gems";
 }
 
-void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key jump_input, Qt::Key right_input, Qt::Key left_input)
+void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
 {
     std::string images_location;
     std::vector<int> images_total_count;
@@ -176,13 +179,14 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path , Qt::Key
     infile >> tempString >> RGB1 >> RGB2 >>RGB3;
 
     GraphicsComponent* graphics_component = new PlayerGraphicsComponent(images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false );
-    Keys* key_pointer = new Keys( jump_input, right_input , left_input);
+    Keys* key_pointer = new Keys( Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left );
     InputComponent *input_component = new HumanInputComponent(key_pointer);
     PhysicsComponent * physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth , scene);
     ScoreComponent * score_component = new ScoreComponent(x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
 
     gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count));
     infile.close();
+    qDebug() << "Created A Player";
 }
 
 
@@ -240,6 +244,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
         }
     infile.close();
+    qDebug() << "Created Monsters";
 }
 
 
@@ -289,6 +294,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
         }
     infile.close();
+    qDebug() << "Created Fire";
 }
 
 void ReadInput::functionToCreateDoor(std::string door_file_path)
@@ -323,5 +329,6 @@ void ReadInput::functionToCreateDoor(std::string door_file_path)
 
     Door * door = new Door(x_coordinate,y_coordinate,width,height,scene);
     infile.close();
+    qDebug() << "Created Door";
 }
 

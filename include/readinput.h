@@ -49,7 +49,7 @@ public:
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
     void functionToCreateTileMap(std::string file_path);
     void functionToCreateGem(std::string file_path);
-    void functionToCreatePlayerGameObject(std::string , Qt::Key , Qt::Key , Qt::Key );
+    void functionToCreatePlayerGameObject(std::string);
     void functionToCreateMonsterGameObject(std::string );
     void functionToCreateFireObject(std::string );
     void functionToCreateDoor(std::string );

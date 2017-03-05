@@ -14,30 +14,34 @@ class  Server: public QObject
     Q_OBJECT
 private:
     QWebSocketServer* webSocketServer;
-    const bool websocketDebug;
     QList<QWebSocket *> webSocketClients;
+    bool maxConnectionsReached;
     bool gameStarted;
-
+    int gameStartedCountOfClients;
+    QGraphicsScene* scene;
     ReadInput* createGamePointer;
     const int millisecondsPerFrame;
     QJsonObject convertGameStateToJsonObject(GameState &);
     std::string getStringFromGameState(GameState &);
     void startServerGameLoop();
     void sendIndexToCLient();
-    void iterateOverGameState();
     void setGameStartedVal();
-    void startGame(std::string , std::string , std::string , std::string , std::string , std::string , int , int );
+    void startGame(std::string , std::string , std::string , std::string ,
+                   std::string , std::string  , int );
 
 Q_SIGNALS:
     void closed();
 
 private Q_SLOTS:
     void onNewConnection();
-    void processBinaryMessage(QByteArray message);
+    void processTextMessage(QString);
+    void processBinaryMessage(QByteArray);
     void socketDisconnected();
+    void iterateOverGameState();
+
 public:
     GameState* gamePointer;
-    Server(quint16, bool , QGraphicsScene* , int , int , int , QObject *parent = 0);
+    Server(quint16 , QGraphicsScene* , int , int , int , QObject *parent = 0);
     ~Server();
 
 
