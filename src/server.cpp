@@ -61,7 +61,7 @@ void Server::onNewConnection()
         webSocketClients << pSocket;
         pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        if(webSocketClients.size() == 2)
+        if(webSocketClients.size() == 3)
         {
             qDebug() << "Forming Game Screen";
             setGameStartedVal();
@@ -118,9 +118,9 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     
     gamePointer = new GameState(createGamePointer->gameObject , createGamePointer->tileMap , createGamePointer->gems , createGamePointer->screenWidth , createGamePointer->screenHeight , createGamePointer->scene , millisecondsPerFrame, total_time);
 
-    QTimer * timer = new QTimer();
+   /* QTimer * timer = new QTimer();
     gamePointer->connect(timer,SIGNAL(timeout()), gamePointer ,SLOT(update()));
-    timer->start(50);
+    timer->start(100);*/
 
     sendIndexToCLient();
 }
@@ -163,6 +163,7 @@ void Server::startServerGameLoop()
 
 void Server::iterateOverGameState()
 {
+    gamePointer->update();
     QJsonObject object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
     QByteArray bytes = doc.toJson();
