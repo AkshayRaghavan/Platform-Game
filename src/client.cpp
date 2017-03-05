@@ -79,7 +79,7 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
     }
     else if(isAcceptingGameState)
     {
-        // qDebug() << "Server response";
+         qDebug() << "Server response";
          QJsonArray json_array = itemObject["gameObject"].toArray();
          int counter_game = 0;
          foreach (const QJsonValue & value, json_array)
