@@ -38,7 +38,6 @@ private:
     const QUrl url;
     const int screenHeight;
     const int screenWidth;
-    QGraphicsTextItem* messageToClient;
     int noOfPlayers;
     int arrayIndexInGameObject;
     bool receivedNoOfPlayerFlag;
@@ -53,6 +52,9 @@ private:
 Q_SIGNALS:
     void closed();
 
+signals:
+    void textChanged(QString);
+    
 protected Q_SLOTS:
     void Error(QAbstractSocket::SocketError error);
 

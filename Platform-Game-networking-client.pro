@@ -63,7 +63,8 @@ SOURCES += main.cpp \
     src/timer.cpp \
     src/scorecomponent.cpp \
     src/client.cpp \
-    src/inputbox.cpp
+    src/inputbox.cpp \
+    src/loadingtext.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -102,7 +103,8 @@ HEADERS  += \
     include/timer.h \
     include/scorecomponent.h \
     include/client.h \
-    include/inputbox.h
+    include/inputbox.h \
+    include/loadingtext.h
 
 FORMS    +=
 
