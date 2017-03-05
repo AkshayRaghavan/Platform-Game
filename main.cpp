@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     messageToClient->setPlainText("Contacting Server .....");
     scene->addItem(messageToClient);
 */
-    Client game_client(QUrl(QStringLiteral("ws://localhost:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
+    Client game_client(QUrl(QStringLiteral("ws://192.168.43.4:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
     view->setGameClient(&game_client);
 
     return a.exec();
