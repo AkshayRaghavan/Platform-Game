@@ -152,6 +152,7 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
          }
             (gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt());
           //  qDebug() << "timer : "<< itemObject["timer"].toInt();
+         gamePointer->update();
     }
 }
 
@@ -220,9 +221,6 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
     emit textChanged("Game Started .....");
     clientWebSocket.sendTextMessage("start");
 
-    QTimer * timer = new QTimer();
-    gamePointer->connect(timer,SIGNAL(timeout()), gamePointer ,SLOT(update()));
-    timer->start(40);
     emit textChanged("");
     view->show();
 }
