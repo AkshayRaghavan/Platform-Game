@@ -2,8 +2,7 @@
 
 QT_USE_NAMESPACE
 
-Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_local , InputHandler *view_local ,int screen_initial_width ,int screen_initial_height , QObject *parent):
-    url(url),
+Client::Client(int milliseconds_per_frame , QGraphicsScene *scene_local , InputHandler *view_local ,int screen_initial_width ,int screen_initial_height , QObject *parent):
     millisecondsPerFrame(milliseconds_per_frame),
     screenWidth(screen_initial_width),
     screenHeight(screen_initial_height),
@@ -29,14 +28,16 @@ Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_loca
     qDebug() << "WebSocket client started at :" << url;
     connect(&clientWebSocket, &QWebSocket::connected, this, &Client::onConnected);
     connect(&clientWebSocket, &QWebSocket::disconnected, this, &Client::closed);
-    clientWebSocket.open(QUrl(url));
+
     emit textChanged("inside client ");
 }
 
-void Client::Error(QAbstractSocket::SocketError error)
+void Client::connectToServer(QUrl url_local)
 {
-
+    url = url_local;
+    clientWebSocket.open(QUrl(url));
 }
+
 int Client::getArrayIndex()
 {
     return arrayIndexInGameObject;
@@ -237,7 +238,7 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
 
     createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
     createGamePointer->functionToCreateFireObject(fire_file_path);
-    createGamePointer->functionToCreateDoor(door_file_path);
+   // createGamePointer->functionToCreateDoor(door_file_path);
 
 /*  createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
     createGamePointer->functionToCreateFireObject(fire_file_path);

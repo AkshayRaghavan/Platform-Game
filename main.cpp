@@ -11,6 +11,7 @@
 #include "inputhandler.h"
 
 #include "loadingtext.h"
+#include "initialchoiceserverbutton.h"
 
 #include <QDesktopWidget>
 #include "inputbox.h"
@@ -22,6 +23,18 @@
 #include <QFileInfo>
 #include <QHBoxLayout>
 
+
+/*
+
+  #include "initialchoiceclientbutton.h"
+  #include "exitbutton.h"
+  #include "serverstartbutton.h"
+  #include "clienttypeurl.h"
+  #include "finalscreen.h"
+
+*/
+void connect(Client* client){
+}
 int main(int argc, char *argv[])
 {
 
@@ -43,7 +56,7 @@ int main(int argc, char *argv[])
     QRect rec = QApplication::desktop()->availableGeometry();
     int screen_initial_height = rec.height() - 2*view->frameWidth() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     int screen_initial_width = screen_initial_height * 1.5;
-    
+
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setFixedSize(screen_initial_width, screen_initial_height);     //1000 : width (X Axis) , 800 : height (Y Axis)
@@ -51,18 +64,18 @@ int main(int argc, char *argv[])
     view->setScene(scene);
     view->show();
 
+    Client game_client(milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
+
     QFrame *f = new QFrame();
-    InputBox* input_url_text = new InputBox(f ,  scene , view , "Enter The URL of The Server And Press Enter" , milliseconds_per_frame , screen_initial_width, screen_initial_height);
     QHBoxLayout *flayout = new QHBoxLayout(f);
+    InputBox* input_url_text = new InputBox(f , flayout , "Enter The URL of The Server And Press Enter" , &game_client);
+
     flayout->addWidget((input_url_text->lineEdit));
     f->move(screen_initial_width/2 , screen_initial_height/2);
     f->setFocus();
-    //f->show();
+    f->show();
 
-
-    Client game_client(QUrl(QStringLiteral("ws://localhost:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
     LoadingText* loading_text = new LoadingText(&game_client , scene , view , screen_initial_width/(3.0) , screen_initial_height/(3.0));
-
-
+    connect(&game_client);
     return a.exec();
 }

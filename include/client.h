@@ -36,7 +36,7 @@ class  Client: public QObject
     Q_OBJECT
 private:
     QWebSocket clientWebSocket;
-    const QUrl url;
+    QUrl url;
     const int screenHeight;
     const int screenWidth;
     int noOfPlayers;
@@ -55,9 +55,6 @@ Q_SIGNALS:
 
 signals:
     void textChanged(QString);
-    
-protected Q_SLOTS:
-    void Error(QAbstractSocket::SocketError error);
 
 private Q_SLOTS:
     void onConnected();
@@ -65,10 +62,11 @@ private Q_SLOTS:
     void onBinaryMessageReceived(QByteArray);
 public:
     GameState* gamePointer;
-    Client(QUrl, int , QGraphicsScene* , InputHandler* , int , int , QObject *parent = 0);
+    Client(int , QGraphicsScene* , InputHandler* , int , int , QObject *parent = 0);
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
     void DisplayScore(QJsonArray score);
+    void connectToServer(QUrl);
 
 };
 #endif // SERVER_H
