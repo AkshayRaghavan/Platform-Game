@@ -13,6 +13,7 @@ class  Server: public QObject
 {
     Q_OBJECT
 private:
+    std::vector<std::thread> client_threads;
     QWebSocketServer* webSocketServer;
     QList<QWebSocket *> webSocketClients;
     bool maxConnectionsReached;

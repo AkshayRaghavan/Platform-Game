@@ -1,5 +1,6 @@
 #include "gamestate.h"
 #include <QObject>
+#include <thread>
 
 GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene, int milliseconds_per_frame, int total_time_available) :
     gameObjects(game_objects), tileMap(tile_map), gems(input_gems) ,
@@ -54,9 +55,11 @@ void GameState::update()
     }
     for(unsigned int i=0; i<gameObjects.size(); i++)
     {
+      //  std::thread t = std::thread([&,i](){
+       ///     qDebug() << "new thread";
         if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
         {
-            someone_accepting_input = true;
+            someone_accepting_input = true; //remove this later
             //(gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
             (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
            // if(gameObjects[i]->scoreComponent)
@@ -70,11 +73,13 @@ void GameState::update()
             //if(gameObjects[i]->scoreComponent)
             //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
         }
+ //   });
+//        t.detach();
     }
     timer->update();
     if(!someone_accepting_input || !(timer->isTimeLeft()))
     {
-        isGameRunning = false;
+  //      isGameRunning = false;
     }
 }
 
