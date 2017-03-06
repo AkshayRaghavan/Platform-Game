@@ -29,6 +29,7 @@
 #include <QString>
 #include<fstream>
 #include <thread>
+#include <QApplication>
 
 class ReadInput
 {
@@ -42,6 +43,7 @@ public:
     QGraphicsScene * scene;
     qreal width_of_tile;
     qreal height_of_tile;
+    QApplication * app;
     int screenWidth;
     int screenHeight;
 
@@ -53,6 +55,7 @@ public:
     void functionToCreateMonsterGameObject(std::string );
     void functionToCreateFireObject(std::string );
     void functionToCreateDoor(std::string );
+    void setApp(QApplication *a);
 };
 
 #endif // READINPUT_H

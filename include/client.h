@@ -28,6 +28,11 @@
 #include "enumerator.h"
 #include "isjumping.h"
 #include "isnotjumping.h"
+#include <QLabel>
+#include <QMovie>
+#include <QSize>
+#include <QApplication>
+#include <QGraphicsProxyWidget>
 
 class InputHandler;
 
@@ -46,6 +51,8 @@ private:
     QGraphicsScene *scene;
     InputHandler *view;
     ReadInput* createGamePointer;
+    QLabel *label;
+    QApplication *app;
     const int millisecondsPerFrame;
     void setGameStartedVal();
     void startGame(std::string , std::string , std::string , std::string , std::string , std::string , std::string , int );
@@ -69,6 +76,7 @@ public:
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
     void DisplayScore(QJsonArray score);
+    void setApp(QApplication *);
 
 };
 #endif // SERVER_H

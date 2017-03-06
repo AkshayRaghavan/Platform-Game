@@ -2,7 +2,7 @@
 
 QT_USE_NAMESPACE
 
-Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_local , InputHandler *view_local ,int screen_initial_width ,int screen_initial_height , QObject *parent):
+Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_local , InputHandler *view_local , int screen_initial_width , int screen_initial_height , QObject *parent):
     url(url),
     millisecondsPerFrame(milliseconds_per_frame),
     screenWidth(screen_initial_width),
@@ -23,14 +23,26 @@ Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_loca
     isAcceptingGameState = false;
     noOfPlayers = 0;
     arrayIndexInGameObject = -1;
+
+    label = new QLabel;
+    QMovie *mov = new QMovie("resources/images/loading.gif");
+    mov->start();
+    label->setAttribute(Qt::WA_NoSystemBackground);
+    label->setMovie(mov);
+    scene->addWidget(label);
+    mov->setScaledSize(QSize(100,100));
+    label->move(100*(screen_initial_width/240),80*(screen_initial_height/160));
     createGamePointer = new ReadInput(scene_local , screen_initial_width , screen_initial_height);
+    createGamePointer->setApp(app);
     gamePointer = NULL;
+   // label->hide();
 
     qDebug() << "WebSocket client started at :" << url;
     connect(&clientWebSocket, &QWebSocket::connected, this, &Client::onConnected);
     connect(&clientWebSocket, &QWebSocket::disconnected, this, &Client::closed);
     clientWebSocket.open(QUrl(url));
     emit textChanged("inside client ");
+    app->processEvents();
 }
 
 void Client::Error(QAbstractSocket::SocketError error)
@@ -45,6 +57,11 @@ int Client::getArrayIndex()
 QWebSocket* Client::getClientWebSocket()
 {
     return &clientWebSocket;
+}
+
+void Client::setApp(QApplication * a)
+{
+    app = a;
 }
 /*
 void Client::DisplayScore(QJsonArray score)
@@ -90,7 +107,9 @@ void Client::onConnected()
 
 void Client::onTextMessageReceived(QString message)
 {
+    app->processEvents();
     emit textChanged(message);
+    app->processEvents();
     qDebug() << " ********************* Message received from server :" << message;
 }
 
@@ -103,7 +122,9 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
 
     if (!receivedNoOfPlayerFlag)
     {
+        app->processEvents();
         emit textChanged("Game Is About To Start .....");
+        app->processEvents();
         noOfPlayers = itemObject["noOfPeople"].toInt();
         arrayIndexInGameObject = itemObject["arrayIndex"].toInt();
         qDebug() << "Initial Binary Message received: (noOfplayer : " << noOfPlayers << ") , (arrayIndexInGameObject : "<<arrayIndexInGameObject<<")";
@@ -113,7 +134,9 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
     }
     else if(!isAcceptingGameState)
     {
+        app->processEvents();
         emit textChanged("The Game Screen Is Being Rendered .....");
+        app->processEvents();
         qDebug() << "Making The Game Screen";
         setGameStartedVal();
     }
@@ -217,8 +240,14 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
                        int total_time)
 {
 
+    app->processEvents();
+    emit textChanged("Creating Tile Map");
     createGamePointer->functionToCreateTileMap(tile_map_path);
+    app->processEvents();
+    emit textChanged("Creating Gems");
+    app->processEvents();
     createGamePointer->functionToCreateGem(gem_path);
+    app->processEvents();
 
 
 /*
@@ -235,9 +264,15 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
         createGamePointer->functionToCreatePlayerGameObject(player_file_path);
     }
 
+    emit textChanged("Creating Monsters");
     createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
+    app->processEvents();
+    emit textChanged("Creating Fire");
     createGamePointer->functionToCreateFireObject(fire_file_path);
+    app->processEvents();
+    emit textChanged("Creating door");
     createGamePointer->functionToCreateDoor(door_file_path);
+    app->processEvents();
 
 /*  createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
     createGamePointer->functionToCreateFireObject(fire_file_path);
@@ -245,13 +280,19 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
 */
 
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
+    {
+        app->processEvents();
         (*it)->drawGem(scene);
+        app->processEvents();
+    }
 
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
     {
+        app->processEvents();
         scene->addItem((*it)->graphicsComponent);
         if((*it)->scoreComponent)
         {
+            app->processEvents();
             scene->addItem((*it)->scoreComponent);
         }
     }
@@ -263,14 +304,17 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
     isAcceptingGameState = true;
     view->setGameState(gamePointer);
 
+    app->processEvents();
     emit textChanged("Setting  Background .....");
+    app->processEvents();
 
     QImage *back = new QImage(bg_image_path.c_str());
     QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);
+    app->processEvents();
     view->setBackgroundBrush(*brush);
     view->setScene(scene);
-
+    label->hide();
 
     emit textChanged("Game Started .....");
     clientWebSocket.sendTextMessage("start");
