@@ -55,7 +55,8 @@ void GameState::update()
     }
     for(unsigned int i=0; i<gameObjects.size(); i++)
     {
-      //  std::thread t = std::thread([&,i](){
+
+     //    std::thread t = std::thread([=](){
        ///     qDebug() << "new thread";
         if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
         {
@@ -63,7 +64,7 @@ void GameState::update()
             //(gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
             (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
            // if(gameObjects[i]->scoreComponent)
-            //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
+           //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
         }
         else
         {
@@ -74,7 +75,7 @@ void GameState::update()
             //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
         }
  //   });
-//        t.detach();
+ //       t.join();
     }
     timer->update();
     if(!someone_accepting_input || !(timer->isTimeLeft()))

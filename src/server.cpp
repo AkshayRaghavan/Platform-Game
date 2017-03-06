@@ -231,7 +231,7 @@ void Server::processTextMessage(QString message)
 void Server::processBinaryMessage(QByteArray message)
 {
     qDebug() << "creating thread";
-  //  std::thread t = std::thread([&]{
+    std::thread t = std::thread([=]{
     qDebug() << "Client Key Press EVent Message received";
     QJsonDocument item_doc = QJsonDocument::fromJson(message);
     QJsonObject item_object = item_doc.object();
@@ -282,11 +282,19 @@ void Server::processBinaryMessage(QByteArray message)
             event = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Right , Qt::NoModifier);
         }
     }
-    qDebug() << "event ready";
-    QCoreApplication::sendEvent(gamePointer->gameObjects[array_index] , event);
+    qDebug() << "event ready" << array_index;
+    if((gamePointer->gameObjects[array_index])->inputComponent)
+    {
+        qDebug() << "the problem is not null pointer";
+    }
+    if(!event)
+    {
+        qDebug() << "event is NULL";
+    }
+    QCoreApplication::postEvent((gamePointer->gameObjects[array_index])->inputComponent , event);
     qDebug() << "Event Posted";
-   // });
-  //  t.detach();
+   });
+    t.detach();
 }
 
 void Server::socketDisconnected()
