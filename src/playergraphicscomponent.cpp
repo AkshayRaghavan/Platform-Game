@@ -12,9 +12,10 @@
     images_total_count = [<total count of images in the respective folder array>]
 */
 
-PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous)
+PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous, QApplication * a)
 {
     qDebug() << images_location.c_str();
+    app = a;
     isDangerous = is_dangerous;
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
     {
@@ -39,15 +40,23 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
        t7 = std::thread ([&] () {initializePixMaps ( images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height);});
        t8 = std::thread ([&] () {initializePixMaps ( images_total_count[7] , images_location + "/jump left/Jump(" ,  pixMapMatrix[7] ,  image_width , image_height);});}
     t1.join();
+    app->processEvents();
     t2.join();
+    app->processEvents();
     t3.join();
+    app->processEvents();
     t4.join();
+    app->processEvents();
     t5.join();
+    app->processEvents();
     t6.join();
+    app->processEvents();
     if(isDangerous == false)
     {
         t7.join();
+        app->processEvents();
         t8.join();
+        app->processEvents();
     }
 
 
@@ -162,4 +171,9 @@ void PlayerGraphicsComponent::update(GameObject &obj)
         qDebug() << "ERROR(playergraphicscomponent.cpp) : Invalid JumpingState" <<  jumping_state_index <<endl;
         std::exit(EXIT_FAILURE);
     }
+}
+
+void PlayerGraphicsComponent::setApp(QApplication * a)
+{
+    app = a;
 }

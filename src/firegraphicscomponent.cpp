@@ -1,8 +1,9 @@
 #include "firegraphicscomponent.h"
 
-FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate)
+FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , std::string images_location , int images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate, QApplication * a)
 {
     isDangerous = true;
+    app = a;
     pixMapArray = new QPixmap[images_total_count];
     for(int i = 0; i < images_total_count; i++)
     {
@@ -19,11 +20,13 @@ FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , std::string
             std::exit(0);
         }
         pixMapArray[i] = (pixMapArray[i]).scaled(QSize(image_width,image_height) , Qt::KeepAspectRatio);
+        app->processEvents();
     }
     imagesTotalCount = images_total_count;
     graphicsCounter = 0;
     this->setPixmap(this->pixMapArray[0]);
     this->setPos(x_coordinate,y_coordinate);
+    app->processEvents();
 }
 
 void FireGraphicsComponent::update(GameObject &obj)

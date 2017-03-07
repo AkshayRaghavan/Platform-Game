@@ -2,7 +2,7 @@ resources/images/monster
 imagesMaxCount 10 10 15 15 12 12 0 0
 imageSizeWidth,Height 12 12
 playerPositionX-->Y-->MovementFramePerCount
-60 40 100
+60 45 100
 100 10 100
-180 114 100
-146 46 100
+180 118 100
+146 55 100
