@@ -9,6 +9,7 @@
 #include <QCoreApplication>
 #include "gamestate.h"
 #include "readinput.h"
+#include "threadpool.h"
 
 class  Server: public QObject
 {
@@ -22,6 +23,7 @@ private:
     bool maxConnectionsReached;
     bool gameStarted;
     int gameStartedCountOfClients;
+    ThreadPool threadPool;
     QGraphicsScene* scene;
     ReadInput* createGamePointer;
     const int millisecondsPerFrame;
@@ -37,6 +39,7 @@ private:
 Q_SIGNALS:
     void closed();
     void contentsChanged(QString);
+
 private Q_SLOTS:
     void onNewConnection();
     void processTextMessage(QString);
@@ -46,11 +49,10 @@ private Q_SLOTS:
 
 public:
     GameState* gamePointer;
-    Server(quint16 , QApplication* , QGraphicsScene* , int ,  QObject *parent = 0);
+    Server(quint16 , QApplication* , QGraphicsScene* , int , int , QObject *parent = 0);
     void startServer(int , int);
     void startGameSlotButtonClick();
     void setClientIPList(QGraphicsTextItem* client_IP_list);
-
     ~Server();
 };
 #endif // SERVER_H

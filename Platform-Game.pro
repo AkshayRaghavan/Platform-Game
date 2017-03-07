@@ -67,7 +67,8 @@ SOURCES += main.cpp \
     src/loadingtext.cpp \
     src/server.cpp \
     src/button.cpp \
-    src/choiceserverclientstart.cpp
+    src/choiceserverclientstart.cpp \
+    src/threadpool.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -110,7 +111,8 @@ HEADERS  += \
     include/loadingtext.h \
     include/server.h \
     include/button.h \
-    include/choiceserverclientstart.h
+    include/choiceserverclientstart.h \
+    include/threadpool.h
 
 FORMS    +=
 

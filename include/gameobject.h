@@ -34,7 +34,7 @@ public:
     ScoreComponent *scoreComponent;
     State *state;
     JumpingState *jumpingState;
-    bool event(QEvent *);
+    bool event(QEvent *) {}
     void setState(State*);
     void setJumpingState(JumpingState *);
     void setScore(int);

@@ -4,11 +4,12 @@
 #include "graphicscomponent.h"
 #include "gameobject.h"
 #include <QGraphicsScene>
-#include<QPixmap>
+#include <QPixmap>
 #include <QGraphicsTextItem>
 #include<QDebug>
 #include <string>
 #include <QApplication>
+#include <vector>
 
 // A class for the graphics of the game objects
 // Used as virtual functions

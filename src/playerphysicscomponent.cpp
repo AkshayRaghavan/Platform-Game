@@ -152,7 +152,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
         }
-
         else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {
             qDebug() << "collided";
@@ -174,7 +173,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
-   // (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
 }
 
 

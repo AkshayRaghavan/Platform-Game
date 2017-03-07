@@ -35,11 +35,11 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     acceptsInput = inputComponent->acceptsInput();
 }
 
-bool GameObject::event(QEvent *input_event)
-{
+/*bool GameObject::event(QEvent *input_event)
+{*/
    // qDebug() << "received by game object";
-    return QCoreApplication::sendEvent(inputComponent,input_event);
-}
+/*    return *//*QCoreApplication::postEvent(inputComponent,input_event);
+}*/
 
 void GameObject::setState(State *input_state)
 {
