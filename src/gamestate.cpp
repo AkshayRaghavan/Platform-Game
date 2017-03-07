@@ -1,5 +1,6 @@
 #include "gamestate.h"
 #include <QObject>
+#include <thread>
 
 GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene_local, int milliseconds_per_frame, int total_time_available) :
     gameObjects(game_objects), tileMap(tile_map), gems(input_gems) ,
@@ -8,7 +9,7 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
 {
     isGameRunning = true;
     timer = new Timer(total_time_available,milliseconds_per_frame);
-    timer->setPlainText(timer->getTimeLeft().c_str());
+    timer->updateTimerOnScreen();
     timer->setFont(QFont("Helvetica" , 55));
     timer->setDefaultTextColor(QColor(51, 51, 255));
     timer->setPos(50 , 50);
@@ -40,14 +41,21 @@ std::vector<Gem*> GameState::getGems()
     return gems;
 }
 
-/*void GameState::setTimerAndConnect(QTimer *timer)
-{
-    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(update()));
-}*/
-
 void GameState::update()
 {
     bool someone_accepting_input = false;
+    if(remoteIdentity == enumerator::Identity::SERVER)
+    {
+        timer->update();
+    }
+    else
+    {
+        timer->updateTimerOnScreen();
+    }
+    if(!timer->isTimeLeft() || timer->getTimeLeftInMilliSeconds() == 0)
+    {
+        return;
+    }
 
     if(remoteIdentity == enumerator::Identity::SERVER)
     {
@@ -57,7 +65,6 @@ void GameState::update()
             return;
         }
     }
-
     for(unsigned int i = 0; i < gameObjects.size(); i++)
     {
         if(remoteIdentity == enumerator::Identity::SERVER)
@@ -82,7 +89,7 @@ void GameState::update()
             }
         }
     }
-    
+
     if(remoteIdentity == enumerator::Identity::CLIENT)
     {
         for(unsigned int i = 0; i < gems.size(); i++)
@@ -95,12 +102,11 @@ void GameState::update()
             }
         }
     }
-
-
-  /*  if(!someone_accepting_input || !(timer->isTimeLeft()))
+    if(remoteIdentity == enumerator::Identity::SERVER)
     {
-        isGameRunning = false;
-    }*/
+        if(!someone_accepting_input)
+            isGameRunning = false;
+    }
 }
 
 

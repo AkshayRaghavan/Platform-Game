@@ -54,6 +54,7 @@ public:
     void functionToCreateFireObject(std::string );
     void functionToCreateDoor(std::string );
     void setApp(QApplication *a);
+
 };
 
 #endif // READINPUT_H

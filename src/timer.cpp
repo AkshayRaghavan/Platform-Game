@@ -14,7 +14,6 @@ Timer::Timer(int total_time_available, int milliseconds_per_frame)
 
 void Timer::update()
 {
-    //qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
     if(millisecondsLeft >= millisecondsPerFrame)
     {
         millisecondsLeft -= millisecondsPerFrame;
@@ -27,35 +26,27 @@ void Timer::update()
     }
     else
     {
-        //qDebug() << "game over" << secondsLeft << " " << millisecondsLeft << " " << millisecondsPerFrame;
         millisecondsLeft = 0;
         isLeft = false;
     }
-    std::string time_string = getTimeLeft();
-    //this->setPlainText(time_string.c_str());
 }
 
-
-std::string Timer::getTimeLeft()
+void Timer::updateTimerOnScreen()
 {
-     std::string time_string = std::to_string(secondsLeft) + " : " + std::to_string(millisecondsLeft);
-     return time_string;
+    QString time_string = QString::number(secondsLeft) + " : " + QString::number(millisecondsLeft);
+    this->setPlainText(time_string);
 }
 
-std::string Timer::setTimeLeft(int timeLeft)
+void Timer::setTimeLeft(int timeLeft)
 {
      secondsLeft = timeLeft/1000;
      millisecondsLeft = timeLeft%1000;
-     return getTimeLeft();
 }
-
 
 int Timer::getTimeLeftInMilliSeconds()
 {
-
      return (secondsLeft*1000 + millisecondsLeft);
 }
-
 
 bool Timer::isTimeLeft()
 {

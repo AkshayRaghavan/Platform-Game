@@ -50,6 +50,7 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
             tileMap[matrix_row_iterator][matrix_column_iterator] = new Tile(scene , column_position ,  row_position  ,width_of_tile , height_of_tile , is_obstacle);
         }
     }
+    qDebug() << "Created Tile Map";
 }
 
 void ReadInput::functionToCreateGem(std::string file_path)
@@ -156,7 +157,6 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
         input_component = new EmptyInputComponent();
         physics_component = new EmptyPhysicsComponent();
         gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , 0));
-
     }
     else if(remoteIdentity == enumerator::Identity::SERVER)
     {
@@ -167,7 +167,6 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
     }
     infile.close();
     qDebug() << "Created A Player";
-
 }
 
 
@@ -325,7 +324,6 @@ void ReadInput::functionToCreateDoor(std::string door_file_path)
 
     infile.close();
     qDebug() << "Created Door";
-
 }
 
 void ReadInput::setApp(QApplication * a)

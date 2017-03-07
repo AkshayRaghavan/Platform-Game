@@ -173,7 +173,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             }
         }
     }
-   // (gameObject.scoreComponent)->setPos( going_to_point.x() + (gameObject.scoreComponent)->scoreDisplayDiffX , going_to_point.y() + (gameObject.scoreComponent)->scoreDisplayDiffY );
 }
 
 
