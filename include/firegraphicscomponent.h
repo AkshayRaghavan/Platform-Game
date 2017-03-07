@@ -30,6 +30,8 @@ public:
     ~FireGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &obj);
+    std::vector<qreal> getSizePositionOfObject();
+
 };
 
 #endif // FIREGRAPHICSCOMPONENT_H

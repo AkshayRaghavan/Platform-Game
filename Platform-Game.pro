@@ -10,7 +10,7 @@ QT       += websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Platform-Game-client
+TARGET = Platform-Game
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -64,7 +64,10 @@ SOURCES += main.cpp \
     src/scorecomponent.cpp \
     src/client.cpp \
     src/inputbox.cpp \
-    src/loadingtext.cpp
+    src/loadingtext.cpp \
+    src/server.cpp \
+    src/button.cpp \
+    src/choiceserverclientstart.cpp
 
 HEADERS  += \
     include/computerinputcomponent.h \
@@ -104,7 +107,10 @@ HEADERS  += \
     include/scorecomponent.h \
     include/client.h \
     include/inputbox.h \
-    include/loadingtext.h
+    include/loadingtext.h \
+    include/server.h \
+    include/button.h \
+    include/choiceserverclientstart.h
 
 FORMS    +=
 

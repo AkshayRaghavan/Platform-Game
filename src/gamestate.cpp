@@ -8,11 +8,11 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
 {
     isGameRunning = true;
     timer = new Timer(total_time_available,milliseconds_per_frame);
-   // timer->setPlainText(timer->getTimeLeft().c_str());
-   // timer->setFont(QFont("Helvetica" , 55));
-   // timer->setDefaultTextColor(QColor(51, 51, 255));
-   // timer->setPos(50 , 50);
-   //scene->addItem(timer);
+    timer->setPlainText(timer->getTimeLeft().c_str());
+    timer->setFont(QFont("Helvetica" , 55));
+    timer->setDefaultTextColor(QColor(51, 51, 255));
+    timer->setPos(50 , 50);
+    scene->addItem(timer);
 }
 
 QGraphicsScene * GameState::getScene()
@@ -47,37 +47,44 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
-   /* bool someone_accepting_input = false;
-    if(!isGameRunning)
+    bool someone_accepting_input = false;
+
+    if(remoteIdentity == enumerator::Identity::SERVER)
     {
-        return;
-    }*/
+        someone_accepting_input = false;
+        if(!isGameRunning)
+        {
+            return;
+        }
+    }
+
     for(unsigned int i = 0; i < gameObjects.size(); i++)
     {
-        (gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
-        if(gameObjects[i]->scoreComponent)
+        if(remoteIdentity == enumerator::Identity::SERVER)
         {
-                (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
+               if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
+               {
+                   someone_accepting_input = true; //remove this later
+                   (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
+               }
+               else
+               {
+                   (gameObjects[i]->inputComponent)->update(*gameObjects[i]);
+                   (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
+               }
         }
-
-        /*if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
+        else if(remoteIdentity == enumerator::Identity::CLIENT)
         {
-            someone_accepting_input = true;
-            //(gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
-            (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
-           // if(gameObjects[i]->scoreComponent)
-            //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
+            (gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
+            if(gameObjects[i]->scoreComponent)
+            {
+                    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
+            }
         }
-        else
-        {
-            (gameObjects[i]->inputComponent)->update(*gameObjects[i]);
-           // (gameObjects[i]->graphicsComponent)->update(*gameObjects[i]);
-            (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
-            //if(gameObjects[i]->scoreComponent)
-            //    (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
-        }*/
     }
     
+    if(remoteIdentity == enumerator::Identity::CLIENT)
+    {
         for(unsigned int i = 0; i < gems.size(); i++)
         {
             if( (!((gems[i])->getIsOnScreen())) && (!(gems[i])->getRemovedFromScreen()))
@@ -87,8 +94,9 @@ void GameState::update()
                 scene->removeItem(gems[i]);
             }
         }
-    
-    
+    }
+
+
   /*  if(!someone_accepting_input || !(timer->isTimeLeft()))
     {
         isGameRunning = false;

@@ -42,11 +42,11 @@ std::string Timer::getTimeLeft()
      return time_string;
 }
 
-void Timer::setTimeLeft(int timeLeft)
+std::string Timer::setTimeLeft(int timeLeft)
 {
      secondsLeft = timeLeft/1000;
      millisecondsLeft = timeLeft%1000;
-     this->setPlainText(getTimeLeft().c_str());
+     return getTimeLeft();
 }
 
 

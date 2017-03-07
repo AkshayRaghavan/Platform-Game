@@ -47,7 +47,7 @@ void InputHandler::keyReleaseEvent(QKeyEvent *event)
 
 void InputHandler::keyPressEvent(QKeyEvent *event)
 {
-    if(gameState)
+    if(gameState && gameState->remoteIdentity == enumerator::Identity::CLIENT )
     {
         std::vector<GameObject*> gameObjects = (this->gameState)->getGameObjects();
         QKeyEvent *key_event = dynamic_cast<QKeyEvent*>(event);
@@ -77,7 +77,7 @@ void InputHandler::keyPressEvent(QKeyEvent *event)
 
 void InputHandler::keyReleaseEvent(QKeyEvent *event)
 {
-    if(gameState)
+    if(gameState && gameState->remoteIdentity == enumerator::Identity::CLIENT )
     {
         std::vector<GameObject*> gameObjects = (this->gameState)->getGameObjects();
         QKeyEvent *key_event = dynamic_cast<QKeyEvent*>(event);

@@ -15,5 +15,4 @@ LoadingText::LoadingText(Client* game_client, QGraphicsScene* scene, InputHandle
         qDebug() << "Failed To Connect";
         std::exit(EXIT_FAILURE);
     }
-    view->setGameClient(game_client);
 }

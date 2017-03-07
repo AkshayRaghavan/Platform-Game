@@ -2,26 +2,24 @@
 #define INPUTBOX_H
 
 #include <QLineEdit>
-#include <QGraphicsTextItem>
-#include<QGraphicsProxyWidget>
 #include <QUrl>
 #include <QObject>
+#include <QHBoxLayout>
 #include "inputhandler.h"
 #include "client.h"
+#include "loadingtext.h"
+
 class InputBox : public QObject
 {
     Q_OBJECT
-    int millisecondsPerFrame;
-    QGraphicsScene* scene;
-    InputHandler* view;
-    int screenWidth;
-    int screenHeight;
     QFrame* f;
- public:
+    QHBoxLayout* flayout;
+    Client * client;
+    InputHandler *view;
+public:
     QLineEdit* lineEdit;
-    QGraphicsTextItem* messageToClient;
-    InputBox(QFrame* , QGraphicsScene* , InputHandler* , const char* , int, int, int );
-public slots:
+    InputBox(InputHandler* , QFrame* , QHBoxLayout* , const char* , Client*);
+private slots:
     void pingServer();
 };
 #endif // INPUTBOX_H
