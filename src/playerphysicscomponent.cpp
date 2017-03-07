@@ -152,7 +152,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
         }
-        else  if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
+
+        else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {
             qDebug() << "collided";
             GraphicsComponent * temp;

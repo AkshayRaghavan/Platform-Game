@@ -146,8 +146,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
 
     infile >> tempString >> RGB1 >> RGB2 >>RGB3;
 
-
-    GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false);
+    GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , false , app);
     ScoreComponent * score_component = new ScoreComponent(scene , x_coordinate , y_coordinate ,  score_display_diff_x , score_display_diff_y , QColor(RGB1, RGB2, RGB3) , QFont("Helvetica" , font_size));
     InputComponent *input_component = NULL;
     PhysicsComponent * physics_component = NULL;
@@ -219,7 +218,8 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true );    
+
+            GraphicsComponent* graphics_component = new PlayerGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , true , app);
             InputComponent *input_component = NULL;
             PhysicsComponent * physics_component = NULL;
 
@@ -281,7 +281,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new FireGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate);
+            GraphicsComponent* graphics_component = new FireGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , app);
             InputComponent *input_component = new EmptyInputComponent();
             PhysicsComponent * physics_component = new EmptyPhysicsComponent();
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
@@ -321,8 +321,15 @@ void ReadInput::functionToCreateDoor(std::string door_file_path)
     height *= height_of_tile;
 
     Door * door = new Door(x_coordinate,y_coordinate,width,height,scene);
+    app->processEvents();
+
     infile.close();
     qDebug() << "Created Door";
 
+}
+
+void ReadInput::setApp(QApplication * a)
+{
+    app = a;
 }
 
