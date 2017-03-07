@@ -69,13 +69,13 @@ void Server::onNewConnection()
     else
     {
 
-        std::thread t = std::thread([&](){
-            std::stringstream ss;
-            ss<<std::this_thread::get_id();
-            std::string id_str=ss.str();
-        qDebug() << "client is in: " <<id_str.c_str() ;
+   //     std::thread t = std::thread([&](){
+          //  std::stringstream ss;
+           // ss<<std::this_thread::get_id();
+           // std::string id_str=ss.str();
+       // qDebug() << "client is in: " <<id_str.c_str() ;
         QWebSocket *pSocket = webSocketServer->nextPendingConnection();
-        qDebug() << QThread::currentThreadId();
+      //  qDebug() << QThread::currentThreadId();
         QObject::connect(pSocket, &QWebSocket::binaryMessageReceived, this, &Server::processBinaryMessage,Qt::DirectConnection);
         QObject::connect(pSocket, &QWebSocket::textMessageReceived, this, &Server::processTextMessage,Qt::DirectConnection);
         QObject::connect(pSocket, &QWebSocket::disconnected, this, &Server::socketDisconnected,Qt::DirectConnection);
@@ -83,29 +83,29 @@ void Server::onNewConnection()
    //     client_threads.push_back(std::move(t));
         webSocketClients << pSocket;
   //      std::unique_lock<std::mutex> lock(mutex);
-        cv.notify_all();
+      //  cv.notify_all();
         pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        QEventLoop event_loop;
-        event_loop.exec();
-         });
-        t.detach();
-           std::unique_lock<std::mutex> main_lock(mutex);
-        cv.wait(main_lock);
+ //       QEventLoop event_loop;
+ //       event_loop.exec();
+   //      });
+   //     t.detach();
+ //          std::unique_lock<std::mutex> main_lock(mutex);
+//        cv.wait(main_lock);
 
         qDebug() << "websize: " << webSocketClients.size();
-        if(webSocketClients.size() == 1)
+        if(webSocketClients.size() == 3)
         {
             qDebug() << "Forming Game Screen";
             setGameStartedVal();
         }
         qDebug() << "last but two";
     }
-    std::stringstream ss;
-    ss<<std::this_thread::get_id();
-    std::string id_str=ss.str();
-qDebug() << "now in thread : " <<id_str.c_str() ;
-   qDebug() << QThread::currentThreadId();
+   // std::stringstream ss;
+   // ss<<std::this_thread::get_id();
+   // std::string id_str=ss.str();
+//qDebug() << "now in thread : " <<id_str.c_str() ;
+  // qDebug() << QThread::currentThreadId();
 
     qDebug() << "last but one";
 
@@ -183,19 +183,21 @@ void Server::sendIndexToCLient()
             webSocketClients[loop_count_client++]->sendBinaryMessage(bytes);
         }
     }
-    qDebug() << "Sent Index To Client";
+
     object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
     QByteArray bytes = doc.toJson();
 
     for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
     {
+         qDebug() << "Sent Index To Client";
         (*i)->sendBinaryMessage(bytes);
     }
 }
 
 void Server::startServerGameLoop()
 {
+    qDebug() << "starting game loop";
     QTimer * timer = new QTimer();
     this->connect(timer,SIGNAL(timeout()),this,SLOT(iterateOverGameState()));
     timer->start(50);
@@ -218,10 +220,11 @@ void Server::iterateOverGameState()
 
 void Server::processTextMessage(QString message)
 {
-    if(message == "start")
+    if(message.startsWith("start"))
     {
-        qDebug() << "Received client start";
+
         gameStartedCountOfClients++;
+         qDebug() << "Received client start" << message << " " << gameStartedCountOfClients << " " << webSocketClients.size();
         if(gameStartedCountOfClients == webSocketClients.size())
         {
             gameStarted = true;
