@@ -64,7 +64,6 @@ SOURCES += main.cpp \
     src/scorecomponent.cpp \
     src/client.cpp \
     src/inputbox.cpp \
-    src/loadingtext.cpp \
     src/server.cpp \
     src/button.cpp \
     src/choiceserverclientstart.cpp \
@@ -108,7 +107,6 @@ HEADERS  += \
     include/scorecomponent.h \
     include/client.h \
     include/inputbox.h \
-    include/loadingtext.h \
     include/server.h \
     include/button.h \
     include/choiceserverclientstart.h \

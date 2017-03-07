@@ -2,21 +2,30 @@
 #include <QGraphicsTextItem>
 #include <QBrush>
 
-Button::Button(QString name, QGraphicsItem *parent): QGraphicsRectItem(parent){
+Button::Button(const char* idle_image_path , const char* hover_image_path , int screen_height , int screen_width)
+{
     // draw the rect
-    setRect(0,0,200,50);
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::darkCyan);
-    setBrush(brush);
 
-    // draw the text
-    text = new QGraphicsTextItem(name,this);
-    int xPos = rect().width()/2 - text->boundingRect().width()/2;
-    int yPos = rect().height()/2 - text->boundingRect().height()/2;
-    text->setPos(xPos,yPos);
+    QImage * picture;
+    picture = new QImage(idle_image_path);
+    if(picture->isNull())
+    {
+        qDebug() << "ERROR(button.cpp) : Failed To Load Image" << idle_image_path;
+        std::exit(EXIT_FAILURE);
+    }
+    idlePixMap = QPixmap::fromImage(*picture);
+    idlePixMap = idlePixMap.scaled(QSize(screen_width/5,screen_height/5),  Qt::KeepAspectRatio);
 
-    // allow responding to hover events
+    picture = new QImage(hover_image_path);
+    if(picture->isNull())
+    {
+        qDebug() << "ERROR(button.cpp) : Failed To Load Image" << hover_image_path;
+        std::exit(EXIT_FAILURE);
+    }
+    hoverPixMap = QPixmap::fromImage(*picture);
+    hoverPixMap = hoverPixMap.scaled(QSize(screen_width/5,screen_height/5),  Qt::KeepAspectRatio);
+
+    this->setPixmap(idlePixMap);
     setAcceptHoverEvents(true);
 }
 
@@ -25,17 +34,9 @@ void Button::mousePressEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void Button::hoverEnterEvent(QGraphicsSceneHoverEvent *event){
-    // change color to cyan
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::cyan);
-    setBrush(brush);
+    this->setPixmap(hoverPixMap);
 }
 
 void Button::hoverLeaveEvent(QGraphicsSceneHoverEvent *event){
-    // change color to dark cyan
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::darkCyan);
-    setBrush(brush);
+    this->setPixmap(idlePixMap);
 }

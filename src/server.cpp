@@ -11,13 +11,14 @@
 #include <QThread>
 QT_USE_NAMESPACE
 
-Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , int milliseconds_per_frame , int number_of_threads ,  QObject *parent) :
+Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , int milliseconds_per_frame , int number_of_threads , QLabel* label , QObject *parent) :
     app(a),
     port(port),
     QObject(parent),
     webSocketServer( new QWebSocketServer(QStringLiteral("Platform Game Server"), QWebSocketServer::NonSecureMode, this)),
     millisecondsPerFrame(milliseconds_per_frame),
-    threadPool(number_of_threads)
+    threadPool(number_of_threads),
+    label(label)
 {
     webSocketServer->setProxy(QNetworkProxy::NoProxy);
     scene = new QGraphicsScene;
@@ -68,7 +69,7 @@ void Server::onNewConnection()
     if(maxConnectionsReached)
     {
         QWebSocket *pSocket = webSocketServer->nextPendingConnection();
-        pSocket->sendTextMessage("Game Has Started . Please Join Us For The Next Game.");
+        pSocket->sendTextMessage("The Game Has Already Started . <br>Please Join Us For The Next Game.");
     }
     else
     {
@@ -78,7 +79,7 @@ void Server::onNewConnection()
         QObject::connect(pSocket, &QWebSocket::disconnected, this, &Server::socketDisconnected,Qt::DirectConnection);
 
         webSocketClients << pSocket;
-        pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
+        pSocket->sendTextMessage("successfully connected. <br>Waiting For Other Players To Join");
         qDebug() << "Added To webSocketClients And Sent Response Message";
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
@@ -89,15 +90,19 @@ void Server::onNewConnection()
     qDebug() << "last but one";
 }
 
-void Server::startGameSlotButtonClick()
+void Server::startGameSlotButtonClick(QGraphicsTextItem* server_message)
 {
     if(webSocketClients.size() == 0)
     {
-        qDebug() << "No Player Clients";
+        qDebug() << "(server.cpp) NO CLIENTS TO PLAY WITH.";
         std::exit(EXIT_SUCCESS);
     }
+    serverLoadingMessage = server_message;
     maxConnectionsReached = true;
     qDebug() << "Forming Game Screen";
+    app->processEvents();
+    serverLoadingMessage->setHtml("Forming Game Screen");
+    app->processEvents();
     setGameStartedVal();
 }
 
@@ -118,15 +123,37 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
                        std::string player_file_path ,
                        std::string door_file_path , int total_time)
 {
+    app->processEvents();
+    serverLoadingMessage->setHtml("Creating Tiles");
+    app->processEvents();
     createGamePointer->functionToCreateTileMap(tile_map_path);
+
+    app->processEvents();
+    serverLoadingMessage->setHtml("Creating The Gems");
+    app->processEvents();
     createGamePointer->functionToCreateGem(gem_path);
+
+    app->processEvents();
+    serverLoadingMessage->setHtml("Adding The Players On the Screen");
+    app->processEvents();
     for (int i = 0; i != webSocketClients.size(); i++)
     {
         createGamePointer->functionToCreatePlayerGameObject(player_file_path);
     }
 
+    app->processEvents();
+    serverLoadingMessage->setHtml("Adding The Monsters On the Screen");
+    app->processEvents();
     createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
+
+    app->processEvents();
+    serverLoadingMessage->setHtml("Adding The Fire On the Screen");
+    app->processEvents();
     createGamePointer->functionToCreateFireObject(fire_file_path);
+
+    app->processEvents();
+    serverLoadingMessage->setHtml("Adding The Final Point On the Screen");
+    app->processEvents();
     createGamePointer->functionToCreateDoor(door_file_path);
 
     qDebug() << "Adding Gems To Scene";
@@ -161,6 +188,9 @@ void Server::sendIndexToCLient()
             webSocketClients[loop_count_client++]->sendBinaryMessage(bytes);
         }
     }
+    app->processEvents();
+    serverLoadingMessage->setHtml("Sending Player Information To Clients");
+    app->processEvents();
     qDebug() << "Sent Index To Client";
     object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
@@ -170,16 +200,25 @@ void Server::sendIndexToCLient()
          qDebug() << "Sent Index To Client";
         (*i)->sendBinaryMessage(bytes);
     }
+    app->processEvents();
+    serverLoadingMessage->setHtml("Waiting For Client Ready Response.");
+    app->processEvents();
 }
 
 void Server::startServerGameLoop()
 {
-
+    app->processEvents();
+    serverLoadingMessage->setHtml("Starting The Server Game Loop");
+    app->processEvents();
     qDebug() << "starting game loop";
     QTimer * timer = new QTimer();
     this->connect(timer,SIGNAL(timeout()),this,SLOT(iterateOverGameState()));
     timer->start(50);
     qDebug() << "Started Game Loop";
+    app->processEvents();
+    serverLoadingMessage->setHtml("The Game Has Started !!!");
+    label->hide();
+    app->processEvents();
 }
 
 void Server::iterateOverGameState()
