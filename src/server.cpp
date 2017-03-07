@@ -12,11 +12,12 @@
 QT_USE_NAMESPACE
 
 Server::Server(quint16 port, QGraphicsScene* scene_local , int screen_width ,
-               int screen_height ,  int milliseconds_per_frame , QObject *parent) :
+               int screen_height ,  int milliseconds_per_frame , int number_of_threads, QObject *parent) :
     QObject(parent),
     webSocketServer(new QWebSocketServer(QStringLiteral("Platform Game Server"),
                                          QWebSocketServer::NonSecureMode, this)),
-    millisecondsPerFrame(milliseconds_per_frame)
+    millisecondsPerFrame(milliseconds_per_frame),
+    threadPool(number_of_threads)
 {
     scene = scene_local;
     gameStartedCountOfClients = 0;
@@ -231,7 +232,8 @@ void Server::processTextMessage(QString message)
 void Server::processBinaryMessage(QByteArray message)
 {
     qDebug() << "creating thread";
-    std::thread t = std::thread([=]{
+  //  std::thread t = std::thread([=]{
+    threadPool.assignToThread([=](){
     qDebug() << "Client Key Press EVent Message received";
     QJsonDocument item_doc = QJsonDocument::fromJson(message);
     QJsonObject item_object = item_doc.object();
@@ -294,7 +296,7 @@ void Server::processBinaryMessage(QByteArray message)
     QCoreApplication::postEvent((gamePointer->gameObjects[array_index])->inputComponent , event);
     qDebug() << "Event Posted";
    });
-    t.detach();
+ //   t.detach();
 }
 
 void Server::socketDisconnected()

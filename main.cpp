@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     QRect rec = QApplication::desktop()->availableGeometry();
     int screen_initial_height = rec.height() - 2*view->frameWidth() - QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     int screen_initial_width = screen_initial_height * 1.5;
-    Server game_server(3000 , scene , screen_initial_width , screen_initial_height , milliseconds_per_frame);
+    Server game_server(3000 , scene , screen_initial_width , screen_initial_height , milliseconds_per_frame, 4);
     a.exec();
     return 0;
 }
