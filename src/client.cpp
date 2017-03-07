@@ -254,7 +254,9 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
     //view->update();
 
      // emit textChanged("Game Started .....");
-    clientWebSocket.sendTextMessage("start");
+    QString message = "start "+arrayIndexInGameObject;
+    qDebug() << "message is : " << message;
+    clientWebSocket.sendTextMessage(message);
 
      // emit textChanged("");
   //  view->show();
