@@ -7,5 +7,5 @@ install:
   - sudo apt-get install libqt4-dev qt4-qmake 
 
 script:
-  - qmake Platform-Game.pro
+  - qmake Platform-Game-networking-client.pro
   - make 	
