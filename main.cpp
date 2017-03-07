@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     //f->show();
 
 
-    Client game_client(QUrl(QStringLiteral("ws://localhost:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
+    Client game_client(QUrl(QStringLiteral("ws://192.168.43.4:3000")) , milliseconds_per_frame , scene , view , screen_initial_width , screen_initial_height);
     //qDebug () << "Setting application";
     game_client.setApp(&a);
     LoadingText* loading_text = new LoadingText(&game_client , scene , view , 100*(screen_initial_width/240), 60*(screen_initial_height/160));

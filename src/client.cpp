@@ -24,6 +24,13 @@ Client::Client(QUrl url, int milliseconds_per_frame , QGraphicsScene *scene_loca
     noOfPlayers = 0;
     arrayIndexInGameObject = -1;
 
+    QImage *back = new QImage(QString("C:/Users/DELL/Documents/popl/Platform Game Client/Platform-Game/resources/images/load.jpg"));
+    QImage *background = new QImage(back->scaled(screen_initial_width,screen_initial_height ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
+    QBrush *brush = new QBrush(*background);
+    app->processEvents();
+    view->setBackgroundBrush(*brush);
+    view->show();
+
     label = new QLabel;
     QMovie *mov = new QMovie("resources/images/loading.gif");
     mov->start();
