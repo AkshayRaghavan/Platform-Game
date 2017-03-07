@@ -1,7 +1,8 @@
 #include "inputbox.h"
 
-InputBox::InputBox(QFrame* f_local , QHBoxLayout* flayout_local , const char* text , Client* client_local)
+InputBox::InputBox(InputHandler *view_local  , QFrame* f_local , QHBoxLayout* flayout_local , const char* text , Client* client_local)
 {
+    view = view_local;
     f = f_local;
     flayout = flayout_local;
     lineEdit = new QLineEdit;
@@ -14,9 +15,8 @@ InputBox::InputBox(QFrame* f_local , QHBoxLayout* flayout_local , const char* te
 
 void InputBox::pingServer()
 {
-
-  //  flayout->removeWidget(lineEdit);
     client->connectToServer(QUrl("ws://"+lineEdit->text()+":3000"));
     f->close();
-
+    view->setGameClient(client);
+  //  LoadingText* loading_text = new LoadingText(&game_client , scene , view , screenWidth/(3.0) , screenHeight/(3.0));
 }

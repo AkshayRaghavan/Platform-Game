@@ -7,15 +7,18 @@
 #include <QHBoxLayout>
 #include "inputhandler.h"
 #include "client.h"
+#include "loadingtext.h"
+
 class InputBox : public QObject
 {
     Q_OBJECT
     QFrame* f;
     QHBoxLayout* flayout;
     Client * client;
+    InputHandler *view;
 public:
     QLineEdit* lineEdit;
-    InputBox(QFrame* , QHBoxLayout* , const char* , Client*);
+    InputBox(InputHandler* , QFrame* , QHBoxLayout* , const char* , Client*);
 private slots:
     void pingServer();
 };
