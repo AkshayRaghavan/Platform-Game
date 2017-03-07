@@ -94,7 +94,6 @@ void Client::onTextMessageReceived(QString message)
 
 void Client::onBinaryMessageReceived(QByteArray bytes)
 {
-    qDebug() << "received";
     QJsonDocument itemDoc = QJsonDocument::fromJson(bytes);
     QJsonObject itemObject = itemDoc.object();
 
@@ -185,8 +184,8 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
             //qDebug() << value;
             ((gamePointer->gems)[counter_game++])->setIsOnScreen((value.toDouble() == 1)? true:false);
          }
-            (gamePointer->timer)->setPlainText(((gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt())).c_str());
 
+         (gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt());
          gamePointer->update();
          /*if(itemObject["Game Over"].toInt() == 1)
          {
@@ -205,7 +204,7 @@ void Client::setGameStartedVal()
                "resources/game files/gems/diamond map level1.txt" ,
                "resources/game files/player/player level1.txt" ,
                "resources/game files/door/door.txt" ,
-               "resources/images/bg2.png" , 60000);
+               "resources/images/bg2.png" , 30000);
 
 }
 
@@ -254,7 +253,7 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
     //view->update();
 
      // emit textChanged("Game Started .....");
-    clientWebSocket.sendTextMessage("start");
+    clientWebSocket.sendTextMessage("start"+QString::number(arrayIndexInGameObject));
 
      // emit textChanged("");
   //  view->show();

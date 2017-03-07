@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     view->setScene(scene);
     view->show();
     
-    Server game_server(3000 , scene , milliseconds_per_frame);
+    Server game_server(3000 , &a , scene ,  milliseconds_per_frame);
     Client game_client(milliseconds_per_frame , scene , view , screen_width , screen_height);
     ChoiceServerClientStart* startButton = new ChoiceServerClientStart(scene , view , milliseconds_per_frame , screen_width , screen_height ,  &game_client , &game_server);
     startButton->displayStartMenu();

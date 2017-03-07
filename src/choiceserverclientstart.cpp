@@ -38,15 +38,20 @@ void ChoiceServerClientStart::startServer()
     server->startServer(screenWidth , screenHeight);
     qDebug() << "Outside server";
 
+    QGraphicsTextItem* heading = new QGraphicsTextItem(QString("List Of Connected Players"));
+    heading->setFont(QFont("comic sans",50));
+    heading->setPos(view->width()/2 - heading->boundingRect().width()/2,view->height()/6);
+    scene->addItem(heading);
 
-    QGraphicsTextItem* client_IP_list = new QGraphicsTextItem(QString("List Of Connected Players"));
-    client_IP_list->setFont(QFont("comic sans",50));
-    client_IP_list->setPos(view->width()/2 - client_IP_list->boundingRect().width()/2,view->height()/5);
+    QGraphicsTextItem* client_IP_list = new QGraphicsTextItem(QString(""));
+    server->setClientIPList(client_IP_list);
+    client_IP_list->setFont(QFont("comic sans",15));
+    client_IP_list->setPos(view->width()/(2.5) - client_IP_list->boundingRect().width()/2,view->height()/(5.2));
     scene->addItem(client_IP_list);
 
     // create the start game button
     Button* server_button = new Button(QString("Start Game"));
-    server_button->setPos(view->width()/2 - server_button->boundingRect().width()/2,view->height()/3);
+    server_button->setPos(view->width()/2 - server_button->boundingRect().width()/2,view->height()/2);
     QObject::connect(server_button,SIGNAL(clicked()),this,SLOT(startGameSlotButtonClick()));
     scene->addItem(server_button);
 }

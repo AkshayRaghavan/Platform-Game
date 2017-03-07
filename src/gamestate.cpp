@@ -8,7 +8,7 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
 {
     isGameRunning = true;
     timer = new Timer(total_time_available,milliseconds_per_frame);
-    timer->setPlainText(timer->getTimeLeft().c_str());
+    timer->updateTimerOnScreen();
     timer->setFont(QFont("Helvetica" , 55));
     timer->setDefaultTextColor(QColor(51, 51, 255));
     timer->setPos(50 , 50);
@@ -47,6 +47,18 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
+    if(remoteIdentity == enumerator::Identity::SERVER)
+    {
+        timer->update();
+    }
+    else
+    {
+        timer->updateTimerOnScreen();
+    }
+    if(!timer->isTimeLeft() || timer->getTimeLeftInMilliSeconds() == 0)
+    {
+        return;
+    }
     bool someone_accepting_input = false;
 
     if(remoteIdentity == enumerator::Identity::SERVER)
@@ -96,8 +108,8 @@ void GameState::update()
         }
     }
 
-
-  /*  if(!someone_accepting_input || !(timer->isTimeLeft()))
+    /*
+     *   if(!someone_accepting_input || !(timer->isTimeLeft()))
     {
         isGameRunning = false;
     }*/

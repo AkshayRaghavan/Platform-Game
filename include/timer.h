@@ -15,8 +15,8 @@ public:
     Timer(int, int);
     virtual ~Timer() {}
     bool isTimeLeft();
-    std::string getTimeLeft();
-    std::string setTimeLeft(int);
+    void updateTimerOnScreen();
+    void setTimeLeft(int);
     int getTimeLeftInMilliSeconds();
     void update();
 

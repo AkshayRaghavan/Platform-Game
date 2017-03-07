@@ -14,6 +14,7 @@ class  Server: public QObject
 {
     Q_OBJECT
 private:
+    QApplication * app;
     const quint16 port;
     std::vector<std::thread> client_threads;
     QWebSocketServer* webSocketServer;
@@ -31,10 +32,11 @@ private:
     void setGameStartedVal();
     void startGame(std::string , std::string , std::string , std::string ,
                    std::string , std::string  , int );
+    QGraphicsTextItem* clientIPList;
 
 Q_SIGNALS:
     void closed();
-
+    void contentsChanged(QString);
 private Q_SLOTS:
     void onNewConnection();
     void processTextMessage(QString);
@@ -44,9 +46,11 @@ private Q_SLOTS:
 
 public:
     GameState* gamePointer;
-    Server(quint16 , QGraphicsScene* , int ,  QObject *parent = 0);
+    Server(quint16 , QApplication* , QGraphicsScene* , int ,  QObject *parent = 0);
     void startServer(int , int);
     void startGameSlotButtonClick();
+    void setClientIPList(QGraphicsTextItem* client_IP_list);
+
     ~Server();
 };
 #endif // SERVER_H

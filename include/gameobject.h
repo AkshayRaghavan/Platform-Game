@@ -20,6 +20,7 @@ protected:
     enumerator::ObjectType objecttype;
     int score;
 public:
+    int timeLeft;
     const int maxJumpCount;
     void setIsDead(bool a);
     bool getIsDead();

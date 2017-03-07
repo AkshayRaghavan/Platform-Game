@@ -11,7 +11,8 @@
 #include <QThread>
 QT_USE_NAMESPACE
 
-Server::Server(quint16 port, QGraphicsScene* scene_local , int milliseconds_per_frame , QObject *parent) :
+Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , int milliseconds_per_frame , QObject *parent) :
+    app(a),
     port(port),
     QObject(parent),
     webSocketServer( new QWebSocketServer(QStringLiteral("Platform Game Server"), QWebSocketServer::NonSecureMode, this)),
@@ -47,14 +48,13 @@ void Server::startServer(int screen_width , int screen_height)
 }
 Server::~Server()
 {
-    /*   for(int i=0;i<client_threads.size();i++)
-    {
-        client_threads[i].join();
-    }*/
     webSocketServer->close();
     qDeleteAll(webSocketClients.begin(), webSocketClients.end());
 }
-
+void Server::setClientIPList(QGraphicsTextItem* client_IP_list)
+{
+    clientIPList = client_IP_list;
+}
 void Server::onNewConnection()
 {
     qDebug() << "Got A New Connection To Play Game";
@@ -95,6 +95,12 @@ void Server::onNewConnection()
 
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
+      //  QString change_text = clientIPList->toPlainText();
+       // QString temp_text = QString("Player #"+webSocketClients.size()+"<br><br>").append(pSocket->requestUrl().toString());
+       // change_text.append(temp_text);
+        clientIPList->setHtml(QString("<br><br>")+clientIPList->toPlainText() + QString("<br><br>Player #"+QString::number(webSocketClients.size())+"&nbsp;&nbsp;&nbsp;&nbsp;").append(pSocket->requestUrl().toString()));
+       // qDebug() << "IP : "<<clientIPList;
+        //QCoreApplication::processEvents();
     }
     //std::stringstream ss;
     //ss<<std::this_thread::get_id();
@@ -126,7 +132,7 @@ void Server::setGameStartedVal()
                "resources/game files/gems/diamond map level1.txt" ,
                "resources/game files/player/player level1.txt" ,
                "resources/game files/door/door.txt"
-                , 60000);
+                , 3000);
 
 }
 
