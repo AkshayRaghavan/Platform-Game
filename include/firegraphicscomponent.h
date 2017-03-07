@@ -24,10 +24,13 @@ private:
     int graphicsCounter;
 
 public:
+
     FireGraphicsComponent(QGraphicsScene* , std::string , int , int  , int  , qreal  , qreal);
     ~FireGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &obj);
+    std::vector<qreal> getSizePositionOfObject();
+
 };
 
 #endif // FIREGRAPHICSCOMPONENT_H

@@ -1,7 +1,7 @@
-#ifndef SERVER_H
-#define SERVER_H
-#include<QGraphicsScene>
-#include<QGraphicsView>
+#ifndef CLIENT_H
+#define CLIENT_H
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QWebSocketServer>
 #include <QWebSocket>
 #include <QJsonDocument>

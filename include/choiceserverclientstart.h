@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QFrame>
 #include <QHBoxLayout>
-//#include "server.h"
+#include "server.h"
 #include "inputbox.h"
 #include "client.h"
 #include "inputhandler.h"
@@ -22,13 +22,14 @@ class ChoiceServerClientStart :public QObject
     int screenWidth;
     int screenHeight;
     Client* client;
-   // Server * server;
+    Server * server;
 public:
-    ChoiceServerClientStart(QGraphicsScene* , InputHandler* , int , int , int , Client* ,/* Server * server = NULL , */QWidget *parent = NULL);
+    ChoiceServerClientStart(QGraphicsScene* , InputHandler* , int , int , int , Client* , Server* , QWidget *parent = NULL);
     void displayStartMenu();
-
 private slots:
     void startClient();
-    void startServer();};
+    void startServer();
+    void startGameSlotButtonClick();
+};
 
 #endif // CHOICESERVERCLIENTSTART_H

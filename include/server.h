@@ -9,10 +9,12 @@
 #include <QCoreApplication>
 #include "gamestate.h"
 #include "readinput.h"
+
 class  Server: public QObject
 {
     Q_OBJECT
 private:
+    const quint16 port;
     std::vector<std::thread> client_threads;
     QWebSocketServer* webSocketServer;
     QList<QWebSocket *> webSocketClients;
@@ -42,8 +44,9 @@ private Q_SLOTS:
 
 public:
     GameState* gamePointer;
-    Server(quint16 , QGraphicsScene* , int , int , int , QObject *parent = 0);
+    Server(quint16 , QGraphicsScene* , int ,  QObject *parent = 0);
+    void startServer(int , int);
+    void startGameSlotButtonClick();
     ~Server();
-
 };
 #endif // SERVER_H

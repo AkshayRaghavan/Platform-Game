@@ -84,7 +84,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     going_to_point = current_point;
     if(current_player_jumping_state == enumerator::JumpingState::IS_JUMPING)
     {
-        if(curJumpCount == 1)
+      //  if(curJumpCount == 1)
            // jump->play();
         if(current_player_state == enumerator::State::DEAD_LEFT || current_player_state == enumerator::State::DEAD_RIGHT)
         {
@@ -133,13 +133,15 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
     for(int i = 0; i < colliding_items.size(); i++)
     {
-        if(typeid(*(colliding_items[i])) == typeid(Diamond))
+   //     qDebug() << "checking collisions";
+        if(typeid(*(colliding_items[i])) == typeid(Diamond) && (static_cast<Gem*>(colliding_items[i]))->getIsOnScreen())
         {
+            qDebug() << "checking collisions";
             qDebug() << gameObject.getScore();
             gameObject.setScore(gameObject.getScore() + (static_cast<Gem*>(colliding_items[i]))->getPointValue());
             (static_cast<Gem*>(colliding_items[i]))->setIsOnScreen(false);
           //  coin->play();
-          //scene->removeItem(colliding_items[i]);
+   //         scene->removeItem(colliding_items[i]);
           //delete colliding_items[i]; //Have deleted it to get true false in json of networking
         }
         else if(typeid(*(colliding_items[i])) == typeid(QGraphicsRectItem))
@@ -150,12 +152,14 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             gameObject.setJumpingState(new IsNotJumping);
             gameObject.setAcceptingInput(false);
         }
-        else if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
+        else //if(typeid(*(colliding_items[i])) == typeid(PlayerGraphicsComponent) || typeid(*(colliding_items[i])) == typeid(FireGraphicsComponent))
         {
+            qDebug() << "collided";
             GraphicsComponent * temp;
             temp = static_cast<GraphicsComponent*>(colliding_items[i]);
             if(((*temp).getIsDangerous()) == true)
             {
+                qDebug() << "dangerous";
                 //die->play();
                 // getismonster() is a member of graphics component to check monster
                 if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)

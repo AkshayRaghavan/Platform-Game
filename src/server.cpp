@@ -11,23 +11,26 @@
 #include <QThread>
 QT_USE_NAMESPACE
 
-Server::Server(quint16 port, QGraphicsScene* scene_local , int screen_width ,
-               int screen_height ,  int milliseconds_per_frame , QObject *parent) :
+Server::Server(quint16 port, QGraphicsScene* scene_local , int milliseconds_per_frame , QObject *parent) :
+    port(port),
     QObject(parent),
-    webSocketServer(new QWebSocketServer(QStringLiteral("Platform Game Server"),
-                                         QWebSocketServer::SecureMode, this)),
+    webSocketServer( new QWebSocketServer(QStringLiteral("Platform Game Server"), QWebSocketServer::NonSecureMode, this)),
     millisecondsPerFrame(milliseconds_per_frame)
 {
-    scene = scene_local;
+    webSocketServer->setProxy(QNetworkProxy::NoProxy);
+    scene = new QGraphicsScene;
     gameStartedCountOfClients = 0;
     maxConnectionsReached = false;
     gameStarted = false;
+}
 
+void Server::startServer(int screen_width , int screen_height)
+{
     qDebug() << "Creating Server";
-    webSocketServer->setProxy(QNetworkProxy::NoProxy);
     createGamePointer = new ReadInput(scene,screen_width,screen_height);
-
-    if (webSocketServer->listen(QHostAddress("0.0.0.0"), port)) {
+    createGamePointer->remoteIdentity = enumerator::Identity::SERVER;
+    if (webSocketServer->listen(QHostAddress("0.0.0.0"), port))
+    {
         qDebug() << "Server Started";
         qDebug() << "Server listening on port" << port;
         connect(webSocketServer, &QWebSocketServer::newConnection,
@@ -40,13 +43,11 @@ Server::Server(quint16 port, QGraphicsScene* scene_local , int screen_width ,
         qDebug() << "Error Message : " << webSocketServer->errorString();
         std::exit(EXIT_FAILURE);
     }
-    qDebug() << webSocketServer->serverUrl();
-
+    qDebug() << "Server's connecting URL : " << webSocketServer->serverUrl();
 }
-
 Server::~Server()
 {
- /*   for(int i=0;i<client_threads.size();i++)
+    /*   for(int i=0;i<client_threads.size();i++)
     {
         client_threads[i].join();
     }*/
@@ -68,13 +69,13 @@ void Server::onNewConnection()
     else
     {
 
-        std::thread t = std::thread([&](){
-            std::stringstream ss;
-            ss<<std::this_thread::get_id();
-            std::string id_str=ss.str();
-        qDebug() << "client is in: " <<id_str.c_str() ;
+    //    std::thread t = std::thread([&](){
+      //      std::stringstream ss;
+        //    ss<<std::this_thread::get_id();
+          //  std::string id_str=ss.str();
+        //qDebug() << "client is in: " <<id_str.c_str() ;
         QWebSocket *pSocket = webSocketServer->nextPendingConnection();
-        qDebug() << QThread::currentThreadId();
+        //qDebug() << QThread::currentThreadId();
         QObject::connect(pSocket, &QWebSocket::binaryMessageReceived, this, &Server::processBinaryMessage,Qt::DirectConnection);
         QObject::connect(pSocket, &QWebSocket::textMessageReceived, this, &Server::processTextMessage,Qt::DirectConnection);
         QObject::connect(pSocket, &QWebSocket::disconnected, this, &Server::socketDisconnected,Qt::DirectConnection);
@@ -82,37 +83,43 @@ void Server::onNewConnection()
    //     client_threads.push_back(std::move(t));
         webSocketClients << pSocket;
   //      std::unique_lock<std::mutex> lock(mutex);
-        cv.notify_all();
+      //  cv.notify_all();
         pSocket->sendTextMessage("successfully connected. Waiting For Game To Start");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        QEventLoop event_loop;
-        event_loop.exec();
-         });
-        t.detach();
-           std::unique_lock<std::mutex> main_lock(mutex);
-        cv.wait(main_lock);
+     //   QEventLoop event_loop;
+       // event_loop.exec();
+        // });
+       // t.detach();
+          // std::unique_lock<std::mutex> main_lock(mutex);
+        //cv.wait(main_lock);
 
         qDebug() << "websize: " << webSocketClients.size();
-        if(webSocketClients.size() == 1)
-        {
-            qDebug() << "Forming Game Screen";
-            setGameStartedVal();
-        }
         qDebug() << "last but two";
     }
-    std::stringstream ss;
-    ss<<std::this_thread::get_id();
-    std::string id_str=ss.str();
-qDebug() << "now in thread : " <<id_str.c_str() ;
-   qDebug() << QThread::currentThreadId();
+    //std::stringstream ss;
+    //ss<<std::this_thread::get_id();
+    //std::string id_str=ss.str();
+//qDebug() << "now in thread : " <<id_str.c_str() ;
+  // qDebug() << QThread::currentThreadId();
 
     qDebug() << "last but one";
 
 }
 
+void Server::startGameSlotButtonClick()
+{
+    if(webSocketClients.size() == 0)
+    {
+        qDebug() << "No Player Clients";
+        std::exit(EXIT_SUCCESS);
+    }
+    maxConnectionsReached = true;
+    qDebug() << "Forming Game Screen";
+    setGameStartedVal();
+}
+
 void Server::setGameStartedVal()
 {
-    maxConnectionsReached = true;
     startGame( "resources/game files/tile map level1/tile map level1.txt" ,
                "resources/game files/monster/monster level1.txt" ,
                "resources/game files/fire/fire level1.txt" ,
@@ -139,9 +146,6 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     createGamePointer->functionToCreateFireObject(fire_file_path);
     createGamePointer->functionToCreateDoor(door_file_path);
 
-
-
-
     qDebug() << "Adding Gems To Scene";
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
         (*it)->drawGem(scene);
@@ -150,17 +154,10 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
     {
         scene->addItem((*it)->graphicsComponent);
-        /*if((*it)->scoreComponent)
-        {            scene->addItem((*it)->scoreComponent);
-        }*/
     }
 
-
     gamePointer = new GameState(createGamePointer->gameObject , createGamePointer->tileMap , createGamePointer->gems , createGamePointer->screenWidth , createGamePointer->screenHeight , createGamePointer->scene , millisecondsPerFrame, total_time);
-
-   /* QTimer * timer = new QTimer();
-    gamePointer->connect(timer,SIGNAL(timeout()), gamePointer ,SLOT(update()));
-    timer->start(100);*/
+    gamePointer->remoteIdentity = enumerator::Identity::SERVER;
 
     sendIndexToCLient();
 }

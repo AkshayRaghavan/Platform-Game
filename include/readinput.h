@@ -1,6 +1,6 @@
 #ifndef READINPUT_H
 #define READINPUT_H
-
+#include"enumerator.h"
 #include "gameobject.h"
 #include "tile.h"
 #include "gem.h"
@@ -33,9 +33,8 @@
 class ReadInput
 {
 
-
-    
 public:
+    enumerator::Identity remoteIdentity;
     std::vector<GameObject*> gameObject;
     std::vector< std::vector<Tile*> > tileMap;
     std::vector<Gem*> gems;
@@ -45,7 +44,6 @@ public:
     int screenWidth;
     int screenHeight;
 
-    GameState* createGameStateObject(std::string tile_map_path , std::string gem_path , std::string player1_file_path , std::string player2_file_path , std::string monster_file_path , std::string fire_file_path, std::string door_file_path, int);
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
     void functionToCreateTileMap(std::string file_path);
     void functionToCreateGem(std::string file_path);

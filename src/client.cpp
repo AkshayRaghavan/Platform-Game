@@ -15,6 +15,7 @@ Client::Client(int milliseconds_per_frame , QGraphicsScene *scene_local , InputH
     noOfPlayers = 0;
     arrayIndexInGameObject = -1;
     createGamePointer = new ReadInput(scene_local , screen_initial_width , screen_initial_height);
+    createGamePointer->remoteIdentity = enumerator::Identity::CLIENT;
     gamePointer = NULL;
 }
 
@@ -93,6 +94,7 @@ void Client::onTextMessageReceived(QString message)
 
 void Client::onBinaryMessageReceived(QByteArray bytes)
 {
+    qDebug() << "received";
     QJsonDocument itemDoc = QJsonDocument::fromJson(bytes);
     QJsonObject itemObject = itemDoc.object();
 
@@ -183,7 +185,8 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
             //qDebug() << value;
             ((gamePointer->gems)[counter_game++])->setIsOnScreen((value.toDouble() == 1)? true:false);
          }
-            (gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt());
+            (gamePointer->timer)->setPlainText(((gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt())).c_str());
+
          gamePointer->update();
          /*if(itemObject["Game Over"].toInt() == 1)
          {
@@ -212,20 +215,8 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
                        std::string bg_image_path ,
                        int total_time)
 {
-
     createGamePointer->functionToCreateTileMap(tile_map_path);
     createGamePointer->functionToCreateGem(gem_path);
-
-
-/*
-
-    createGamePointer->functionToCreateTileMap(tile_map_path);
-     // emit textChanged("Adding The Gems .....");
-    createGamePointer->functionToCreateGem(gem_path);*/
-
-    /*
-
-    */
     for (int i = 0; i < noOfPlayers; i++)
     {
         createGamePointer->functionToCreatePlayerGameObject(player_file_path);
@@ -233,12 +224,6 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
 
     createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
     createGamePointer->functionToCreateFireObject(fire_file_path);
-   // createGamePointer->functionToCreateDoor(door_file_path);
-
-/*  createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
-    createGamePointer->functionToCreateFireObject(fire_file_path);
-    createGamePointer->functionToCreateDoor(door_file_path);
-*/
 
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
         (*it)->drawGem(scene);
@@ -251,10 +236,10 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
             scene->addItem((*it)->scoreComponent);
         }
     }
-    //std:exit(0);
     createGamePointer->tileMap = std::vector< std::vector<Tile*> > (0);
 
     gamePointer = new GameState(createGamePointer->gameObject , createGamePointer->tileMap , createGamePointer->gems , screenWidth , screenHeight , scene , millisecondsPerFrame, total_time);
+    gamePointer->remoteIdentity = enumerator::Identity::CLIENT;
 
     isAcceptingGameState = true;
     view->setGameState(gamePointer);
