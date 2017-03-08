@@ -83,12 +83,15 @@ void ThreadPool::waitTillAllComplete()
 ThreadPool::~ThreadPool()
 {
    stopNow = true;
-   for(int i = 0; i < threadStatus.size(); i++)
+   while(threadStatus.size())
    {
-       if(threadStatus[i] == false)
+       for(int i = 0; i < threadStatus.size(); i++)
        {
-           threadStatus.erase(threadStatus.begin() + i);
-           i = -1;
+           if(threadStatus[i] == false)
+           {
+               threadStatus.erase(threadStatus.begin() + i);
+               i = -1;
+           }
        }
    }
 }
