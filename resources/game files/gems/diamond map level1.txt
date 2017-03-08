@@ -19,7 +19,7 @@ resources/images/gems/Gems_01_256x256_022.png
 10 7
 45 45
 1
-resources/images/gems/Gems_01_256x256_026.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 55 45
 1
@@ -43,7 +43,7 @@ resources/images/gems/Gems_01_256x256_022.png
 10 7
 140 55
 1
-resources/images/gems/Gems_01_256x256_025.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 150 55
 1
