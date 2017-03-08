@@ -5,7 +5,7 @@
 GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene_local, int milliseconds_per_frame, int total_time_available) :
     gameObjects(game_objects), tileMap(tile_map), gems(input_gems) ,
     screenWidth(screen_width) , screenHeight(screen_height) ,
-    scene(scene_local)
+    scene(scene_local), threadPool(4)
 {
     isGameRunning = true;
     timer = new Timer(total_time_available,milliseconds_per_frame);
@@ -50,7 +50,8 @@ void GameState::update()
     bool someone_accepting_input = false;
     if(remoteIdentity == enumerator::Identity::SERVER)
     {
-        timer->update();
+        threadPool.assignToThread([&]() { timer->update(); });
+   //     timer->update();
     }
     else
     {
@@ -66,6 +67,9 @@ void GameState::update()
     {
         if(remoteIdentity == enumerator::Identity::SERVER)
         {
+      //      qDebug() << "assigning to thread" ;
+            threadPool.assignToThread([&,i]() {
+        //           qDebug() << "updating server";
                if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
                {
                    someone_accepting_input = true;
@@ -77,6 +81,7 @@ void GameState::update()
                    (gameObjects[i]->inputComponent)->update(*gameObjects[i]);
                    (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
                }
+              });
         }
         else if(remoteIdentity == enumerator::Identity::CLIENT)
         {
@@ -85,6 +90,14 @@ void GameState::update()
             {
                     (gameObjects[i]->scoreComponent)->update(gameObjects[i]->getScore());
             }
+        }
+    }
+    if(remoteIdentity == enumerator::Identity::SERVER)
+    {
+        threadPool.waitTillAllComplete();
+        for(unsigned int i = 0; i < gameObjects.size(); i++)
+        {
+            gameObjects[i]->updatePos();
         }
     }
 

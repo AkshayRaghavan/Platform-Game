@@ -55,7 +55,16 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
     }
 
     this->setPixmap(pixMapMatrix[2][0]);
+    qDebug() << "setting pos to : " << x_coordinate << " " << y_coordinate;
     this->setPos(x_coordinate,y_coordinate);
+    if(this->parent())
+    {
+        GameObject *parent = dynamic_cast<GameObject*>(this->parent());
+        if(parent)
+        {
+            parent->setPosXY(QPointF(x_coordinate,y_coordinate));
+        }
+    }
 }
 
 

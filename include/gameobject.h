@@ -19,8 +19,11 @@ protected:
     bool isDead;
     enumerator::ObjectType objecttype;
     int score;
+
+    qreal setPosX, setPosY;
+public:   
+
     QString name;
-public:
     int timeLeft;
     const int maxJumpCount;
     void setIsDead(bool a);
@@ -45,6 +48,9 @@ public:
     int getTimeLeft();
     bool isAcceptingInput();
     void setAcceptingInput(bool value);
+    void setPosXY(QPointF);
+    QPointF getPosXY();
+    void updatePos();
 };
 
 #endif // GAMEOBJECT_H
