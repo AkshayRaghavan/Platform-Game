@@ -49,8 +49,9 @@ void ThreadPool::waitOrWork(int i)
         work_to_do();
         if(isWaiting && functionsWaitingToBeExecuted.empty())
         {
+            std::unique_lock<std::mutex> waiterLock(waiterMutex);
             isWaiting = false;
-         //   waiter.notify_one();
+            waiter.notify_one();
         }
     }
 }
@@ -60,7 +61,9 @@ void ThreadPool::waitTillAllComplete()
     queueEmptyMutex.lock();
     isWaiting = true;
     queueEmptyMutex.unlock();
-    while(isWaiting && !functionsWaitingToBeExecuted.empty());
+    std::unique_lock<std::mutex> waiterLock(waiterMutex);
+    waiter.wait(waiterLock, [&]() { return (!isWaiting || functionsWaitingToBeExecuted.empty()); });
+   // while(isWaiting && !functionsWaitingToBeExecuted.empty());
     isWaiting = false;
     isWaitingForQueue.notify_all();
     //waiter waits till it is woken up when queue is empty

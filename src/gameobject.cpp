@@ -9,6 +9,7 @@
 #include "playerphysicscomponent.h"
 #include <QCoreApplication>
 #include <QDebug>
+#include <typeinfo>
 
 enumerator::ObjectType GameObject::getObjectType()
 {
