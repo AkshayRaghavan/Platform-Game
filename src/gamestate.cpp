@@ -51,7 +51,6 @@ void GameState::update()
     if(remoteIdentity == enumerator::Identity::SERVER)
     {
         threadPool.assignToThread([&]() { timer->update(); });
-   //     timer->update();
     }
     else
     {
@@ -67,9 +66,7 @@ void GameState::update()
     {
         if(remoteIdentity == enumerator::Identity::SERVER)
         {
-      //      qDebug() << "assigning to thread" ;
             threadPool.assignToThread([&,i]() {
-        //           qDebug() << "updating server";
                if(gameObjects[i]->isAcceptingInput() && !(gameObjects[i]->getIsDead()))
                {
                    someone_accepting_input = true;

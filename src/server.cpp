@@ -138,9 +138,9 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     serverLoadingMessage->setHtml("Adding The Players On the Screen");
     app->processEvents();
 
-    for (int i = 0; i != webSocketClients.size(); i++)
+    for (int i = 0; i < webSocketClients.size(); i++)
     {
-      /*  threadPool.assignToThread([&](){*/createGamePointer->functionToCreatePlayerGameObject(player_file_path);//});
+        createGamePointer->functionToCreatePlayerGameObject(player_file_path);
     }
 
     app->processEvents();

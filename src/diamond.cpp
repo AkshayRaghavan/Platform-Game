@@ -14,6 +14,11 @@ Diamond::Diamond(std::string image_location , int width , int height , qreal x_c
         std::exit(EXIT_FAILURE);
     }
     pixMapImage = QPixmap::fromImage(gem_picture);
+    if(pixMapImage.isNull())
+    {
+            qDebug() << "ERROR(diamond.cpp) -> pixMapImage is NULL";
+            std::exit(EXIT_FAILURE);
+    }
     pixMapImage = pixMapImage.scaled(QSize(width,height), Qt::KeepAspectRatio);
     this->setPos(x_coordinate , y_coordinate);
     this->setPixmap(this->pixMapImage);

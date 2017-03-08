@@ -59,7 +59,6 @@ SOURCES += main.cpp \
     src/emptyphysicscomponent.cpp \
     src/firegraphicscomponent.cpp \
     src/door.cpp \
-    src/exitbutton.cpp \
     src/timer.cpp \
     src/scorecomponent.cpp \
     src/client.cpp \
@@ -101,7 +100,6 @@ HEADERS  += \
     include/emptyphysicscomponent.h \
     include/firegraphicscomponent.h \
     include/door.h \
-    include/exitbutton.h \
     include/timer.h \
     include/scorecomponent.h \
     include/client.h \

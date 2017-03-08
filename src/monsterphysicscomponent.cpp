@@ -47,7 +47,6 @@ void MonsterPhysicsComponent::update(GameObject &gameObject)
     }
     if(testPositionForPlayer(going_to_point,player_width,player_height) && !curSpeedFraction)
     {
-     //   gameObject.graphicsComponent->setPos(going_to_point);
         gameObject.setPosXY(going_to_point);
         current_point.setX(going_to_point.x());
     }
@@ -56,13 +55,10 @@ void MonsterPhysicsComponent::update(GameObject &gameObject)
     int going_to_tile_column = going_to_point.x()/width_of_tile;
     if(inRange(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile)) && !(tilesMap[going_to_tile_row+1][going_to_tile_column])->getIsObstacle())
     {
- //       qDebug() << "inrange is true";
         going_to_point.setY(going_to_point.y()+height_of_tile);
     }
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-     //   qDebug() << "monster can now move";
-   //     gameObject.graphicsComponent->setPos(going_to_point);
         gameObject.setPosXY(going_to_point);
     }
 }

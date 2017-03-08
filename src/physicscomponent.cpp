@@ -89,7 +89,6 @@ bool PhysicsComponent::testPositionForPlayer(QPointF input_point, qreal player_w
         {
             if(!testPoint(QPointF(i,j)))
             {
- //               qDebug() << "failing because of point " << i << ", " << j;
                 return false;
             }
         }

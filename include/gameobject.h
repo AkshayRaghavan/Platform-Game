@@ -11,7 +11,7 @@
 #include <QObject>
 #include <QGraphicsScene>
 #include "enumerator.h"
-
+#include<typeinfo>
 class GameObject : public QObject
 {
 protected:
