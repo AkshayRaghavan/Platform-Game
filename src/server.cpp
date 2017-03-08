@@ -132,7 +132,7 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     app->processEvents();
     serverLoadingMessage->setHtml("Creating The Gems");
     app->processEvents();
-    threadPool.assignToThread([&](){createGamePointer->functionToCreateGem(gem_path);});
+    createGamePointer->functionToCreateGem(gem_path);
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Players On the Screen");
@@ -140,25 +140,25 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
 
     for (int i = 0; i != webSocketClients.size(); i++)
     {
-      /*  threadPool.assignToThread([&](){*/createGamePointer->functionToCreatePlayerGameObject(player_file_path);//});
+        createGamePointer->functionToCreatePlayerGameObject(player_file_path);
     }
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Monsters On the Screen");
     app->processEvents();
-    threadPool.assignToThread([&](){createGamePointer->functionToCreateMonsterGameObject(monster_file_path);});
+    createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Fire On the Screen");
     app->processEvents();
-    threadPool.assignToThread([&](){createGamePointer->functionToCreateFireObject(fire_file_path);});
+    createGamePointer->functionToCreateFireObject(fire_file_path);
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Final Point On the Screen");
     app->processEvents();
-    threadPool.assignToThread([&](){createGamePointer->functionToCreateDoor(door_file_path);});
+    createGamePointer->functionToCreateDoor(door_file_path);
 
-    threadPool.waitTillAllComplete();
+
 
     qDebug() << "Adding Gems To Scene";
 
