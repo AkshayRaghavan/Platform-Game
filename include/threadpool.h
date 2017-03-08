@@ -14,8 +14,10 @@ class ThreadPool
     std::vector<std::thread> threadWorkers;
     std::queue<std::function<void()> > functionsWaitingToBeExecuted;
     std::mutex mutexForQueue;
-    std::unique_lock<std::mutex> lock;
     std::condition_variable isWorkAvailable;
+    std::mutex queueEmptyMutex;
+    std::condition_variable isWaitingForQueue;
+    bool isWaiting;
 public:
     ThreadPool(int);
     void addThread();

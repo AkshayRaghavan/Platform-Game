@@ -119,19 +119,23 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
                        std::string door_file_path , int total_time)
 {
     createGamePointer->functionToCreateTileMap(tile_map_path);
-    createGamePointer->functionToCreateGem(gem_path);
+    threadpool.assignThread([](){createGamePointer->functionToCreateGem(gem_path);
+        qDebug() << "Adding Gems To Scene";
+        for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
+            (*it)->drawGem(scene);
+    });
     for (int i = 0; i != webSocketClients.size(); i++)
     {
-        createGamePointer->functionToCreatePlayerGameObject(player_file_path);
+        threadpool.assignThread([](){createGamePointer->functionToCreatePlayerGameObject(player_file_path);});
     }
 
-    createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
-    createGamePointer->functionToCreateFireObject(fire_file_path);
-    createGamePointer->functionToCreateDoor(door_file_path);
-
-    qDebug() << "Adding Gems To Scene";
+    threadpool.assignThread([](){createGamePointer->functionToCreateMonsterGameObject(monster_file_path);});
+    threadpool.assignThread([](){createGamePointer->functionToCreateFireObject(fire_file_path);});
+    threadpool.assignThread([](){createGamePointer->functionToCreateDoor(door_file_path);});
+    threadPool.waitTillAllComplete();
+  /*  qDebug() << "Adding Gems To Scene";
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
-        (*it)->drawGem(scene);   
+        (*it)->drawGem(scene);   */
 
     qDebug() << "Adding GameObjects To Scene";
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
