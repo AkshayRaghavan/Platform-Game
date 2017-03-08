@@ -58,13 +58,13 @@ void Client::DisplayScore(QString result)
     {
         scene->removeItem(item);
     }
-    QImage *back = new QImage("resources/images/assets/server client start button/background.png");
+    QImage *back = new QImage("resources/images/assets/server client start button/background0.png");
     QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);
     view->setBackgroundBrush(*brush);
 
     QGraphicsTextItem * winner = new QGraphicsTextItem;
-    winner->setFont(QFont("comic sans",20));
+    winner->setFont(QFont("comic sans",10));
     winner->setHtml(result);
     winner->setPos(screenWidth/3 , screenHeight/3);
     scene->addItem(winner);
