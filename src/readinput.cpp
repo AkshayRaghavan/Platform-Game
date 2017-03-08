@@ -266,6 +266,24 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
     image_width *= width_of_tile;
     image_height *= height_of_tile;
 
+    QPixmap* pixMapArray = new QPixmap[images_total_count];
+    for(int i = 0; i < images_total_count; i++)
+    {
+        QImage fire_picture((images_location + std::to_string(i+1) +".png").c_str());
+        if(fire_picture.isNull())
+        {
+            qDebug() << "ERROR(firegraphicscomponent.cpp) : Failed To Load Image" << (images_location + std::to_string(i+1) +".png").c_str() << endl;
+            std::exit(EXIT_FAILURE);
+        }
+        pixMapArray[i] = QPixmap::fromImage(fire_picture);
+        if(pixMapArray[i].isNull())
+        {
+            qDebug() << "Fire PixMap is NULL";
+            std::exit(0);
+        }
+        pixMapArray[i] = (pixMapArray[i]).scaled(QSize(image_width,image_height) , Qt::KeepAspectRatio);
+    }
+
     infile >> temp_string;
 
         while(true)
@@ -280,7 +298,7 @@ void ReadInput::functionToCreateFireObject(std::string fire_file_path)
             {
                 break;
             }
-            GraphicsComponent* graphics_component = new FireGraphicsComponent(scene , images_location , images_total_count , image_width , image_height , x_coordinate , y_coordinate , app);
+            GraphicsComponent* graphics_component = new FireGraphicsComponent(scene , pixMapArray , images_total_count , x_coordinate , y_coordinate);
             InputComponent *input_component = new EmptyInputComponent();
             PhysicsComponent * physics_component = new EmptyPhysicsComponent();
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));
