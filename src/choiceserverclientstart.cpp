@@ -29,7 +29,7 @@ void ChoiceServerClientStart::startClient()
         scene->removeItem(item);
     }
     QGraphicsTextItem* client_message = new QGraphicsTextItem(QString(""));
-    client_message->setFont(QFont("ocr a extended",20));
+    client_message->setFont(QFont("ocr a extended",35));
     client_message->setPos(view->width()/(4) - client_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(client_message);
     clientMessage = client_message;
@@ -80,7 +80,7 @@ void ChoiceServerClientStart::startServer()
     qDebug() << "Outside server";
 
     QGraphicsTextItem* heading = new QGraphicsTextItem(QString("List Of Connected Players"));
-    heading->setFont(QFont("ocr a extended",20));
+    heading->setFont(QFont("ocr a extended",35));
     heading->setPos(view->width()/2 - heading->boundingRect().width()/2,view->height()/6);
     scene->addItem(heading);
 
@@ -104,15 +104,15 @@ void ChoiceServerClientStart::startServerGameSlotButtonClick()
         scene->removeItem(item);
     }
     scene->addWidget(label);
-    QGraphicsTextItem* server_message = new QGraphicsTextItem(QString("The Game Has Started !!!!!"));
-    server_message->setFont(QFont("comic sans",50));
-    server_message->setPos(view->width()/(2.25) - server_message->boundingRect().width()/2,view->height()/3);
+    QGraphicsTextItem* server_message = new QGraphicsTextItem(QString(""));
+    server_message->setFont(QFont("comic sans",25));
+    server_message->setPos(view->width()/(6.5) - server_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(server_message);
     server->startGameSlotButtonClick(server_message);
     QImage *back = new QImage("resources/images/assets/server client start button/background_score.png");
     if(back->isNull())
     {
-        qDebug() << "ERROR(choiceserverclientstart.cpp) : Failed To Load Image" << bg_image_path;
+        qDebug() << "ERROR(choiceserverclientstart.cpp) : Failed To Load Image resources/images/assets/server client start button/background_score.png";
         std::exit(EXIT_FAILURE);
     }
     QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
@@ -124,7 +124,7 @@ void ChoiceServerClientStart::startServerGameSlotButtonClick()
 void ChoiceServerClientStart::displayStartMenu()
 {
     // create the title text
-    QGraphicsTextItem* choosing_server_client_text = new QGraphicsTextItem(QString("THE PLATFORM GAME"));
+    QGraphicsTextItem* choosing_server_client_text = new QGraphicsTextItem(QString("PLATFORM GAME"));
     choosing_server_client_text->setFont(QFont("algerian",50));
     choosing_server_client_text->setDefaultTextColor(QColor(128,0,128));
     choosing_server_client_text->setPos(view->width()/2 - choosing_server_client_text->boundingRect().width()/2,view->height()/6);

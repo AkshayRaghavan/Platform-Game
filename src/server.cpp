@@ -83,7 +83,7 @@ void Server::onNewConnection()
         qDebug() << "Added To webSocketClients And Sent Response Message";
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
-        clientIPList->setHtml(QString("<br><br>")+clientIPList->toPlainText() + QString("<br><br>Player #"+QString::number(webSocketClients.size())+"&nbsp;&nbsp;&nbsp;&nbsp;").append(pSocket->requestUrl().toString()));
+        clientIPList->setHtml(QString("<br><br>")+clientIPList->toPlainText() + QString("<br><br>Player #"+QString::number(webSocketClients.size())+"&nbsp;&nbsp;&nbsp;&nbsp;").append(pSocket->localAddress().toString()));
     }
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
@@ -115,7 +115,7 @@ void Server::setGameStartedVal()
                "resources/game files/gems/diamond map level1.txt" ,
                "resources/game files/player/player level1.txt" ,
                "resources/game files/door/door.txt"
-                , 60000);
+                , 1000);
 }
 
 void Server::startGame(std::string tile_map_path , std::string monster_file_path ,
@@ -299,13 +299,13 @@ void Server::getLeaderBoard()
         return std::get<3>(left) > std::get<3>(right);
     });
 
-    QString result("<div  style='color:red;'><table><thead><tr><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCOREBOARD<br><br>Rank&nbsp;&nbsp;&nbsp;Player Name&nbsp;&nbsp;&nbsp;Gems&nbsp;Score&nbsp;&nbsp;&nbsp;Time&nbsp;Taken&nbsp;&nbsp;&nbsp;Total&nbsp;score<br><br></strong>");
+    QString result("<div  style='color:red;'><table><tr><th></th><th></th><th><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems&nbsp;Score</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
 
     for (int i = 1; i <= leader_board.size(); i++)
     {
-        result += "<strong>" + QString::number(i) + "</strong>&nbsp;&nbsp;&nbsp;" +  std::get<0>(leader_board[i-1]) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<1>(leader_board[i-1])) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<2>(leader_board[i-1])) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<3>(leader_board[i-1])) + "<br>";
+        result += "<tr><th>" + QString::number(i) + "</th><th>&nbsp;&nbsp;</th><th>" +  std::get<0>(leader_board[i-1]) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<1>(leader_board[i-1])) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<2>(leader_board[i-1])/1000) + " : " + QString::number(std::get<2>(leader_board[i-1])%1000)  + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<3>(leader_board[i-1])) + "</th></tr>";
     }
-    result += "</div>";
+    result += "</table></div>";
     app->processEvents();
     serverLoadingMessage->setHtml(result);
     app->processEvents();
