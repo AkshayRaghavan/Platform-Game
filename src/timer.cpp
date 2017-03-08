@@ -33,7 +33,7 @@ void Timer::update()
 
 void Timer::updateTimerOnScreen()
 {
-    QString time_string = QString::number(secondsLeft) + " : " + QString::number(millisecondsLeft);
+    QString time_string = QString("Time : ") + QString::number(secondsLeft) + " : " + QString::number(millisecondsLeft);
     this->setHtml(time_string);
 }
 
