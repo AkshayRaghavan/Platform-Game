@@ -12,16 +12,21 @@ ThreadPool::ThreadPool(int number_of_threads = 0)
     for(int i = 0; i < number_of_threads; i++)
     {
         std::thread t = std::thread(&ThreadPool::waitOrWork,this,i);
-    //    threadWorkers.push_back(t);
-        t.detach();
+        threadWorkers.push_back(std::move(t));
+        threadStatus.push_back(true);
+        threadWorkers[i].detach();
     }
     isWaiting = false;
+    stopNow = false;
 }
 
 void ThreadPool::addThread()
 {
- /*   numberOfThreads++;
-    threadWorkers.push_back(std::thread(&ThreadPool::waitOrWork,this,numberOfThreads-1));*/
+    numberOfThreads++;
+    std::thread t = std::thread(&ThreadPool::waitOrWork,this,numberOfThreads-1);
+    threadWorkers.push_back(std::move(t));
+    threadStatus.push_back(true);
+    threadWorkers[numberOfThreads-1].detach();
 }
 
 void ThreadPool::assignToThread(std::function<void()> function_with_work)
@@ -47,6 +52,10 @@ void ThreadPool::waitOrWork(int i)
         functionsWaitingToBeExecuted.pop();
         //     qDebug() << "function assigned to thread " << id;
         work_to_do();
+        if(stopNow)
+        {
+            break;
+        }
         if(isWaiting && functionsWaitingToBeExecuted.empty())
         {
             std::unique_lock<std::mutex> waiterLock(waiterMutex);
@@ -54,6 +63,7 @@ void ThreadPool::waitOrWork(int i)
             waiter.notify_one();
         }
     }
+    threadStatus[i] = false;
 }
 
 void ThreadPool::waitTillAllComplete()
@@ -73,8 +83,13 @@ void ThreadPool::waitTillAllComplete()
 
 ThreadPool::~ThreadPool()
 {
-   /* for(int i = 0; i < numberOfThreads; i++)
-    {
-        threadWorkers[i].join();
-    }*/
+   stopNow = true;
+   for(int i = 0; i < threadStatus.size(); i++)
+   {
+       if(threadStatus[i] == false)
+       {
+           threadStatus.erase(threadStatus.begin() + i);
+           i = -1;
+       }
+   }
 }
