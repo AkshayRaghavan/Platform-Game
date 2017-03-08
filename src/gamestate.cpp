@@ -43,6 +43,10 @@ std::vector<Gem*> GameState::getGems()
 
 void GameState::update()
 {
+    if(!isGameRunning)
+    {
+        return;
+    }
     bool someone_accepting_input = false;
     if(remoteIdentity == enumerator::Identity::SERVER)
     {
@@ -53,18 +57,11 @@ void GameState::update()
     {
         timer->updateTimerOnScreen();
     }
-    if(!timer->isTimeLeft() || timer->getTimeLeftInMilliSeconds() == 0)
+    int timer_temp = timer->getTimeLeftInMilliSeconds();
+    if(!timer->isTimeLeft() || timer_temp == 0)
     {
+        isGameRunning = false;
         return;
-    }
-
-    if(remoteIdentity == enumerator::Identity::SERVER)
-    {
-        someone_accepting_input = false;
-        if(!isGameRunning)
-        {
-            return;
-        }
     }
     for(unsigned int i = 0; i < gameObjects.size(); i++)
     {
@@ -77,6 +74,7 @@ void GameState::update()
                {
                    someone_accepting_input = true;
                    (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
+                   gameObjects[i]->timeLeft = timer_temp;
                }
                else
                {
@@ -118,7 +116,9 @@ void GameState::update()
     if(remoteIdentity == enumerator::Identity::SERVER)
     {
         if(!someone_accepting_input)
+        {
             isGameRunning = false;
+        }
     }
 }
 

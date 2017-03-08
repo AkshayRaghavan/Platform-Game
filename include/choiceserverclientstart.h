@@ -7,8 +7,9 @@
 #include <QDebug>
 #include <QFrame>
 #include <QHBoxLayout>
+#include <QPushButton>
+#include <QLineEdit>
 #include "server.h"
-#include "inputbox.h"
 #include "client.h"
 #include "inputhandler.h"
 #include "button.h"
@@ -16,6 +17,11 @@ class ChoiceServerClientStart :public QObject
 {
     Q_OBJECT
     QLabel* label;
+    QFrame* fGlobal;
+    QGraphicsTextItem* clientMessage;
+    QLineEdit* inputURL;
+    QLineEdit* name;
+
     QGraphicsScene* scene;
     InputHandler* view;
     int millisecondsPerFrame;
@@ -29,7 +35,9 @@ public:
 private slots:
     void startClient();
     void startServer();
-    void startGameSlotButtonClick();
+    void startServerGameSlotButtonClick();
+    void startClientGameSlotButtonClick();
+
 };
 
 #endif // CHOICESERVERCLIENTSTART_H

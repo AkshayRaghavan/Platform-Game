@@ -18,7 +18,6 @@
 class FireGraphicsComponent : public GraphicsComponent
 {
 private:
-    QApplication * app;
     //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
     QPixmap* pixMapArray;
     //Array for saving total images in a graphic state
@@ -27,7 +26,7 @@ private:
     int graphicsCounter;
 
 public:
-    FireGraphicsComponent(QGraphicsScene* , std::string , int , int  , int  , qreal  , qreal , QApplication *);
+    FireGraphicsComponent(QGraphicsScene* , QPixmap* , int , qreal  , qreal);
     ~FireGraphicsComponent() {}
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &obj);

@@ -17,30 +17,15 @@ Client::Client(QApplication* a ,int milliseconds_per_frame , QGraphicsScene *sce
     isAcceptingGameState = false;
     noOfPlayers = 0;
     arrayIndexInGameObject = -1;
-
-    QImage *back = new QImage(QString("C:/Users/DELL/Documents/popl/Platform Game Client/Platform-Game/resources/images/load.jpg"));
-    QImage *background = new QImage(back->scaled(screen_initial_width,screen_initial_height ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
-    QBrush *brush = new QBrush(*background);
-    app->processEvents();
-    view->setBackgroundBrush(*brush);
-    view->show();
-
-   /* label = new QLabel;
-    QMovie *mov = new QMovie("resources/images/loading.gif");
-    mov->start();
-    label->setAttribute(Qt::WA_NoSystemBackground);
-    label->setMovie(mov);
-    scene->addWidget(label);
-    mov->setScaledSize(QSize(100,100));
-    label->move(100*(screen_initial_width/240),80*(screen_initial_height/160));
-   */ createGamePointer = new ReadInput(scene_local , screen_initial_width , screen_initial_height);
+    createGamePointer = new ReadInput(scene_local , screen_initial_width , screen_initial_height);
     createGamePointer->setApp(app);
     createGamePointer->remoteIdentity = enumerator::Identity::CLIENT;
     gamePointer = NULL;
 }
 
-void Client::connectToServer(QUrl url_local , QGraphicsTextItem* client_message)
+void Client::connectToServer(QUrl url_local , QGraphicsTextItem* client_message , QString name_local)
 {
+    name = name_local;
     clientLoadingMessage = client_message;
     qDebug() << url_local;
     url = url_local;
@@ -66,41 +51,25 @@ QWebSocket* Client::getClientWebSocket()
     return &clientWebSocket;
 }
 
-
-/*
-void Client::DisplayScore(QJsonArray score)
+void Client::DisplayScore(QString result)
 {
-    QGraphicsTextItem * winner = new QGraphicsTextItem;
-    QGraphicsTextItem * ID = new QGraphicsTextItem[10];
-    QGraphicsTextItem * points = new QGraphicsTextItem[10];
 
-    QJsonObject obj;
-
-    for(int i=0;i<sizeof(createGamePointer->gameObject);i++)
-        scene->removeItem(createGamePointer->gameObject[i]->graphicsComponent);
-
-    obj = score["Score"].toObject();
-
-    if(obj["ID"].toInt() == arrayIndexInGameObject)
-        winner->setHtml(QString("YOU WON !"));
-    else
-        winner->setHtml(QString("YOU LOSE !"));
-    scene->addItem(winner);
-    winner->setPos(70*(createGamePointer->width_of_tile),25*(createGamePointer->height_of_tile));
-
-    i=0;
-    foreach (const QJsonValue & value, score)
+    foreach(QGraphicsItem *item, scene->items())
     {
-        obj = value.toObject();
-        ID = new QGraphicsTextItem(QString(std::to_string(obj["ID"].toInt()).c_str()));
-        points = new QGraphicsTextItem(QString(std::to_string(obj["points"].toInt()).c_str()));
-        scene->addItem(ID);
-        ID->setPos(70*(createGamePointer->width_of_tile),50*(createGamePointer->height_of_tile));
-        scene->addItem(points);
-        points->setPos(70*(createGamePointer->width_of_tile),75*(createGamePointer->height_of_tile));
-        i++;
+        scene->removeItem(item);
     }
-}*/
+    QImage *back = new QImage("resources/images/assets/server client start button/background.png");
+    QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
+    QBrush *brush = new QBrush(*background);
+    view->setBackgroundBrush(*brush);
+
+    QGraphicsTextItem * winner = new QGraphicsTextItem;
+    winner->setFont(QFont("comic sans",20));
+    winner->setHtml(result);
+    winner->setPos(screenWidth/3 , screenHeight/3);
+    scene->addItem(winner);
+
+}
 
 void Client::onConnected()
 {
@@ -111,6 +80,11 @@ void Client::onConnected()
 
 void Client::onTextMessageReceived(QString message)
 {
+    if(message.startsWith("<div"))
+    {
+        DisplayScore(message);
+        return;
+    }
     app->processEvents();
     clientLoadingMessage->setHtml(message);
     app->processEvents();
@@ -121,8 +95,6 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
 {
     QJsonDocument itemDoc = QJsonDocument::fromJson(bytes);
     QJsonObject itemObject = itemDoc.object();
-
-    QJsonArray final = itemObject["Final"].toArray();
 
     if (!receivedNoOfPlayerFlag)
     {
@@ -209,18 +181,11 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
          counter_game = 0;
          foreach (const QJsonValue & value, json_array)
          {
-            //qDebug() << value;
             ((gamePointer->gems)[counter_game++])->setIsOnScreen((value.toDouble() == 1)? true:false);
          }
 
          (gamePointer->timer)->setTimeLeft(itemObject["timer"].toInt());
          gamePointer->update();
-         /*if(itemObject["Game Over"].toInt() == 1)
-         {
-             DisplayScore(final);
-             isAcceptingGameState = false;
-         }*/
-          //  qDebug() << "timer : "<< itemObject["timer"].toInt();
     }
 }
 
@@ -319,8 +284,7 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
 
     clientLoadingMessage->setHtml("Pinging Server About Status<br>P.S. You Are The Brown Player");
     app->processEvents();
-    QString message = "start "+QString::number(arrayIndexInGameObject);
-    qDebug() << "message is : " << message;
+    QString message = "start="+QString::number(arrayIndexInGameObject)+"$"+name;
     clientWebSocket.sendTextMessage(message);
 
     app->processEvents();

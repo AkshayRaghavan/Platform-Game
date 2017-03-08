@@ -38,19 +38,14 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
     if(isDangerous == false)
     {
        t7 = std::thread ([&] () {initializePixMaps ( images_total_count[6] , images_location + "/jump right/Jump(" ,  pixMapMatrix[6] ,  image_width , image_height);});
-       t8 = std::thread ([&] () {initializePixMaps ( images_total_count[7] , images_location + "/jump left/Jump(" ,  pixMapMatrix[7] ,  image_width , image_height);});}
+       t8 = std::thread ([&] () {initializePixMaps ( images_total_count[7] , images_location + "/jump left/Jump(" ,  pixMapMatrix[7] ,  image_width , image_height);});
+    }
     t1.join();
-    app->processEvents();
     t2.join();
-    app->processEvents();
     t3.join();
-    app->processEvents();
     t4.join();
-    app->processEvents();
     t5.join();
-    app->processEvents();
     t6.join();
-    app->processEvents();
     if(isDangerous == false)
     {
         t7.join();
@@ -58,7 +53,6 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
         t8.join();
         app->processEvents();
     }
-
 
     this->setPixmap(pixMapMatrix[2][0]);
     qDebug() << "setting pos to : " << x_coordinate << " " << y_coordinate;
