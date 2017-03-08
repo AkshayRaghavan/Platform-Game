@@ -12,6 +12,7 @@ class ThreadPool
 {
     int numberOfThreads;
     std::vector<std::thread> threadWorkers;
+    std::vector<bool> threadStatus;
     std::queue<std::function<void()> > functionsWaitingToBeExecuted;
     std::mutex mutexForQueue;
     std::condition_variable isWorkAvailable;
@@ -20,6 +21,7 @@ class ThreadPool
     std::condition_variable waiter;
     std::mutex waiterMutex;
     bool isWaiting;
+    bool stopNow;
 public:
     ThreadPool(int);
     void addThread();
