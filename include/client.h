@@ -33,13 +33,13 @@
 #include <QSize>
 #include <QApplication>
 #include <QGraphicsProxyWidget>
-
 class InputHandler;
 
 class  Client: public QObject
 {
     Q_OBJECT
 private:
+    QApplication* app;
     QWebSocket clientWebSocket;
     QUrl url;
     const int screenHeight;
@@ -52,10 +52,10 @@ private:
     InputHandler *view;
     ReadInput* createGamePointer;
     QLabel *label;
-    QApplication *app;
+    QGraphicsTextItem* clientLoadingMessage;
     const int millisecondsPerFrame;
     void setGameStartedVal();
-    void startGame(std::string , std::string , std::string , std::string , std::string , std::string , std::string , int );
+    void startGame(std::string , std::string , std::string , std::string , std::string , std::string , std::string , std::string , int );
 
 Q_SIGNALS:
     void closed();
@@ -69,12 +69,11 @@ private Q_SLOTS:
     void onBinaryMessageReceived(QByteArray);
 public:
     GameState* gamePointer;
-    Client(int , QGraphicsScene* , InputHandler* , int , int , QObject *parent = 0);
+    Client(QApplication* , int , QGraphicsScene* , InputHandler* , int , int , QLabel* , QObject *parent = 0);
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
     void DisplayScore(QJsonArray score);
-    void setApp(QApplication *);
-    void connectToServer(QUrl);
+    void connectToServer(QUrl , QGraphicsTextItem*);
 
 };
 #endif // SERVER_H

@@ -6,7 +6,7 @@ ScoreComponent::ScoreComponent(QGraphicsScene* scene , qreal x_coordinate, qreal
                                QFont text_font ):
     scoreDisplayDiffX(score_display_diff_x) , scoreDisplayDiffY(score_display_diff_y)
 {
-      this->setPlainText("0");
+      this->setHtml("0");
       this->setFont(text_font);                          //QFont("Helvetica" , font_size)
       this->setDefaultTextColor(text_color);    //QColor(51, 51, 255)
       this->setPos(x_coordinate + score_display_diff_x,y_coordinate + score_display_diff_y);
@@ -25,5 +25,5 @@ int ScoreComponent::getscoreDisplayDiffY()
 
 void ScoreComponent::update(int new_score)
 {
-    this->setPlainText(std::to_string(new_score).c_str());
+    this->setHtml(std::to_string(new_score).c_str());
 }

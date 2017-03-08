@@ -7,6 +7,7 @@
 #include <QObject>
 #include <iterator>
 #include <QCoreApplication>
+#include <QLabel>
 #include "gamestate.h"
 #include "readinput.h"
 #include "threadpool.h"
@@ -24,6 +25,7 @@ private:
     bool gameStarted;
     int gameStartedCountOfClients;
     ThreadPool threadPool;
+    ThreadPool threadPool2;
     QGraphicsScene* scene;
     ReadInput* createGamePointer;
     const int millisecondsPerFrame;
@@ -35,6 +37,8 @@ private:
     void startGame(std::string , std::string , std::string , std::string ,
                    std::string , std::string  , int );
     QGraphicsTextItem* clientIPList;
+    QGraphicsTextItem* serverLoadingMessage;
+    QLabel* label;
 
 Q_SIGNALS:
     void closed();
@@ -49,9 +53,9 @@ private Q_SLOTS:
 
 public:
     GameState* gamePointer;
-    Server(quint16 , QApplication* , QGraphicsScene* , int , int , QObject *parent = 0);
+    Server(quint16 , QApplication* , QGraphicsScene* , int , int , QLabel* , QObject *parent = 0);
     void startServer(int , int);
-    void startGameSlotButtonClick();
+    void startGameSlotButtonClick(QGraphicsTextItem*);
     void setClientIPList(QGraphicsTextItem* client_IP_list);
     ~Server();
 };

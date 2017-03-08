@@ -1,8 +1,9 @@
 #include "choiceserverclientstart.h"
 #include <QGraphicsTextItem>
 
-ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , InputHandler* view_local , int milliseconds_per_frame , int screen_width , int screen_height , Client* game_client , Server* game_server , QWidget *parent)
+ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , InputHandler* view_local , const char * bg_image_path , int milliseconds_per_frame , int screen_width , int screen_height , Client* game_client , Server* game_server , QLabel* label_formal ,QWidget *parent)
 {
+    label =label_formal;
     scene = scene_local;
     view = view_local;
     millisecondsPerFrame = milliseconds_per_frame;
@@ -10,6 +11,15 @@ ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , I
     screenHeight = screen_height;
     client = game_client;
     server = game_server;
+    QImage *back = new QImage(bg_image_path);
+    if(back->isNull())
+    {
+        qDebug() << "ERROR(choiceserverclientstart.cpp) : Failed To Load Image" << bg_image_path;
+        std::exit(EXIT_FAILURE);
+    }
+    QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
+    QBrush *brush = new QBrush(*background);
+    view->setBackgroundBrush(*brush);
 }
 
 void ChoiceServerClientStart::startClient()
@@ -18,10 +28,15 @@ void ChoiceServerClientStart::startClient()
     {
         scene->removeItem(item);
     }
+    QGraphicsTextItem* client_message = new QGraphicsTextItem(QString(""));
+    client_message->setFont(QFont("comic sans",50));
+    client_message->setPos(view->width()/(5) - client_message->boundingRect().width()/2,view->height()/3);
+    scene->addItem(client_message);
+
     qDebug() << "inside startClient";
     QFrame *f = new QFrame();
     QHBoxLayout *flayout = new QHBoxLayout(f);
-    InputBox* input_url_text = new InputBox(view , f , flayout , "Enter The URL of The Server And Press The Enter Key" , client);
+    InputBox* input_url_text = new InputBox(view , scene , label , f , flayout , "Enter The URL of The Server And Press The Enter Key" , client , client_message);
     flayout->addWidget((input_url_text->lineEdit));
     f->move(screenWidth/3 , screenHeight/3);
     f->setFocus();
@@ -50,7 +65,7 @@ void ChoiceServerClientStart::startServer()
     scene->addItem(client_IP_list);
 
     // create the start game button
-    Button* server_button = new Button(QString("Start Game"));
+    Button* server_button = new Button("resources/images/assets/server client start button/start1.png" , "resources/images/assets/server client start button/start2.png" , screenWidth , screenHeight);
     server_button->setPos(view->width()/2 - server_button->boundingRect().width()/2,view->height()/2);
     QObject::connect(server_button,SIGNAL(clicked()),this,SLOT(startGameSlotButtonClick()));
     scene->addItem(server_button);
@@ -62,7 +77,12 @@ void ChoiceServerClientStart::startGameSlotButtonClick()
     {
         scene->removeItem(item);
     }
-    server->startGameSlotButtonClick();
+    scene->addWidget(label);
+    QGraphicsTextItem* server_message = new QGraphicsTextItem(QString("The Game Has Started !!!!!"));
+    server_message->setFont(QFont("comic sans",50));
+    server_message->setPos(view->width()/(2.25) - server_message->boundingRect().width()/2,view->height()/3);
+    scene->addItem(server_message);
+    server->startGameSlotButtonClick(server_message);
 }
 
 
@@ -75,19 +95,19 @@ void ChoiceServerClientStart::displayStartMenu()
     scene->addItem(choosing_server_client_text);
 
     // create the server button
-    Button* server_button = new Button(QString("Start Server"));
+    Button* server_button = new Button("resources/images/assets/server client start button/join1.png" , "resources/images/assets/server client start button/join2.png" , screenWidth , screenHeight);
     server_button->setPos(view->width()/2 - server_button->boundingRect().width()/2,view->height()/3);
     QObject::connect(server_button,SIGNAL(clicked()),this,SLOT(startServer()));
     scene->addItem(server_button);
 
     // create the client buttonquit_button
-    Button* client_button = new Button(QString("Start Client"));
+    Button* client_button = new Button("resources/images/assets/server client start button/start1.png" , "resources/images/assets/server client start button/start2.png" , screenWidth , screenHeight);
     client_button->setPos(view->width()/2 - client_button->boundingRect().width()/2,view->height()/(2.5));
     QObject::connect(client_button,SIGNAL(clicked()),this,SLOT(startClient()));
     scene->addItem(client_button);
 
     // create the client button
-    Button* quit_button = new Button(QString("Quit"));
+    Button* quit_button = new Button("resources/images/assets/server client start button/quit1.png" , "resources/images/assets/server client start button/quit2.png" , screenWidth , screenHeight);
     quit_button->setPos(view->width()/2 - quit_button->boundingRect().width()/2,view->height()/(2.15));
     QObject::connect(quit_button,SIGNAL(clicked()),view,SLOT(close()));
     scene->addItem(quit_button);

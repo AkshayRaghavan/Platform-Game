@@ -17,13 +17,39 @@
 #include "gamestate.h"
 #include "gameobject.h"
 #include "inputhandler.h"
-#include "loadingtext.h"
 #include "choiceserverclientstart.h"
 #include "inputbox.h"
 #include <QDesktopWidget>
+#include <QtGlobal>
+#include <stdio.h>
+#include <stdlib.h>
+
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QByteArray localMsg = msg.toLocal8Bit();
+    switch (type) {
+    case QtDebugMsg:
+        fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtInfoMsg:
+        fprintf(stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtWarningMsg:
+        fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtCriticalMsg:
+        fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtFatalMsg:
+        fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        abort();
+    }
+}
+
 
 int main(int argc, char *argv[])
 {
+    qInstallMessageHandler(myMessageOutput); // Install the handler
     int milliseconds_per_frame = 50;
     QApplication a(argc, argv);
     QGraphicsScene *scene = new QGraphicsScene;
@@ -39,12 +65,20 @@ int main(int argc, char *argv[])
     view->setSceneRect(0,0,screen_width, screen_height);
     view->setScene(scene);
     view->show();
+
+    QLabel *label = new QLabel;
+    QMovie *mov = new QMovie("resources/images/loading.gif");
+    mov->start();
+    label->setAttribute(Qt::WA_NoSystemBackground);
+    label->setMovie(mov);
+    mov->setScaledSize(QSize(screen_width/20,screen_height/20));
+    label->move(100*(screen_width/240),85*(screen_height/160));
+
+
     
-    Server game_server(3000 , &a , scene ,  milliseconds_per_frame , 4);
-    Client game_client(milliseconds_per_frame , scene , view , screen_width , screen_height);
-    ChoiceServerClientStart* startButton = new ChoiceServerClientStart(scene , view , milliseconds_per_frame , screen_width , screen_height ,  &game_client , &game_server);
+    Server game_server(3000 , &a , scene ,  milliseconds_per_frame , 4 , label);
+    Client game_client(&a , milliseconds_per_frame , scene , view , screen_width , screen_height , label);
+    ChoiceServerClientStart* startButton = new ChoiceServerClientStart(scene , view , "resources/images/assets/server client start button/background.png" , milliseconds_per_frame , screen_width , screen_height ,  &game_client , &game_server , label);
     startButton->displayStartMenu();
-    game_client.setApp(&a);
-    // LoadingText* loading_text = new LoadingText(&game_client , scene , view , 100*(screen_initial_width/240), 60*(screen_initial_height/160));
     return a.exec();
 }

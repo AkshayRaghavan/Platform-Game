@@ -4,6 +4,7 @@
 #include <vector>
 #include <QObject>
 #include <QGraphicsScene>
+#include "threadpool.h"
 #include "gameobject.h"
 #include "tile.h"
 #include "gem.h"
@@ -13,6 +14,7 @@ class GameState : public QObject
 {
     Q_OBJECT
 public:
+    ThreadPool threadPool;
     enumerator::Identity remoteIdentity;
     bool isGameRunning;
     GameState(std::vector<GameObject*> &game_objects, std::vector< std::vector<Tile*> > &tile_map, std::vector<Gem*> &input_gems , int screen_width , int screen_height , QGraphicsScene* scene, int,int);

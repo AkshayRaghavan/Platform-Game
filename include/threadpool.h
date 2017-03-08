@@ -17,6 +17,8 @@ class ThreadPool
     std::condition_variable isWorkAvailable;
     std::mutex queueEmptyMutex;
     std::condition_variable isWaitingForQueue;
+    std::condition_variable waiter;
+    std::mutex waiterMutex;
     bool isWaiting;
 public:
     ThreadPool(int);
@@ -24,6 +26,7 @@ public:
     void assignToThread(std::function<void()>);
     void waitOrWork(int i);
     ~ThreadPool();
+    void waitTillAllComplete();
 };
 
 #endif // THREADPOOL_H
