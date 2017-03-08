@@ -131,7 +131,7 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     app->processEvents();
     serverLoadingMessage->setHtml("Creating The Gems");
     app->processEvents();
-    createGamePointer->functionToCreateGem(gem_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateGem(gem_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Players On the Screen");
@@ -139,23 +139,25 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
 
     for (int i = 0; i != webSocketClients.size(); i++)
     {
-        createGamePointer->functionToCreatePlayerGameObject(player_file_path);
+      /*  threadPool.assignToThread([&](){*/createGamePointer->functionToCreatePlayerGameObject(player_file_path);//});
     }
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Monsters On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateMonsterGameObject(monster_file_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Fire On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateFireObject(fire_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateFireObject(fire_file_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Final Point On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateDoor(door_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateDoor(door_file_path);});
+
+    threadPool.waitTillAllComplete();
 
     qDebug() << "Adding Gems To Scene";
 
@@ -239,7 +241,8 @@ void Server::iterateOverGameState()
               else { qDebug() << "socket not null"; }
             qDebug() << "inside!";
             qDebug() << "socket inside: " << socket;*/
-            (*i)->sendBinaryMessage(bytes);
+          (*i)->sendBinaryMessage(bytes);
+
       //  };
       //  threadPool.assignToThread(pass_func );
     }

@@ -83,7 +83,7 @@ void GameState::update()
                    (gameObjects[i]->inputComponent)->update(*gameObjects[i]);
                    (gameObjects[i]->physicsComponent)->update(*gameObjects[i]);
                }
-               });
+              });
         }
         else if(remoteIdentity == enumerator::Identity::CLIENT)
         {
