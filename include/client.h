@@ -39,6 +39,7 @@ class  Client: public QObject
 {
     Q_OBJECT
 private:
+    QString name;
     QApplication* app;
     QWebSocket clientWebSocket;
     QUrl url;
@@ -72,8 +73,7 @@ public:
     Client(QApplication* , int , QGraphicsScene* , InputHandler* , int , int , QLabel* , QObject *parent = 0);
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
-    void DisplayScore(QJsonArray score);
-    void connectToServer(QUrl , QGraphicsTextItem*);
-
+    void DisplayScore(QString);
+    void connectToServer(QUrl , QGraphicsTextItem* , QString);
 };
 #endif // SERVER_H

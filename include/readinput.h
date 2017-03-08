@@ -45,6 +45,7 @@ public:
     QApplication * app;
     int screenWidth;
     int screenHeight;
+    int totalTime;
 
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
     void functionToCreateTileMap(std::string file_path);

@@ -63,7 +63,6 @@ SOURCES += main.cpp \
     src/timer.cpp \
     src/scorecomponent.cpp \
     src/client.cpp \
-    src/inputbox.cpp \
     src/server.cpp \
     src/button.cpp \
     src/choiceserverclientstart.cpp \
@@ -106,7 +105,6 @@ HEADERS  += \
     include/timer.h \
     include/scorecomponent.h \
     include/client.h \
-    include/inputbox.h \
     include/server.h \
     include/button.h \
     include/choiceserverclientstart.h \
