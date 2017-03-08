@@ -68,7 +68,6 @@ void ThreadPool::waitTillAllComplete()
     isWaitingForQueue.notify_all();
     //waiter waits till it is woken up when queue is empty
     //notifies assigntothreads to continue
-
 }
 
 ThreadPool::~ThreadPool()

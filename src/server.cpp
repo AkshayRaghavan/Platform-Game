@@ -299,7 +299,7 @@ void Server::getLeaderBoard()
         return std::get<3>(left) > std::get<3>(right);
     });
 
-    QString result("<div  style='color:red;'><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCOREBOARD<br><br>Rank&nbsp;&nbsp;&nbsp;Player Name&nbsp;&nbsp;&nbsp;Gems&nbsp;Score&nbsp;&nbsp;&nbsp;Time&nbsp;Taken&nbsp;&nbsp;&nbsp;Total&nbsp;score<br><br></strong>");
+    QString result("<div  style='color:red;'><table><thead><tr><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCOREBOARD<br><br>Rank&nbsp;&nbsp;&nbsp;Player Name&nbsp;&nbsp;&nbsp;Gems&nbsp;Score&nbsp;&nbsp;&nbsp;Time&nbsp;Taken&nbsp;&nbsp;&nbsp;Total&nbsp;score<br><br></strong>");
 
     for (int i = 1; i <= leader_board.size(); i++)
     {

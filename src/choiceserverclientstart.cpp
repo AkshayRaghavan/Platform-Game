@@ -29,8 +29,8 @@ void ChoiceServerClientStart::startClient()
         scene->removeItem(item);
     }
     QGraphicsTextItem* client_message = new QGraphicsTextItem(QString(""));
-    client_message->setFont(QFont("comic sans",50));
-    client_message->setPos(view->width()/(5) - client_message->boundingRect().width()/2,view->height()/3);
+    client_message->setFont(QFont("ocr a extended",20));
+    client_message->setPos(view->width()/(4) - client_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(client_message);
     clientMessage = client_message;
 
@@ -41,13 +41,13 @@ void ChoiceServerClientStart::startClient()
 
     QLineEdit* input_url_text = new QLineEdit(f);
     input_url_text->setPlaceholderText("Enter The URL of The Server And Press The Enter Key");
-    input_url_text->setFixedWidth(500);
+    input_url_text->setFixedWidth(200);
     input_url_text->setFocus();
     inputURL = input_url_text;
 
     QLineEdit* name_text = new QLineEdit(f);
     name_text->setPlaceholderText("Enter Your Username");
-    name_text->setFixedWidth(500);
+    name_text->setFixedWidth(200);
     name = name_text;
 
     QPushButton* button = new QPushButton("START", f);
@@ -80,7 +80,7 @@ void ChoiceServerClientStart::startServer()
     qDebug() << "Outside server";
 
     QGraphicsTextItem* heading = new QGraphicsTextItem(QString("List Of Connected Players"));
-    heading->setFont(QFont("comic sans",20));
+    heading->setFont(QFont("ocr a extended",20));
     heading->setPos(view->width()/2 - heading->boundingRect().width()/2,view->height()/6);
     scene->addItem(heading);
 
@@ -115,9 +115,10 @@ void ChoiceServerClientStart::startServerGameSlotButtonClick()
 void ChoiceServerClientStart::displayStartMenu()
 {
     // create the title text
-    QGraphicsTextItem* choosing_server_client_text = new QGraphicsTextItem(QString("CHOOSE YOUR IDENTITY"));
-    choosing_server_client_text->setFont(QFont("comic sans",50));
-    choosing_server_client_text->setPos(view->width()/2 - choosing_server_client_text->boundingRect().width()/2,view->height()/5);
+    QGraphicsTextItem* choosing_server_client_text = new QGraphicsTextItem(QString("THE PLATFORM GAME"));
+    choosing_server_client_text->setFont(QFont("algerian",50));
+    choosing_server_client_text->setDefaultTextColor(QColor(128,0,128));
+    choosing_server_client_text->setPos(view->width()/2 - choosing_server_client_text->boundingRect().width()/2,view->height()/6);
     scene->addItem(choosing_server_client_text);
 
     // create the server button

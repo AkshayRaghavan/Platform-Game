@@ -2,15 +2,18 @@
 
 Tile::Tile(QGraphicsScene * scene , qreal column , qreal row , qreal width , qreal height , bool is_obstacle)
 {
-   // QPen outlinePen;
     this->columnPosition = column;
     this->widthOfTile = width;
     this->heightOfTile = height;
     this->rowPosition = row;
 
-    //outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
-   // outlinePen.setWidth(1);
-   // scene->addRect(column , row , width , height , outlinePen);
+    /* To Generate Tile On Screen (For Debugging Purposes)
+     * QPen outlinePen;
+     * outlinePen.setColor((is_obstacle==true)? Qt::red : Qt::blue);
+     * outlinePen.setWidth(1);
+     * scene->addRect(column , row , width , height , outlinePen);
+    */
+
     this->isObstacle = is_obstacle;
 }
 
