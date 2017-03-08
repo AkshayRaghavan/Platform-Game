@@ -7,15 +7,15 @@ resources/images/gems/Gems_01_256x256_022.png
 10 7
 2 115
 1
-resources/images/gems/Gems_01_256x256_023.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 12 115
 1
-resources/images/gems/Gems_01_256x256_024.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 65 45
 1
-resources/images/gems/Gems_01_256x256_025.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 45 45
 1
@@ -23,7 +23,7 @@ resources/images/gems/Gems_01_256x256_026.png
 10 7
 55 45
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 85 85
 1
@@ -31,15 +31,15 @@ resources/images/gems/Gems_01_256x256_022.png
 10 7
 95 85
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 120 55
 1
-resources/images/gems/Gems_01_256x256_026.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 130 55
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 140 55
 1
@@ -47,23 +47,23 @@ resources/images/gems/Gems_01_256x256_025.png
 10 7
 150 55
 1
-resources/images/gems/Gems_01_256x256_026.png
+resources/images/gems/Gems_01_256x256_025.png
 10 7
 90 10
-1
-resources/images/gems/Gems_01_256x256_023.png
+3
+resources/images/gems/Gems_01_256x256_025.png
 10 7
 100 10
-1
+3
 resources/images/gems/Gems_01_256x256_025.png
 10 7
 110 10
-1
-resources/images/gems/Gems_01_256x256_026.png
+3
+resources/images/gems/Gems_01_256x256_025.png
 10 7
 135 5
-1
-resources/images/gems/Gems_01_256x256_023.png
+5
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 150 20
 1
@@ -71,19 +71,19 @@ resources/images/gems/Gems_01_256x256_022.png
 10 7
 166 35
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 180 120
 1
-resources/images/gems/Gems_01_256x256_026.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 190 120
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 200 120
 1
-resources/images/gems/Gems_01_256x256_027.png
+resources/images/gems/Gems_01_256x256_022.png
 10 7
 200 120
 1
