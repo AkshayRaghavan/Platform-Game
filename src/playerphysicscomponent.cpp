@@ -18,7 +18,6 @@
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene)
 {
-
     this->tilesMap = Tilesmap;
     width_of_tile = twidth;
     height_of_tile = theight;
@@ -160,8 +159,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
             if(((*temp).getIsDangerous()) == true)
             {
                 qDebug() << "dangerous";
-                //die->play();
-                // getismonster() is a member of graphics component to check monster
+                gameObject.setIsDead(true);
                 if(current_player_state == enumerator::State::MOVING_RIGHT || current_player_state == enumerator::State::STOP_RIGHT)
                 {
                     gameObject.setState(new DeadRight);
@@ -174,6 +172,3 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         }
     }
 }
-
-
-

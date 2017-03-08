@@ -19,6 +19,7 @@ protected:
     bool isDead;
     enumerator::ObjectType objecttype;
     int score;
+    QString name;
 public:
     int timeLeft;
     const int maxJumpCount;
@@ -26,7 +27,7 @@ public:
     bool getIsDead();
     enumerator::ObjectType getObjectType();
     void setObjectType(enumerator::ObjectType a);
-    GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * , ScoreComponent * , const int&);
+    GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * , ScoreComponent * , const int& , int time_left = 0);
     virtual ~GameObject() {}
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
@@ -39,6 +40,9 @@ public:
     void setJumpingState(JumpingState *);
     void setScore(int);
     int getScore();
+    void setName(QString);
+    QString getName();
+    int getTimeLeft();
     bool isAcceptingInput();
     void setAcceptingInput(bool value);
 };

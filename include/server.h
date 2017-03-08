@@ -23,6 +23,7 @@ private:
     QList<QWebSocket *> webSocketClients;
     bool maxConnectionsReached;
     bool gameStarted;
+    bool serverLoopRunning;
     int gameStartedCountOfClients;
     ThreadPool threadPool;
     QGraphicsScene* scene;
@@ -30,6 +31,7 @@ private:
     const int millisecondsPerFrame;
     QJsonObject convertGameStateToJsonObject(GameState &);
     std::string getStringFromGameState(GameState &);
+    void getLeaderBoard();
     void startServerGameLoop();
     void sendIndexToCLient();
     void setGameStartedVal();

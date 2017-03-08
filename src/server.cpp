@@ -123,6 +123,7 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
                        std::string player_file_path ,
                        std::string door_file_path , int total_time)
 {
+    createGamePointer->totalTime = total_time;
     app->processEvents();
     serverLoadingMessage->setHtml("Creating Tiles");
     app->processEvents();
@@ -160,7 +161,7 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
         (*it)->drawGem(scene);   
 
-    qDebug() << "Adding GameObjects To Scene";
+    qDebug() << "Adding GameObjects To Scene : "<< createGamePointer->gameObject.size();
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
     {
         scene->addItem((*it)->graphicsComponent);
@@ -180,7 +181,7 @@ void Server::sendIndexToCLient()
     int loop_count_client = 0;
     for (int i = 0; i != (gamePointer->gameObjects).size(); i++)
     {
-        if(((((gamePointer->gameObjects)[i])->graphicsComponent)->getIsDangerous()) == false) //TODO: change to accepts input
+        if(((((gamePointer->gameObjects)[i])->graphicsComponent)->getIsDangerous()) == false)
         {
             object["arrayIndex"] = i;
             QJsonDocument doc(object);
@@ -207,6 +208,7 @@ void Server::sendIndexToCLient()
 
 void Server::startServerGameLoop()
 {
+    serverLoopRunning = true;
     app->processEvents();
     serverLoadingMessage->setHtml("Starting The Server Game Loop");
     app->processEvents();
@@ -223,6 +225,15 @@ void Server::startServerGameLoop()
 
 void Server::iterateOverGameState()
 {
+    if(!serverLoopRunning)
+    {
+        return;
+    }
+    if( !gamePointer->isGameActive())
+    {
+        getLeaderBoard();
+        serverLoopRunning = false;
+    }
     gamePointer->update();
     QJsonObject object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
@@ -238,6 +249,12 @@ void Server::processTextMessage(QString message)
 {
     if(message.startsWith("start"))
     {
+        //start=0$typo
+        bool check;
+        int index = (message.mid( message.indexOf("=")+1 , message.indexOf("$") - message.indexOf("=") - 1)).toInt(&check , 10);
+        qDebug() << index;
+        QString a = message.mid(message.indexOf("$")+1);
+        (gamePointer->gameObjects[index])->setName(a);
         gameStartedCountOfClients++;
         qDebug() << "Received client start" << message << " " << gameStartedCountOfClients << " " << webSocketClients.size();
         if(gameStartedCountOfClients == webSocketClients.size())
@@ -245,6 +262,43 @@ void Server::processTextMessage(QString message)
             gameStarted = true;
             startServerGameLoop();
         }
+    }
+}
+void Server::getLeaderBoard()
+{
+    std::vector <std::tuple<QString , int , int, int>> leader_board;
+    for (int i = 0; i < (gamePointer->gameObjects).size(); i++)
+    {
+        if(((((gamePointer->gameObjects)[i])->graphicsComponent)->getIsDangerous()) == false)
+        {
+            if(!((gamePointer->gameObjects)[i])->isAcceptingInput())
+            {
+                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , createGamePointer->totalTime - ((gamePointer->gameObjects)[i])->getTimeLeft() , ((gamePointer->gameObjects)[i])->getScore() + ((gamePointer->gameObjects)[i])->getTimeLeft()));
+            }
+            else
+            {
+                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , 0 , -1));
+            }
+        }
+    }
+    std::sort(leader_board.begin(), leader_board.end(), [](auto &left, auto &right) {
+        return std::get<3>(left) > std::get<3>(right);
+    });
+
+    QString result("<div  style='color:red;'><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCOREBOARD<br><br>Rank&nbsp;&nbsp;&nbsp;Player Name&nbsp;&nbsp;&nbsp;Gems&nbsp;Score&nbsp;&nbsp;&nbsp;Time&nbsp;Taken&nbsp;&nbsp;&nbsp;Total&nbsp;score<br><br></strong>");
+
+    for (int i = 1; i <= leader_board.size(); i++)
+    {
+        result += "<strong>" + QString::number(i) + "</strong>&nbsp;&nbsp;&nbsp;" +  std::get<0>(leader_board[i-1]) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<1>(leader_board[i-1])) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<2>(leader_board[i-1])) + "&nbsp;&nbsp;&nbsp;" + QString::number(std::get<3>(leader_board[i-1])) + "<br>";
+    }
+    result += "</div>";
+    app->processEvents();
+    serverLoadingMessage->setHtml(result);
+    app->processEvents();
+
+    for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
+    {
+        (*i)->sendTextMessage(result);
     }
 }
 void Server::processBinaryMessage(QByteArray message)

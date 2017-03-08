@@ -18,7 +18,6 @@
 #include "gameobject.h"
 #include "inputhandler.h"
 #include "choiceserverclientstart.h"
-#include "inputbox.h"
 #include <QDesktopWidget>
 
 int main(int argc, char *argv[])
@@ -46,8 +45,6 @@ int main(int argc, char *argv[])
     label->setMovie(mov);
     mov->setScaledSize(QSize(screen_width/20,screen_height/20));
     label->move(100*(screen_width/240),85*(screen_height/160));
-
-
     
     Server game_server(3000 , &a , scene ,  milliseconds_per_frame , 4 , label);
     Client game_client(&a , milliseconds_per_frame , scene , view , screen_width , screen_height , label);

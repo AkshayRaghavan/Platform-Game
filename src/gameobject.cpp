@@ -18,9 +18,10 @@ void GameObject::setObjectType(enumerator::ObjectType a)
     objecttype = a;
 }
 
-GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graphics_component, PhysicsComponent * physics_component , ScoreComponent* score_component , const int &max_jump_count) : maxJumpCount(max_jump_count)
+GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graphics_component, PhysicsComponent * physics_component , ScoreComponent* score_component , const int &max_jump_count , int time_left)
+    : maxJumpCount(max_jump_count)
 {
-    timeLeft = 0;
+    timeLeft = time_left;
     isDead = false;
     inputComponent = input_component;
     graphicsComponent = graphics_component;
@@ -73,6 +74,21 @@ void GameObject::setScore(int x)
 int GameObject::getScore()
 {
     return score;
+}
+
+QString GameObject:: getName()
+{
+    return name;
+}
+
+void GameObject:: setName(QString name_local)
+{
+    name = name_local;
+}
+
+int GameObject::getTimeLeft()
+{
+    return timeLeft;
 }
 
 void GameObject::setIsDead(bool a)

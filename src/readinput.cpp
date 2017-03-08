@@ -163,7 +163,7 @@ void ReadInput::functionToCreatePlayerGameObject(std::string file_path)
         Keys* key_pointer = new Keys( Qt::Key_Up, Qt::Key_Right ,  Qt::Key_Left );
         input_component = new HumanInputComponent(key_pointer);
         physics_component = new PlayerPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (this->tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth , scene);
-        gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count));
+        gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , score_component , max_jump_count , totalTime));
     }
     infile.close();
     qDebug() << "Created A Player";
