@@ -109,6 +109,15 @@ void ChoiceServerClientStart::startServerGameSlotButtonClick()
     server_message->setPos(view->width()/(2.25) - server_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(server_message);
     server->startGameSlotButtonClick(server_message);
+    QImage *back = new QImage("resources/images/assets/server client start button/background_score.png");
+    if(back->isNull())
+    {
+        qDebug() << "ERROR(choiceserverclientstart.cpp) : Failed To Load Image" << bg_image_path;
+        std::exit(EXIT_FAILURE);
+    }
+    QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
+    QBrush *brush = new QBrush(*background);
+    view->setBackgroundBrush(*brush);
 }
 
 
