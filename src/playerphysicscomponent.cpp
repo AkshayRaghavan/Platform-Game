@@ -77,7 +77,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
 
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        gameObject.graphicsComponent->setPos(going_to_point);
+      //  gameObject.graphicsComponent->setPos(going_to_point);
+        gameObject.setPosXY(going_to_point);
         current_point.setX(going_to_point.x());
     }
     going_to_point = current_point;
@@ -119,7 +120,8 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     }
     if(testPositionForPlayer(going_to_point,player_width,player_height))
     {
-        gameObject.graphicsComponent->setPos(going_to_point);
+   //     gameObject.graphicsComponent->setPos(going_to_point);
+        gameObject.setPosXY(going_to_point);
     }
     else
     {
@@ -132,7 +134,7 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     QList<QGraphicsItem *> colliding_items = gameObject.graphicsComponent->collidingItems();
     for(int i = 0; i < colliding_items.size(); i++)
     {
-   //     qDebug() << "checking collisions";
+        qDebug() << "checking collisions";
         if(typeid(*(colliding_items[i])) == typeid(Diamond) && (static_cast<Gem*>(colliding_items[i]))->getIsOnScreen())
         {
             qDebug() << "checking collisions";

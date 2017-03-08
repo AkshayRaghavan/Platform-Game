@@ -5,6 +5,8 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 #include "deadright.h"
+#include "monsterphysicscomponent.h"
+#include "playerphysicscomponent.h"
 #include <QCoreApplication>
 #include <QDebug>
 
@@ -109,4 +111,23 @@ bool GameObject::isAcceptingInput()
 void GameObject::setAcceptingInput(bool value)
 {
     this->acceptsInput = value;
+}
+
+void GameObject::setPosXY(QPointF point)
+{
+    setPosX = point.x();
+    setPosY = point.y();
+}
+
+QPointF GameObject::getPosXY()
+{
+    return QPointF(setPosX, setPosY);
+}
+
+void GameObject::updatePos()
+{
+    if(typeid(*physicsComponent) == typeid(PlayerPhysicsComponent) || typeid(*physicsComponent) == typeid(MonsterPhysicsComponent))
+    {
+        graphicsComponent->setPos(setPosX, setPosY);
+    }
 }

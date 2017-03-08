@@ -26,6 +26,7 @@ private:
     bool serverLoopRunning;
     int gameStartedCountOfClients;
     ThreadPool threadPool;
+    ThreadPool threadPool2;
     QGraphicsScene* scene;
     ReadInput* createGamePointer;
     const int millisecondsPerFrame;

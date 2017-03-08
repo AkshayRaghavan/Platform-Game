@@ -17,7 +17,7 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
     QObject(parent),
     webSocketServer( new QWebSocketServer(QStringLiteral("Platform Game Server"), QWebSocketServer::NonSecureMode, this)),
     millisecondsPerFrame(milliseconds_per_frame),
-    threadPool(number_of_threads),
+    threadPool(number_of_threads), threadPool2(number_of_threads),
     label(label)
 {
     webSocketServer->setProxy(QNetworkProxy::NoProxy);
@@ -132,34 +132,38 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     app->processEvents();
     serverLoadingMessage->setHtml("Creating The Gems");
     app->processEvents();
-    createGamePointer->functionToCreateGem(gem_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateGem(gem_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Players On the Screen");
     app->processEvents();
+
     for (int i = 0; i != webSocketClients.size(); i++)
     {
-        createGamePointer->functionToCreatePlayerGameObject(player_file_path);
+      /*  threadPool.assignToThread([&](){*/createGamePointer->functionToCreatePlayerGameObject(player_file_path);//});
     }
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Monsters On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateMonsterGameObject(monster_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateMonsterGameObject(monster_file_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Fire On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateFireObject(fire_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateFireObject(fire_file_path);});
 
     app->processEvents();
     serverLoadingMessage->setHtml("Adding The Final Point On the Screen");
     app->processEvents();
-    createGamePointer->functionToCreateDoor(door_file_path);
+    threadPool.assignToThread([&](){createGamePointer->functionToCreateDoor(door_file_path);});
+
+    threadPool.waitTillAllComplete();
 
     qDebug() << "Adding Gems To Scene";
+
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
-        (*it)->drawGem(scene);   
+        (*it)->drawGem(scene);
 
     qDebug() << "Adding GameObjects To Scene : "<< createGamePointer->gameObject.size();
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
@@ -241,7 +245,17 @@ void Server::iterateOverGameState()
     std::vector<std::thread> client_threads;
     for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
     {
-        (*i)->sendBinaryMessage(bytes);
+     /*   QWebSocket *socket = *i;
+        qDebug() << "socket outside: " << socket;
+        std::function<void()> pass_func = [bytes,socket,this]() {
+             if(!socket) { qDebug() << "null socket"; }
+              else { qDebug() << "socket not null"; }
+            qDebug() << "inside!";
+            qDebug() << "socket inside: " << socket;*/
+          (*i)->sendBinaryMessage(bytes);
+
+      //  };
+      //  threadPool.assignToThread(pass_func );
     }
 }
 
