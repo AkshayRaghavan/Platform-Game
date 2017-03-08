@@ -58,7 +58,12 @@ void Client::DisplayScore(QString result)
     {
         scene->removeItem(item);
     }
-    QImage *back = new QImage("resources/images/assets/server client start button/background.png");
+    QImage *back = new QImage("resources/images/assets/server client start button/background_score.png");
+    if(back->isNull())
+    {
+        qDebug() << "ERROR(client.cpp) : Failed To Load Image : resources/images/assets/server client start button/background_score.png";
+        std::exit(EXIT_FAILURE);
+    }
     QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);
     view->setBackgroundBrush(*brush);
@@ -68,7 +73,6 @@ void Client::DisplayScore(QString result)
     winner->setHtml(result);
     winner->setPos(screenWidth/3 , screenHeight/3);
     scene->addItem(winner);
-
 }
 
 void Client::onConnected()
@@ -101,7 +105,11 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
         app->processEvents();
         clientLoadingMessage->setHtml("Received The Players Information From Server");
         app->processEvents();
-
+        if((!itemObject.contains("noOfPeople")) || (!itemObject.contains("arrayIndex")))
+        {
+                qDebug() << "ERROR(client.cpp) : InCorrect JSON From Server Of NoOfPlayer , ArrayIndex";
+                std::exit(EXIT_FAILURE);
+        }
         noOfPlayers = itemObject["noOfPeople"].toInt();
         arrayIndexInGameObject = itemObject["arrayIndex"].toInt();
         qDebug() << "Initial Binary Message received: (noOfplayer : " << noOfPlayers << ") , (arrayIndexInGameObject : "<<arrayIndexInGameObject<<")";
@@ -117,17 +125,16 @@ void Client::onBinaryMessageReceived(QByteArray bytes)
     }
     else if(isAcceptingGameState)
     {
-         QJsonArray json_array = itemObject["gameObject"].toArray();
-         int counter_game = 0;
-         foreach (const QJsonValue & value, json_array)
-         {
+        if((!itemObject.contains("gameObject")) || (!itemObject.contains("gems")) || (!itemObject.contains("timer")))
+        {
+                qDebug() << "ERROR(client.cpp) : InCorrect JSON From Server Of gameObject , gems , timer";
+                std::exit(EXIT_FAILURE);
+        }
+        QJsonArray json_array = itemObject["gameObject"].toArray();
+        int counter_game = 0;
+        foreach (const QJsonValue & value, json_array)
+        {
             QJsonObject obj = value.toObject();
-            /*qDebug() << "positionx : "<< (obj["positionx"]).toDouble();
-            qDebug() << "positiony : "<< (obj["positiony"]).toDouble();
-            qDebug() << "score : "<< (obj["score"]).toInt();
-            qDebug() << "state : "<< (obj["state"]).toInt();
-            qDebug() << "jumpState : "<< (obj["jumpState"]).toInt();*/
-
             (((gamePointer->gameObjects)[counter_game])->graphicsComponent)->setPos((obj["positionx"]).toDouble()*(createGamePointer->width_of_tile) , (obj["positiony"]).toDouble()*(createGamePointer->height_of_tile));
 
             if(((gamePointer->gameObjects)[counter_game])->scoreComponent)
@@ -198,7 +205,7 @@ void Client::setGameStartedVal()
                "resources/game files/player/player level1.txt" ,
                "resources/game files/player/player level special.txt" ,
                "resources/game files/door/door.txt" ,
-               "resources/images/bg2.png" , 30000);
+               "resources/images/bg2.png" , 60000);
 
 }
 
@@ -277,6 +284,11 @@ void Client::startGame(std::string tile_map_path , std::string monster_file_path
     app->processEvents();
 
     QImage *back = new QImage(bg_image_path.c_str());
+    if(back->isNull())
+    {
+            qDebug() << "ERROR(client.cpp) -> File Not Found : "<< bg_image_path.c_str();
+            std::exit(EXIT_FAILURE);
+    }
     QImage *background = new QImage(back->scaled(screenWidth,screenHeight ,Qt::IgnoreAspectRatio,Qt::FastTransformation));
     QBrush *brush = new QBrush(*background);
     view->setBackgroundBrush(*brush);

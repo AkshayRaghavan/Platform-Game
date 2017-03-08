@@ -40,6 +40,11 @@ int main(int argc, char *argv[])
 
     QLabel *label = new QLabel;
     QMovie *mov = new QMovie("resources/images/loading.gif");
+    if(!mov->isValid())
+    {
+        qDebug() << "ERROR(main.cpp) -> Failed To Load : resources/images/loading.gif";
+        std::exit(EXIT_FAILURE);
+    }
     mov->start();
     label->setAttribute(Qt::WA_NoSystemBackground);
     label->setMovie(mov);

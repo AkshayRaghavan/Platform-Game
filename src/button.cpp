@@ -14,6 +14,12 @@ Button::Button(const char* idle_image_path , const char* hover_image_path , int 
         std::exit(EXIT_FAILURE);
     }
     idlePixMap = QPixmap::fromImage(*picture);
+    if(idlePixMap.isNull())
+    {
+        qDebug() << "ERROR(button.cpp) : Failed To Create Pixmap of " << idle_image_path;
+        std::exit(EXIT_FAILURE);
+    }
+
     idlePixMap = idlePixMap.scaled(QSize(screen_width/5,screen_height/5),  Qt::KeepAspectRatio);
 
     picture = new QImage(hover_image_path);
@@ -23,6 +29,11 @@ Button::Button(const char* idle_image_path , const char* hover_image_path , int 
         std::exit(EXIT_FAILURE);
     }
     hoverPixMap = QPixmap::fromImage(*picture);
+    if(hoverPixMap.isNull())
+    {
+        qDebug() << "ERROR(button.cpp) : Failed To Create Pixmap of " << hover_image_path;
+        std::exit(EXIT_FAILURE);
+    }
     hoverPixMap = hoverPixMap.scaled(QSize(screen_width/5,screen_height/5),  Qt::KeepAspectRatio);
 
     this->setPixmap(idlePixMap);

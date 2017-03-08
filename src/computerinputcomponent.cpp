@@ -13,21 +13,11 @@ ComputerInputComponent::ComputerInputComponent(int walk_frames_count)
 
 void ComputerInputComponent::update(GameObject &gameObject)
 {
- /*   if(currentNumberOfFrames == 0 && (gameObject.state->type() == enumerator::State::MOVING_LEFT || gameObject.state->type() == enumerator::State::STOP_LEFT))
+    if(!(gameObject.state))
     {
-        gameObject.setState(new MovingRight);
-        currentNumberOfFrames = numberOfFramesPerDirection;
-
+            qDebug() << "ERROR(computerinputcomponent.cpp) -> gameObject.state is NULL pointer";
+            std::exit(EXIT_FAILURE);
     }
-    else if(currentNumberOfFrames == 0 && (gameObject.state->type() == enumerator::State::MOVING_RIGHT || gameObject.state->type() == enumerator::State::STOP_RIGHT))
-    {
-        gameObject.setState(new MovingLeft);
-        currentNumberOfFrames = numberOfFramesPerDirection;
-    }
-    else
-    {
-        currentNumberOfFrames --;
-    }*/
     if((gameObject.state->type() == enumerator::State::MOVING_LEFT || gameObject.state->type() == enumerator::State::STOP_LEFT) && (gameObject.physicsComponent->hasNoPlatformUnder(gameObject) || gameObject.physicsComponent->hasObstacleInFront(gameObject)))
     {
         gameObject.setState(new MovingRight);
