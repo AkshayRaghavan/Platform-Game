@@ -26,7 +26,7 @@ public:
      */
     virtual State* update(InputComponent *inputComponent, std::set<Qt::Key> key);
     /*!
-     * \brief Provides the type of the State, i.e., DeadLeft
+     * \brief Provides the type of the State
      * \return enumerator::State::STOP_LEFT
      */
     virtual enumerator::State type();
