@@ -13,21 +13,47 @@
 #include "enumerator.h"
 #include <typeinfo>
 
+/*!
+ * \brief A Game Object
+ * This represents all the Game Objects in the game, including players, monsters and fire
+ * and the way to create them, display them, move them, and update state *
+ */
+
 
 class GameObject : public QObject
 {
 protected:
+    /*!
+     * \brief Specifies whether the GameObject accepts keyboard input
+     */
     bool acceptsInput;
+
+    /*!
+     * \brief Specifies whether the GameObject is alive, applicable to players
+     */
     bool isDead;
+
+    /*!
+     * \brief Specifies whether the GameObject is a player or a monster, value undefined otherwise
+     */
     enumerator::ObjectType objecttype;
+
+    /*!
+     * \brief Specifies the score of the GameObject, applicable to players
+     */
     int score;
 
-    qreal setPosX, setPosY;
+    /*!
+     * \brief Specifies where the GameObject needs to be placed in the
+     */
+    qreal setPosX;
+    qreal setPosY;
 public:   
 
     QString name;
     int timeLeft;
     const int maxJumpCount;
+
     void setIsDead(bool a);
     bool getIsDead();
     enumerator::ObjectType getObjectType();
