@@ -9,7 +9,7 @@ class InputComponent : public QObject
 {
 public:
     Keys *keys;
-    InputComponent();
+    InputComponent(){}
     virtual ~InputComponent() {}
     virtual void update(GameObject &) {}
     virtual bool event(QEvent *);

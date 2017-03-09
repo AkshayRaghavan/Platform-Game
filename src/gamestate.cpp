@@ -16,6 +16,10 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
     scene->addItem(timer);
 }
 
+GameState::~GameState()
+{
+    delete timer;
+}
 QGraphicsScene * GameState::getScene()
 {
     return scene;

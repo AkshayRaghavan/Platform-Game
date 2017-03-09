@@ -48,6 +48,7 @@ public:
     int totalTime;
 
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
+    ~ReadInput();
     void functionToCreateTileMap(std::string file_path);
     void functionToCreateGem(std::string file_path);
     void functionToCreatePlayerGameObject(std::string);

@@ -27,6 +27,16 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
     gameStarted = false;
 }
 
+Server::~Server()
+{
+    webSocketServer->close();
+    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
+    delete webSocketServer;
+    delete scene;
+    delete createGamePointer;
+    delete gamePointer;
+}
+
 void Server::startServer(int screen_width , int screen_height)
 {
     qDebug() << "Creating Server";
@@ -47,12 +57,6 @@ void Server::startServer(int screen_width , int screen_height)
         std::exit(EXIT_FAILURE);
     }
     qDebug() << "Server's connecting URL : " << webSocketServer->serverUrl();
-}
-
-Server::~Server()
-{
-    webSocketServer->close();
-    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
 }
 
 void Server::setClientIPList(QGraphicsTextItem* client_IP_list)

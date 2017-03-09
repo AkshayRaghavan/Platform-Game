@@ -15,8 +15,8 @@ protected:
     qreal width_of_tile,height_of_tile,screenWidth,screenHeight;
     int curJumpCount,maxJumpCount;
 public:
-    PhysicsComponent() {};
-    virtual ~PhysicsComponent() {};
+    PhysicsComponent() {}
+    virtual ~PhysicsComponent() {}
     virtual void update (GameObject &) = 0;
     bool inRange(QPointF);
     bool testPoint(QPointF);
