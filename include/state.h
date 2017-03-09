@@ -7,11 +7,26 @@ class InputComponent;
 #include <Qt>
 #include <set>
 
+/*!
+ * \brief Class to Identify the Different States that the Players can be in
+ */
+
 class State
 {
 public:
+    /*!
+     * \brief Destructor
+     */
     virtual ~State() {}
+    /*!
+     * \brief Virtual Fucntion to update the current state based on keypressevent
+     * \return
+     */
     virtual State* update(InputComponent *,std::set<Qt::Key>) = 0;
+    /*!
+     * \brief Provides the Type of State
+     * \return enumerator::State::STATE_TYPE
+     */
     virtual enumerator::State type() = 0;
 };
 
