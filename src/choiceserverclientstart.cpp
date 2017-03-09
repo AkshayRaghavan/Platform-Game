@@ -29,7 +29,7 @@ void ChoiceServerClientStart::startClient()
         scene->removeItem(item);
     }
     QGraphicsTextItem* client_message = new QGraphicsTextItem(QString(""));
-    client_message->setFont(QFont("ocr a extended",35));
+    client_message->setFont(QFont("ocr a extended",screenHeight/30));
     client_message->setPos(view->width()/(4) - client_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(client_message);
     clientMessage = client_message;
@@ -79,7 +79,7 @@ void ChoiceServerClientStart::startServer()
     server->startServer(screenWidth , screenHeight);
     qDebug() << "Outside server";
 
-    QGraphicsTextItem* heading = new QGraphicsTextItem(QString("List Of Connected Players"));
+    QGraphicsTextItem* heading = new QGraphicsTextItem(QString("Number Of Connected Players"));
     heading->setFont(QFont("ocr a extended",35));
     heading->setPos(view->width()/2 - heading->boundingRect().width()/2,view->height()/6);
     scene->addItem(heading);

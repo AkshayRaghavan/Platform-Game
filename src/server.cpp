@@ -79,11 +79,11 @@ void Server::onNewConnection()
         QObject::connect(pSocket, &QWebSocket::disconnected, this, &Server::socketDisconnected,Qt::DirectConnection);
 
         webSocketClients << pSocket;
-        pSocket->sendTextMessage("successfully connected. <br>Waiting For Other Players To Join");
+        pSocket->sendTextMessage("Successfully Connected. <br>Waiting For Other Players To Join");
         qDebug() << "Added To webSocketClients And Sent Response Message";
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
-        clientIPList->setHtml(QString("<br><br>")+clientIPList->toPlainText() + QString("<br><br>Player #"+QString::number(webSocketClients.size())+"&nbsp;&nbsp;&nbsp;&nbsp;").append(pSocket->localAddress().toString()));
+        clientIPList->setHtml("<br><br>" + QString::number(webSocketClients.size()));
     }
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
