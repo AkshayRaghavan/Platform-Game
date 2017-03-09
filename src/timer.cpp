@@ -8,8 +8,6 @@ Timer::Timer(int total_time_available, int milliseconds_per_frame)
     millisecondsLeft = total_time_available;
     millisecondsPerFrame = milliseconds_per_frame;
     isLeft = true;
-    qDebug() << "s: " << secondsLeft;
-    qDebug() << "ms: " << millisecondsLeft;
 }
 
 void Timer::update()

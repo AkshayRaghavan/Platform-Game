@@ -50,7 +50,6 @@ SOURCES += main.cpp \
     src/playergraphicscomponent.cpp \
     src/playerphysicscomponent.cpp \
     src/readinput.cpp \
-    src/state.cpp \
     src/stopleft.cpp \
     src/stopright.cpp \
     src/tile.cpp \
@@ -81,7 +80,6 @@ HEADERS  += \
     include/inputcomponent.h \
     include/isjumping.h \
     include/isnotjumping.h \
-    include/jumpingleft.h \
     include/jumpingstate.h \
     include/keys.h \
     include/monsterphysicscomponent.h \

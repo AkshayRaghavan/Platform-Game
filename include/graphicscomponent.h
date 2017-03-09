@@ -43,10 +43,9 @@ public:
 
     /*!
      * \brief Get the size and position
-     * \return
+     * \return a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order
      */
     virtual std::vector<qreal> getSizePositionOfObject() = 0;
-    virtual void setPosScorePointer( int , int ){}
 };
 
 

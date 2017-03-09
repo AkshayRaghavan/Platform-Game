@@ -23,7 +23,7 @@ ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , I
 }
 ChoiceServerClientStart::~ChoiceServerClientStart()
 {
-    delete clientMessage;
+
 }
 
 void ChoiceServerClientStart::startClient()
@@ -38,7 +38,6 @@ void ChoiceServerClientStart::startClient()
     scene->addItem(client_message);
     clientMessage = client_message;
 
-    qDebug() << "inside startClient";
     QFrame *f = new QFrame();
     fGlobal = f;
     QHBoxLayout *flayout = new QHBoxLayout(f);
@@ -79,9 +78,7 @@ void ChoiceServerClientStart::startServer()
     {
         scene->removeItem(item);
     }
-    qDebug() << "inside startServer";
     server->startServer(screenWidth , screenHeight);
-    qDebug() << "Outside server";
 
     QGraphicsTextItem* heading = new QGraphicsTextItem(QString("Number Of Connected Players"));
     heading->setFont(QFont("ocr a extended",screenHeight/30));
