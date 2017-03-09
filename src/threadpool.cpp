@@ -43,14 +43,12 @@ void ThreadPool::assignToThread(std::function<void()> function_with_work)
 
 void ThreadPool::waitOrWork(int i)
 {
-    int id = i;
     while(true)
     {
         std::unique_lock<std::mutex> lock(mutexForQueue);
         isWorkAvailable.wait(lock, [&](){ return !functionsWaitingToBeExecuted.empty(); });
         std::function<void()> work_to_do = functionsWaitingToBeExecuted.front();
         functionsWaitingToBeExecuted.pop();
-        //     qDebug() << "function assigned to thread " << id;
         work_to_do();
         if(stopNow)
         {
@@ -73,7 +71,6 @@ void ThreadPool::waitTillAllComplete()
     queueEmptyMutex.unlock();
     std::unique_lock<std::mutex> waiterLock(waiterMutex);
     waiter.wait(waiterLock, [&]() { return (!isWaiting || functionsWaitingToBeExecuted.empty()); });
-   // while(isWaiting && !functionsWaitingToBeExecuted.empty());
     isWaiting = false;
     isWaitingForQueue.notify_all();
     //waiter waits till it is woken up when queue is empty
