@@ -17,7 +17,7 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
     QObject(parent),
     webSocketServer( new QWebSocketServer(QStringLiteral("Platform Game Server"), QWebSocketServer::NonSecureMode, this)),
     millisecondsPerFrame(milliseconds_per_frame),
-    threadPool(number_of_threads), threadPool2(number_of_threads),
+    threadPool(number_of_threads),
     label(label)
 {
     webSocketServer->setProxy(QNetworkProxy::NoProxy);
@@ -249,20 +249,9 @@ void Server::iterateOverGameState()
     QJsonObject object = convertGameStateToJsonObject(*gamePointer);
     QJsonDocument doc(object);
     QByteArray bytes = doc.toJson();
-    std::vector<std::thread> client_threads;
     for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
     {
-     /*   QWebSocket *socket = *i;
-        qDebug() << "socket outside: " << socket;
-        std::function<void()> pass_func = [bytes,socket,this]() {
-             if(!socket) { qDebug() << "null socket"; }
-              else { qDebug() << "socket not null"; }
-            qDebug() << "inside!";
-            qDebug() << "socket inside: " << socket;*/
           (*i)->sendBinaryMessage(bytes);
-
-      //  };
-      //  threadPool.assignToThread(pass_func );
     }
 }
 
