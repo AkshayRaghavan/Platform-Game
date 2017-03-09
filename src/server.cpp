@@ -79,11 +79,11 @@ void Server::onNewConnection()
         QObject::connect(pSocket, &QWebSocket::disconnected, this, &Server::socketDisconnected,Qt::DirectConnection);
 
         webSocketClients << pSocket;
-        pSocket->sendTextMessage("successfully connected. <br>Waiting For Other Players To Join");
+        pSocket->sendTextMessage("Successfully Connected. <br>Waiting For Other Players To Join");
         qDebug() << "Added To webSocketClients And Sent Response Message";
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
-        clientIPList->setHtml(QString("<br><br>")+clientIPList->toPlainText() + QString("<br><br>Player #"+QString::number(webSocketClients.size())+"&nbsp;&nbsp;&nbsp;&nbsp;").append(pSocket->localAddress().toString()));
+        clientIPList->setHtml("<br><br>" + QString::number(webSocketClients.size()));
     }
         qDebug() << "websize: " << webSocketClients.size();
         qDebug() << "last but two";
@@ -290,11 +290,11 @@ void Server::getLeaderBoard()
         {
             if(!((gamePointer->gameObjects)[i])->isAcceptingInput())
             {
-                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , createGamePointer->totalTime - ((gamePointer->gameObjects)[i])->getTimeLeft() , ((gamePointer->gameObjects)[i])->getScore() + ((gamePointer->gameObjects)[i])->getTimeLeft()));
+                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , createGamePointer->totalTime - ((gamePointer->gameObjects)[i])->getTimeLeft() , ((gamePointer->gameObjects)[i])->getScore()));
             }
             else
             {
-                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , 0 , -1));
+                leader_board.push_back(std::make_tuple(((gamePointer->gameObjects)[i])->getName()  , ((gamePointer->gameObjects)[i])->getScore() , createGamePointer->totalTime - ((gamePointer->gameObjects)[i])->getTimeLeft()  , -1));
             }
         }
     }
@@ -303,10 +303,20 @@ void Server::getLeaderBoard()
     });
 
     QString result("<div  style='color:red;'><table><tr><th></th><th></th><th><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems&nbsp;Score</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
-
+    QString temp("");
+    int final_score = 0;
     for (int i = 1; i <= leader_board.size(); i++)
     {
-        result += "<tr><th>" + QString::number(i) + "</th><th>&nbsp;&nbsp;</th><th>" +  std::get<0>(leader_board[i-1]) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<1>(leader_board[i-1])) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<2>(leader_board[i-1])/1000) + " : " + QString::number(std::get<2>(leader_board[i-1])%1000)  + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<3>(leader_board[i-1])) + "</th></tr>";
+        final_score = std::get<3>(leader_board[i-1]);
+        if(final_score == -1)
+        {
+            temp  = "Did Not Finish";
+        }
+        else
+        {
+            temp = QString::number(final_score);
+        }
+        result += "<tr><th>" + QString::number(i) + "</th><th>&nbsp;&nbsp;</th><th>" +  std::get<0>(leader_board[i-1]) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<1>(leader_board[i-1])) + "</th><th>&nbsp;&nbsp;</th><th>" + QString::number(std::get<2>(leader_board[i-1])/1000) + " : " + QString::number(std::get<2>(leader_board[i-1])%1000)  + "</th><th>&nbsp;&nbsp;</th><th>" + temp + "</th></tr>";
     }
     result += "</table></div>";
     app->processEvents();

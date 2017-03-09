@@ -70,7 +70,7 @@ void Client::DisplayScore(QString result)
     view->setBackgroundBrush(*brush);
 
     QGraphicsTextItem * winner = new QGraphicsTextItem;
-    winner->setFont(QFont("comic sans",20));
+    winner->setFont(QFont("comic sans",screenHeight/40));
     winner->setHtml(result);
     winner->setPos(view->width()/2 - winner->boundingRect().width()/2,view->height()/3);
     scene->addItem(winner);
