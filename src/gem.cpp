@@ -2,7 +2,10 @@
 
 int Gem::getPointValue()
 {
-    return pointValue;
+    std::unique_lock<std::mutex> lock(protectGem);
+    int current_value = pointValue;
+    pointValue = 0;
+    return current_value;
 }
 
 bool Gem::getIsOnScreen()
@@ -28,7 +31,7 @@ void Gem::setRemovedFromScreen(bool removed_from_screen)
 
 void Gem::setPointValue(int score_of_gem)
 {
-   pointValue = score_of_gem;
+    pointValue = score_of_gem;
 }
 
 void Gem::remove(QGraphicsScene* scene)

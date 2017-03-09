@@ -230,7 +230,7 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             else if(remoteIdentity == enumerator::Identity::SERVER)
             {
                 qDebug() << "READinpt erver";
-                input_component = new ComputerInputComponent(walk_frames_count);
+                input_component = new ComputerInputComponent();
                 physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
             }
             gameObject.push_back(new GameObject(input_component , graphics_component , physics_component , NULL , 0));

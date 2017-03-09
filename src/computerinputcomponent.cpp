@@ -5,12 +5,6 @@
 #include "isjumping.h"
 #include "isnotjumping.h"
 
-ComputerInputComponent::ComputerInputComponent(int walk_frames_count)
-{
-    numberOfFramesPerDirection = walk_frames_count;
-    currentNumberOfFrames = walk_frames_count;
-}
-
 void ComputerInputComponent::update(GameObject &gameObject)
 {
     if(!(gameObject.state))

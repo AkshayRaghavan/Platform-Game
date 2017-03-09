@@ -4,6 +4,7 @@
 #include<QGraphicsScene>
 #include<QGraphicsPixmapItem>
 #include<QDebug>
+#include <mutex>
 
 // A class for the graphics of the game objects
 // Used as virtual functions
@@ -15,6 +16,7 @@ private:
     bool isOnScreen;
     bool removedFromScreen;
     int pointValue;
+    std::mutex protectGem;
 public:
     virtual void drawGem(QGraphicsScene*) {}    
     int getPointValue();
