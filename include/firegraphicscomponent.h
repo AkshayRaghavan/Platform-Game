@@ -6,30 +6,62 @@
 #include <QGraphicsScene>
 #include <QPixmap>
 #include <QGraphicsTextItem>
-#include<QDebug>
+#include <QDebug>
 #include <string>
 #include <QApplication>
 #include <vector>
 
-// A class for the graphics of the game objects
-// Used as virtual functions
-// And deriving QGraphicsPixmapItem for image of object
+/*!
+ * \brief The Graphics for fire objects
+ * This handles the drawing, placement, position and update of fire objects
+ */
 
 class FireGraphicsComponent : public GraphicsComponent
 {
 private:
-    //A 2D array to contain pixmaps of all the images of a player (walk , jump , dead , idle) <right , left for each>
+
+    /*!
+     * \brief A 2D array to contain pixmaps of all the images of a player
+     * (walk , jump , dead , idle) <right , left for each>
+     */
     QPixmap* pixMapArray;
-    //Array for saving total images in a graphic state
+
+    /*!
+     * \brief imagesTotalCount total images in a graphic state
+     */
     int imagesTotalCount;
-    //Array for telling which image of each state to be displayed next
+
+    /*!
+     * \brief graphicsCounter tells which image of each state to be displayed next
+     */
     int graphicsCounter;
 
 public:
-    FireGraphicsComponent(QGraphicsScene* , QPixmap* , int , qreal  , qreal);
+    /*!
+     * \brief Constructor
+     * \param scene the scene where the fire is placed
+     * \param pix_map Pixmap for the fire
+     * \param images_total_count number of images to be looped over
+     * \param x_coordinate x coordinate of the position
+     * \param y_coordinate y coordinate of the position
+     */
+    FireGraphicsComponent(QGraphicsScene* scene , QPixmap* pix_map , int images_total_count, qreal x_coordinate , qreal y_coordinate);
+
+    /*!
+     * \brief Destructor
+     */
     ~FireGraphicsComponent() {}
-    //in each game loop this function is called which changes the image based on graphicsCounter[]
-    void update(GameObject &obj);
+
+    /*!
+     * \brief update Updates the image based on graphicsCounter
+     * \param gameObject the GameObject of the fire
+     */
+    void update(GameObject &gameObject);
+
+    /*!
+     * \brief Gives the size and position of the GraphicsComponent of the GameObject
+     * \return a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order
+     */
     std::vector<qreal> getSizePositionOfObject();
 
 };
