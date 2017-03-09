@@ -56,9 +56,9 @@ private Q_SLOTS:
 public:
     GameState* gamePointer;
     Server(quint16 , QApplication* , QGraphicsScene* , int , int , QLabel* , QObject *parent = 0);
+    ~Server();
     void startServer(int , int);
     void startGameSlotButtonClick(QGraphicsTextItem*);
     void setClientIPList(QGraphicsTextItem* client_IP_list);
-    ~Server();
 };
 #endif // SERVER_H

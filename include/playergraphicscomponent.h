@@ -38,7 +38,7 @@ public:
     //function to return left top coordinate and width and height of rectangle
     std::vector<qreal> getSizePositionOfObject();
     PlayerGraphicsComponent(QGraphicsScene* , std::string  , std::vector<int> &, int  , int  , qreal  , qreal  , bool , QApplication *);
-    ~PlayerGraphicsComponent() {}
+    ~PlayerGraphicsComponent();
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &);
     void setApp(QApplication *);

@@ -31,6 +31,7 @@ class ChoiceServerClientStart :public QObject
     Server * server;
 public:
     ChoiceServerClientStart(QGraphicsScene* , InputHandler* , const char * , int , int , int , Client* , Server* , QLabel* ,QWidget *parent = NULL);
+    ~ChoiceServerClientStart();
     void displayStartMenu();
 private slots:
     void startClient();
