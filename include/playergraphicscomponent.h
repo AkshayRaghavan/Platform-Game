@@ -15,9 +15,10 @@
 
 #define NO_Of_GRAPHICS_STATES 8
 
-// A class for the graphics of the game objects
-// Used as virtual functions
-// And deriving QGraphicsPixmapItem for image of object
+/*!
+ * \brief Component to handle graphics of a GameObject
+ * Handles how the GameObject looks, and updates based on the State
+ */
 
 class PlayerGraphicsComponent : public GraphicsComponent
 {

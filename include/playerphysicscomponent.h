@@ -15,13 +15,30 @@
 #include <QGraphicsScene>
 #include <QMediaPlayer>
 
+/*!
+ * \brief Component to handle the physics of a GameObject that is a player
+ * Handles movement and sets position of the GameObject based on its State
+ */
+
 class PlayerPhysicsComponent : public PhysicsComponent
 {
-    QMediaPlayer * jump, * slip, * coin, * die, * ending;
 public:
-    //The constructor will initialize the parameters
-    PlayerPhysicsComponent(std::vector< std::vector<Tile*> > &,qreal,qreal,qreal,qreal,QGraphicsScene*);
-    void update(GameObject &);
+    /*!
+     * \brief Constructor
+     * \param Tilesmap the tile map of the game
+     * \param theight height of a tile
+     * \param twidth width of a tile
+     * \param sheight height of the window in which the game is played
+     * \param swidth width of the window in which the game is played
+     * \param scene scene of the game
+     */
+    PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene);
+
+    /*!
+     * \brief Updates the positions of the GameObject based on the State
+     * \param gameObject the GameObject to be updated
+     */
+    void update(GameObject &gameObject);
 };
 
 #endif // PLAYERPHYSICSCOMPONENT_H
