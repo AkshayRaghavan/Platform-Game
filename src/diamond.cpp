@@ -20,8 +20,8 @@ Diamond::Diamond(std::string image_location , int width , int height , qreal x_c
             std::exit(EXIT_FAILURE);
     }
     pixMapImage = pixMapImage.scaled(QSize(width,height), Qt::KeepAspectRatio);
-    this->setPos(x_coordinate , y_coordinate);
-    this->setPixmap(this->pixMapImage);
+    this->setPos(x_coordinate,y_coordinate);
+    this->setPixmap(pixMapImage);
 }
 
 void Diamond::drawGem(QGraphicsScene* scene)

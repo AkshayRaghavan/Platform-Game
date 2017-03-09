@@ -52,6 +52,7 @@ public:
      */
     ~FireGraphicsComponent() {}
 
+
     /*!
      * \brief update Updates the image based on graphicsCounter
      * \param gameObject the GameObject of the fire
@@ -62,7 +63,12 @@ public:
      * \brief Gives the size and position of the GraphicsComponent of the GameObject
      * \return a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order
      */
-    std::vector<qreal> getSizePositionOfObject();
+     std::vector<qreal> getSizePositionOfObject();
+
+    QPixmap* pixmapPointer;
+    QPoint* position;
+   
+    
 
 };
 

@@ -115,7 +115,7 @@ void Server::setGameStartedVal()
                "resources/game files/gems/diamond map level1.txt" ,
                "resources/game files/player/player level1.txt" ,
                "resources/game files/door/door.txt"
-                , 1000);
+                , 60000);
 }
 
 void Server::startGame(std::string tile_map_path , std::string monster_file_path ,
@@ -123,6 +123,8 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
                        std::string player_file_path ,
                        std::string door_file_path , int total_time)
 {
+
+
     createGamePointer->totalTime = total_time;
     app->processEvents();
     serverLoadingMessage->setHtml("Creating Tiles");
@@ -131,7 +133,6 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
 
     app->processEvents();
     serverLoadingMessage->setHtml("Creating The Gems");
-    app->processEvents();
     createGamePointer->functionToCreateGem(gem_path);
 
     app->processEvents();
@@ -159,11 +160,13 @@ void Server::startGame(std::string tile_map_path , std::string monster_file_path
     createGamePointer->functionToCreateDoor(door_file_path);
 
 
-
     qDebug() << "Adding Gems To Scene";
 
     for(auto it = (createGamePointer->gems).begin(); it != (createGamePointer->gems).end() ; it++)
+    {
         (*it)->drawGem(scene);
+    }
+
 
     qDebug() << "Adding GameObjects To Scene : "<< createGamePointer->gameObject.size();
     for(auto it = createGamePointer->gameObject.begin(); it != createGamePointer->gameObject.end() ; it++)
