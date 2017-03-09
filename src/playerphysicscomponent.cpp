@@ -75,7 +75,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
         }
         else if(!testPositionForPlayer(QPointF(going_to_point.x(),going_to_point.y()+height_of_tile),player_width,player_height))
         {
-            qDebug() << "set to not jumping";
             gameObject.setJumpingState(new IsNotJumping);
             curJumpCount = 0;
         }
@@ -110,7 +109,6 @@ void PlayerPhysicsComponent::update(GameObject &gameObject)
     {
         if(typeid(*(colliding_items[i])) == typeid(Diamond) && (static_cast<Gem*>(colliding_items[i]))->getIsOnScreen())
         {
-            qDebug() << gameObject.getScore();
             gameObject.setScore(gameObject.getScore() + (static_cast<Gem*>(colliding_items[i]))->getPointValue());
             (static_cast<Gem*>(colliding_items[i]))->setIsOnScreen(false);
         }

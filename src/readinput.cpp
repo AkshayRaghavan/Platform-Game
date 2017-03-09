@@ -64,12 +64,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
-
     width_of_tile = static_cast<qreal>(screenWidth) / (column_tile_matrix_size-1);
     height_of_tile = static_cast<qreal>(screenHeight) / (row_tile_matrix_size-1);
-
-    qDebug() << "w,h : " << width_of_tile << " " << height_of_tile;
 
     qreal column_position = 0 , row_position = 0;
     bool is_obstacle = false;
@@ -267,7 +263,6 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             }
             else if(remoteIdentity == enumerator::Identity::SERVER)
             {
-                qDebug() << "READinpt erver";
                 input_component = new ComputerInputComponent();
                 physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
             }
