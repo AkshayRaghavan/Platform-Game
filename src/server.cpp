@@ -29,12 +29,7 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
 
 Server::~Server()
 {
-    webSocketServer->close();
-    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
-    delete webSocketServer;
-    delete scene;
-    delete createGamePointer;
-    delete gamePointer;
+
 }
 
 void Server::startServer(int screen_width , int screen_height)
@@ -85,13 +80,8 @@ void Server::onNewConnection()
         webSocketClients << pSocket;
         pSocket->sendTextMessage("Successfully Connected. <br>Waiting For Other Players To Join");
         qDebug() << "Added To webSocketClients And Sent Response Message";
-        qDebug() << "websize: " << webSocketClients.size();
-        qDebug() << "last but two";
         clientIPList->setHtml("<br><br>" + QString::number(webSocketClients.size()));
     }
-        qDebug() << "websize: " << webSocketClients.size();
-        qDebug() << "last but two";
-    qDebug() << "last but one";
 }
 
 void Server::startGameSlotButtonClick(QGraphicsTextItem* server_message)
@@ -223,7 +213,6 @@ void Server::startServerGameLoop()
     app->processEvents();
     serverLoadingMessage->setHtml("Starting The Server Game Loop");
     app->processEvents();
-    qDebug() << "starting game loop";
     QTimer * timer = new QTimer();
     this->connect(timer,SIGNAL(timeout()),this,SLOT(iterateOverGameState()));
     timer->start(50);
@@ -252,17 +241,7 @@ void Server::iterateOverGameState()
     std::vector<std::thread> client_threads;
     for (QList<QWebSocket*>::iterator i = webSocketClients.begin(); i != webSocketClients.end(); i++)
     {
-     /*   QWebSocket *socket = *i;
-        qDebug() << "socket outside: " << socket;
-        std::function<void()> pass_func = [bytes,socket,this]() {
-             if(!socket) { qDebug() << "null socket"; }
-              else { qDebug() << "socket not null"; }
-            qDebug() << "inside!";
-            qDebug() << "socket inside: " << socket;*/
-          (*i)->sendBinaryMessage(bytes);
-
-      //  };
-      //  threadPool.assignToThread(pass_func );
+        (*i)->sendBinaryMessage(bytes);
     }
 }
 
@@ -273,7 +252,6 @@ void Server::processTextMessage(QString message)
         //start=0$typo
         bool check;
         int index = (message.mid( message.indexOf("=")+1 , message.indexOf("$") - message.indexOf("=") - 1)).toInt(&check , 10);
-        qDebug() << index;
         QString a = message.mid(message.indexOf("$")+1);
         (gamePointer->gameObjects[index])->setName(a);
         gameStartedCountOfClients++;
@@ -334,10 +312,7 @@ void Server::getLeaderBoard()
 }
 void Server::processBinaryMessage(QByteArray message)
 {
-    qDebug() << "creating thread";
-
     threadPool.assignToThread([=](){
-    qDebug() << "Client Key Press EVent Message received";
     QJsonDocument item_doc = QJsonDocument::fromJson(message);
     QJsonObject item_object = item_doc.object();
     int array_index = item_object["arrayIndex"].toInt();
@@ -364,8 +339,7 @@ void Server::processBinaryMessage(QByteArray message)
                 ss<<std::this_thread::get_id();
                 std::string id_str=ss.str();
 
-            qDebug() << "RIGHT keypress" << id_str.c_str();
-               qDebug() << QThread::currentThreadId();
+            qDebug() << "RIGHT keypress";
             event = new QKeyEvent ( QEvent::KeyPress, Qt::Key_Right , Qt::NoModifier);
         }
     }
@@ -386,15 +360,6 @@ void Server::processBinaryMessage(QByteArray message)
             qDebug() << "RIGHT keyrelease";
             event = new QKeyEvent ( QEvent::KeyRelease, Qt::Key_Right , Qt::NoModifier);
         }
-    }
-    qDebug() << "event ready" << array_index;
-    if((gamePointer->gameObjects[array_index])->inputComponent)
-    {
-        qDebug() << "the problem is not null pointer";
-    }
-    if(!event)
-    {
-        qDebug() << "event is NULL";
     }
     QCoreApplication::postEvent((gamePointer->gameObjects[array_index])->inputComponent , event);
     qDebug() << "Event Posted";

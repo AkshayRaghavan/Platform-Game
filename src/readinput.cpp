@@ -12,40 +12,7 @@ ReadInput::ReadInput(QGraphicsScene * scene_local, int screen_width, int screen_
 
 ReadInput::~ReadInput()
 {
-    for (auto row = tileMap.begin(); row != tileMap.end(); ++row)
-    {
-         for (auto col = row->begin(); col != row->end(); ++col)
-         {
-            delete (&col);
-         }
-    }
 
-    for (auto row = gems.begin(); row != gems.end(); ++row)
-    {
-        delete (&row);
-    }
-
-    for (auto row = gameObject.begin(); row != gameObject.end(); ++row)
-    {
-        if((*row)->inputComponent)
-        {
-            delete (*row)->inputComponent;
-        }
-        if((*row)->graphicsComponent)
-        {
-            delete (*row)->graphicsComponent;
-        }
-        if((*row)->physicsComponent)
-        {
-            delete (*row)->physicsComponent;
-        }
-        if((*row)->scoreComponent)
-        {
-            delete (*row)->scoreComponent;
-        }
-
-        delete (&row);
-    }
 }
 
 void ReadInput::functionToCreateTileMap(std::string file_path)
@@ -64,12 +31,8 @@ void ReadInput::functionToCreateTileMap(std::string file_path)
     infile >> row_tile_matrix_size;
     infile >> column_tile_matrix_size;
 
-    qDebug() << "sw,sh: " << screenWidth << " " << screenHeight;
-
     width_of_tile = static_cast<qreal>(screenWidth) / (column_tile_matrix_size-1);
     height_of_tile = static_cast<qreal>(screenHeight) / (row_tile_matrix_size-1);
-
-    qDebug() << "w,h : " << width_of_tile << " " << height_of_tile;
 
     qreal column_position = 0 , row_position = 0;
     bool is_obstacle = false;
@@ -267,7 +230,6 @@ void ReadInput::functionToCreateMonsterGameObject(std::string file_path)
             }
             else if(remoteIdentity == enumerator::Identity::SERVER)
             {
-                qDebug() << "READinpt erver";
                 input_component = new ComputerInputComponent();
                 physics_component = new MonsterPhysicsComponent(tileMap , (tileMap)[0][0]->getHeightOfTile() ,  (tileMap)[0][0]->getWidthOfTile() , screenHeight , screenWidth, 3);
             }

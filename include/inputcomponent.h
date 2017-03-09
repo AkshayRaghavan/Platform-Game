@@ -21,7 +21,7 @@ public:
     /*!
      * \brief Constructor
      */
-    InputComponent();
+    InputComponent() {}
 
     /*!
      * \brief Destructor

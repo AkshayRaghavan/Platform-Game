@@ -14,7 +14,6 @@
 
 PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::string images_location , std::vector<int> &images_total_count, int image_width , int image_height , qreal x_coordinate , qreal y_coordinate , bool is_dangerous, QApplication * a)
 {
-    qDebug() << images_location.c_str();
     app = a;
     isDangerous = is_dangerous;
     for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
@@ -56,7 +55,6 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
     this->setPos(x_coordinate,y_coordinate);
     this->setPixmap(pixMapMatrix[2][0]);
 
-    qDebug() << "setting pos to : " << x_coordinate << " " << y_coordinate;
     if(this->parent())
     {
         GameObject *parent = dynamic_cast<GameObject*>(this->parent());
@@ -69,13 +67,6 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
 
 PlayerGraphicsComponent::~PlayerGraphicsComponent()
 {
-    for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
-    {
-        for(int j = 0; j < imagesTotalCount[i]; j++)
-        {
-            delete (&(pixMapMatrix[i][j]));
-        }
-    }
 
 }
 

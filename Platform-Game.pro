@@ -50,7 +50,6 @@ SOURCES += main.cpp \
     src/playergraphicscomponent.cpp \
     src/playerphysicscomponent.cpp \
     src/readinput.cpp \
-    src/state.cpp \
     src/stopleft.cpp \
     src/stopright.cpp \
     src/tile.cpp \
