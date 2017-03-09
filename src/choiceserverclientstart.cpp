@@ -23,7 +23,7 @@ ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , I
 }
 ChoiceServerClientStart::~ChoiceServerClientStart()
 {
-    delete clientMessage;
+
 }
 
 void ChoiceServerClientStart::startClient()

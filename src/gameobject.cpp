@@ -40,8 +40,7 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
 }
 GameObject::~GameObject()
 {
-    delete state;
-    delete jumpingState;
+
 }
 void GameObject::setState(State *input_state)
 {

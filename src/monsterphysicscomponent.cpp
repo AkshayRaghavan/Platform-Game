@@ -4,7 +4,6 @@
 
 MonsterPhysicsComponent::MonsterPhysicsComponent(std::vector<std::vector<Tile*>> &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, int fraction_of_speed)
 {
-    velocity = 1;
     this->tilesMap = Tilesmap;
     width_of_tile = twidth;
     height_of_tile = theight;

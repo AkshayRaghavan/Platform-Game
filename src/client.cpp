@@ -25,8 +25,7 @@ Client::Client(QApplication* a ,int milliseconds_per_frame , QGraphicsScene *sce
 
 Client::~Client()
 {
-    delete createGamePointer;
-    delete gamePointer;
+
 }
 
 void Client::connectToServer(QUrl url_local , QGraphicsTextItem* client_message , QString name_local)

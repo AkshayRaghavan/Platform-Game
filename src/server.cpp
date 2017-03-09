@@ -29,12 +29,7 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
 
 Server::~Server()
 {
-    webSocketServer->close();
-    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
-    delete webSocketServer;
-    delete scene;
-    delete createGamePointer;
-    delete gamePointer;
+
 }
 
 void Server::startServer(int screen_width , int screen_height)

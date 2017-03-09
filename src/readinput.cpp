@@ -12,40 +12,7 @@ ReadInput::ReadInput(QGraphicsScene * scene_local, int screen_width, int screen_
 
 ReadInput::~ReadInput()
 {
-    for (auto row = tileMap.begin(); row != tileMap.end(); ++row)
-    {
-         for (auto col = row->begin(); col != row->end(); ++col)
-         {
-            delete (&col);
-         }
-    }
 
-    for (auto row = gems.begin(); row != gems.end(); ++row)
-    {
-        delete (&row);
-    }
-
-    for (auto row = gameObject.begin(); row != gameObject.end(); ++row)
-    {
-        if((*row)->inputComponent)
-        {
-            delete (*row)->inputComponent;
-        }
-        if((*row)->graphicsComponent)
-        {
-            delete (*row)->graphicsComponent;
-        }
-        if((*row)->physicsComponent)
-        {
-            delete (*row)->physicsComponent;
-        }
-        if((*row)->scoreComponent)
-        {
-            delete (*row)->scoreComponent;
-        }
-
-        delete (&row);
-    }
 }
 
 void ReadInput::functionToCreateTileMap(std::string file_path)

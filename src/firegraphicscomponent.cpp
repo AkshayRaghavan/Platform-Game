@@ -12,10 +12,7 @@ FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , QPixmap* pi
 
 FireGraphicsComponent::~FireGraphicsComponent()
 {
-    for (int i = 0; i < imagesTotalCount; i++)
-    {
-        delete (&(pixMapArray[i]));
-    }
+
 }
 void FireGraphicsComponent::update(GameObject &obj)
 {
