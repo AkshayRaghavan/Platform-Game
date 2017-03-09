@@ -5,11 +5,10 @@
 #include <QPen>
 #include <QGraphicsScene>
 
-// A class for a tile rectangle
-// Used for stopping player on obstacle detection
-
 /*!
  * \brief The Class to Make Tiles
+ * A class for a tile rectangle
+ * Used for stopping player on obstacle detection
  */
 
 class Tile : public QGraphicsRectItem
