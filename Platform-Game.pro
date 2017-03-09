@@ -81,7 +81,6 @@ HEADERS  += \
     include/inputcomponent.h \
     include/isjumping.h \
     include/isnotjumping.h \
-    include/jumpingleft.h \
     include/jumpingstate.h \
     include/keys.h \
     include/monsterphysicscomponent.h \

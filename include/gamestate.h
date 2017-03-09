@@ -34,6 +34,7 @@ public:
      */
     bool isGameRunning;
 
+
     /*!
      * \brief Constructor
      * \param game_objects vector of GameObject in the game
@@ -50,7 +51,7 @@ public:
     /*!
      * \brief Destructor
      */
-    virtual ~GameState(){}
+    virtual ~GameState();
 
     /*!
      * \brief Stores pointers to all the GameObject objects in the game

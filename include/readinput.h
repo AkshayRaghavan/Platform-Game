@@ -92,6 +92,10 @@ public:
      */
     ReadInput (QGraphicsScene * scene, int screen_width, int screen_height);
     /*!
+     * \brief Destructor
+     */
+    ~ReadInput();
+    /*!
      * \brief Function to Create the Tile Map
      * \param file_path Path of File containing information of Tile Map
      */

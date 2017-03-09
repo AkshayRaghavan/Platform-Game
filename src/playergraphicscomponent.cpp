@@ -67,6 +67,17 @@ PlayerGraphicsComponent::PlayerGraphicsComponent(QGraphicsScene* scene , std::st
     }
 }
 
+PlayerGraphicsComponent::~PlayerGraphicsComponent()
+{
+    for (int i = 0; i < NO_Of_GRAPHICS_STATES; i++ )
+    {
+        for(int j = 0; j < imagesTotalCount[i]; j++)
+        {
+            delete (&(pixMapMatrix[i][j]));
+        }
+    }
+
+}
 
 void PlayerGraphicsComponent::initializePixMaps(int images_total_count , std::string image_location ,  QPixmap* array_of_pixmaps , const int image_width , const int image_height)
 {

@@ -106,7 +106,7 @@ public:
     /*!
      * \brief Destructor
      */
-    virtual ~GameObject() {}
+    virtual ~GameObject();
 
     /*!
      * \brief Component that handles input

@@ -27,6 +27,16 @@ Server::Server(quint16 port, QApplication * a , QGraphicsScene* scene_local , in
     gameStarted = false;
 }
 
+Server::~Server()
+{
+    webSocketServer->close();
+    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
+    delete webSocketServer;
+    delete scene;
+    delete createGamePointer;
+    delete gamePointer;
+}
+
 void Server::startServer(int screen_width , int screen_height)
 {
     qDebug() << "Creating Server";
@@ -47,12 +57,6 @@ void Server::startServer(int screen_width , int screen_height)
         std::exit(EXIT_FAILURE);
     }
     qDebug() << "Server's connecting URL : " << webSocketServer->serverUrl();
-}
-
-Server::~Server()
-{
-    webSocketServer->close();
-    qDeleteAll(webSocketClients.begin(), webSocketClients.end());
 }
 
 void Server::setClientIPList(QGraphicsTextItem* client_IP_list)
@@ -302,7 +306,7 @@ void Server::getLeaderBoard()
         return std::get<3>(left) > std::get<3>(right);
     });
 
-    QString result("<div  style='color:red;'><table><tr><th></th><th></th><th><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems&nbsp;Score</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
+    QString result("<div  style='color:red;'><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3><table><tr><th></th><th></th><th></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
     QString temp("");
     int final_score = 0;
     for (int i = 1; i <= leader_board.size(); i++)
