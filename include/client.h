@@ -71,6 +71,7 @@ private Q_SLOTS:
 public:
     GameState* gamePointer;
     Client(QApplication* , int , QGraphicsScene* , InputHandler* , int , int , QLabel* , QObject *parent = 0);
+    ~Client();
     int getArrayIndex();
     QWebSocket* getClientWebSocket();
     void DisplayScore(QString);

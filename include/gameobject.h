@@ -59,7 +59,7 @@ public:
     enumerator::ObjectType getObjectType();
     void setObjectType(enumerator::ObjectType a);
     GameObject(InputComponent *, GraphicsComponent *, PhysicsComponent * , ScoreComponent * , const int& , int time_left = 0);
-    virtual ~GameObject() {}
+    ~GameObject();
     InputComponent *inputComponent;
     GraphicsComponent *graphicsComponent;
     PhysicsComponent *physicsComponent;

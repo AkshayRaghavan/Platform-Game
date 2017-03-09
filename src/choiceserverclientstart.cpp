@@ -21,6 +21,10 @@ ChoiceServerClientStart::ChoiceServerClientStart(QGraphicsScene* scene_local , I
     QBrush *brush = new QBrush(*background);
     view->setBackgroundBrush(*brush);
 }
+ChoiceServerClientStart::~ChoiceServerClientStart()
+{
+    delete clientMessage;
+}
 
 void ChoiceServerClientStart::startClient()
 {

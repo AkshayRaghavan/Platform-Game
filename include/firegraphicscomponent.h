@@ -50,7 +50,7 @@ public:
     /*!
      * \brief Destructor
      */
-    ~FireGraphicsComponent() {}
+    ~FireGraphicsComponent();
 
 
     /*!

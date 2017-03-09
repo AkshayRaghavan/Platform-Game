@@ -10,7 +10,7 @@ GameState::GameState(std::vector<GameObject*> &game_objects, std::vector< std::v
     isGameRunning = true;
     timer = new Timer(total_time_available,milliseconds_per_frame);
     timer->updateTimerOnScreen();
-    timer->setFont(QFont("system" , 50));
+    timer->setFont(QFont("system" , screenHeight/50));
     timer->setDefaultTextColor(QColor(51, 51, 255));
     timer->setPos(50 , 50);
     scene->addItem(timer);

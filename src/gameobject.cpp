@@ -38,7 +38,11 @@ GameObject::GameObject(InputComponent *input_component, GraphicsComponent *graph
     score = 0;
     acceptsInput = inputComponent->acceptsInput();
 }
-
+GameObject::~GameObject()
+{
+    delete state;
+    delete jumpingState;
+}
 void GameObject::setState(State *input_state)
 {
     if(input_state)

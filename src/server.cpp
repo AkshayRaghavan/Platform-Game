@@ -302,7 +302,7 @@ void Server::getLeaderBoard()
         return std::get<3>(left) > std::get<3>(right);
     });
 
-    QString result("<div  style='color:red;'><table><tr><th></th><th></th><th><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems&nbsp;Score</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
+    QString result("<div  style='color:red;'><h3 style='text-align:center;color:blue;'>SCOREBOARD</h3><table><tr><th></th><th></th><th></th></tr><tr><th>Rank</th><th>&nbsp;&nbsp;</th><th>Player&nbsp;Name</th><th>&nbsp;&nbsp;</th><th>Gems</th><th>&nbsp;&nbsp;</th><th>Time&nbsp;Taken</th><th>&nbsp;&nbsp;</th><th>Final&nbsp;Score</th></tr>");
     QString temp("");
     int final_score = 0;
     for (int i = 1; i <= leader_board.size(); i++)
