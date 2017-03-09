@@ -6,8 +6,8 @@ FireGraphicsComponent::FireGraphicsComponent(QGraphicsScene* scene , QPixmap* pi
     pixMapArray = pix_map;
     imagesTotalCount = images_total_count;
     graphicsCounter = 0;
-    this->setPixmap(this->pixMapArray[0]);
     this->setPos(x_coordinate,y_coordinate);
+    this->setPixmap(pixMapArray[0]);
 }
 
 void FireGraphicsComponent::update(GameObject &obj)

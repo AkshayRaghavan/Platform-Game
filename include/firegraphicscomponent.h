@@ -28,6 +28,8 @@ private:
 public:
     FireGraphicsComponent(QGraphicsScene* , QPixmap* , int , qreal  , qreal);
     ~FireGraphicsComponent() {}
+    QPixmap* pixmapPointer;
+    QPoint* position;
     //in each game loop this function is called which changes the image based on graphicsCounter[]
     void update(GameObject &obj);
     std::vector<qreal> getSizePositionOfObject();

@@ -17,6 +17,7 @@ private:
 public:
     Diamond(std::string , int , int , qreal , qreal , int);
     void drawGem(QGraphicsScene* );
+
 };
 
 #endif // DIAMOND_H
