@@ -65,11 +65,6 @@ public:
      */
      std::vector<qreal> getSizePositionOfObject();
 
-    QPixmap* pixmapPointer;
-    QPoint* position;
-   
-    
-
 };
 
 #endif // FIREGRAPHICSCOMPONENT_H
