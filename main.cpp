@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     mov->start();
     label->setAttribute(Qt::WA_NoSystemBackground);
     label->setMovie(mov);
-    mov->setScaledSize(QSize(screen_width/20,screen_height/20));
+    mov->setScaledSize(QSize(screen_width/20,screen_height/30));
     label->move(100*(screen_width/240),85*(screen_height/160));
     
     Server game_server(3000 , &a , scene ,  milliseconds_per_frame , 4 , label);

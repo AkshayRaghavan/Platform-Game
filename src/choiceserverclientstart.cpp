@@ -80,13 +80,13 @@ void ChoiceServerClientStart::startServer()
     qDebug() << "Outside server";
 
     QGraphicsTextItem* heading = new QGraphicsTextItem(QString("Number Of Connected Players"));
-    heading->setFont(QFont("ocr a extended",35));
+    heading->setFont(QFont("ocr a extended",screenHeight/30));
     heading->setPos(view->width()/2 - heading->boundingRect().width()/2,view->height()/6);
     scene->addItem(heading);
 
     QGraphicsTextItem* client_IP_list = new QGraphicsTextItem(QString(""));
     server->setClientIPList(client_IP_list);
-    client_IP_list->setFont(QFont("comic sans",15));
+    client_IP_list->setFont(QFont("comic sans",screenHeight/30));
     client_IP_list->setPos(view->width()/(2.5) - client_IP_list->boundingRect().width()/2,view->height()/(5.2));
     scene->addItem(client_IP_list);
 
@@ -105,7 +105,7 @@ void ChoiceServerClientStart::startServerGameSlotButtonClick()
     }
     scene->addWidget(label);
     QGraphicsTextItem* server_message = new QGraphicsTextItem(QString(""));
-    server_message->setFont(QFont("comic sans",25));
+    server_message->setFont(QFont("comic sans",screenHeight/40));
     server_message->setPos(view->width()/(6.5) - server_message->boundingRect().width()/2,view->height()/3);
     scene->addItem(server_message);
     server->startGameSlotButtonClick(server_message);
@@ -125,9 +125,9 @@ void ChoiceServerClientStart::displayStartMenu()
 {
     // create the title text
     QGraphicsTextItem* choosing_server_client_text = new QGraphicsTextItem(QString("PLATFORM GAME"));
-    choosing_server_client_text->setFont(QFont("algerian",50));
+    choosing_server_client_text->setFont(QFont("algerian",screenHeight/15));
     choosing_server_client_text->setDefaultTextColor(QColor(128,0,128));
-    choosing_server_client_text->setPos(view->width()/2 - choosing_server_client_text->boundingRect().width()/2,view->height()/6);
+    choosing_server_client_text->setPos(view->width()/2 - choosing_server_client_text->boundingRect().width()/2,view->height()/8);
     scene->addItem(choosing_server_client_text);
 
     // create the server button
