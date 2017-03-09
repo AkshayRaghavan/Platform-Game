@@ -64,7 +64,6 @@ public:
      * \return a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order
      */
      std::vector<qreal> getSizePositionOfObject();
-    
 
 };
 
