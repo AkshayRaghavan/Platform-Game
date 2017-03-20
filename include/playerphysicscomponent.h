@@ -13,7 +13,6 @@
 #include "stopleft.h"
 #include "stopright.h"
 #include <QGraphicsScene>
-#include <QMediaPlayer>
 
 /*!
  * \brief Component to handle the physics of a GameObject that is a player

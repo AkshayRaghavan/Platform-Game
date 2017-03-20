@@ -7,7 +7,6 @@
 #include <QGraphicsScene>
 #include <QGraphicsProxyWidget>
 #include <QStyle>
-#include <QMediaPlayer>
 #include <QFileInfo>
 #include <QDesktopWidget>
 #include "server.h"

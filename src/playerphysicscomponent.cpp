@@ -13,7 +13,6 @@
 #include "isnotjumping.h"
 #include "diamond.h"
 #include <QPainter>
-#include <QMediaPlayer>
 #include <QFileInfo>
 
 PlayerPhysicsComponent::PlayerPhysicsComponent(std::vector<std::vector<Tile*> > &Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, QGraphicsScene * scene)
