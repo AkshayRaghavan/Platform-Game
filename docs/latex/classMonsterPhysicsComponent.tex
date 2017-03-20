@@ -1,0 +1,94 @@
+\hypertarget{classMonsterPhysicsComponent}{\section{Monster\-Physics\-Component Class Reference}
+\label{classMonsterPhysicsComponent}\index{Monster\-Physics\-Component@{Monster\-Physics\-Component}}
+}
+
+
+Component to handle the physics for monster \hyperlink{classGameObject}{Game\-Object} objects Handles movement and position update of monsters based on \hyperlink{classState}{State}.  
+
+
+
+
+{\ttfamily \#include $<$monsterphysicscomponent.\-h$>$}
+
+Inheritance diagram for Monster\-Physics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMonsterPhysicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMonsterPhysicsComponent_a38c2ebc955ad3ac8fc03b0fa6452ed6e}{Monster\-Physics\-Component} (std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \&Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, int fraction\-\_\-of\-\_\-speed)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classMonsterPhysicsComponent_a23a31d1b31465e71f3851ad01559b0fa}{virtual \hyperlink{classMonsterPhysicsComponent_a23a31d1b31465e71f3851ad01559b0fa}{$\sim$\-Monster\-Physics\-Component} ()}\label{classMonsterPhysicsComponent_a23a31d1b31465e71f3851ad01559b0fa}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classMonsterPhysicsComponent_a590efe1034e71fa0dc039d547926e2f2}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Update the position of the monster based on \hyperlink{classState}{State} and surroundings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Component to handle the physics for monster \hyperlink{classGameObject}{Game\-Object} objects Handles movement and position update of monsters based on \hyperlink{classState}{State}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMonsterPhysicsComponent_a38c2ebc955ad3ac8fc03b0fa6452ed6e}{\index{Monster\-Physics\-Component@{Monster\-Physics\-Component}!Monster\-Physics\-Component@{Monster\-Physics\-Component}}
+\index{Monster\-Physics\-Component@{Monster\-Physics\-Component}!MonsterPhysicsComponent@{Monster\-Physics\-Component}}
+\subsubsection[{Monster\-Physics\-Component}]{\setlength{\rightskip}{0pt plus 5cm}Monster\-Physics\-Component\-::\-Monster\-Physics\-Component (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::vector$<$ {\bf Tile} $\ast$ $>$ $>$ \&}]{Tilesmap, }
+\item[{qreal}]{theight, }
+\item[{qreal}]{twidth, }
+\item[{qreal}]{sheight, }
+\item[{qreal}]{swidth, }
+\item[{int}]{fraction\-\_\-of\-\_\-speed}
+\end{DoxyParamCaption}
+)}}\label{classMonsterPhysicsComponent_a38c2ebc955ad3ac8fc03b0fa6452ed6e}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tilesmap} & the tile map of the game \\
+\hline
+{\em theight} & height of a tile \\
+\hline
+{\em twidth} & width of a tile \\
+\hline
+{\em sheight} & height of the screen \\
+\hline
+{\em swidth} & width of the screen \\
+\hline
+{\em fraction\-\_\-of\-\_\-speed} & fraction of total frames the monster moves \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMonsterPhysicsComponent_a590efe1034e71fa0dc039d547926e2f2}{\index{Monster\-Physics\-Component@{Monster\-Physics\-Component}!update@{update}}
+\index{update@{update}!MonsterPhysicsComponent@{Monster\-Physics\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Monster\-Physics\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classMonsterPhysicsComponent_a590efe1034e71fa0dc039d547926e2f2}
+
+
+Update the position of the monster based on \hyperlink{classState}{State} and surroundings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} of the monster \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classPhysicsComponent_a5498919fee09ce15271a5c273c2dc836}{Physics\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+monsterphysicscomponent.\-h\end{DoxyCompactItemize}

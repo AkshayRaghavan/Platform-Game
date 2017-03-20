@@ -1,0 +1,174 @@
+\hypertarget{classGem}{\section{Gem Class Reference}
+\label{classGem}\index{Gem@{Gem}}
+}
+
+
+Describes a \hyperlink{classGem}{Gem} Describes a \hyperlink{classGem}{Gem}, an object that can be captured by players to earn points. Handles the drawing, placement, update, and score of the gems.  
+
+
+
+
+{\ttfamily \#include $<$gem.\-h$>$}
+
+Inheritance diagram for Gem\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classGem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classGem_a7b8029d12d3bfd6d2c897f5c0f930c38}{draw\-Gem} (Q\-Graphics\-Scene $\ast$scene\-\_\-input)
+\begin{DoxyCompactList}\small\item\em Draws the \hyperlink{classGem}{Gem} on the scene. \end{DoxyCompactList}\item 
+int \hyperlink{classGem_a455e97a96da9442751f6ef221712c031}{get\-Point\-Value} ()
+\begin{DoxyCompactList}\small\item\em Get the score given to the player on capture of the \hyperlink{classGem}{Gem}. \end{DoxyCompactList}\item 
+bool \hyperlink{classGem_ab7735a029b7980d8851f290c0b8c444f}{get\-Removed\-From\-Screen} ()
+\begin{DoxyCompactList}\small\item\em Get if player is not on the screen in the client. \end{DoxyCompactList}\item 
+void \hyperlink{classGem_a918dd824b208662f8f215cd961638c46}{set\-Removed\-From\-Screen} (bool input)
+\begin{DoxyCompactList}\small\item\em Set whether the \hyperlink{classGem}{Gem} is not on the screen in the client. \end{DoxyCompactList}\item 
+bool \hyperlink{classGem_a2507142f69f0c99408a0ce779994db9e}{get\-Is\-On\-Screen} ()
+\begin{DoxyCompactList}\small\item\em Get if the \hyperlink{classGem}{Gem} is on the screen in the server. \end{DoxyCompactList}\item 
+void \hyperlink{classGem_a65b10ba218d11d69dca0477408dc4da8}{set\-Is\-On\-Screen} (bool input)
+\begin{DoxyCompactList}\small\item\em Set whether the \hyperlink{classGem}{Gem} is in the screen in the server. \end{DoxyCompactList}\item 
+void \hyperlink{classGem_a791395b9a42eb3a55eb7791621de46e0}{set\-Point\-Value} (int input)
+\begin{DoxyCompactList}\small\item\em Set the number of points a player capturing the \hyperlink{classGem}{Gem} would receive. \end{DoxyCompactList}\item 
+void \hyperlink{classGem_a05d61a981b55959477159f0dc029b77a}{remove} (Q\-Graphics\-Scene $\ast$input\-\_\-scene)
+\begin{DoxyCompactList}\small\item\em Removes the \hyperlink{classGem}{Gem} from the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Describes a \hyperlink{classGem}{Gem} Describes a \hyperlink{classGem}{Gem}, an object that can be captured by players to earn points. Handles the drawing, placement, update, and score of the gems. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGem_a7b8029d12d3bfd6d2c897f5c0f930c38}{\index{Gem@{Gem}!draw\-Gem@{draw\-Gem}}
+\index{draw\-Gem@{draw\-Gem}!Gem@{Gem}}
+\subsubsection[{draw\-Gem}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Gem\-::draw\-Gem (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene $\ast$}]{scene\-\_\-input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classGem_a7b8029d12d3bfd6d2c897f5c0f930c38}
+
+
+Draws the \hyperlink{classGem}{Gem} on the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\-\_\-input} & the scene on which the \hyperlink{classGem}{Gem} is drawn \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classDiamond_a7139292b0be9a93f99f48e6c00fac072}{Diamond}.
+
+\hypertarget{classGem_a2507142f69f0c99408a0ce779994db9e}{\index{Gem@{Gem}!get\-Is\-On\-Screen@{get\-Is\-On\-Screen}}
+\index{get\-Is\-On\-Screen@{get\-Is\-On\-Screen}!Gem@{Gem}}
+\subsubsection[{get\-Is\-On\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}bool Gem\-::get\-Is\-On\-Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGem_a2507142f69f0c99408a0ce779994db9e}
+
+
+Get if the \hyperlink{classGem}{Gem} is on the screen in the server. 
+
+\begin{DoxyReturn}{Returns}
+true, if yes, false, if not 
+\end{DoxyReturn}
+\hypertarget{classGem_a455e97a96da9442751f6ef221712c031}{\index{Gem@{Gem}!get\-Point\-Value@{get\-Point\-Value}}
+\index{get\-Point\-Value@{get\-Point\-Value}!Gem@{Gem}}
+\subsubsection[{get\-Point\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int Gem\-::get\-Point\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGem_a455e97a96da9442751f6ef221712c031}
+
+
+Get the score given to the player on capture of the \hyperlink{classGem}{Gem}. 
+
+\begin{DoxyReturn}{Returns}
+the value of the score 
+\end{DoxyReturn}
+\hypertarget{classGem_ab7735a029b7980d8851f290c0b8c444f}{\index{Gem@{Gem}!get\-Removed\-From\-Screen@{get\-Removed\-From\-Screen}}
+\index{get\-Removed\-From\-Screen@{get\-Removed\-From\-Screen}!Gem@{Gem}}
+\subsubsection[{get\-Removed\-From\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}bool Gem\-::get\-Removed\-From\-Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGem_ab7735a029b7980d8851f290c0b8c444f}
+
+
+Get if player is not on the screen in the client. 
+
+\begin{DoxyReturn}{Returns}
+true, if not on the screen, false, otherwise 
+\end{DoxyReturn}
+\hypertarget{classGem_a05d61a981b55959477159f0dc029b77a}{\index{Gem@{Gem}!remove@{remove}}
+\index{remove@{remove}!Gem@{Gem}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void Gem\-::remove (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene $\ast$}]{input\-\_\-scene}
+\end{DoxyParamCaption}
+)}}\label{classGem_a05d61a981b55959477159f0dc029b77a}
+
+
+Removes the \hyperlink{classGem}{Gem} from the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-scene} & the scene from which the \hyperlink{classGem}{Gem} is to be removed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGem_a65b10ba218d11d69dca0477408dc4da8}{\index{Gem@{Gem}!set\-Is\-On\-Screen@{set\-Is\-On\-Screen}}
+\index{set\-Is\-On\-Screen@{set\-Is\-On\-Screen}!Gem@{Gem}}
+\subsubsection[{set\-Is\-On\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void Gem\-::set\-Is\-On\-Screen (
+\begin{DoxyParamCaption}
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)}}\label{classGem_a65b10ba218d11d69dca0477408dc4da8}
+
+
+Set whether the \hyperlink{classGem}{Gem} is in the screen in the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the value to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGem_a791395b9a42eb3a55eb7791621de46e0}{\index{Gem@{Gem}!set\-Point\-Value@{set\-Point\-Value}}
+\index{set\-Point\-Value@{set\-Point\-Value}!Gem@{Gem}}
+\subsubsection[{set\-Point\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void Gem\-::set\-Point\-Value (
+\begin{DoxyParamCaption}
+\item[{int}]{input}
+\end{DoxyParamCaption}
+)}}\label{classGem_a791395b9a42eb3a55eb7791621de46e0}
+
+
+Set the number of points a player capturing the \hyperlink{classGem}{Gem} would receive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the value of the number of points \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGem_a918dd824b208662f8f215cd961638c46}{\index{Gem@{Gem}!set\-Removed\-From\-Screen@{set\-Removed\-From\-Screen}}
+\index{set\-Removed\-From\-Screen@{set\-Removed\-From\-Screen}!Gem@{Gem}}
+\subsubsection[{set\-Removed\-From\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void Gem\-::set\-Removed\-From\-Screen (
+\begin{DoxyParamCaption}
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)}}\label{classGem_a918dd824b208662f8f215cd961638c46}
+
+
+Set whether the \hyperlink{classGem}{Gem} is not on the screen in the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the value to set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+gem.\-h\end{DoxyCompactItemize}

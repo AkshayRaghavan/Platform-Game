@@ -1,0 +1,141 @@
+\hypertarget{classPlayerGraphicsComponent}{\section{Player\-Graphics\-Component Class Reference}
+\label{classPlayerGraphicsComponent}\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}}
+}
+
+
+Component to handle graphics of a \hyperlink{classGameObject}{Game\-Object} Handles how the \hyperlink{classGameObject}{Game\-Object} looks, and updates based on the \hyperlink{classState}{State}.  
+
+
+
+
+{\ttfamily \#include $<$playergraphicscomponent.\-h$>$}
+
+Inheritance diagram for Player\-Graphics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPlayerGraphicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ qreal $>$ \hyperlink{classPlayerGraphicsComponent_a9e4f6d92f14886b23791ac2eb8846349}{get\-Size\-Position\-Of\-Object} ()
+\begin{DoxyCompactList}\small\item\em get left top coordinate and width and height of rectangle \end{DoxyCompactList}\item 
+\hyperlink{classPlayerGraphicsComponent_a398184a4c0bc09ff5011d57359bc102b}{Player\-Graphics\-Component} (Q\-Graphics\-Scene $\ast$scene, std\-::string images\-\_\-location, std\-::vector$<$ int $>$ \&images\-\_\-total\-\_\-count, int image\-\_\-width, int image\-\_\-height, qreal x\-\_\-coordinate, qreal y\-\_\-coordinate, bool is\-\_\-dangerous, Q\-Application $\ast$a)
+\begin{DoxyCompactList}\small\item\em constructor for all the images of player and monster \end{DoxyCompactList}\item 
+\hypertarget{classPlayerGraphicsComponent_a9bec033acf2dc9abab5e7240e47cc98f}{\hyperlink{classPlayerGraphicsComponent_a9bec033acf2dc9abab5e7240e47cc98f}{$\sim$\-Player\-Graphics\-Component} ()}\label{classPlayerGraphicsComponent_a9bec033acf2dc9abab5e7240e47cc98f}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+void \hyperlink{classPlayerGraphicsComponent_ace3901cc8345392c22315f24d617e98b}{update} (\hyperlink{classGameObject}{Game\-Object} \&obj)
+\begin{DoxyCompactList}\small\item\em in each game loop this function is called which changes the image based on graphics\-Counter\mbox{[}\mbox{]} \end{DoxyCompactList}\item 
+void \hyperlink{classPlayerGraphicsComponent_a9f5a0e1621cb9809a7aebe2927a5fad3}{set\-App} (Q\-Application $\ast$a)
+\begin{DoxyCompactList}\small\item\em set\-App set the Qapplication \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Component to handle graphics of a \hyperlink{classGameObject}{Game\-Object} Handles how the \hyperlink{classGameObject}{Game\-Object} looks, and updates based on the \hyperlink{classState}{State}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayerGraphicsComponent_a398184a4c0bc09ff5011d57359bc102b}{\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}!Player\-Graphics\-Component@{Player\-Graphics\-Component}}
+\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}!PlayerGraphicsComponent@{Player\-Graphics\-Component}}
+\subsubsection[{Player\-Graphics\-Component}]{\setlength{\rightskip}{0pt plus 5cm}Player\-Graphics\-Component\-::\-Player\-Graphics\-Component (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene $\ast$}]{scene, }
+\item[{std\-::string}]{images\-\_\-location, }
+\item[{std\-::vector$<$ int $>$ \&}]{images\-\_\-total\-\_\-count, }
+\item[{int}]{image\-\_\-width, }
+\item[{int}]{image\-\_\-height, }
+\item[{qreal}]{x\-\_\-coordinate, }
+\item[{qreal}]{y\-\_\-coordinate, }
+\item[{bool}]{is\-\_\-dangerous, }
+\item[{Q\-Application $\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{classPlayerGraphicsComponent_a398184a4c0bc09ff5011d57359bc102b}
+
+
+constructor for all the images of player and monster 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & add items to screen \\
+\hline
+{\em images\-\_\-location} & substring of the images location path \\
+\hline
+{\em images\-\_\-total\-\_\-count} & vector of total images for the different states \\
+\hline
+{\em image\-\_\-width} & width of all images \\
+\hline
+{\em image\-\_\-height} & height of all images \\
+\hline
+{\em x\-\_\-coordinate} & x position of image \\
+\hline
+{\em y\-\_\-coordinate} & y position of image \\
+\hline
+{\em is\-\_\-dangerous} & differentiate player and monster \\
+\hline
+{\em a} & Qapplication for process\-Events \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayerGraphicsComponent_a9e4f6d92f14886b23791ac2eb8846349}{\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}!get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}}
+\index{get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}!PlayerGraphicsComponent@{Player\-Graphics\-Component}}
+\subsubsection[{get\-Size\-Position\-Of\-Object}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$qreal$>$ Player\-Graphics\-Component\-::get\-Size\-Position\-Of\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPlayerGraphicsComponent_a9e4f6d92f14886b23791ac2eb8846349}
+
+
+get left top coordinate and width and height of rectangle 
+
+\begin{DoxyReturn}{Returns}
+vector of image characteristics 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGraphicsComponent_a653e0474dd66fc1876f405831e121631}{Graphics\-Component}.
+
+\hypertarget{classPlayerGraphicsComponent_a9f5a0e1621cb9809a7aebe2927a5fad3}{\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}!set\-App@{set\-App}}
+\index{set\-App@{set\-App}!PlayerGraphicsComponent@{Player\-Graphics\-Component}}
+\subsubsection[{set\-App}]{\setlength{\rightskip}{0pt plus 5cm}void Player\-Graphics\-Component\-::set\-App (
+\begin{DoxyParamCaption}
+\item[{Q\-Application $\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{classPlayerGraphicsComponent_a9f5a0e1621cb9809a7aebe2927a5fad3}
+
+
+set\-App set the Qapplication 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Qapplication \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPlayerGraphicsComponent_ace3901cc8345392c22315f24d617e98b}{\index{Player\-Graphics\-Component@{Player\-Graphics\-Component}!update@{update}}
+\index{update@{update}!PlayerGraphicsComponent@{Player\-Graphics\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Player\-Graphics\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPlayerGraphicsComponent_ace3901cc8345392c22315f24d617e98b}
+
+
+in each game loop this function is called which changes the image based on graphics\-Counter\mbox{[}\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & player or zombie game\-Object \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classGraphicsComponent_a744134b79cf11b2ff29fb7802923fda9}{Graphics\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+playergraphicscomponent.\-h\end{DoxyCompactItemize}

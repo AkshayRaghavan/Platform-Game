@@ -1,0 +1,86 @@
+\hypertarget{classDeadRight}{\section{Dead\-Right Class Reference}
+\label{classDeadRight}\index{Dead\-Right@{Dead\-Right}}
+}
+
+
+The state in which the player is dead facing right This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}.  
+
+
+
+
+{\ttfamily \#include $<$deadright.\-h$>$}
+
+Inheritance diagram for Dead\-Right\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDeadRight}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDeadRight_a08aa0bda5faa79706498c10bf7f7ab57}{\hyperlink{classDeadRight_a08aa0bda5faa79706498c10bf7f7ab57}{Dead\-Right} ()}\label{classDeadRight_a08aa0bda5faa79706498c10bf7f7ab57}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classDeadRight_a04979ad62939563bb7e995f967536b87}{\hyperlink{classDeadRight_a04979ad62939563bb7e995f967536b87}{$\sim$\-Dead\-Right} ()}\label{classDeadRight_a04979ad62939563bb7e995f967536b87}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classState}{State} $\ast$ \hyperlink{classDeadRight_a90bbfab63b08a87dd2b36bbdb8830aa5}{update} (\hyperlink{classInputComponent}{Input\-Component} $\ast$, std\-::set$<$ Qt\-::\-Key $>$)
+\begin{DoxyCompactList}\small\item\em Updates the state on the basis of the keys currently pressed. \end{DoxyCompactList}\item 
+\hyperlink{namespaceenumerator_a5fc7b342c2c633e1037b07cea237a222}{enumerator\-::\-State} \hyperlink{classDeadRight_abd8e52205ddafd19858a81f25cd87106}{type} ()
+\begin{DoxyCompactList}\small\item\em Provides the type of the \hyperlink{classState}{State}, i.\-e., \hyperlink{classDeadLeft}{Dead\-Left}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The state in which the player is dead facing right This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDeadRight_abd8e52205ddafd19858a81f25cd87106}{\index{Dead\-Right@{Dead\-Right}!type@{type}}
+\index{type@{type}!DeadRight@{Dead\-Right}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf enumerator\-::\-State} Dead\-Right\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDeadRight_abd8e52205ddafd19858a81f25cd87106}
+
+
+Provides the type of the \hyperlink{classState}{State}, i.\-e., \hyperlink{classDeadLeft}{Dead\-Left}. 
+
+\begin{DoxyReturn}{Returns}
+enumerator\-::\-State\-::\-D\-E\-A\-D\-\_\-\-L\-E\-F\-T 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a8c6cc1ff1ecdf88e586f857339b7e071}{State}.
+
+\hypertarget{classDeadRight_a90bbfab63b08a87dd2b36bbdb8830aa5}{\index{Dead\-Right@{Dead\-Right}!update@{update}}
+\index{update@{update}!DeadRight@{Dead\-Right}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State}$\ast$ Dead\-Right\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{, }
+\item[{std\-::set$<$ Qt\-::\-Key $>$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classDeadRight_a90bbfab63b08a87dd2b36bbdb8830aa5}
+
+
+Updates the state on the basis of the keys currently pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Component} & the \hyperlink{classInputComponent}{Input\-Component} of the \hyperlink{classGameObject}{Game\-Object} whose state is being updated \\
+\hline
+{\em key} & the set of keys currently pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new state 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a5f2bc9804614c5ca9e7feb7d8c57668d}{State}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+deadright.\-h\end{DoxyCompactItemize}

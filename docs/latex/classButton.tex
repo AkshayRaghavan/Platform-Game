@@ -1,0 +1,122 @@
+\hypertarget{classButton}{\section{Button Class Reference}
+\label{classButton}\index{Button@{Button}}
+}
+
+
+All the buttons displayed in Main Menu.  
+
+
+
+
+{\ttfamily \#include $<$button.\-h$>$}
+
+Inheritance diagram for Button\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classButton}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classButton_a9e7ab4152cb1e7e3beb7f2842f32670c}{void \hyperlink{classButton_a9e7ab4152cb1e7e3beb7f2842f32670c}{clicked} ()}\label{classButton_a9e7ab4152cb1e7e3beb7f2842f32670c}
+
+\begin{DoxyCompactList}\small\item\em Signal to notify if button is clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classButton_abbf00c9df181d84d36e915ef712e024c}{Button} (const char $\ast$idle\-\_\-image\-\_\-path, const char $\ast$hover\-\_\-image\-\_\-path, int screen\-\_\-height, int screen\-\_\-width)
+\begin{DoxyCompactList}\small\item\em The Constructor for button class. \end{DoxyCompactList}\item 
+void \hyperlink{classButton_a17d8eb0c904605b223bbc00c75655315}{mouse\-Press\-Event} (Q\-Graphics\-Scene\-Mouse\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Function called when button gets clicked. \end{DoxyCompactList}\item 
+void \hyperlink{classButton_a633a9684818bc5d300a622a00064f09c}{hover\-Enter\-Event} (Q\-Graphics\-Scene\-Hover\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Function called when mouse cursor touches the button. \end{DoxyCompactList}\item 
+void \hyperlink{classButton_a1689a97690d9469ce8350d24db0d7485}{hover\-Leave\-Event} (Q\-Graphics\-Scene\-Hover\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Function called when mouse cursor leaves the button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All the buttons displayed in Main Menu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classButton_abbf00c9df181d84d36e915ef712e024c}{\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\subsubsection[{Button}]{\setlength{\rightskip}{0pt plus 5cm}Button\-::\-Button (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{idle\-\_\-image\-\_\-path, }
+\item[{const char $\ast$}]{hover\-\_\-image\-\_\-path, }
+\item[{int}]{screen\-\_\-height, }
+\item[{int}]{screen\-\_\-width}
+\end{DoxyParamCaption}
+)}}\label{classButton_abbf00c9df181d84d36e915ef712e024c}
+
+
+The Constructor for button class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idle\-\_\-image\-\_\-path} & file path containing image for idle\-Pix\-Map \\
+\hline
+{\em hover\-\_\-image\-\_\-path} & file path containing image for hover\-Pix\-Map \\
+\hline
+{\em screen\-\_\-height} & Height of the Screen \\
+\hline
+{\em screen\-\_\-width} & Width of the Screen \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classButton_a633a9684818bc5d300a622a00064f09c}{\index{Button@{Button}!hover\-Enter\-Event@{hover\-Enter\-Event}}
+\index{hover\-Enter\-Event@{hover\-Enter\-Event}!Button@{Button}}
+\subsubsection[{hover\-Enter\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Button\-::hover\-Enter\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene\-Hover\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classButton_a633a9684818bc5d300a622a00064f09c}
+
+
+Function called when mouse cursor touches the button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The Event received \\
+\hline
+\end{DoxyParams}
+\hypertarget{classButton_a1689a97690d9469ce8350d24db0d7485}{\index{Button@{Button}!hover\-Leave\-Event@{hover\-Leave\-Event}}
+\index{hover\-Leave\-Event@{hover\-Leave\-Event}!Button@{Button}}
+\subsubsection[{hover\-Leave\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Button\-::hover\-Leave\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene\-Hover\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classButton_a1689a97690d9469ce8350d24db0d7485}
+
+
+Function called when mouse cursor leaves the button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The Event received \\
+\hline
+\end{DoxyParams}
+\hypertarget{classButton_a17d8eb0c904605b223bbc00c75655315}{\index{Button@{Button}!mouse\-Press\-Event@{mouse\-Press\-Event}}
+\index{mouse\-Press\-Event@{mouse\-Press\-Event}!Button@{Button}}
+\subsubsection[{mouse\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Button\-::mouse\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene\-Mouse\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classButton_a17d8eb0c904605b223bbc00c75655315}
+
+
+Function called when button gets clicked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The Event received \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+button.\-h\end{DoxyCompactItemize}

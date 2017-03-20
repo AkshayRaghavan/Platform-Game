@@ -1,0 +1,86 @@
+\hypertarget{classMovingRight}{\section{Moving\-Right Class Reference}
+\label{classMovingRight}\index{Moving\-Right@{Moving\-Right}}
+}
+
+
+The state in which the player is moving right This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}.  
+
+
+
+
+{\ttfamily \#include $<$movingright.\-h$>$}
+
+Inheritance diagram for Moving\-Right\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMovingRight}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classMovingRight_a7e0aedcb305334cb740216e8ff5bf9cc}{\hyperlink{classMovingRight_a7e0aedcb305334cb740216e8ff5bf9cc}{Moving\-Right} ()}\label{classMovingRight_a7e0aedcb305334cb740216e8ff5bf9cc}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classMovingRight_a9558cd656fb789be52081d7798ca3bc4}{virtual \hyperlink{classMovingRight_a9558cd656fb789be52081d7798ca3bc4}{$\sim$\-Moving\-Right} ()}\label{classMovingRight_a9558cd656fb789be52081d7798ca3bc4}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classState}{State} $\ast$ \hyperlink{classMovingRight_aa3ccaf974ea8137e77a26cb3738345c1}{update} (\hyperlink{classInputComponent}{Input\-Component} $\ast$input\-Component, std\-::set$<$ Qt\-::\-Key $>$ key)
+\begin{DoxyCompactList}\small\item\em Updates the state on the basis of the keys currently pressed. \end{DoxyCompactList}\item 
+virtual \hyperlink{namespaceenumerator_a5fc7b342c2c633e1037b07cea237a222}{enumerator\-::\-State} \hyperlink{classMovingRight_a9d8e60b64a11346a518e222ae36366ca}{type} ()
+\begin{DoxyCompactList}\small\item\em Provides the type of the \hyperlink{classState}{State}, i.\-e., \hyperlink{classDeadLeft}{Dead\-Left}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The state in which the player is moving right This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classMovingRight_a9d8e60b64a11346a518e222ae36366ca}{\index{Moving\-Right@{Moving\-Right}!type@{type}}
+\index{type@{type}!MovingRight@{Moving\-Right}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf enumerator\-::\-State} Moving\-Right\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classMovingRight_a9d8e60b64a11346a518e222ae36366ca}
+
+
+Provides the type of the \hyperlink{classState}{State}, i.\-e., \hyperlink{classDeadLeft}{Dead\-Left}. 
+
+\begin{DoxyReturn}{Returns}
+enumerator\-::\-State\-::\-M\-O\-V\-I\-N\-G\-\_\-\-R\-I\-G\-H\-T 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a8c6cc1ff1ecdf88e586f857339b7e071}{State}.
+
+\hypertarget{classMovingRight_aa3ccaf974ea8137e77a26cb3738345c1}{\index{Moving\-Right@{Moving\-Right}!update@{update}}
+\index{update@{update}!MovingRight@{Moving\-Right}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf State}$\ast$ Moving\-Right\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{input\-Component, }
+\item[{std\-::set$<$ Qt\-::\-Key $>$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classMovingRight_aa3ccaf974ea8137e77a26cb3738345c1}
+
+
+Updates the state on the basis of the keys currently pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Component} & the \hyperlink{classInputComponent}{Input\-Component} of the \hyperlink{classGameObject}{Game\-Object} whose state is being updated \\
+\hline
+{\em key} & the set of keys currently pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new state 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a5f2bc9804614c5ca9e7feb7d8c57668d}{State}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+movingright.\-h\end{DoxyCompactItemize}

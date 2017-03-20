@@ -1,0 +1,108 @@
+\hypertarget{classJumpingState}{\section{Jumping\-State Class Reference}
+\label{classJumpingState}\index{Jumping\-State@{Jumping\-State}}
+}
+
+
+This class is used to store whether the player is jumping or not.  
+
+
+
+
+{\ttfamily \#include $<$jumpingstate.\-h$>$}
+
+Inheritance diagram for Jumping\-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classJumpingState}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classJumpingState_a74a6fbd65de0937c949cb04d7567041f}{\hyperlink{classJumpingState_a74a6fbd65de0937c949cb04d7567041f}{Jumping\-State} ()}\label{classJumpingState_a74a6fbd65de0937c949cb04d7567041f}
+
+\begin{DoxyCompactList}\small\item\em Constructor for Jumping \hyperlink{classState}{State}. \end{DoxyCompactList}\item 
+\hypertarget{classJumpingState_aa8fed3f92395e3b1a5c0ab71387fe7da}{virtual \hyperlink{classJumpingState_aa8fed3f92395e3b1a5c0ab71387fe7da}{$\sim$\-Jumping\-State} ()}\label{classJumpingState_aa8fed3f92395e3b1a5c0ab71387fe7da}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classJumpingState}{Jumping\-State} $\ast$ \hyperlink{classJumpingState_a0da4718d614ff36fd1336f01f5ddfa2b}{update} (\hyperlink{classInputComponent}{Input\-Component} $\ast$, \hyperlink{classGameObject}{Game\-Object} \&, std\-::set$<$ Qt\-::\-Key $>$)=0
+\begin{DoxyCompactList}\small\item\em To update the Jumping \hyperlink{classState}{State} of the Game Object. \end{DoxyCompactList}\item 
+virtual \hyperlink{namespaceenumerator_a2f1fb1ef7c57e4549f424d454c1e2179}{enumerator\-::\-Jumping\-State} \hyperlink{classJumpingState_a3c1a2e3c686de946c16e20c717f0a37d}{type} ()=0
+\begin{DoxyCompactList}\small\item\em To return the Type of Jumping state. \end{DoxyCompactList}\item 
+int \hyperlink{classJumpingState_a254b08129da2b292be700307f6c31af0}{get\-Jump\-Count} ()
+\begin{DoxyCompactList}\small\item\em To find current value of Jump Count. \end{DoxyCompactList}\item 
+\hypertarget{classJumpingState_ad3caaec1aa20d63f5a86de1004263ca2}{void \hyperlink{classJumpingState_ad3caaec1aa20d63f5a86de1004263ca2}{set\-Jump\-Count} (int)}\label{classJumpingState_ad3caaec1aa20d63f5a86de1004263ca2}
+
+\begin{DoxyCompactList}\small\item\em To set the Value of Jump Count. \end{DoxyCompactList}\item 
+\hypertarget{classJumpingState_aae4b61ee4143d536a35d3c5b0ddb0dc7}{void \hyperlink{classJumpingState_aae4b61ee4143d536a35d3c5b0ddb0dc7}{jump\-Update} ()}\label{classJumpingState_aae4b61ee4143d536a35d3c5b0ddb0dc7}
+
+\begin{DoxyCompactList}\small\item\em To update the Jump \hyperlink{classState}{State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classJumpingState_a461c5e80710d25abbe1e94f7477986b2}{int \hyperlink{classJumpingState_a461c5e80710d25abbe1e94f7477986b2}{jump\-Count}}\label{classJumpingState_a461c5e80710d25abbe1e94f7477986b2}
+
+\begin{DoxyCompactList}\small\item\em To store how long the player is in air. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to store whether the player is jumping or not. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classJumpingState_a254b08129da2b292be700307f6c31af0}{\index{Jumping\-State@{Jumping\-State}!get\-Jump\-Count@{get\-Jump\-Count}}
+\index{get\-Jump\-Count@{get\-Jump\-Count}!JumpingState@{Jumping\-State}}
+\subsubsection[{get\-Jump\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Jumping\-State\-::get\-Jump\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classJumpingState_a254b08129da2b292be700307f6c31af0}
+
+
+To find current value of Jump Count. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classJumpingState_a3c1a2e3c686de946c16e20c717f0a37d}{\index{Jumping\-State@{Jumping\-State}!type@{type}}
+\index{type@{type}!JumpingState@{Jumping\-State}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf enumerator\-::\-Jumping\-State} Jumping\-State\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classJumpingState_a3c1a2e3c686de946c16e20c717f0a37d}
+
+
+To return the Type of Jumping state. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classIsJumping_a7cd0858e202392069181097c782710de}{Is\-Jumping}, and \hyperlink{classIsNotJumping_a2fc57703b1017b434e82b4a054f2c9d1}{Is\-Not\-Jumping}.
+
+\hypertarget{classJumpingState_a0da4718d614ff36fd1336f01f5ddfa2b}{\index{Jumping\-State@{Jumping\-State}!update@{update}}
+\index{update@{update}!JumpingState@{Jumping\-State}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Jumping\-State}$\ast$ Jumping\-State\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{, }
+\item[{{\bf Game\-Object} \&}]{, }
+\item[{std\-::set$<$ Qt\-::\-Key $>$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classJumpingState_a0da4718d614ff36fd1336f01f5ddfa2b}
+
+
+To update the Jumping \hyperlink{classState}{State} of the Game Object. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classIsJumping_a3b90719ea42ff820c3e9b26ed7033c4c}{Is\-Jumping}, and \hyperlink{classIsNotJumping_ae58898ada922fab24c37735bee506c8c}{Is\-Not\-Jumping}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+jumpingstate.\-h\end{DoxyCompactItemize}

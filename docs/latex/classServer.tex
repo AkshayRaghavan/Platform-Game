@@ -1,0 +1,95 @@
+\hypertarget{classServer}{\section{Server Class Reference}
+\label{classServer}\index{Server@{Server}}
+}
+
+
+for making networking websocket server  
+
+
+
+
+{\ttfamily \#include $<$server.\-h$>$}
+
+Inheritance diagram for Server\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classServer}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classServer_a67295c05cd7776a05d4d26f3872b97d1}{void \hyperlink{classServer_a67295c05cd7776a05d4d26f3872b97d1}{closed} ()}\label{classServer_a67295c05cd7776a05d4d26f3872b97d1}
+
+\begin{DoxyCompactList}\small\item\em signal to close screen \end{DoxyCompactList}\item 
+\hypertarget{classServer_a064bb50dac3db0c39d99b512942251c7}{void \hyperlink{classServer_a064bb50dac3db0c39d99b512942251c7}{contents\-Changed} (Q\-String)}\label{classServer_a064bb50dac3db0c39d99b512942251c7}
+
+\begin{DoxyCompactList}\small\item\em signal for changing content on screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classServer_af5b47a498608d9cd1740621ae11172ca}{\hyperlink{classServer_af5b47a498608d9cd1740621ae11172ca}{Server} (quint16 port, Q\-Application $\ast$a, Q\-Graphics\-Scene $\ast$scene\-\_\-local, int milliseconds\-\_\-per\-\_\-frame, int number\-\_\-of\-\_\-threads, Q\-Label $\ast$label, Q\-Object $\ast$parent=N\-U\-L\-L)}\label{classServer_af5b47a498608d9cd1740621ae11172ca}
+
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{$\sim$\-Server} ()}\label{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+void \hyperlink{classServer_a21f4d5fa308381bd91b5d584b222c471}{start\-Server} (int screen\-\_\-width, int screen\-\_\-height)
+\begin{DoxyCompactList}\small\item\em button click \end{DoxyCompactList}\item 
+void \hyperlink{classServer_a4f7a988666f3cd4b91d14a6016a0cedf}{set\-Client\-I\-P\-List} (Q\-Graphics\-Text\-Item $\ast$client\-\_\-\-I\-P\-\_\-list)
+\begin{DoxyCompactList}\small\item\em display no of connection \end{DoxyCompactList}\item 
+\hypertarget{classServer_a5fa376b713c9c80ad1cd6ffb3ac1e23d}{void \hyperlink{classServer_a5fa376b713c9c80ad1cd6ffb3ac1e23d}{start\-Game\-Slot\-Button\-Click} (Q\-Graphics\-Text\-Item $\ast$server\-\_\-message)}\label{classServer_a5fa376b713c9c80ad1cd6ffb3ac1e23d}
+
+\begin{DoxyCompactList}\small\item\em button click \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classServer_afff26cb9a4bb0c136ead3e974c725902}{\hyperlink{classGameState}{Game\-State} $\ast$ \hyperlink{classServer_afff26cb9a4bb0c136ead3e974c725902}{game\-Pointer}}\label{classServer_afff26cb9a4bb0c136ead3e974c725902}
+
+\begin{DoxyCompactList}\small\item\em gamestate pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+for making networking websocket server 
+
+\subsection{Member Function Documentation}
+\hypertarget{classServer_a4f7a988666f3cd4b91d14a6016a0cedf}{\index{Server@{Server}!set\-Client\-I\-P\-List@{set\-Client\-I\-P\-List}}
+\index{set\-Client\-I\-P\-List@{set\-Client\-I\-P\-List}!Server@{Server}}
+\subsubsection[{set\-Client\-I\-P\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-::set\-Client\-I\-P\-List (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Text\-Item $\ast$}]{client\-\_\-\-I\-P\-\_\-list}
+\end{DoxyParamCaption}
+)}}\label{classServer_a4f7a988666f3cd4b91d14a6016a0cedf}
+
+
+display no of connection 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\-\_\-\-I\-P\-\_\-list} & text\-Item pointer \\
+\hline
+\end{DoxyParams}
+\hypertarget{classServer_a21f4d5fa308381bd91b5d584b222c471}{\index{Server@{Server}!start\-Server@{start\-Server}}
+\index{start\-Server@{start\-Server}!Server@{Server}}
+\subsubsection[{start\-Server}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-::start\-Server (
+\begin{DoxyParamCaption}
+\item[{int}]{screen\-\_\-width, }
+\item[{int}]{screen\-\_\-height}
+\end{DoxyParamCaption}
+)}}\label{classServer_a21f4d5fa308381bd91b5d584b222c471}
+
+
+button click 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & width \\
+\hline
+{\em screen} & height \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+server.\-h\end{DoxyCompactItemize}

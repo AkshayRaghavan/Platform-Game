@@ -1,0 +1,124 @@
+\hypertarget{classHumanInputComponent}{\section{Human\-Input\-Component Class Reference}
+\label{classHumanInputComponent}\index{Human\-Input\-Component@{Human\-Input\-Component}}
+}
+
+
+Component of \hyperlink{classGameObject}{Game\-Object} that handles human input Handles keyboard input (key press and key release) events and updates the \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object}.  
+
+
+
+
+{\ttfamily \#include $<$humaninputcomponent.\-h$>$}
+
+Inheritance diagram for Human\-Input\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classHumanInputComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classHumanInputComponent_af8c2bd301c382eb5f353089010b20519}{Human\-Input\-Component} (\hyperlink{classKeys}{Keys} $\ast$\hyperlink{classInputComponent_ab4ab656db9378e27c34ff39d1e790308}{keys})
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classHumanInputComponent_acb45d35e71bd98d382d3684a88aaf42e}{virtual \hyperlink{classHumanInputComponent_acb45d35e71bd98d382d3684a88aaf42e}{$\sim$\-Human\-Input\-Component} ()}\label{classHumanInputComponent_acb45d35e71bd98d382d3684a88aaf42e}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classHumanInputComponent_a10e31c29b86c3c6fff99e699dca28e82}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Updates the \hyperlink{classInputComponent}{Input\-Component} of game\-Object. \end{DoxyCompactList}\item 
+bool \hyperlink{classHumanInputComponent_ac06da10a796d7975c1a97c2618e8fcfd}{event} (Q\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Received keyboard events and updates accordingly. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classHumanInputComponent_ac6701b0da2dea7c3764d9159625f269f}{accepts\-Input} ()
+\begin{DoxyCompactList}\small\item\em Get whether the corresponding \hyperlink{classGameObject}{Game\-Object} accepts input from th keyboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Component of \hyperlink{classGameObject}{Game\-Object} that handles human input Handles keyboard input (key press and key release) events and updates the \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classHumanInputComponent_af8c2bd301c382eb5f353089010b20519}{\index{Human\-Input\-Component@{Human\-Input\-Component}!Human\-Input\-Component@{Human\-Input\-Component}}
+\index{Human\-Input\-Component@{Human\-Input\-Component}!HumanInputComponent@{Human\-Input\-Component}}
+\subsubsection[{Human\-Input\-Component}]{\setlength{\rightskip}{0pt plus 5cm}Human\-Input\-Component\-::\-Human\-Input\-Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Keys} $\ast$}]{keys}
+\end{DoxyParamCaption}
+)}}\label{classHumanInputComponent_af8c2bd301c382eb5f353089010b20519}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keys} & Specify the keys for jump, left, and right \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classHumanInputComponent_ac6701b0da2dea7c3764d9159625f269f}{\index{Human\-Input\-Component@{Human\-Input\-Component}!accepts\-Input@{accepts\-Input}}
+\index{accepts\-Input@{accepts\-Input}!HumanInputComponent@{Human\-Input\-Component}}
+\subsubsection[{accepts\-Input}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Human\-Input\-Component\-::accepts\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHumanInputComponent_ac6701b0da2dea7c3764d9159625f269f}
+
+
+Get whether the corresponding \hyperlink{classGameObject}{Game\-Object} accepts input from th keyboard. 
+
+\begin{DoxyReturn}{Returns}
+true, as \hyperlink{classGameObject}{Game\-Object} with \hyperlink{classHumanInputComponent}{Human\-Input\-Component} accepts input 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classInputComponent_a27a4de99780ddf7d7a4f9d469f13640c}{Input\-Component}.
+
+\hypertarget{classHumanInputComponent_ac06da10a796d7975c1a97c2618e8fcfd}{\index{Human\-Input\-Component@{Human\-Input\-Component}!event@{event}}
+\index{event@{event}!HumanInputComponent@{Human\-Input\-Component}}
+\subsubsection[{event}]{\setlength{\rightskip}{0pt plus 5cm}bool Human\-Input\-Component\-::event (
+\begin{DoxyParamCaption}
+\item[{Q\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHumanInputComponent_ac06da10a796d7975c1a97c2618e8fcfd}
+
+
+Received keyboard events and updates accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event received \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if event is recognized and \hyperlink{classState}{State} updated, false, otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classInputComponent_a6e9e903cdb89d7eb7d9ab89d1734f7aa}{Input\-Component}.
+
+\hypertarget{classHumanInputComponent_a10e31c29b86c3c6fff99e699dca28e82}{\index{Human\-Input\-Component@{Human\-Input\-Component}!update@{update}}
+\index{update@{update}!HumanInputComponent@{Human\-Input\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Human\-Input\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classHumanInputComponent_a10e31c29b86c3c6fff99e699dca28e82}
+
+
+Updates the \hyperlink{classInputComponent}{Input\-Component} of game\-Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the game\-Object to be updated \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classInputComponent_a93e790f7279e842ee249fefe7dbf7b32}{Input\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+humaninputcomponent.\-h\end{DoxyCompactItemize}

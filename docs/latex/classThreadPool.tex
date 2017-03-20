@@ -1,0 +1,92 @@
+\hypertarget{classThreadPool}{\section{Thread\-Pool Class Reference}
+\label{classThreadPool}\index{Thread\-Pool@{Thread\-Pool}}
+}
+
+
+Thread Pool to allot work concurrently Handles the creation of threads, assigns work, and handles wait till all threads complete execution.  
+
+
+
+
+{\ttfamily \#include $<$threadpool.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classThreadPool_a53fb4db20e08699bb52c2c332f611cc9}{Thread\-Pool} (int number\-\_\-of\-\_\-threads)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classThreadPool_a7290a593e893111e2db6a6e226c471cb}{void \hyperlink{classThreadPool_a7290a593e893111e2db6a6e226c471cb}{add\-Thread} ()}\label{classThreadPool_a7290a593e893111e2db6a6e226c471cb}
+
+\begin{DoxyCompactList}\small\item\em Adds a thread to the thread pool. \end{DoxyCompactList}\item 
+void \hyperlink{classThreadPool_a07a236b214390a314589c1432d091d38}{assign\-To\-Thread} (std\-::function$<$ void()$>$ function\-\_\-to\-\_\-execute)
+\begin{DoxyCompactList}\small\item\em Puts function in the queue waiting for a thread to execute. \end{DoxyCompactList}\item 
+void \hyperlink{classThreadPool_a29dd5bbafbf80aeb33a1f60de36baed4}{wait\-Or\-Work} (int i)
+\begin{DoxyCompactList}\small\item\em function run by each thread that waits till work is available in the queue, and executes it \end{DoxyCompactList}\item 
+\hypertarget{classThreadPool_a44d3d2ab618970605e684efc216655eb}{\hyperlink{classThreadPool_a44d3d2ab618970605e684efc216655eb}{$\sim$\-Thread\-Pool} ()}\label{classThreadPool_a44d3d2ab618970605e684efc216655eb}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classThreadPool_ac6f5b38e46d7c1225f726c2c2d3fa02e}{void \hyperlink{classThreadPool_ac6f5b38e46d7c1225f726c2c2d3fa02e}{wait\-Till\-All\-Complete} ()}\label{classThreadPool_ac6f5b38e46d7c1225f726c2c2d3fa02e}
+
+\begin{DoxyCompactList}\small\item\em Wait till all current threads complete their current tasks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread Pool to allot work concurrently Handles the creation of threads, assigns work, and handles wait till all threads complete execution. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classThreadPool_a53fb4db20e08699bb52c2c332f611cc9}{\index{Thread\-Pool@{Thread\-Pool}!Thread\-Pool@{Thread\-Pool}}
+\index{Thread\-Pool@{Thread\-Pool}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{Thread\-Pool}]{\setlength{\rightskip}{0pt plus 5cm}Thread\-Pool\-::\-Thread\-Pool (
+\begin{DoxyParamCaption}
+\item[{int}]{number\-\_\-of\-\_\-threads}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_a53fb4db20e08699bb52c2c332f611cc9}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\-\_\-of\-\_\-threads} & the number of threads in the thread pool \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classThreadPool_a07a236b214390a314589c1432d091d38}{\index{Thread\-Pool@{Thread\-Pool}!assign\-To\-Thread@{assign\-To\-Thread}}
+\index{assign\-To\-Thread@{assign\-To\-Thread}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{assign\-To\-Thread}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\-Pool\-::assign\-To\-Thread (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ void()$>$}]{function\-\_\-to\-\_\-execute}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_a07a236b214390a314589c1432d091d38}
+
+
+Puts function in the queue waiting for a thread to execute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function\-\_\-to\-\_\-execute} & the function to be executed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classThreadPool_a29dd5bbafbf80aeb33a1f60de36baed4}{\index{Thread\-Pool@{Thread\-Pool}!wait\-Or\-Work@{wait\-Or\-Work}}
+\index{wait\-Or\-Work@{wait\-Or\-Work}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{wait\-Or\-Work}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\-Pool\-::wait\-Or\-Work (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_a29dd5bbafbf80aeb33a1f60de36baed4}
+
+
+function run by each thread that waits till work is available in the queue, and executes it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the I\-D of the thread \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+threadpool.\-h\end{DoxyCompactItemize}

@@ -1,0 +1,91 @@
+\hypertarget{classPlayerPhysicsComponent}{\section{Player\-Physics\-Component Class Reference}
+\label{classPlayerPhysicsComponent}\index{Player\-Physics\-Component@{Player\-Physics\-Component}}
+}
+
+
+Component to handle the physics of a \hyperlink{classGameObject}{Game\-Object} that is a player Handles movement and sets position of the \hyperlink{classGameObject}{Game\-Object} based on its \hyperlink{classState}{State}.  
+
+
+
+
+{\ttfamily \#include $<$playerphysicscomponent.\-h$>$}
+
+Inheritance diagram for Player\-Physics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPlayerPhysicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPlayerPhysicsComponent_aa369c3e7e53e11bea700b75832bab9e5}{Player\-Physics\-Component} (std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \&Tilesmap, qreal theight, qreal twidth, qreal sheight, qreal swidth, Q\-Graphics\-Scene $\ast$\hyperlink{classPhysicsComponent_a838b5b49b38cfaf7a1a4b4ab2ff6accd}{scene})
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classPlayerPhysicsComponent_a637c081a84bb314c6e69a50ccdcc83f4}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Updates the positions of the \hyperlink{classGameObject}{Game\-Object} based on the \hyperlink{classState}{State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Component to handle the physics of a \hyperlink{classGameObject}{Game\-Object} that is a player Handles movement and sets position of the \hyperlink{classGameObject}{Game\-Object} based on its \hyperlink{classState}{State}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPlayerPhysicsComponent_aa369c3e7e53e11bea700b75832bab9e5}{\index{Player\-Physics\-Component@{Player\-Physics\-Component}!Player\-Physics\-Component@{Player\-Physics\-Component}}
+\index{Player\-Physics\-Component@{Player\-Physics\-Component}!PlayerPhysicsComponent@{Player\-Physics\-Component}}
+\subsubsection[{Player\-Physics\-Component}]{\setlength{\rightskip}{0pt plus 5cm}Player\-Physics\-Component\-::\-Player\-Physics\-Component (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::vector$<$ {\bf Tile} $\ast$ $>$ $>$ \&}]{Tilesmap, }
+\item[{qreal}]{theight, }
+\item[{qreal}]{twidth, }
+\item[{qreal}]{sheight, }
+\item[{qreal}]{swidth, }
+\item[{Q\-Graphics\-Scene $\ast$}]{scene}
+\end{DoxyParamCaption}
+)}}\label{classPlayerPhysicsComponent_aa369c3e7e53e11bea700b75832bab9e5}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tilesmap} & the tile map of the game \\
+\hline
+{\em theight} & height of a tile \\
+\hline
+{\em twidth} & width of a tile \\
+\hline
+{\em sheight} & height of the window in which the game is played \\
+\hline
+{\em swidth} & width of the window in which the game is played \\
+\hline
+{\em scene} & scene of the game \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPlayerPhysicsComponent_a637c081a84bb314c6e69a50ccdcc83f4}{\index{Player\-Physics\-Component@{Player\-Physics\-Component}!update@{update}}
+\index{update@{update}!PlayerPhysicsComponent@{Player\-Physics\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Player\-Physics\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPlayerPhysicsComponent_a637c081a84bb314c6e69a50ccdcc83f4}
+
+
+Updates the positions of the \hyperlink{classGameObject}{Game\-Object} based on the \hyperlink{classState}{State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} to be updated \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classPhysicsComponent_a5498919fee09ce15271a5c273c2dc836}{Physics\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+playerphysicscomponent.\-h\end{DoxyCompactItemize}

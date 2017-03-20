@@ -1,0 +1,196 @@
+\hypertarget{classGameState}{\section{Game\-State Class Reference}
+\label{classGameState}\index{Game\-State@{Game\-State}}
+}
+
+
+The state of the Game Stores the state of the game. Stores all the \hyperlink{classGameObject}{Game\-Object} members, \hyperlink{classGem}{Gem} members, tile map, and handles update of state.  
+
+
+
+
+{\ttfamily \#include $<$gamestate.\-h$>$}
+
+Inheritance diagram for Game\-State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameState}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameState_aaecebaa5f6cd88e093927fc3cb321c10}{void \hyperlink{classGameState_aaecebaa5f6cd88e093927fc3cb321c10}{update} ()}\label{classGameState_aaecebaa5f6cd88e093927fc3cb321c10}
+
+\begin{DoxyCompactList}\small\item\em Updates the state of the game Calls update on all the \hyperlink{classGameObject}{Game\-Object} objects, \hyperlink{classGem}{Gem} objects, \hyperlink{classTimer}{Timer}, such that the game moves forward my one frame Called once every frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGameState_a284d3408e9b687a5c8c0072753d2e025}{Game\-State} (std\-::vector$<$ \hyperlink{classGameObject}{Game\-Object} $\ast$ $>$ \&game\-\_\-objects, std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \&tile\-\_\-map, std\-::vector$<$ \hyperlink{classGem}{Gem} $\ast$ $>$ \&input\-\_\-gems, int screen\-\_\-width, int screen\-\_\-height, Q\-Graphics\-Scene $\ast$scene\-\_\-local, int milliseconds\-\_\-per\-\_\-frame, int total\-\_\-time\-\_\-available)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a517ef6eaba96896259fcefd0c66afc9e}{virtual \hyperlink{classGameState_a517ef6eaba96896259fcefd0c66afc9e}{$\sim$\-Game\-State} ()}\label{classGameState_a517ef6eaba96896259fcefd0c66afc9e}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+Q\-Graphics\-Scene $\ast$ \hyperlink{classGameState_af38b3925bdf2592414fe6276106553bb}{get\-Scene} ()
+\begin{DoxyCompactList}\small\item\em Get the scene in which the game is being played. \end{DoxyCompactList}\item 
+bool \hyperlink{classGameState_aeb4c715344671e22d6512d5e8dc12ffe}{is\-Game\-Active} ()
+\begin{DoxyCompactList}\small\item\em Get whether the game is still active. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classGameObject}{Game\-Object} $\ast$ $>$ \hyperlink{classGameState_a545c8d3a7f4ecb25982983d8a1dfb634}{get\-Game\-Objects} ()
+\begin{DoxyCompactList}\small\item\em Get the list of \hyperlink{classGameObject}{Game\-Object} objects in the game. \end{DoxyCompactList}\item 
+std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \hyperlink{classGameState_a7cd456e4a0e6990e3fc313aff87f64a4}{get\-Tile\-Map} ()
+\begin{DoxyCompactList}\small\item\em Get the tile map of the game. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classGem}{Gem} $\ast$ $>$ \hyperlink{classGameState_a241704c9ce9c7104a4acad810d4433ec}{get\-Gems} ()
+\begin{DoxyCompactList}\small\item\em Get the \hyperlink{classGem}{Gem} objects in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameState_a6216ab97827a0f9e932a9d99d528d31e}{\hyperlink{classThreadPool}{Thread\-Pool} \hyperlink{classGameState_a6216ab97827a0f9e932a9d99d528d31e}{thread\-Pool}}\label{classGameState_a6216ab97827a0f9e932a9d99d528d31e}
+
+\begin{DoxyCompactList}\small\item\em pool of threads to use for updating the \hyperlink{classGameState}{Game\-State} \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a107b54a0732ffc9d27d344a0185f04e3}{\hyperlink{namespaceenumerator_aa4c03441b2e09279e43235eb80525c6d}{enumerator\-::\-Identity} \hyperlink{classGameState_a107b54a0732ffc9d27d344a0185f04e3}{remote\-Identity}}\label{classGameState_a107b54a0732ffc9d27d344a0185f04e3}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether the object resides in a client or a server. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a86a320f6c311d69651360edf385e677b}{bool \hyperlink{classGameState_a86a320f6c311d69651360edf385e677b}{is\-Game\-Running}}\label{classGameState_a86a320f6c311d69651360edf385e677b}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether the game is running. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a1cdd652d877427e57097eb9b6f1317bf}{std\-::vector$<$ \hyperlink{classGameObject}{Game\-Object} $\ast$ $>$ \hyperlink{classGameState_a1cdd652d877427e57097eb9b6f1317bf}{game\-Objects}}\label{classGameState_a1cdd652d877427e57097eb9b6f1317bf}
+
+\begin{DoxyCompactList}\small\item\em Stores pointers to all the \hyperlink{classGameObject}{Game\-Object} objects in the game. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_adf7bef0ce2de87123ee7b132709be3e6}{std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \hyperlink{classGameState_adf7bef0ce2de87123ee7b132709be3e6}{tile\-Map}}\label{classGameState_adf7bef0ce2de87123ee7b132709be3e6}
+
+\begin{DoxyCompactList}\small\item\em Stores pointers to tiles in the tile map for the game. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a317e70144d6dcb20a63c95e40a7fe8fa}{std\-::vector$<$ \hyperlink{classGem}{Gem} $\ast$ $>$ \hyperlink{classGameState_a317e70144d6dcb20a63c95e40a7fe8fa}{gems}}\label{classGameState_a317e70144d6dcb20a63c95e40a7fe8fa}
+
+\begin{DoxyCompactList}\small\item\em Stores pointers to all the \hyperlink{classGem}{Gem} objects in the game. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a512b05551a91cc55ed51a0cab497c651}{Q\-Graphics\-Scene $\ast$ \hyperlink{classGameState_a512b05551a91cc55ed51a0cab497c651}{scene}}\label{classGameState_a512b05551a91cc55ed51a0cab497c651}
+
+\begin{DoxyCompactList}\small\item\em Stores the scene in which the game will be displayed. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a0e1620fff7c4542aa7363716d3221a92}{\hyperlink{classTimer}{Timer} $\ast$ \hyperlink{classGameState_a0e1620fff7c4542aa7363716d3221a92}{timer}}\label{classGameState_a0e1620fff7c4542aa7363716d3221a92}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTimer}{Timer} that keeps track of the time left to play the game. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a4ff8a3c50df75a74cb2dfcc93c534330}{const int \hyperlink{classGameState_a4ff8a3c50df75a74cb2dfcc93c534330}{screen\-Width}}\label{classGameState_a4ff8a3c50df75a74cb2dfcc93c534330}
+
+\begin{DoxyCompactList}\small\item\em Width of the window in which the game is played. \end{DoxyCompactList}\item 
+\hypertarget{classGameState_a8777654820b0bffdee16942ae7935324}{const int \hyperlink{classGameState_a8777654820b0bffdee16942ae7935324}{screen\-Height}}\label{classGameState_a8777654820b0bffdee16942ae7935324}
+
+\begin{DoxyCompactList}\small\item\em Height of the window in which the game is played. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The state of the Game Stores the state of the game. Stores all the \hyperlink{classGameObject}{Game\-Object} members, \hyperlink{classGem}{Gem} members, tile map, and handles update of state. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGameState_a284d3408e9b687a5c8c0072753d2e025}{\index{Game\-State@{Game\-State}!Game\-State@{Game\-State}}
+\index{Game\-State@{Game\-State}!GameState@{Game\-State}}
+\subsubsection[{Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}Game\-State\-::\-Game\-State (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Game\-Object} $\ast$ $>$ \&}]{game\-\_\-objects, }
+\item[{std\-::vector$<$ std\-::vector$<$ {\bf Tile} $\ast$ $>$ $>$ \&}]{tile\-\_\-map, }
+\item[{std\-::vector$<$ {\bf Gem} $\ast$ $>$ \&}]{input\-\_\-gems, }
+\item[{int}]{screen\-\_\-width, }
+\item[{int}]{screen\-\_\-height, }
+\item[{Q\-Graphics\-Scene $\ast$}]{scene\-\_\-local, }
+\item[{int}]{milliseconds\-\_\-per\-\_\-frame, }
+\item[{int}]{total\-\_\-time\-\_\-available}
+\end{DoxyParamCaption}
+)}}\label{classGameState_a284d3408e9b687a5c8c0072753d2e025}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-\_\-objects} & vector of \hyperlink{classGameObject}{Game\-Object} in the game \\
+\hline
+{\em tile\-\_\-map} & 2\-D vector of tiles for the game \\
+\hline
+{\em input\-\_\-gems} & vector of \hyperlink{classGem}{Gem} \\
+\hline
+{\em screen\-\_\-width} & width of the screen \\
+\hline
+{\em screen\-\_\-height} & height of the screen \\
+\hline
+{\em scene\-\_\-local} & scene where the game is displayed \\
+\hline
+{\em milliseconds\-\_\-per\-\_\-frame} & the time interval in which the frame is changed \\
+\hline
+{\em total\-\_\-time\-\_\-available} & the total time available to play the game \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameState_a545c8d3a7f4ecb25982983d8a1dfb634}{\index{Game\-State@{Game\-State}!get\-Game\-Objects@{get\-Game\-Objects}}
+\index{get\-Game\-Objects@{get\-Game\-Objects}!GameState@{Game\-State}}
+\subsubsection[{get\-Game\-Objects}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Game\-Object}$\ast$$>$ Game\-State\-::get\-Game\-Objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameState_a545c8d3a7f4ecb25982983d8a1dfb634}
+
+
+Get the list of \hyperlink{classGameObject}{Game\-Object} objects in the game. 
+
+\begin{DoxyReturn}{Returns}
+vector of pointers of all the \hyperlink{classGameObject}{Game\-Object} objects 
+\end{DoxyReturn}
+\hypertarget{classGameState_a241704c9ce9c7104a4acad810d4433ec}{\index{Game\-State@{Game\-State}!get\-Gems@{get\-Gems}}
+\index{get\-Gems@{get\-Gems}!GameState@{Game\-State}}
+\subsubsection[{get\-Gems}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Gem}$\ast$$>$ Game\-State\-::get\-Gems (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameState_a241704c9ce9c7104a4acad810d4433ec}
+
+
+Get the \hyperlink{classGem}{Gem} objects in the game. 
+
+\begin{DoxyReturn}{Returns}
+vector of pointers of all the \hyperlink{classGem}{Gem} objects 
+\end{DoxyReturn}
+\hypertarget{classGameState_af38b3925bdf2592414fe6276106553bb}{\index{Game\-State@{Game\-State}!get\-Scene@{get\-Scene}}
+\index{get\-Scene@{get\-Scene}!GameState@{Game\-State}}
+\subsubsection[{get\-Scene}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Graphics\-Scene$\ast$ Game\-State\-::get\-Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameState_af38b3925bdf2592414fe6276106553bb}
+
+
+Get the scene in which the game is being played. 
+
+\begin{DoxyReturn}{Returns}
+the scene 
+\end{DoxyReturn}
+\hypertarget{classGameState_a7cd456e4a0e6990e3fc313aff87f64a4}{\index{Game\-State@{Game\-State}!get\-Tile\-Map@{get\-Tile\-Map}}
+\index{get\-Tile\-Map@{get\-Tile\-Map}!GameState@{Game\-State}}
+\subsubsection[{get\-Tile\-Map}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::vector$<${\bf Tile}$\ast$$>$ $>$ Game\-State\-::get\-Tile\-Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameState_a7cd456e4a0e6990e3fc313aff87f64a4}
+
+
+Get the tile map of the game. 
+
+\begin{DoxyReturn}{Returns}
+2\-D vector of pointers to tiles in the game 
+\end{DoxyReturn}
+\hypertarget{classGameState_aeb4c715344671e22d6512d5e8dc12ffe}{\index{Game\-State@{Game\-State}!is\-Game\-Active@{is\-Game\-Active}}
+\index{is\-Game\-Active@{is\-Game\-Active}!GameState@{Game\-State}}
+\subsubsection[{is\-Game\-Active}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-State\-::is\-Game\-Active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameState_aeb4c715344671e22d6512d5e8dc12ffe}
+
+
+Get whether the game is still active. 
+
+\begin{DoxyReturn}{Returns}
+true, if the game is being played, false, if the game is over 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+gamestate.\-h\end{DoxyCompactItemize}

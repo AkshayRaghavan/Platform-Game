@@ -1,0 +1,125 @@
+\hypertarget{classInputHandler}{\section{Input\-Handler Class Reference}
+\label{classInputHandler}\index{Input\-Handler@{Input\-Handler}}
+}
+
+
+View that also handles key press and key release events Used to show the scene, and to receive key press and key release events and pass it where needed.  
+
+
+
+
+{\ttfamily \#include $<$inputhandler.\-h$>$}
+
+Inheritance diagram for Input\-Handler\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classInputHandler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInputHandler_a052ce3adff4a84f49b8380449cf05a5f}{Input\-Handler} (\hyperlink{classGameState}{Game\-State} $\ast$game\-\_\-state)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classInputHandler_a84d1b1ca593d4764114f75c739a8328a}{set\-Game\-Client} (\hyperlink{classClient}{Client} $\ast$client\-\_\-input)
+\begin{DoxyCompactList}\small\item\em Store the client object of the game when running in the client. \end{DoxyCompactList}\item 
+void \hyperlink{classInputHandler_a30e6f3d86c107f556ff6d904af33a09a}{set\-Game\-State} (\hyperlink{classGameState}{Game\-State} $\ast$game\-\_\-state)
+\begin{DoxyCompactList}\small\item\em Set the state of the game here. \end{DoxyCompactList}\item 
+void \hyperlink{classInputHandler_a8a3c7799e3930c10da915c7aebd1ae89}{key\-Press\-Event} (Q\-Key\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Receive key press events and process it. \end{DoxyCompactList}\item 
+void \hyperlink{classInputHandler_a399f396dc428ad1ada35a40170952c55}{key\-Release\-Event} (Q\-Key\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Receive key release events and process it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+View that also handles key press and key release events Used to show the scene, and to receive key press and key release events and pass it where needed. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classInputHandler_a052ce3adff4a84f49b8380449cf05a5f}{\index{Input\-Handler@{Input\-Handler}!Input\-Handler@{Input\-Handler}}
+\index{Input\-Handler@{Input\-Handler}!InputHandler@{Input\-Handler}}
+\subsubsection[{Input\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Input\-Handler\-::\-Input\-Handler (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-State} $\ast$}]{game\-\_\-state}
+\end{DoxyParamCaption}
+)}}\label{classInputHandler_a052ce3adff4a84f49b8380449cf05a5f}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-\_\-state} & the state of the current game \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classInputHandler_a8a3c7799e3930c10da915c7aebd1ae89}{\index{Input\-Handler@{Input\-Handler}!key\-Press\-Event@{key\-Press\-Event}}
+\index{key\-Press\-Event@{key\-Press\-Event}!InputHandler@{Input\-Handler}}
+\subsubsection[{key\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Input\-Handler\-::key\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Key\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classInputHandler_a8a3c7799e3930c10da915c7aebd1ae89}
+
+
+Receive key press events and process it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the key press event received \\
+\hline
+\end{DoxyParams}
+\hypertarget{classInputHandler_a399f396dc428ad1ada35a40170952c55}{\index{Input\-Handler@{Input\-Handler}!key\-Release\-Event@{key\-Release\-Event}}
+\index{key\-Release\-Event@{key\-Release\-Event}!InputHandler@{Input\-Handler}}
+\subsubsection[{key\-Release\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Input\-Handler\-::key\-Release\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Key\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classInputHandler_a399f396dc428ad1ada35a40170952c55}
+
+
+Receive key release events and process it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the key release event \\
+\hline
+\end{DoxyParams}
+\hypertarget{classInputHandler_a84d1b1ca593d4764114f75c739a8328a}{\index{Input\-Handler@{Input\-Handler}!set\-Game\-Client@{set\-Game\-Client}}
+\index{set\-Game\-Client@{set\-Game\-Client}!InputHandler@{Input\-Handler}}
+\subsubsection[{set\-Game\-Client}]{\setlength{\rightskip}{0pt plus 5cm}void Input\-Handler\-::set\-Game\-Client (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{client\-\_\-input}
+\end{DoxyParamCaption}
+)}}\label{classInputHandler_a84d1b1ca593d4764114f75c739a8328a}
+
+
+Store the client object of the game when running in the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\-\_\-input} & \hyperlink{classClient}{Client} object to be stored \\
+\hline
+\end{DoxyParams}
+\hypertarget{classInputHandler_a30e6f3d86c107f556ff6d904af33a09a}{\index{Input\-Handler@{Input\-Handler}!set\-Game\-State@{set\-Game\-State}}
+\index{set\-Game\-State@{set\-Game\-State}!InputHandler@{Input\-Handler}}
+\subsubsection[{set\-Game\-State}]{\setlength{\rightskip}{0pt plus 5cm}void Input\-Handler\-::set\-Game\-State (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-State} $\ast$}]{game\-\_\-state}
+\end{DoxyParamCaption}
+)}}\label{classInputHandler_a30e6f3d86c107f556ff6d904af33a09a}
+
+
+Set the state of the game here. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-\_\-state} & the state of the game \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inputhandler.\-h\end{DoxyCompactItemize}

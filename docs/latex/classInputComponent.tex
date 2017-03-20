@@ -1,0 +1,111 @@
+\hypertarget{classInputComponent}{\section{Input\-Component Class Reference}
+\label{classInputComponent}\index{Input\-Component@{Input\-Component}}
+}
+
+
+Component to handle inputs given to the \hyperlink{classGameObject}{Game\-Object} Handles the accepting of inputs, processes it, and updates the \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object} accordingly.  
+
+
+
+
+{\ttfamily \#include $<$inputcomponent.\-h$>$}
+
+Inheritance diagram for Input\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classInputComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classInputComponent_ae3af150f66c8e72ea4bef4b089c48d99}{\hyperlink{classInputComponent_ae3af150f66c8e72ea4bef4b089c48d99}{Input\-Component} ()}\label{classInputComponent_ae3af150f66c8e72ea4bef4b089c48d99}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classInputComponent_a2004af6e68e0206f045518cb6ee43981}{virtual \hyperlink{classInputComponent_a2004af6e68e0206f045518cb6ee43981}{$\sim$\-Input\-Component} ()}\label{classInputComponent_a2004af6e68e0206f045518cb6ee43981}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classInputComponent_a93e790f7279e842ee249fefe7dbf7b32}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)=0
+\begin{DoxyCompactList}\small\item\em Updates the \hyperlink{classState}{State} of game\-Object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classInputComponent_a6e9e903cdb89d7eb7d9ab89d1734f7aa}{event} (Q\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Receives events, processes it, and calls update accordingly. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classInputComponent_a27a4de99780ddf7d7a4f9d469f13640c}{accepts\-Input} ()=0
+\begin{DoxyCompactList}\small\item\em Get whether the corresponding \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classInputComponent_ab4ab656db9378e27c34ff39d1e790308}{\hyperlink{classKeys}{Keys} $\ast$ \hyperlink{classInputComponent_ab4ab656db9378e27c34ff39d1e790308}{keys}}\label{classInputComponent_ab4ab656db9378e27c34ff39d1e790308}
+
+\begin{DoxyCompactList}\small\item\em Stores the keys corresponding to the motion of the \hyperlink{classGameObject}{Game\-Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Component to handle inputs given to the \hyperlink{classGameObject}{Game\-Object} Handles the accepting of inputs, processes it, and updates the \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object} accordingly. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classInputComponent_a27a4de99780ddf7d7a4f9d469f13640c}{\index{Input\-Component@{Input\-Component}!accepts\-Input@{accepts\-Input}}
+\index{accepts\-Input@{accepts\-Input}!InputComponent@{Input\-Component}}
+\subsubsection[{accepts\-Input}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Input\-Component\-::accepts\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classInputComponent_a27a4de99780ddf7d7a4f9d469f13640c}
+
+
+Get whether the corresponding \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. 
+
+\begin{DoxyReturn}{Returns}
+true, if yes, false, otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classHumanInputComponent_ac6701b0da2dea7c3764d9159625f269f}{Human\-Input\-Component}, \hyperlink{classComputerInputComponent_a20fda9adf00a1be24b9bcca0b8662a35}{Computer\-Input\-Component}, and \hyperlink{classEmptyInputComponent_a821f567bd824806e2322f22ce5955b06}{Empty\-Input\-Component}.
+
+\hypertarget{classInputComponent_a6e9e903cdb89d7eb7d9ab89d1734f7aa}{\index{Input\-Component@{Input\-Component}!event@{event}}
+\index{event@{event}!InputComponent@{Input\-Component}}
+\subsubsection[{event}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Input\-Component\-::event (
+\begin{DoxyParamCaption}
+\item[{Q\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classInputComponent_a6e9e903cdb89d7eb7d9ab89d1734f7aa}
+
+
+Receives events, processes it, and calls update accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & the event received \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the event is recogized and processed, false, otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classHumanInputComponent_ac06da10a796d7975c1a97c2618e8fcfd}{Human\-Input\-Component}.
+
+\hypertarget{classInputComponent_a93e790f7279e842ee249fefe7dbf7b32}{\index{Input\-Component@{Input\-Component}!update@{update}}
+\index{update@{update}!InputComponent@{Input\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Input\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classInputComponent_a93e790f7279e842ee249fefe7dbf7b32}
+
+
+Updates the \hyperlink{classState}{State} of game\-Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} to be updated \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classHumanInputComponent_a10e31c29b86c3c6fff99e699dca28e82}{Human\-Input\-Component}, \hyperlink{classComputerInputComponent_abddd2bdc7efb465f49173a3634148bbc}{Computer\-Input\-Component}, and \hyperlink{classEmptyInputComponent_a5e11b3048e027761e465072cda02a034}{Empty\-Input\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inputcomponent.\-h\end{DoxyCompactItemize}

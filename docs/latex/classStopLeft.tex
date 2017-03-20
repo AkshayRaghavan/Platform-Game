@@ -1,0 +1,83 @@
+\hypertarget{classStopLeft}{\section{Stop\-Left Class Reference}
+\label{classStopLeft}\index{Stop\-Left@{Stop\-Left}}
+}
+
+
+The state in which the player is standing facing left This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}.  
+
+
+
+
+{\ttfamily \#include $<$stopleft.\-h$>$}
+
+Inheritance diagram for Stop\-Left\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classStopLeft}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classStopLeft_ae09316bd4da3643256b6b7d464117a58}{virtual \hyperlink{classStopLeft_ae09316bd4da3643256b6b7d464117a58}{$\sim$\-Stop\-Left} ()}\label{classStopLeft_ae09316bd4da3643256b6b7d464117a58}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classState}{State} $\ast$ \hyperlink{classStopLeft_ae853fc7d82f2a8d306adc186ab9e52dd}{update} (\hyperlink{classInputComponent}{Input\-Component} $\ast$input\-Component, std\-::set$<$ Qt\-::\-Key $>$ key)
+\begin{DoxyCompactList}\small\item\em Updates the state on the basis of the keys currently pressed. \end{DoxyCompactList}\item 
+virtual \hyperlink{namespaceenumerator_a5fc7b342c2c633e1037b07cea237a222}{enumerator\-::\-State} \hyperlink{classStopLeft_a715c78b6093aa8624c41582c2435ee69}{type} ()
+\begin{DoxyCompactList}\small\item\em Provides the type of the \hyperlink{classState}{State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The state in which the player is standing facing left This also handles the responds to key press and key release inputs so as to change the state of the \hyperlink{classGameObject}{Game\-Object}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classStopLeft_a715c78b6093aa8624c41582c2435ee69}{\index{Stop\-Left@{Stop\-Left}!type@{type}}
+\index{type@{type}!StopLeft@{Stop\-Left}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf enumerator\-::\-State} Stop\-Left\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classStopLeft_a715c78b6093aa8624c41582c2435ee69}
+
+
+Provides the type of the \hyperlink{classState}{State}. 
+
+\begin{DoxyReturn}{Returns}
+enumerator\-::\-State\-::\-S\-T\-O\-P\-\_\-\-L\-E\-F\-T 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a8c6cc1ff1ecdf88e586f857339b7e071}{State}.
+
+\hypertarget{classStopLeft_ae853fc7d82f2a8d306adc186ab9e52dd}{\index{Stop\-Left@{Stop\-Left}!update@{update}}
+\index{update@{update}!StopLeft@{Stop\-Left}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf State}$\ast$ Stop\-Left\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{input\-Component, }
+\item[{std\-::set$<$ Qt\-::\-Key $>$}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classStopLeft_ae853fc7d82f2a8d306adc186ab9e52dd}
+
+
+Updates the state on the basis of the keys currently pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Component} & the \hyperlink{classInputComponent}{Input\-Component} of the \hyperlink{classGameObject}{Game\-Object} whose state is being updated \\
+\hline
+{\em key} & the set of keys currently pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new state 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classState_a5f2bc9804614c5ca9e7feb7d8c57668d}{State}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+stopleft.\-h\end{DoxyCompactItemize}

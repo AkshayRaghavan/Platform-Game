@@ -1,0 +1,179 @@
+\hypertarget{classPhysicsComponent}{\section{Physics\-Component Class Reference}
+\label{classPhysicsComponent}\index{Physics\-Component@{Physics\-Component}}
+}
+
+
+Component that governs the physics handling of the \hyperlink{classGameObject}{Game\-Object} Handles the movement of the \hyperlink{classGameObject}{Game\-Object}, and sets the position on the scene based on the \hyperlink{classState}{State}.  
+
+
+
+
+{\ttfamily \#include $<$physicscomponent.\-h$>$}
+
+Inheritance diagram for Physics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPhysicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicsComponent_aeb544a2a04cde8f050c6a51ec436ec4e}{\hyperlink{classPhysicsComponent_aeb544a2a04cde8f050c6a51ec436ec4e}{Physics\-Component} ()}\label{classPhysicsComponent_aeb544a2a04cde8f050c6a51ec436ec4e}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_afadf481ee69c12d205435ede58da6121}{virtual \hyperlink{classPhysicsComponent_afadf481ee69c12d205435ede58da6121}{$\sim$\-Physics\-Component} ()}\label{classPhysicsComponent_afadf481ee69c12d205435ede58da6121}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_a5498919fee09ce15271a5c273c2dc836}{virtual void \hyperlink{classPhysicsComponent_a5498919fee09ce15271a5c273c2dc836}{update} (\hyperlink{classGameObject}{Game\-Object} \&)=0}\label{classPhysicsComponent_a5498919fee09ce15271a5c273c2dc836}
+
+\begin{DoxyCompactList}\small\item\em Updates the \hyperlink{classGameObject}{Game\-Object} object's position based on \hyperlink{classState}{State}. \end{DoxyCompactList}\item 
+bool \hyperlink{classPhysicsComponent_a75cfebb94e323fd00935c369b2b8e11f}{in\-Range} (Q\-Point\-F point)
+\begin{DoxyCompactList}\small\item\em Checks whether it is valid for \hyperlink{classGameObject}{Game\-Object} to be at point. \end{DoxyCompactList}\item 
+bool \hyperlink{classPhysicsComponent_ab8dc7351bb7ac17177840669ef6abaaa}{test\-Point} (Q\-Point\-F point)
+\begin{DoxyCompactList}\small\item\em Checks whether it is valid for \hyperlink{classGameObject}{Game\-Object} to be at point. \end{DoxyCompactList}\item 
+bool \hyperlink{classPhysicsComponent_ae0c5998a85b314cb5ea324f509f919a8}{test\-Position\-For\-Player} (Q\-Point\-F input\-\_\-point, qreal player\-\_\-width, qreal player\-\_\-height)
+\begin{DoxyCompactList}\small\item\em Check if a \hyperlink{classGameObject}{Game\-Object} can be placed at point such that all the points it covers are valid. \end{DoxyCompactList}\item 
+bool \hyperlink{classPhysicsComponent_a2f2fab8cd26c709f50d44d404455f700}{has\-No\-Platform\-Under} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Check whether game\-Object would start falling. \end{DoxyCompactList}\item 
+bool \hyperlink{classPhysicsComponent_a552bad9336bf5cf9e9ee73c685a53edd}{has\-Obstacle\-In\-Front} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Check whether game\-Object has an obstacle right in front of it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicsComponent_aa1d5e5b95523225244e36df0f7490465}{std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \hyperlink{classPhysicsComponent_aa1d5e5b95523225244e36df0f7490465}{tiles\-Map}}\label{classPhysicsComponent_aa1d5e5b95523225244e36df0f7490465}
+
+\begin{DoxyCompactList}\small\item\em Stores the tile map of the game. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_a838b5b49b38cfaf7a1a4b4ab2ff6accd}{Q\-Graphics\-Scene $\ast$ \hyperlink{classPhysicsComponent_a838b5b49b38cfaf7a1a4b4ab2ff6accd}{scene}}\label{classPhysicsComponent_a838b5b49b38cfaf7a1a4b4ab2ff6accd}
+
+\begin{DoxyCompactList}\small\item\em Stores the scene of the game. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_aafd178b1852f4907462b02236675bc8e}{qreal \hyperlink{classPhysicsComponent_aafd178b1852f4907462b02236675bc8e}{width\-\_\-of\-\_\-tile}}\label{classPhysicsComponent_aafd178b1852f4907462b02236675bc8e}
+
+\begin{DoxyCompactList}\small\item\em Width of a tile in the tile map. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_af2fccaddf29b9d7beb69e90877d3f6b1}{qreal \hyperlink{classPhysicsComponent_af2fccaddf29b9d7beb69e90877d3f6b1}{height\-\_\-of\-\_\-tile}}\label{classPhysicsComponent_af2fccaddf29b9d7beb69e90877d3f6b1}
+
+\begin{DoxyCompactList}\small\item\em Height of a tile in the tile map. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_abb107c2629e5fa404b0ec29517ead1fe}{qreal \hyperlink{classPhysicsComponent_abb107c2629e5fa404b0ec29517ead1fe}{screen\-Width}}\label{classPhysicsComponent_abb107c2629e5fa404b0ec29517ead1fe}
+
+\begin{DoxyCompactList}\small\item\em Width of the window in which the game runs. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_a1541f4f1eb4a7e231683f2769ed397f3}{qreal \hyperlink{classPhysicsComponent_a1541f4f1eb4a7e231683f2769ed397f3}{screen\-Height}}\label{classPhysicsComponent_a1541f4f1eb4a7e231683f2769ed397f3}
+
+\begin{DoxyCompactList}\small\item\em Height of the window in which the game runs. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_ae88a255f60e8d4bcaab4b431d6744562}{int \hyperlink{classPhysicsComponent_ae88a255f60e8d4bcaab4b431d6744562}{cur\-Jump\-Count}}\label{classPhysicsComponent_ae88a255f60e8d4bcaab4b431d6744562}
+
+\begin{DoxyCompactList}\small\item\em Stores the number of frames more the object will move up when jumping. \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsComponent_af619d6984f110bb81bdfe5889d1ef431}{int \hyperlink{classPhysicsComponent_af619d6984f110bb81bdfe5889d1ef431}{max\-Jump\-Count}}\label{classPhysicsComponent_af619d6984f110bb81bdfe5889d1ef431}
+
+\begin{DoxyCompactList}\small\item\em Stores the total number of tiles the object moves up when jumping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Component that governs the physics handling of the \hyperlink{classGameObject}{Game\-Object} Handles the movement of the \hyperlink{classGameObject}{Game\-Object}, and sets the position on the scene based on the \hyperlink{classState}{State}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classPhysicsComponent_a2f2fab8cd26c709f50d44d404455f700}{\index{Physics\-Component@{Physics\-Component}!has\-No\-Platform\-Under@{has\-No\-Platform\-Under}}
+\index{has\-No\-Platform\-Under@{has\-No\-Platform\-Under}!PhysicsComponent@{Physics\-Component}}
+\subsubsection[{has\-No\-Platform\-Under}]{\setlength{\rightskip}{0pt plus 5cm}bool Physics\-Component\-::has\-No\-Platform\-Under (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)}}\label{classPhysicsComponent_a2f2fab8cd26c709f50d44d404455f700}
+
+
+Check whether game\-Object would start falling. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} to test on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if not, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classPhysicsComponent_a552bad9336bf5cf9e9ee73c685a53edd}{\index{Physics\-Component@{Physics\-Component}!has\-Obstacle\-In\-Front@{has\-Obstacle\-In\-Front}}
+\index{has\-Obstacle\-In\-Front@{has\-Obstacle\-In\-Front}!PhysicsComponent@{Physics\-Component}}
+\subsubsection[{has\-Obstacle\-In\-Front}]{\setlength{\rightskip}{0pt plus 5cm}bool Physics\-Component\-::has\-Obstacle\-In\-Front (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)}}\label{classPhysicsComponent_a552bad9336bf5cf9e9ee73c685a53edd}
+
+
+Check whether game\-Object has an obstacle right in front of it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} to test on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if yes, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classPhysicsComponent_a75cfebb94e323fd00935c369b2b8e11f}{\index{Physics\-Component@{Physics\-Component}!in\-Range@{in\-Range}}
+\index{in\-Range@{in\-Range}!PhysicsComponent@{Physics\-Component}}
+\subsubsection[{in\-Range}]{\setlength{\rightskip}{0pt plus 5cm}bool Physics\-Component\-::in\-Range (
+\begin{DoxyParamCaption}
+\item[{Q\-Point\-F}]{point}
+\end{DoxyParamCaption}
+)}}\label{classPhysicsComponent_a75cfebb94e323fd00935c369b2b8e11f}
+
+
+Checks whether it is valid for \hyperlink{classGameObject}{Game\-Object} to be at point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the point to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if valid position in tile map free of obstacles, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classPhysicsComponent_ab8dc7351bb7ac17177840669ef6abaaa}{\index{Physics\-Component@{Physics\-Component}!test\-Point@{test\-Point}}
+\index{test\-Point@{test\-Point}!PhysicsComponent@{Physics\-Component}}
+\subsubsection[{test\-Point}]{\setlength{\rightskip}{0pt plus 5cm}bool Physics\-Component\-::test\-Point (
+\begin{DoxyParamCaption}
+\item[{Q\-Point\-F}]{point}
+\end{DoxyParamCaption}
+)}}\label{classPhysicsComponent_ab8dc7351bb7ac17177840669ef6abaaa}
+
+
+Checks whether it is valid for \hyperlink{classGameObject}{Game\-Object} to be at point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the point to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if valid position in tile map free of obstacles, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classPhysicsComponent_ae0c5998a85b314cb5ea324f509f919a8}{\index{Physics\-Component@{Physics\-Component}!test\-Position\-For\-Player@{test\-Position\-For\-Player}}
+\index{test\-Position\-For\-Player@{test\-Position\-For\-Player}!PhysicsComponent@{Physics\-Component}}
+\subsubsection[{test\-Position\-For\-Player}]{\setlength{\rightskip}{0pt plus 5cm}bool Physics\-Component\-::test\-Position\-For\-Player (
+\begin{DoxyParamCaption}
+\item[{Q\-Point\-F}]{input\-\_\-point, }
+\item[{qreal}]{player\-\_\-width, }
+\item[{qreal}]{player\-\_\-height}
+\end{DoxyParamCaption}
+)}}\label{classPhysicsComponent_ae0c5998a85b314cb5ea324f509f919a8}
+
+
+Check if a \hyperlink{classGameObject}{Game\-Object} can be placed at point such that all the points it covers are valid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-point} & the point to be checked \\
+\hline
+{\em player\-\_\-width} & the width of the \hyperlink{classGraphicsComponent}{Graphics\-Component} of the \hyperlink{classGameObject}{Game\-Object} \\
+\hline
+{\em player\-\_\-height} & the height of the \hyperlink{classGraphicsComponent}{Graphics\-Component} of the \hyperlink{classGameObject}{Game\-Object} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if valid position in tile map free of obstacles, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+physicscomponent.\-h\end{DoxyCompactItemize}

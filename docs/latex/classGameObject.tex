@@ -1,0 +1,381 @@
+\hypertarget{classGameObject}{\section{Game\-Object Class Reference}
+\label{classGameObject}\index{Game\-Object@{Game\-Object}}
+}
+
+
+A Game Object This represents all the Game Objects in the game, including players, monsters and fire and the way to create them, display them, move them, and update state $\ast$.  
+
+
+
+
+{\ttfamily \#include $<$gameobject.\-h$>$}
+
+Inheritance diagram for Game\-Object\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGameObject}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGameObject_a461843e85bd8bfd205016e4adfd32489}{set\-Is\-Dead} (bool input)
+\begin{DoxyCompactList}\small\item\em Sets the value of is\-Dead. \end{DoxyCompactList}\item 
+bool \hyperlink{classGameObject_ab517f9caa5b662ec7ee8a8ead945ec8c}{get\-Is\-Dead} ()
+\begin{DoxyCompactList}\small\item\em Get the value of is\-Dead. \end{DoxyCompactList}\item 
+\hyperlink{namespaceenumerator_a74b6f7a3aada6983503ce0f88ee90b29}{enumerator\-::\-Object\-Type} \hyperlink{classGameObject_a5f4df627b722ca069bb497b83cb2cd47}{get\-Object\-Type} ()
+\begin{DoxyCompactList}\small\item\em Get the value of objecttype. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_a20cc88a6d715503efcd3746d6aceb027}{set\-Object\-Type} (\hyperlink{namespaceenumerator_a74b6f7a3aada6983503ce0f88ee90b29}{enumerator\-::\-Object\-Type} input)
+\begin{DoxyCompactList}\small\item\em Sets the value of objecttype. \end{DoxyCompactList}\item 
+\hyperlink{classGameObject_a3a6bd333e736ddabb177574217f6a93b}{Game\-Object} (\hyperlink{classInputComponent}{Input\-Component} $\ast$input\-\_\-component, \hyperlink{classGraphicsComponent}{Graphics\-Component} $\ast$graphics\-\_\-component, \hyperlink{classPhysicsComponent}{Physics\-Component} $\ast$physics\-\_\-component, \hyperlink{classScoreComponent}{Score\-Component} $\ast$score\-\_\-component, const int \&max\-\_\-jump\-\_\-count, int time\-\_\-left=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a224d4f6d9dd75c8a6f9d022eaf586fd9}{virtual \hyperlink{classGameObject_a224d4f6d9dd75c8a6f9d022eaf586fd9}{$\sim$\-Game\-Object} ()}\label{classGameObject_a224d4f6d9dd75c8a6f9d022eaf586fd9}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_ae6c3730fbfc5fea46106466166177460}{set\-State} (\hyperlink{classState}{State} $\ast$input\-\_\-state)
+\begin{DoxyCompactList}\small\item\em Sets the value of sate. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_a39aa8c311f514b871e6781bb076d8fdd}{set\-Jumping\-State} (\hyperlink{classJumpingState}{Jumping\-State} $\ast$input\-\_\-jumping\-\_\-state)
+\begin{DoxyCompactList}\small\item\em Sets the value of jumping\-State. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_a23073437c24792019aac0b0663e93508}{set\-Score} (int input\-\_\-score)
+\begin{DoxyCompactList}\small\item\em Sets the score of the \hyperlink{classGameObject}{Game\-Object}. \end{DoxyCompactList}\item 
+int \hyperlink{classGameObject_a3bca3bee655746fb126bae49968d57fb}{get\-Score} ()
+\begin{DoxyCompactList}\small\item\em Get the value of score. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_a9ecb58bea379eeb1d0b973b743861bf1}{set\-Name} (Q\-String name\-\_\-local)
+\begin{DoxyCompactList}\small\item\em Sets the user name of the \hyperlink{classGameObject}{Game\-Object}, applies to players. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{classGameObject_a2dd3ed6457725c3b4730e93dd070f927}{get\-Name} ()
+\begin{DoxyCompactList}\small\item\em Get the user name of the \hyperlink{classGameObject}{Game\-Object}, applies to players. \end{DoxyCompactList}\item 
+int \hyperlink{classGameObject_a12af00f8b80f69e679e00c75b237a11c}{get\-Time\-Left} ()
+\begin{DoxyCompactList}\small\item\em Get the time left for the \hyperlink{classGameObject}{Game\-Object} in the game, applies to players. \end{DoxyCompactList}\item 
+bool \hyperlink{classGameObject_a6fc32284114a6d3b45c3d0485c688146}{is\-Accepting\-Input} ()
+\begin{DoxyCompactList}\small\item\em Get whether the \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_a9271d8661100d433a104601cd0d0d891}{set\-Accepting\-Input} (bool value)
+\begin{DoxyCompactList}\small\item\em Set whether the \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. \end{DoxyCompactList}\item 
+void \hyperlink{classGameObject_ab10b02b28281e7398cd9f05bb7bea9c3}{set\-Pos\-X\-Y} (Q\-Point\-F point)
+\begin{DoxyCompactList}\small\item\em Set the position of the \hyperlink{classGameObject}{Game\-Object} in the next frame. \end{DoxyCompactList}\item 
+Q\-Point\-F \hyperlink{classGameObject_ae4529f9eeec4153ee11ff685d5c4443b}{get\-Pos\-X\-Y} ()
+\begin{DoxyCompactList}\small\item\em Get the position where the \hyperlink{classGameObject}{Game\-Object} will go in the next frame. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a13fe91332392ef175ed61e57e9414111}{void \hyperlink{classGameObject_a13fe91332392ef175ed61e57e9414111}{update\-Pos} ()}\label{classGameObject_a13fe91332392ef175ed61e57e9414111}
+
+\begin{DoxyCompactList}\small\item\em Update the position of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameObject_a05bfcec90c5fd5579ae901ad09919b12}{Q\-String \hyperlink{classGameObject_a05bfcec90c5fd5579ae901ad09919b12}{name}}\label{classGameObject_a05bfcec90c5fd5579ae901ad09919b12}
+
+\begin{DoxyCompactList}\small\item\em Stores the username, applies to players. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a6ca856e43814c856465e252c2620b4fd}{int \hyperlink{classGameObject_a6ca856e43814c856465e252c2620b4fd}{time\-Left}}\label{classGameObject_a6ca856e43814c856465e252c2620b4fd}
+
+\begin{DoxyCompactList}\small\item\em Stores the time left when the player completed the game, applies to players. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a32194bfeb8fa7c182b461b3d81f5b4f8}{const int \hyperlink{classGameObject_a32194bfeb8fa7c182b461b3d81f5b4f8}{max\-Jump\-Count}}\label{classGameObject_a32194bfeb8fa7c182b461b3d81f5b4f8}
+
+\begin{DoxyCompactList}\small\item\em Specifies the number of frames the \hyperlink{classGameObject}{Game\-Object} moves up on jumping. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a5d0f552ee77c70c8f28b11dd792bf5e9}{\hyperlink{classInputComponent}{Input\-Component} $\ast$ \hyperlink{classGameObject_a5d0f552ee77c70c8f28b11dd792bf5e9}{input\-Component}}\label{classGameObject_a5d0f552ee77c70c8f28b11dd792bf5e9}
+
+\begin{DoxyCompactList}\small\item\em Component that handles input Handles keyboard input and state changes of the \hyperlink{classGameObject}{Game\-Object}, and sets states appropriately. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_abb548a6a6010953cded6906801ef4d2b}{\hyperlink{classGraphicsComponent}{Graphics\-Component} $\ast$ \hyperlink{classGameObject_abb548a6a6010953cded6906801ef4d2b}{graphics\-Component}}\label{classGameObject_abb548a6a6010953cded6906801ef4d2b}
+
+\begin{DoxyCompactList}\small\item\em Component that handles graphics Handles the drawing of the \hyperlink{classGameObject}{Game\-Object} on the sceen, stores how it is drawn, and updates based on state. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a670ef0bb2154d5941a3da1c8ed45a0b8}{\hyperlink{classPhysicsComponent}{Physics\-Component} $\ast$ \hyperlink{classGameObject_a670ef0bb2154d5941a3da1c8ed45a0b8}{physics\-Component}}\label{classGameObject_a670ef0bb2154d5941a3da1c8ed45a0b8}
+
+\begin{DoxyCompactList}\small\item\em Component that handles physics Handles the movement of \hyperlink{classGameObject}{Game\-Object} based on the current state, and updates the current position on the scene. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a944d6d66cb7b92a474a4fe35a477897d}{\hyperlink{classScoreComponent}{Score\-Component} $\ast$ \hyperlink{classGameObject_a944d6d66cb7b92a474a4fe35a477897d}{score\-Component}}\label{classGameObject_a944d6d66cb7b92a474a4fe35a477897d}
+
+\begin{DoxyCompactList}\small\item\em Component that handles score Handles the score of the \hyperlink{classGameObject}{Game\-Object}, the display of the score, and updates the score. Applies to players. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a787f40d5aee7507cdd6b8bb61dd8c19f}{\hyperlink{classState}{State} $\ast$ \hyperlink{classGameObject_a787f40d5aee7507cdd6b8bb61dd8c19f}{state}}\label{classGameObject_a787f40d5aee7507cdd6b8bb61dd8c19f}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object} Stores the state of the \hyperlink{classGameObject}{Game\-Object}, in particular the state of its motion in the x direction Includes Moving Left, Moving Right, Stationary facing left, Stationary facing right Dead facing left, Dead facing right Also handles changes to the state based on the current key combination. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a980519676ac2aa7768729c01d768dad7}{\hyperlink{classJumpingState}{Jumping\-State} $\ast$ \hyperlink{classGameObject_a980519676ac2aa7768729c01d768dad7}{jumping\-State}}\label{classGameObject_a980519676ac2aa7768729c01d768dad7}
+
+\begin{DoxyCompactList}\small\item\em Jumping \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object} Stores the Jumping \hyperlink{classState}{State} of the \hyperlink{classGameObject}{Game\-Object}, and consists of \hyperlink{classIsJumping}{Is\-Jumping} and \hyperlink{classIsNotJumping}{Is\-Not\-Jumping} Also handles changes to the \hyperlink{classJumpingState}{Jumping\-State} based on the current key combination. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameObject_a5711f465dd7765919f5d8fe21673aaa3}{bool \hyperlink{classGameObject_a5711f465dd7765919f5d8fe21673aaa3}{accepts\-Input}}\label{classGameObject_a5711f465dd7765919f5d8fe21673aaa3}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether the \hyperlink{classGameObject}{Game\-Object} accepts keyboard input. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_af684f5c351429efdb3bf376eba3beaf9}{bool \hyperlink{classGameObject_af684f5c351429efdb3bf376eba3beaf9}{is\-Dead}}\label{classGameObject_af684f5c351429efdb3bf376eba3beaf9}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether the \hyperlink{classGameObject}{Game\-Object} is alive, applicable to players. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_ac4a4836d4e250af380475bf0791c4234}{\hyperlink{namespaceenumerator_a74b6f7a3aada6983503ce0f88ee90b29}{enumerator\-::\-Object\-Type} \hyperlink{classGameObject_ac4a4836d4e250af380475bf0791c4234}{objecttype}}\label{classGameObject_ac4a4836d4e250af380475bf0791c4234}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether the \hyperlink{classGameObject}{Game\-Object} is a player or a monster, value undefined otherwise. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a282f206512274bde89acc9b1a5870e6e}{int \hyperlink{classGameObject_a282f206512274bde89acc9b1a5870e6e}{score}}\label{classGameObject_a282f206512274bde89acc9b1a5870e6e}
+
+\begin{DoxyCompactList}\small\item\em Specifies the score of the \hyperlink{classGameObject}{Game\-Object}, applicable to players. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a80707284fe2dfb659cbf6d5602033fc4}{qreal \hyperlink{classGameObject_a80707284fe2dfb659cbf6d5602033fc4}{set\-Pos\-X}}\label{classGameObject_a80707284fe2dfb659cbf6d5602033fc4}
+
+\begin{DoxyCompactList}\small\item\em Specifies x coordinate where the \hyperlink{classGameObject}{Game\-Object} needs to be placed in the next frame. \end{DoxyCompactList}\item 
+\hypertarget{classGameObject_a3fb32317c043ba8cc2dc4744d5ff463a}{qreal \hyperlink{classGameObject_a3fb32317c043ba8cc2dc4744d5ff463a}{set\-Pos\-Y}}\label{classGameObject_a3fb32317c043ba8cc2dc4744d5ff463a}
+
+\begin{DoxyCompactList}\small\item\em Specifies y coordinate where the \hyperlink{classGameObject}{Game\-Object} needs to be placed in the next frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Game Object This represents all the Game Objects in the game, including players, monsters and fire and the way to create them, display them, move them, and update state $\ast$. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGameObject_a3a6bd333e736ddabb177574217f6a93b}{\index{Game\-Object@{Game\-Object}!Game\-Object@{Game\-Object}}
+\index{Game\-Object@{Game\-Object}!GameObject@{Game\-Object}}
+\subsubsection[{Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}Game\-Object\-::\-Game\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{input\-\_\-component, }
+\item[{{\bf Graphics\-Component} $\ast$}]{graphics\-\_\-component, }
+\item[{{\bf Physics\-Component} $\ast$}]{physics\-\_\-component, }
+\item[{{\bf Score\-Component} $\ast$}]{score\-\_\-component, }
+\item[{const int \&}]{max\-\_\-jump\-\_\-count, }
+\item[{int}]{time\-\_\-left = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a3a6bd333e736ddabb177574217f6a93b}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-component} & value of input\-Component \\
+\hline
+{\em graphics\-\_\-component} & value of graphics\-Component \\
+\hline
+{\em physics\-\_\-component} & value of physics\-Component \\
+\hline
+{\em score\-\_\-component} & value of score\-Component \\
+\hline
+{\em max\-\_\-jump\-\_\-count} & value of max\-Jump\-Count \\
+\hline
+{\em time\-\_\-left} & time available for the \hyperlink{classGameObject}{Game\-Object} to play in the game when started \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameObject_ab517f9caa5b662ec7ee8a8ead945ec8c}{\index{Game\-Object@{Game\-Object}!get\-Is\-Dead@{get\-Is\-Dead}}
+\index{get\-Is\-Dead@{get\-Is\-Dead}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Is\-Dead}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-Object\-::get\-Is\-Dead (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_ab517f9caa5b662ec7ee8a8ead945ec8c}
+
+
+Get the value of is\-Dead. 
+
+\begin{DoxyReturn}{Returns}
+value of is\-Dead 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a2dd3ed6457725c3b4730e93dd070f927}{\index{Game\-Object@{Game\-Object}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Game\-Object\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a2dd3ed6457725c3b4730e93dd070f927}
+
+
+Get the user name of the \hyperlink{classGameObject}{Game\-Object}, applies to players. 
+
+\begin{DoxyReturn}{Returns}
+the value of the user name 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a5f4df627b722ca069bb497b83cb2cd47}{\index{Game\-Object@{Game\-Object}!get\-Object\-Type@{get\-Object\-Type}}
+\index{get\-Object\-Type@{get\-Object\-Type}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Object\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf enumerator\-::\-Object\-Type} Game\-Object\-::get\-Object\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a5f4df627b722ca069bb497b83cb2cd47}
+
+
+Get the value of objecttype. 
+
+\begin{DoxyReturn}{Returns}
+value of objecttype 
+\end{DoxyReturn}
+\hypertarget{classGameObject_ae4529f9eeec4153ee11ff685d5c4443b}{\index{Game\-Object@{Game\-Object}!get\-Pos\-X\-Y@{get\-Pos\-X\-Y}}
+\index{get\-Pos\-X\-Y@{get\-Pos\-X\-Y}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Pos\-X\-Y}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Point\-F Game\-Object\-::get\-Pos\-X\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_ae4529f9eeec4153ee11ff685d5c4443b}
+
+
+Get the position where the \hyperlink{classGameObject}{Game\-Object} will go in the next frame. 
+
+\begin{DoxyReturn}{Returns}
+the point 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a3bca3bee655746fb126bae49968d57fb}{\index{Game\-Object@{Game\-Object}!get\-Score@{get\-Score}}
+\index{get\-Score@{get\-Score}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Score}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a3bca3bee655746fb126bae49968d57fb}
+
+
+Get the value of score. 
+
+\begin{DoxyReturn}{Returns}
+the value of score 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a12af00f8b80f69e679e00c75b237a11c}{\index{Game\-Object@{Game\-Object}!get\-Time\-Left@{get\-Time\-Left}}
+\index{get\-Time\-Left@{get\-Time\-Left}!GameObject@{Game\-Object}}
+\subsubsection[{get\-Time\-Left}]{\setlength{\rightskip}{0pt plus 5cm}int Game\-Object\-::get\-Time\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a12af00f8b80f69e679e00c75b237a11c}
+
+
+Get the time left for the \hyperlink{classGameObject}{Game\-Object} in the game, applies to players. 
+
+\begin{DoxyReturn}{Returns}
+the value of the time left 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a6fc32284114a6d3b45c3d0485c688146}{\index{Game\-Object@{Game\-Object}!is\-Accepting\-Input@{is\-Accepting\-Input}}
+\index{is\-Accepting\-Input@{is\-Accepting\-Input}!GameObject@{Game\-Object}}
+\subsubsection[{is\-Accepting\-Input}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\-Object\-::is\-Accepting\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a6fc32284114a6d3b45c3d0485c688146}
+
+
+Get whether the \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. 
+
+\begin{DoxyReturn}{Returns}
+true, if the \hyperlink{classGameObject}{Game\-Object} accepts input, false otherwise 
+\end{DoxyReturn}
+\hypertarget{classGameObject_a9271d8661100d433a104601cd0d0d891}{\index{Game\-Object@{Game\-Object}!set\-Accepting\-Input@{set\-Accepting\-Input}}
+\index{set\-Accepting\-Input@{set\-Accepting\-Input}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Accepting\-Input}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Accepting\-Input (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a9271d8661100d433a104601cd0d0d891}
+
+
+Set whether the \hyperlink{classGameObject}{Game\-Object} accepts input from the keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value, true if it accepts, false otherwise \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_a461843e85bd8bfd205016e4adfd32489}{\index{Game\-Object@{Game\-Object}!set\-Is\-Dead@{set\-Is\-Dead}}
+\index{set\-Is\-Dead@{set\-Is\-Dead}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Is\-Dead}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Is\-Dead (
+\begin{DoxyParamCaption}
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a461843e85bd8bfd205016e4adfd32489}
+
+
+Sets the value of is\-Dead. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the new value of is\-Dead \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_a39aa8c311f514b871e6781bb076d8fdd}{\index{Game\-Object@{Game\-Object}!set\-Jumping\-State@{set\-Jumping\-State}}
+\index{set\-Jumping\-State@{set\-Jumping\-State}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Jumping\-State}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Jumping\-State (
+\begin{DoxyParamCaption}
+\item[{{\bf Jumping\-State} $\ast$}]{input\-\_\-jumping\-\_\-state}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a39aa8c311f514b871e6781bb076d8fdd}
+
+
+Sets the value of jumping\-State. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-jumping\-\_\-state} & the new value of jumping\-State \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_a9ecb58bea379eeb1d0b973b743861bf1}{\index{Game\-Object@{Game\-Object}!set\-Name@{set\-Name}}
+\index{set\-Name@{set\-Name}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Name (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name\-\_\-local}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a9ecb58bea379eeb1d0b973b743861bf1}
+
+
+Sets the user name of the \hyperlink{classGameObject}{Game\-Object}, applies to players. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\-\_\-local} & the new value of the user name \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_a20cc88a6d715503efcd3746d6aceb027}{\index{Game\-Object@{Game\-Object}!set\-Object\-Type@{set\-Object\-Type}}
+\index{set\-Object\-Type@{set\-Object\-Type}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Object\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Object\-Type (
+\begin{DoxyParamCaption}
+\item[{{\bf enumerator\-::\-Object\-Type}}]{input}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a20cc88a6d715503efcd3746d6aceb027}
+
+
+Sets the value of objecttype. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the new value of objecttype \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_ab10b02b28281e7398cd9f05bb7bea9c3}{\index{Game\-Object@{Game\-Object}!set\-Pos\-X\-Y@{set\-Pos\-X\-Y}}
+\index{set\-Pos\-X\-Y@{set\-Pos\-X\-Y}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Pos\-X\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Pos\-X\-Y (
+\begin{DoxyParamCaption}
+\item[{Q\-Point\-F}]{point}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_ab10b02b28281e7398cd9f05bb7bea9c3}
+
+
+Set the position of the \hyperlink{classGameObject}{Game\-Object} in the next frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & the point to which the \hyperlink{classGameObject}{Game\-Object} must go the next frame \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_a23073437c24792019aac0b0663e93508}{\index{Game\-Object@{Game\-Object}!set\-Score@{set\-Score}}
+\index{set\-Score@{set\-Score}!GameObject@{Game\-Object}}
+\subsubsection[{set\-Score}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-Score (
+\begin{DoxyParamCaption}
+\item[{int}]{input\-\_\-score}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_a23073437c24792019aac0b0663e93508}
+
+
+Sets the score of the \hyperlink{classGameObject}{Game\-Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-score} & the new value of score \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameObject_ae6c3730fbfc5fea46106466166177460}{\index{Game\-Object@{Game\-Object}!set\-State@{set\-State}}
+\index{set\-State@{set\-State}!GameObject@{Game\-Object}}
+\subsubsection[{set\-State}]{\setlength{\rightskip}{0pt plus 5cm}void Game\-Object\-::set\-State (
+\begin{DoxyParamCaption}
+\item[{{\bf State} $\ast$}]{input\-\_\-state}
+\end{DoxyParamCaption}
+)}}\label{classGameObject_ae6c3730fbfc5fea46106466166177460}
+
+
+Sets the value of sate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-state} & the new value of state \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+gameobject.\-h\end{DoxyCompactItemize}

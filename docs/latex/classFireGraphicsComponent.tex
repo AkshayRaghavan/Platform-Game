@@ -1,0 +1,111 @@
+\hypertarget{classFireGraphicsComponent}{\section{Fire\-Graphics\-Component Class Reference}
+\label{classFireGraphicsComponent}\index{Fire\-Graphics\-Component@{Fire\-Graphics\-Component}}
+}
+
+
+The Graphics for fire objects This handles the drawing, placement, position and update of fire objects.  
+
+
+
+
+{\ttfamily \#include $<$firegraphicscomponent.\-h$>$}
+
+Inheritance diagram for Fire\-Graphics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classFireGraphicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFireGraphicsComponent_a29253e498de59832c1cc2bd2f9bb11cc}{Fire\-Graphics\-Component} (Q\-Graphics\-Scene $\ast$scene, Q\-Pixmap $\ast$pix\-\_\-map, int images\-\_\-total\-\_\-count, qreal x\-\_\-coordinate, qreal y\-\_\-coordinate)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classFireGraphicsComponent_a325c4a94a0208b9e640146f7a5dc68d0}{\hyperlink{classFireGraphicsComponent_a325c4a94a0208b9e640146f7a5dc68d0}{$\sim$\-Fire\-Graphics\-Component} ()}\label{classFireGraphicsComponent_a325c4a94a0208b9e640146f7a5dc68d0}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classFireGraphicsComponent_a241b7300febe73c29791803784d65c4a}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em update Updates the image based on graphics\-Counter \end{DoxyCompactList}\item 
+std\-::vector$<$ qreal $>$ \hyperlink{classFireGraphicsComponent_a61a1db833ae5aff3a0b4464d3a7d9761}{get\-Size\-Position\-Of\-Object} ()
+\begin{DoxyCompactList}\small\item\em Gives the size and position of the \hyperlink{classGraphicsComponent}{Graphics\-Component} of the \hyperlink{classGameObject}{Game\-Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The Graphics for fire objects This handles the drawing, placement, position and update of fire objects. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFireGraphicsComponent_a29253e498de59832c1cc2bd2f9bb11cc}{\index{Fire\-Graphics\-Component@{Fire\-Graphics\-Component}!Fire\-Graphics\-Component@{Fire\-Graphics\-Component}}
+\index{Fire\-Graphics\-Component@{Fire\-Graphics\-Component}!FireGraphicsComponent@{Fire\-Graphics\-Component}}
+\subsubsection[{Fire\-Graphics\-Component}]{\setlength{\rightskip}{0pt plus 5cm}Fire\-Graphics\-Component\-::\-Fire\-Graphics\-Component (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene $\ast$}]{scene, }
+\item[{Q\-Pixmap $\ast$}]{pix\-\_\-map, }
+\item[{int}]{images\-\_\-total\-\_\-count, }
+\item[{qreal}]{x\-\_\-coordinate, }
+\item[{qreal}]{y\-\_\-coordinate}
+\end{DoxyParamCaption}
+)}}\label{classFireGraphicsComponent_a29253e498de59832c1cc2bd2f9bb11cc}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & the scene where the fire is placed \\
+\hline
+{\em pix\-\_\-map} & Pixmap for the fire \\
+\hline
+{\em images\-\_\-total\-\_\-count} & number of images to be looped over \\
+\hline
+{\em x\-\_\-coordinate} & x coordinate of the position \\
+\hline
+{\em y\-\_\-coordinate} & y coordinate of the position \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFireGraphicsComponent_a61a1db833ae5aff3a0b4464d3a7d9761}{\index{Fire\-Graphics\-Component@{Fire\-Graphics\-Component}!get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}}
+\index{get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}!FireGraphicsComponent@{Fire\-Graphics\-Component}}
+\subsubsection[{get\-Size\-Position\-Of\-Object}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$qreal$>$ Fire\-Graphics\-Component\-::get\-Size\-Position\-Of\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classFireGraphicsComponent_a61a1db833ae5aff3a0b4464d3a7d9761}
+
+
+Gives the size and position of the \hyperlink{classGraphicsComponent}{Graphics\-Component} of the \hyperlink{classGameObject}{Game\-Object}. 
+
+\begin{DoxyReturn}{Returns}
+a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classGraphicsComponent_a653e0474dd66fc1876f405831e121631}{Graphics\-Component}.
+
+\hypertarget{classFireGraphicsComponent_a241b7300febe73c29791803784d65c4a}{\index{Fire\-Graphics\-Component@{Fire\-Graphics\-Component}!update@{update}}
+\index{update@{update}!FireGraphicsComponent@{Fire\-Graphics\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Fire\-Graphics\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classFireGraphicsComponent_a241b7300febe73c29791803784d65c4a}
+
+
+update Updates the image based on graphics\-Counter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} of the fire \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classGraphicsComponent_a744134b79cf11b2ff29fb7802923fda9}{Graphics\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+firegraphicscomponent.\-h\end{DoxyCompactItemize}

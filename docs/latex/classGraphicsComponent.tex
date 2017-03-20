@@ -1,0 +1,102 @@
+\hypertarget{classGraphicsComponent}{\section{Graphics\-Component Class Reference}
+\label{classGraphicsComponent}\index{Graphics\-Component@{Graphics\-Component}}
+}
+
+
+Component of a \hyperlink{classGameObject}{Game\-Object} that handles the graphics Handles how to display a game object, and updating the display based on the \hyperlink{classState}{State}.  
+
+
+
+
+{\ttfamily \#include $<$graphicscomponent.\-h$>$}
+
+Inheritance diagram for Graphics\-Component\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classGraphicsComponent}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGraphicsComponent_a67fc1b715989a5e18d32e26b27a55c50}{\hyperlink{classGraphicsComponent_a67fc1b715989a5e18d32e26b27a55c50}{Graphics\-Component} ()}\label{classGraphicsComponent_a67fc1b715989a5e18d32e26b27a55c50}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classGraphicsComponent_abdd6b7255c198efc5ae2817099760293}{\hyperlink{classGraphicsComponent_abdd6b7255c198efc5ae2817099760293}{$\sim$\-Graphics\-Component} ()}\label{classGraphicsComponent_abdd6b7255c198efc5ae2817099760293}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classGraphicsComponent_a744134b79cf11b2ff29fb7802923fda9}{update} (\hyperlink{classGameObject}{Game\-Object} \&game\-Object)
+\begin{DoxyCompactList}\small\item\em Updates the graphics of the game\-Object. \end{DoxyCompactList}\item 
+bool \hyperlink{classGraphicsComponent_ab670b9ae59d04b87f2602332997ea059}{get\-Is\-Dangerous} ()
+\begin{DoxyCompactList}\small\item\em Get whether the \hyperlink{classGameObject}{Game\-Object} corresponding to the \hyperlink{classGraphicsComponent}{Graphics\-Component} is dangerous. \end{DoxyCompactList}\item 
+virtual std\-::vector$<$ qreal $>$ \hyperlink{classGraphicsComponent_a653e0474dd66fc1876f405831e121631}{get\-Size\-Position\-Of\-Object} ()=0
+\begin{DoxyCompactList}\small\item\em Get the size and position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGraphicsComponent_adbd0c2b6656a50c654231f1861e2e6ed}{bool \hyperlink{classGraphicsComponent_adbd0c2b6656a50c654231f1861e2e6ed}{is\-Dangerous}}\label{classGraphicsComponent_adbd0c2b6656a50c654231f1861e2e6ed}
+
+\begin{DoxyCompactList}\small\item\em Specifies whether a player will be destroyed by the \hyperlink{classGameObject}{Game\-Object} corresponding to the \hyperlink{classGraphicsComponent}{Graphics\-Component}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Component of a \hyperlink{classGameObject}{Game\-Object} that handles the graphics Handles how to display a game object, and updating the display based on the \hyperlink{classState}{State}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGraphicsComponent_ab670b9ae59d04b87f2602332997ea059}{\index{Graphics\-Component@{Graphics\-Component}!get\-Is\-Dangerous@{get\-Is\-Dangerous}}
+\index{get\-Is\-Dangerous@{get\-Is\-Dangerous}!GraphicsComponent@{Graphics\-Component}}
+\subsubsection[{get\-Is\-Dangerous}]{\setlength{\rightskip}{0pt plus 5cm}bool Graphics\-Component\-::get\-Is\-Dangerous (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGraphicsComponent_ab670b9ae59d04b87f2602332997ea059}
+
+
+Get whether the \hyperlink{classGameObject}{Game\-Object} corresponding to the \hyperlink{classGraphicsComponent}{Graphics\-Component} is dangerous. 
+
+\begin{DoxyReturn}{Returns}
+true, if a player will be destroyed by it, false, otherwise 
+\end{DoxyReturn}
+\hypertarget{classGraphicsComponent_a653e0474dd66fc1876f405831e121631}{\index{Graphics\-Component@{Graphics\-Component}!get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}}
+\index{get\-Size\-Position\-Of\-Object@{get\-Size\-Position\-Of\-Object}!GraphicsComponent@{Graphics\-Component}}
+\subsubsection[{get\-Size\-Position\-Of\-Object}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::vector$<$qreal$>$ Graphics\-Component\-::get\-Size\-Position\-Of\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classGraphicsComponent_a653e0474dd66fc1876f405831e121631}
+
+
+Get the size and position. 
+
+\begin{DoxyReturn}{Returns}
+a vector of type qreal, with width, height, x coordinate, y coordinate filled in that order 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classPlayerGraphicsComponent_a9e4f6d92f14886b23791ac2eb8846349}{Player\-Graphics\-Component}, and \hyperlink{classFireGraphicsComponent_a61a1db833ae5aff3a0b4464d3a7d9761}{Fire\-Graphics\-Component}.
+
+\hypertarget{classGraphicsComponent_a744134b79cf11b2ff29fb7802923fda9}{\index{Graphics\-Component@{Graphics\-Component}!update@{update}}
+\index{update@{update}!GraphicsComponent@{Graphics\-Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Graphics\-Component\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} \&}]{game\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classGraphicsComponent_a744134b79cf11b2ff29fb7802923fda9}
+
+
+Updates the graphics of the game\-Object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} the \hyperlink{classGraphicsComponent}{Graphics\-Component} belongs to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classPlayerGraphicsComponent_ace3901cc8345392c22315f24d617e98b}{Player\-Graphics\-Component}, and \hyperlink{classFireGraphicsComponent_a241b7300febe73c29791803784d65c4a}{Fire\-Graphics\-Component}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+graphicscomponent.\-h\end{DoxyCompactItemize}

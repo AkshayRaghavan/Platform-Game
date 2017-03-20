@@ -1,0 +1,218 @@
+\hypertarget{classReadInput}{\section{Read\-Input Class Reference}
+\label{classReadInput}\index{Read\-Input@{Read\-Input}}
+}
+
+
+Function to read input from the game files.  
+
+
+
+
+{\ttfamily \#include $<$readinput.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classReadInput_a25c8fa92ada2fb103817fb1eb1c67020}{Read\-Input} (Q\-Graphics\-Scene $\ast$\hyperlink{classReadInput_a6ef3ea2e71749ad16f4bcd0bdae740c4}{scene}, int screen\-\_\-width, int screen\-\_\-height)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_aec19e94e448ed46207c55412a61728fa}{\hyperlink{classReadInput_aec19e94e448ed46207c55412a61728fa}{$\sim$\-Read\-Input} ()}\label{classReadInput_aec19e94e448ed46207c55412a61728fa}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a3bf04a443a4ef1df2c1a380c81ba0f0b}{function\-To\-Create\-Tile\-Map} (std\-::string file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Function to Create the \hyperlink{classTile}{Tile} Map. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a8784d64abe0ee437915679d7d602ab10}{function\-To\-Create\-Gem} (std\-::string file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Function to Create Gems. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a1ed7e1e601b0fe876b289884c289bda5}{function\-To\-Create\-Player\-Game\-Object} (std\-::string file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Function to Create The Players. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a627c05559722971112fdc9b076234907}{function\-To\-Create\-Monster\-Game\-Object} (std\-::string file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Function to Create the Monsters. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_acf8a8a99a12546eb1fd2871626411ec6}{function\-To\-Create\-Fire\-Object} (std\-::string fire\-\_\-file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Function to Create Fire. \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a51ac6aba5ed863639d7cbbbd962a9996}{function\-To\-Create\-Door} (std\-::string door\-\_\-file\-\_\-path)
+\begin{DoxyCompactList}\small\item\em function\-To\-Create\-Door \end{DoxyCompactList}\item 
+void \hyperlink{classReadInput_a2aac5874b99ac1dc471ad8ea8ddbba8b}{set\-App} (Q\-Application $\ast$a)
+\begin{DoxyCompactList}\small\item\em To set the Current Q\-Application. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classReadInput_adc606d86ae9c132ab1621cee0ea75bf7}{\hyperlink{namespaceenumerator_aa4c03441b2e09279e43235eb80525c6d}{enumerator\-::\-Identity} \hyperlink{classReadInput_adc606d86ae9c132ab1621cee0ea75bf7}{remote\-Identity}}\label{classReadInput_adc606d86ae9c132ab1621cee0ea75bf7}
+
+\begin{DoxyCompactList}\small\item\em Stores whether it is \hyperlink{classServer}{Server} or \hyperlink{classClient}{Client}. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a21ac8a09fc880cd70eb4bdfc61d05007}{std\-::vector$<$ \hyperlink{classGameObject}{Game\-Object} $\ast$ $>$ \hyperlink{classReadInput_a21ac8a09fc880cd70eb4bdfc61d05007}{game\-Object}}\label{classReadInput_a21ac8a09fc880cd70eb4bdfc61d05007}
+
+\begin{DoxyCompactList}\small\item\em Vector Containing all the Game Objects. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a074e31396ae2e02327562d9233b6c22e}{std\-::vector$<$ std\-::vector$<$ \hyperlink{classTile}{Tile} $\ast$ $>$ $>$ \hyperlink{classReadInput_a074e31396ae2e02327562d9233b6c22e}{tile\-Map}}\label{classReadInput_a074e31396ae2e02327562d9233b6c22e}
+
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classTile}{Tile} Map Vector. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_ac69175ef5ebd6c14ac491ade5a2409a8}{std\-::vector$<$ \hyperlink{classGem}{Gem} $\ast$ $>$ \hyperlink{classReadInput_ac69175ef5ebd6c14ac491ade5a2409a8}{gems}}\label{classReadInput_ac69175ef5ebd6c14ac491ade5a2409a8}
+
+\begin{DoxyCompactList}\small\item\em vector to store all the gems \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a6ef3ea2e71749ad16f4bcd0bdae740c4}{Q\-Graphics\-Scene $\ast$ \hyperlink{classReadInput_a6ef3ea2e71749ad16f4bcd0bdae740c4}{scene}}\label{classReadInput_a6ef3ea2e71749ad16f4bcd0bdae740c4}
+
+\begin{DoxyCompactList}\small\item\em The Scene where to add all the game objects. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_ac37f50f8dccc35548092fc547a696e8b}{qreal \hyperlink{classReadInput_ac37f50f8dccc35548092fc547a696e8b}{width\-\_\-of\-\_\-tile}}\label{classReadInput_ac37f50f8dccc35548092fc547a696e8b}
+
+\begin{DoxyCompactList}\small\item\em Width of the \hyperlink{classTile}{Tile} relative to Screen Width. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a5f2147dd5ccbcfcd0bda7ad4a4223806}{qreal \hyperlink{classReadInput_a5f2147dd5ccbcfcd0bda7ad4a4223806}{height\-\_\-of\-\_\-tile}}\label{classReadInput_a5f2147dd5ccbcfcd0bda7ad4a4223806}
+
+\begin{DoxyCompactList}\small\item\em Height of the \hyperlink{classTile}{Tile} relative to Screen Height. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a110330967ab2d06e89240eff7b933f9d}{Q\-Application $\ast$ \hyperlink{classReadInput_a110330967ab2d06e89240eff7b933f9d}{app}}\label{classReadInput_a110330967ab2d06e89240eff7b933f9d}
+
+\begin{DoxyCompactList}\small\item\em Q\-Application. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_abdeefb04b7789d19ef130522fa8eacf8}{int \hyperlink{classReadInput_abdeefb04b7789d19ef130522fa8eacf8}{screen\-Width}}\label{classReadInput_abdeefb04b7789d19ef130522fa8eacf8}
+
+\begin{DoxyCompactList}\small\item\em Width of the Screen. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a0d6a1690d18753353603622b8ab0e99c}{int \hyperlink{classReadInput_a0d6a1690d18753353603622b8ab0e99c}{screen\-Height}}\label{classReadInput_a0d6a1690d18753353603622b8ab0e99c}
+
+\begin{DoxyCompactList}\small\item\em Height of the Screen. \end{DoxyCompactList}\item 
+\hypertarget{classReadInput_a4b07fa90c576175ceb01f7e87e7ffd96}{int \hyperlink{classReadInput_a4b07fa90c576175ceb01f7e87e7ffd96}{total\-Time}}\label{classReadInput_a4b07fa90c576175ceb01f7e87e7ffd96}
+
+\begin{DoxyCompactList}\small\item\em Total Time before Game Ends. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Function to read input from the game files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classReadInput_a25c8fa92ada2fb103817fb1eb1c67020}{\index{Read\-Input@{Read\-Input}!Read\-Input@{Read\-Input}}
+\index{Read\-Input@{Read\-Input}!ReadInput@{Read\-Input}}
+\subsubsection[{Read\-Input}]{\setlength{\rightskip}{0pt plus 5cm}Read\-Input\-::\-Read\-Input (
+\begin{DoxyParamCaption}
+\item[{Q\-Graphics\-Scene $\ast$}]{scene, }
+\item[{int}]{screen\-\_\-width, }
+\item[{int}]{screen\-\_\-height}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a25c8fa92ada2fb103817fb1eb1c67020}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The Scene pointer \\
+\hline
+{\em screen\-\_\-width} & Value of Width of Screen \\
+\hline
+{\em screen\-\_\-height} & Value of Height of Screen \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classReadInput_a51ac6aba5ed863639d7cbbbd962a9996}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Door@{function\-To\-Create\-Door}}
+\index{function\-To\-Create\-Door@{function\-To\-Create\-Door}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Door}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Door (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{door\-\_\-file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a51ac6aba5ed863639d7cbbbd962a9996}
+
+
+function\-To\-Create\-Door 
+
+
+\begin{DoxyParams}{Parameters}
+{\em door\-\_\-file\-\_\-path} & Path of the File containing \hyperlink{classDoor}{Door} information \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_acf8a8a99a12546eb1fd2871626411ec6}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Fire\-Object@{function\-To\-Create\-Fire\-Object}}
+\index{function\-To\-Create\-Fire\-Object@{function\-To\-Create\-Fire\-Object}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Fire\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Fire\-Object (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{fire\-\_\-file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_acf8a8a99a12546eb1fd2871626411ec6}
+
+
+Function to Create Fire. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fire\-\_\-file\-\_\-path} & Path of the File containing Fire \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_a8784d64abe0ee437915679d7d602ab10}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Gem@{function\-To\-Create\-Gem}}
+\index{function\-To\-Create\-Gem@{function\-To\-Create\-Gem}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Gem}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Gem (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a8784d64abe0ee437915679d7d602ab10}
+
+
+Function to Create Gems. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-path} & Path of the File containing information about Gems \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_a627c05559722971112fdc9b076234907}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Monster\-Game\-Object@{function\-To\-Create\-Monster\-Game\-Object}}
+\index{function\-To\-Create\-Monster\-Game\-Object@{function\-To\-Create\-Monster\-Game\-Object}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Monster\-Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Monster\-Game\-Object (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a627c05559722971112fdc9b076234907}
+
+
+Function to Create the Monsters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-path} & Path of the File Containing monsters \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_a1ed7e1e601b0fe876b289884c289bda5}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Player\-Game\-Object@{function\-To\-Create\-Player\-Game\-Object}}
+\index{function\-To\-Create\-Player\-Game\-Object@{function\-To\-Create\-Player\-Game\-Object}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Player\-Game\-Object}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Player\-Game\-Object (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a1ed7e1e601b0fe876b289884c289bda5}
+
+
+Function to Create The Players. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-path} & Path of the File containing all the information about players \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_a3bf04a443a4ef1df2c1a380c81ba0f0b}{\index{Read\-Input@{Read\-Input}!function\-To\-Create\-Tile\-Map@{function\-To\-Create\-Tile\-Map}}
+\index{function\-To\-Create\-Tile\-Map@{function\-To\-Create\-Tile\-Map}!ReadInput@{Read\-Input}}
+\subsubsection[{function\-To\-Create\-Tile\-Map}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::function\-To\-Create\-Tile\-Map (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-\_\-path}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a3bf04a443a4ef1df2c1a380c81ba0f0b}
+
+
+Function to Create the \hyperlink{classTile}{Tile} Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-path} & Path of File containing information of \hyperlink{classTile}{Tile} Map \\
+\hline
+\end{DoxyParams}
+\hypertarget{classReadInput_a2aac5874b99ac1dc471ad8ea8ddbba8b}{\index{Read\-Input@{Read\-Input}!set\-App@{set\-App}}
+\index{set\-App@{set\-App}!ReadInput@{Read\-Input}}
+\subsubsection[{set\-App}]{\setlength{\rightskip}{0pt plus 5cm}void Read\-Input\-::set\-App (
+\begin{DoxyParamCaption}
+\item[{Q\-Application $\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{classReadInput_a2aac5874b99ac1dc471ad8ea8ddbba8b}
+
+
+To set the Current Q\-Application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Q\-Application} & Pointer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+readinput.\-h\end{DoxyCompactItemize}

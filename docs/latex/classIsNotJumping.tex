@@ -1,0 +1,108 @@
+\hypertarget{classIsNotJumping}{\section{Is\-Not\-Jumping Class Reference}
+\label{classIsNotJumping}\index{Is\-Not\-Jumping@{Is\-Not\-Jumping}}
+}
+
+
+\hyperlink{classJumpingState}{Jumping\-State} in which the \hyperlink{classGameObject}{Game\-Object} is not jumping.  
+
+
+
+
+{\ttfamily \#include $<$isnotjumping.\-h$>$}
+
+Inheritance diagram for Is\-Not\-Jumping\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIsNotJumping}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classIsNotJumping_a4944fdea4979abd38c5cdc7e6eb278ca}{Is\-Not\-Jumping} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classIsNotJumping_a920891e2d40f4c8b485a857b6830c98c}{virtual \hyperlink{classIsNotJumping_a920891e2d40f4c8b485a857b6830c98c}{$\sim$\-Is\-Not\-Jumping} ()}\label{classIsNotJumping_a920891e2d40f4c8b485a857b6830c98c}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classJumpingState}{Jumping\-State} $\ast$ \hyperlink{classIsNotJumping_ae58898ada922fab24c37735bee506c8c}{update} (\hyperlink{classInputComponent}{Input\-Component} $\ast$, \hyperlink{classGameObject}{Game\-Object} \&, std\-::set$<$ Qt\-::\-Key $>$)
+\begin{DoxyCompactList}\small\item\em Updates the \hyperlink{classJumpingState}{Jumping\-State}. \end{DoxyCompactList}\item 
+virtual \hyperlink{namespaceenumerator_a2f1fb1ef7c57e4549f424d454c1e2179}{enumerator\-::\-Jumping\-State} \hyperlink{classIsNotJumping_a2fc57703b1017b434e82b4a054f2c9d1}{type} ()
+\begin{DoxyCompactList}\small\item\em Get the type of the current \hyperlink{classJumpingState}{Jumping\-State}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classJumpingState}{Jumping\-State} in which the \hyperlink{classGameObject}{Game\-Object} is not jumping. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classIsNotJumping_a4944fdea4979abd38c5cdc7e6eb278ca}{\index{Is\-Not\-Jumping@{Is\-Not\-Jumping}!Is\-Not\-Jumping@{Is\-Not\-Jumping}}
+\index{Is\-Not\-Jumping@{Is\-Not\-Jumping}!IsNotJumping@{Is\-Not\-Jumping}}
+\subsubsection[{Is\-Not\-Jumping}]{\setlength{\rightskip}{0pt plus 5cm}Is\-Not\-Jumping\-::\-Is\-Not\-Jumping (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIsNotJumping_a4944fdea4979abd38c5cdc7e6eb278ca}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\-Object} & the \hyperlink{classGameObject}{Game\-Object} the \hyperlink{classJumpingState}{Jumping\-State} belongs \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classIsNotJumping_a2fc57703b1017b434e82b4a054f2c9d1}{\index{Is\-Not\-Jumping@{Is\-Not\-Jumping}!type@{type}}
+\index{type@{type}!IsNotJumping@{Is\-Not\-Jumping}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf enumerator\-::\-Jumping\-State} Is\-Not\-Jumping\-::type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classIsNotJumping_a2fc57703b1017b434e82b4a054f2c9d1}
+
+
+Get the type of the current \hyperlink{classJumpingState}{Jumping\-State}. 
+
+\begin{DoxyReturn}{Returns}
+value of \hyperlink{namespaceenumerator_a2f1fb1ef7c57e4549f424d454c1e2179}{enumerator\-::\-Jumping\-State} with the type 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classJumpingState_a3c1a2e3c686de946c16e20c717f0a37d}{Jumping\-State}.
+
+\hypertarget{classIsNotJumping_ae58898ada922fab24c37735bee506c8c}{\index{Is\-Not\-Jumping@{Is\-Not\-Jumping}!update@{update}}
+\index{update@{update}!IsNotJumping@{Is\-Not\-Jumping}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Jumping\-State}$\ast$ Is\-Not\-Jumping\-::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Component} $\ast$}]{, }
+\item[{{\bf Game\-Object} \&}]{, }
+\item[{std\-::set$<$ Qt\-::\-Key $>$}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classIsNotJumping_ae58898ada922fab24c37735bee506c8c}
+
+
+Updates the \hyperlink{classJumpingState}{Jumping\-State}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-\_\-component} & the \hyperlink{classInputComponent}{Input\-Component} of the corresponding \hyperlink{classGameObject}{Game\-Object} \\
+\hline
+{\em game\-\_\-object} & the corresponding \hyperlink{classGameObject}{Game\-Object} \\
+\hline
+{\em keys} & set of keys currently pressed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new \hyperlink{classJumpingState}{Jumping\-State} 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classJumpingState_a0da4718d614ff36fd1336f01f5ddfa2b}{Jumping\-State}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+isnotjumping.\-h\end{DoxyCompactItemize}

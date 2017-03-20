@@ -1,0 +1,116 @@
+\hypertarget{classClient}{\section{Client Class Reference}
+\label{classClient}\index{Client@{Client}}
+}
+
+
+The Class to Create a \hyperlink{classClient}{Client}.  
+
+
+
+
+{\ttfamily \#include $<$client.\-h$>$}
+
+Inheritance diagram for Client\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classClient}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classClient_ab1fad07406e7086043ac689a03005480}{void \hyperlink{classClient_ab1fad07406e7086043ac689a03005480}{closed} ()}\label{classClient_ab1fad07406e7086043ac689a03005480}
+
+\begin{DoxyCompactList}\small\item\em Signal to be sent when \hyperlink{classClient}{Client} closes. \end{DoxyCompactList}\item 
+\hypertarget{classClient_ad6da73c1bc1ff62071e24825a4254433}{void \hyperlink{classClient_ad6da73c1bc1ff62071e24825a4254433}{text\-Changed} (Q\-String)}\label{classClient_ad6da73c1bc1ff62071e24825a4254433}
+
+\begin{DoxyCompactList}\small\item\em Text Change Function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_a78171ef219443f177e1b7d80d0798d55}{Client} (Q\-Application $\ast$, int, Q\-Graphics\-Scene $\ast$, \hyperlink{classInputHandler}{Input\-Handler} $\ast$, int, int, Q\-Label $\ast$, Q\-Object $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classClient}{Client} Constructor. \end{DoxyCompactList}\item 
+\hypertarget{classClient_a840e519ca781888cbd54181572ebe3a7}{\hyperlink{classClient_a840e519ca781888cbd54181572ebe3a7}{$\sim$\-Client} ()}\label{classClient_a840e519ca781888cbd54181572ebe3a7}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{classClient}{Client} Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classClient_ad8fcb654942cf5d804010be882164d67}{get\-Array\-Index} ()
+\begin{DoxyCompactList}\small\item\em Get the Player I\-D. \end{DoxyCompactList}\item 
+Q\-Web\-Socket $\ast$ \hyperlink{classClient_a865e84b80885b731dfee9752e98485a8}{get\-Client\-Web\-Socket} ()
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classClient}{Client} Websocket. \end{DoxyCompactList}\item 
+\hypertarget{classClient_a1b60e473f218c0910448adbef2cf644b}{void \hyperlink{classClient_a1b60e473f218c0910448adbef2cf644b}{Display\-Score} (Q\-String)}\label{classClient_a1b60e473f218c0910448adbef2cf644b}
+
+\begin{DoxyCompactList}\small\item\em Display The Score. \end{DoxyCompactList}\item 
+\hypertarget{classClient_af015d89a945001f35a8e8c3bb0459d4a}{void \hyperlink{classClient_af015d89a945001f35a8e8c3bb0459d4a}{connect\-To\-Server} (Q\-Url, Q\-Graphics\-Text\-Item $\ast$, Q\-String)}\label{classClient_af015d89a945001f35a8e8c3bb0459d4a}
+
+\begin{DoxyCompactList}\small\item\em Connect To \hyperlink{classServer}{Server}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classClient_afd59ea5b74c1b9d4529cc7f911808e05}{\hyperlink{classGameState}{Game\-State} $\ast$ \hyperlink{classClient_afd59ea5b74c1b9d4529cc7f911808e05}{game\-Pointer}}\label{classClient_afd59ea5b74c1b9d4529cc7f911808e05}
+
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classGameState}{Game\-State} Pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Class to Create a \hyperlink{classClient}{Client}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classClient_a78171ef219443f177e1b7d80d0798d55}{\index{Client@{Client}!Client@{Client}}
+\index{Client@{Client}!Client@{Client}}
+\subsubsection[{Client}]{\setlength{\rightskip}{0pt plus 5cm}Client\-::\-Client (
+\begin{DoxyParamCaption}
+\item[{Q\-Application $\ast$}]{, }
+\item[{int}]{, }
+\item[{Q\-Graphics\-Scene $\ast$}]{, }
+\item[{{\bf Input\-Handler} $\ast$}]{, }
+\item[{int}]{, }
+\item[{int}]{, }
+\item[{Q\-Label $\ast$}]{, }
+\item[{Q\-Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classClient_a78171ef219443f177e1b7d80d0798d55}
+
+
+\hyperlink{classClient}{Client} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classClient_ad8fcb654942cf5d804010be882164d67}{\index{Client@{Client}!get\-Array\-Index@{get\-Array\-Index}}
+\index{get\-Array\-Index@{get\-Array\-Index}!Client@{Client}}
+\subsubsection[{get\-Array\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Client\-::get\-Array\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classClient_ad8fcb654942cf5d804010be882164d67}
+
+
+Get the Player I\-D. 
+
+\begin{DoxyReturn}{Returns}
+Player I\-D 
+\end{DoxyReturn}
+\hypertarget{classClient_a865e84b80885b731dfee9752e98485a8}{\index{Client@{Client}!get\-Client\-Web\-Socket@{get\-Client\-Web\-Socket}}
+\index{get\-Client\-Web\-Socket@{get\-Client\-Web\-Socket}!Client@{Client}}
+\subsubsection[{get\-Client\-Web\-Socket}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Web\-Socket$\ast$ Client\-::get\-Client\-Web\-Socket (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classClient_a865e84b80885b731dfee9752e98485a8}
+
+
+The \hyperlink{classClient}{Client} Websocket. 
+
+\begin{DoxyReturn}{Returns}
+clientwebsocket 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+client.\-h\end{DoxyCompactItemize}
